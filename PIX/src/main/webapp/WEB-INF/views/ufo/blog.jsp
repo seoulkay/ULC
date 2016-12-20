@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -14,12 +17,15 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <link rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">   
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
 </head> 
 
 <body class="blog-page">   
@@ -27,7 +33,9 @@
     <header id="header" class="header">  
         <div class="container">      
             <h1 class="logo">
-                <a href="index.html"><img src="assets/images/logo.svg" alt=""><span class="text">Startup Kit</span></a>
+                <a href="index
+"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/logo.svg" alt=""><span class="text">Startup Kit</span></a>
             </h1><!--//logo-->
             <nav class="main-nav navbar-right" role="navigation">
                 <div class="navbar-header">
@@ -39,21 +47,33 @@
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a href="index.html">Home</a></li>
-                        <li class="nav-item"><a href="features.html">Features</a></li>
-                        <li class="nav-item"><a href="stories.html">Stories</a></li>
-                        <li class="nav-item"><a href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a href="index
+">Home</a></li>
+                        <li class="nav-item"><a href="features
+">Features</a></li>
+                        <li class="nav-item"><a href="stories
+">Stories</a></li>
+                        <li class="nav-item"><a href="pricing
+">Pricing</a></li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">More <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="story-single.html">Customer Story Single</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="support.html">Support Center</a></li>   
-                                <li><a href="career.html">Career</a></li> 
-                                <li><a href="job-single.html">Job Single</a></li> 
-                                <li><a href="contact.html">Contact</a></li>                    
+                                <li><a href="about
+">About Us</a></li>
+                                <li><a href="story-single
+">Customer Story Single</a></li>
+                                <li><a href="blog
+">Blog</a></li>
+                                <li><a href="blog-single
+">Blog Single</a></li>
+                                <li><a href="support
+">Support Center</a></li>   
+                                <li><a href="career
+">Career</a></li> 
+                                <li><a href="job-single
+">Job Single</a></li> 
+                                <li><a href="contact
+">Contact</a></li>                    
                             </ul>                            
                         </li><!--//dropdown-->                         
                         <li class="nav-item"><a href="#" class="login-trigger" data-toggle="modal" data-target="#login-modal">Log in</a></li>
@@ -74,7 +94,8 @@
             <div class="intro">The latest news, stories, and resources from the Startup Kit team.</div>
             <div class="actions">
                  <a class="scrollto-no-offset" href="#posts-promo-block">View featured posts</a>
-                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src="assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
         </div><!--//container-->
     </section><!--//heading-section-->
@@ -101,13 +122,15 @@
                             </div>
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single.html">The Future of UX Design</a></h3>
+                                    <h3 class="item-title"><a href="blog-single
+">The Future of UX Design</a></h3>
                                     <div class="item-meta" >By Alice Aguilar, 2 days ago</div>                                 
                                     <div class="item-intro">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
                                     </div><!--//item-intro-->
                                                                         
-                                    <a class="item-cta btn btn-secondary" href="blog-single.html">Read more</a>
+                                    <a class="item-cta btn btn-secondary" href="blog-single
+">Read more</a>
                                                                         
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
@@ -123,13 +146,15 @@
                             </div>
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single.html">How to build a successful product</a></h3>
+                                    <h3 class="item-title"><a href="blog-single
+">How to build a successful product</a></h3>
                                     <div class="item-meta" >By Robert Berry, 22 Sep</div>                                     
                                     <div class="item-intro">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
                                     </div><!--//item-intro-->
                                                                         
-                                    <a class="item-cta btn btn-secondary" href="blog-single.html">Read more</a>
+                                    <a class="item-cta btn btn-secondary" href="blog-single
+">Read more</a>
                                                                         
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
@@ -145,13 +170,15 @@
                             </div>
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single.html">When to Ship Your Product</a></h3>
+                                    <h3 class="item-title"><a href="blog-single
+">When to Ship Your Product</a></h3>
                                     <div class="item-meta" >By Samuel Coleman, 6 days ago</div>                                     
                                     <div class="item-intro">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
                                     </div><!--//item-intro-->
                                                                         
-                                    <a class="item-cta btn btn-secondary" href="blog-single.html">Read more</a>
+                                    <a class="item-cta btn btn-secondary" href="blog-single
+">Read more</a>
                                                                         
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
@@ -167,13 +194,15 @@
                             </div>
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single.html">10 Tips for SketchApp</a></h3>
+                                    <h3 class="item-title"><a href="blog-single
+">10 Tips for SketchApp</a></h3>
                                     <div class="item-meta" >By Kate  Nichols, 2 days ago</div>                                     
                                     <div class="item-intro">
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
                                     </div><!--//item-intro-->
                                                                         
-                                    <a class="item-cta btn btn-secondary" href="blog-single.html">Read more</a>
+                                    <a class="item-cta btn btn-secondary" href="blog-single
+">Read more</a>
                                                                         
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
@@ -199,11 +228,13 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane tab-pane-1 active" id="tab-1">
                     <div class="post post-1">
-                        <h3 class="post-title"><a href="blog-single.html">How To Work in A Remote Team</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">How To Work in A Remote Team</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-1.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-1.png" alt="">
                                     <div class="author-name">By Mark Harper</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -211,19 +242,24 @@
                                 </div><!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Etiam feugiat nulla ac accumsan euismod. Cras porttitor consectetur metus in imperdiet. Nam mollis finibus ante, sed luctus nibh imperdiet eu. Integer ac aliquam magna, id fermentum metus... <a href="blog-single.html" class="readmore">Read More</a>
+                                Etiam feugiat nulla ac accumsan euismod. Cras porttitor consectetur metus in imperdiet. Nam mollis finibus ante, sed luctus nibh imperdiet eu. Integer ac aliquam magna, id fermentum metus... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-1-->
                     <div class="post post-2">
-                        <h3 class="post-title"><a href="blog-single.html">Say Goodbye To The Nine To Five</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">Say Goodbye To The Nine To Five</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-2.png" alt=""> 
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-2.png" alt=""> 
                                     <div class="author-name">By Kate Peterson</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -231,19 +267,24 @@
                                 </div><!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-2.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-2.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single.html" class="readmore">Read More</a>
+                                Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-2-->
                     <div class="post post-3">
-                        <h3 class="post-title"><a href="blog-single.html">Setting Up Slack For Small Teams</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">Setting Up Slack For Small Teams</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-3.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
                                     <div class="author-name">By David Chung</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -251,19 +292,24 @@
                                 </div><!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single.html" class="readmore">Read More</a>
+                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-3-->
                     <div class="post post-4">
-                        <h3 class="post-title"><a href="blog-single.html">How To Use Startup Kit</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">How To Use Startup Kit</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-4.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-4.png" alt="">
                                     <div class="author-name">By Mike Lee</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -271,23 +317,26 @@
                                 </div><!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single.html" class="readmore">Read More</a>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-4-->
                     
                     <div class="pagination-container text-center">
                         <ul class="pagination">
-                            <li class="disabled"><a href="#">«</a></li>
+                            <li class="disabled"><a href="#">Â«</a></li>
                             <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#">5</a></li>
-                            <li><a href="#">»</a></li>
+                            <li><a href="#">Â»</a></li>
                         </ul><!--//pagination-->
                     </div>
                     
@@ -295,11 +344,13 @@
                 
                 <div role="tabpanel" class="tab-pane tab-pane-2" id="tab-2">
                     <div class="post post-4">
-                        <h3 class="post-title"><a href="blog-single.html">How To Use Startup Kit</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">How To Use Startup Kit</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-4.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-4.png" alt="">
                                     <div class="author-name">By Mike Lee</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -308,20 +359,25 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single.html" class="readmore">Read More</a>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-4-->
                     
                     <div class="post post-5">
-                        <h3 class="post-title"><a href="blog-single.html">New Features in Startup Kit</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">New Features in Startup Kit</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-5.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-5.png" alt="">
                                     <div class="author-name">By Jennifer Hughes</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -330,20 +386,25 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-5.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-5.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single.html" class="readmore">Read More</a>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-5-->
                     
                     <div class="post post-6">
-                        <h3 class="post-title"><a href="blog-single.html">Lorem Ipsum Dolor Sit Amet</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">Lorem Ipsum Dolor Sit Amet</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-6.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-6.png" alt="">
                                     <div class="author-name">By James Doe</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -352,23 +413,26 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-6.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-6.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single.html" class="readmore">Read More</a>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-6-->
                     
                     <div class="pagination-container text-center">
                         <ul class="pagination">
-                            <li class="disabled"><a href="#">«</a></li>
+                            <li class="disabled"><a href="#">Â«</a></li>
                             <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#">5</a></li>
-                            <li><a href="#">»</a></li>
+                            <li><a href="#">Â»</a></li>
                         </ul><!--//pagination-->
                     </div>
                     
@@ -378,11 +442,13 @@
                 <div role="tabpanel" class="tab-pane tab-pane-3" id="tab-3">
                     
                     <div class="post post-3">
-                        <h3 class="post-title"><a href="blog-single.html">Setting Up Slack For Small Teams</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">Setting Up Slack For Small Teams</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-3.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
                                     <div class="author-name">By David Chung</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -391,20 +457,25 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single.html" class="readmore">Read More</a>
+                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-3-->
                     
                     <div class="post post-7">
-                        <h3 class="post-title"><a href="blog-single.html">Curabitur Vitae Elit Sit Amet</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">Curabitur Vitae Elit Sit Amet</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-7.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-7.png" alt="">
                                     <div class="author-name">By Tim Wright</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -413,10 +484,13 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-7.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-7.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single.html" class="readmore">Read More</a>
+                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-7-->
@@ -428,11 +502,13 @@
                 <div role="tabpanel" class="tab-pane tab-pane-4" id="tab-4">
                     
                     <div class="post post-8">
-                        <h3 class="post-title"><a href="blog-single.html">UI Kit for Designers</a></h3>
+                        <h3 class="post-title"><a href="blog-single
+">UI Kit for Designers</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src="assets/images/blog/authors/author-8.png" alt="">
+                                    <img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-8.png" alt="">
                                     <div class="author-name">By Betty Diaz</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -441,10 +517,13 @@
                                 
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single.html"><img class="img-responsive" src="assets/images/blog/blog-post-thumb-8.jpg" alt=""></a>
+                                <a href="blog-single
+"><img class="img-responsive" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-8.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single.html" class="readmore">Read More</a>
+                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
+" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-8-->
@@ -672,27 +751,40 @@
             <a id="config-trigger" class="config-trigger config-panel-hide" href="#"><i class="fa fa-cog"></i></a>
             <h5 class="panel-title">Choose Colour</h5>
             <ul id="color-options" class="list-unstyled list-inline">
-                <li class="theme-1 active"><a data-style="assets/css/styles.css" href="#"></a></li>
-                <li class="theme-2"><a data-style="assets/css/styles-2.css" href="#"></a></li>
-                <li class="theme-3"><a data-style="assets/css/styles-3.css" href="#"></a></li>
-                <li class="theme-4"><a data-style="assets/css/styles-4.css" href="#"></a></li>     
-                <li class="theme-5"><a data-style="assets/css/styles-5.css" href="#"></a></li>    
-                <li class="theme-6"><a data-style="assets/css/styles-6.css" href="#"></a></li>             
+                <li class="theme-1 active"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css" href="#"></a></li>
+                <li class="theme-2"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-2.css" href="#"></a></li>
+                <li class="theme-3"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-3.css" href="#"></a></li>
+                <li class="theme-4"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-4.css" href="#"></a></li>     
+                <li class="theme-5"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-5.css" href="#"></a></li>    
+                <li class="theme-6"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-6.css" href="#"></a></li>             
             </ul>
             <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
         </div><!--//panel-inner-->
     </div><!--//configure-panel-->
  
     <!-- Javascript -->          
-    <script type="text/javascript" src="assets/plugins/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>    
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>    
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script>
     
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-    <script src="assets/js/demo/style-switcher.js"></script>
+    <script src=
+"${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
             
 </body>
 </html> 

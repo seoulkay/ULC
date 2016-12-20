@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -14,12 +17,15 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <link rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">   
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
 </head> 
 
 <body class="stories-page" data-spy="scroll" data-target="#page-nav">   
@@ -27,7 +33,9 @@
     <header id="header" class="header">  
         <div class="container">      
             <h1 class="logo">
-                <a href="index.html"><img src="assets/images/logo.svg" alt=""><span class="text">Startup Kit</span></a>
+                <a href="index
+"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/logo.svg" alt=""><span class="text">Startup Kit</span></a>
             </h1><!--//logo-->
             <nav class="main-nav navbar-right" role="navigation">
                 <div class="navbar-header">
@@ -39,21 +47,33 @@
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a href="index.html">Home</a></li>
-                        <li class="nav-item"><a href="features.html">Features</a></li>
-                        <li class="active nav-item"><a href="stories.html">Stories</a></li>
-                        <li class="nav-item"><a href="pricing.html">Pricing</a></li>
+                        <li class="nav-item"><a href="index
+">Home</a></li>
+                        <li class="nav-item"><a href="features
+">Features</a></li>
+                        <li class="active nav-item"><a href="stories
+">Stories</a></li>
+                        <li class="nav-item"><a href="pricing
+">Pricing</a></li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">More <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="story-single.html">Customer Story Single</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="support.html">Support Center</a></li>   
-                                <li><a href="career.html">Career</a></li> 
-                                <li><a href="job-single.html">Job Single</a></li> 
-                                <li><a href="contact.html">Contact</a></li>                    
+                                <li><a href="about
+">About Us</a></li>
+                                <li><a href="story-single
+">Customer Story Single</a></li>
+                                <li><a href="blog
+">Blog</a></li>
+                                <li><a href="blog-single
+">Blog Single</a></li>
+                                <li><a href="support
+">Support Center</a></li>   
+                                <li><a href="career
+">Career</a></li> 
+                                <li><a href="job-single
+">Job Single</a></li> 
+                                <li><a href="contact
+">Contact</a></li>                    
                             </ul>                             
                         </li><!--//dropdown-->                         
                         <li class="nav-item"><a href="#" class="login-trigger" data-toggle="modal" data-target="#login-modal">Log in</a></li>
@@ -73,7 +93,8 @@
             <h2 class="headline">Thousands of smart businesses use <br>Startup Kit</h2>
             <div class="actions">
                  <a class="scrollto" href="#story-block-1">Find out why</a>
-                 <a class="scrollto" href="#story-block-1"><img src="assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto" href="#story-block-1"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
         </div><!--//container-->
     </section><!--//heading-section-->
@@ -98,18 +119,21 @@
                 <div class="row">
                     <div class="figure-holder col-sm-12 col-sm-6 col-md-7">
                         <div class="inner">
-                            <img class="img-responsive"  src="assets/images/stories/story-1.jpg" alt="">
+                            <img class="img-responsive"  src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg" alt="">
                             <div class="figure-mask"></div>
                         </div><!--//inner-->
                     </div><!--//figure-holder-->
                     <div class="content col-sm-12 col-sm-6 col-md-5">
                         <div class="inner">
-                            <div class="logo"><img src="assets/images/stories/client-logo-1.svg" alt=""></div>
+                            <div class="logo"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/client-logo-1.svg" alt=""></div>
                             <h3 class="heading">A new way to app development</h3>
                             <div class="desc">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
                             </div><!--//desc-->
-                            <a class="btn btn-ghost" href="story-single.html">Read Story</a>
+                            <a class="btn btn-ghost" href="story-single
+">Read Story</a>
                         </div><!--//inner-->
                     </div><!--//content-->
                 </div><!--//row-->
@@ -120,7 +144,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-1.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-1.png" alt="">
                             </div><!--//profile-->
   
 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -137,7 +162,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-2.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-2.png" alt="">
                             </div><!--//profile-->
   
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -161,18 +187,21 @@
                 <div class="row">
                     <div class="figure-holder col-sm-12 col-sm-6 col-md-7">
                         <div class="inner">
-                            <img class="img-responsive"  src="assets/images/stories/story-2.jpg" alt="">
+                            <img class="img-responsive"  src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-2.jpg" alt="">
                             <div class="figure-mask"></div>
                         </div><!--//inner-->
                     </div><!--//figure-holder-->
                     <div class="content col-sm-12 col-sm-6 col-md-5">
                         <div class="inner">
-                            <div class="logo"><img src="assets/images/stories/client-logo-2.svg" alt=""></div>
+                            <div class="logo"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/client-logo-2.svg" alt=""></div>
                             <h3 class="heading">Shipping product at an amazing speed</h3>
                             <div class="desc">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
                             </div><!--//desc-->
-                            <a class="btn btn-ghost" href="story-single.html">Read Story</a>
+                            <a class="btn btn-ghost" href="story-single
+">Read Story</a>
                         </div><!--//inner-->
                     </div><!--//content-->
                 </div><!--//row-->
@@ -183,7 +212,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-4.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-4.png" alt="">
                             </div><!--//profile-->
 
                             <i class="fa fa-quote-left" aria-hidden="true"></i>  
@@ -200,7 +230,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-3.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-3.png" alt="">
                             </div><!--//profile-->
   
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -224,18 +255,21 @@
                 <div class="row">
                     <div class="figure-holder col-sm-12 col-sm-6 col-md-7">
                         <div class="inner">
-                            <img class="img-responsive"  src="assets/images/stories/story-3.jpg" alt="">
+                            <img class="img-responsive"  src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-3.jpg" alt="">
                             <div class="figure-mask"></div>
                         </div><!--//inner-->
                     </div><!--//figure-holder-->
                     <div class="content col-sm-12 col-sm-6 col-md-5">
                         <div class="inner">
-                            <div class="logo"><img src="assets/images/stories/client-logo-3.svg" alt=""></div>
+                            <div class="logo"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/client-logo-3.svg" alt=""></div>
                             <h3 class="heading">Lorem Ipsum Dolor Sit Amet</h3>
                             <div class="desc">
                                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
                             </div><!--//desc-->
-                            <a class="btn btn-ghost" href="story-single.html">Read Story</a>
+                            <a class="btn btn-ghost" href="story-single
+">Read Story</a>
                         </div><!--//inner-->
                     </div><!--//content-->
                 </div><!--//row-->
@@ -246,7 +280,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-5.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-5.png" alt="">
                             </div><!--//profile-->
 
                             <i class="fa fa-quote-left" aria-hidden="true"></i>  
@@ -263,7 +298,8 @@
                     <div class="quote-item col-sm-12 col-sm-6 text-center">
                         <div class="inner">
                             <div class="profile">
-                                <img src="assets/images/stories/profiles/profile-6.png" alt="">
+                                <img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/stories/profiles/profile-6.png" alt="">
                             </div><!--//profile-->
   
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -507,27 +543,40 @@
             <a id="config-trigger" class="config-trigger config-panel-hide" href="#"><i class="fa fa-cog"></i></a>
             <h5 class="panel-title">Choose Colour</h5>
             <ul id="color-options" class="list-unstyled list-inline">
-                <li class="theme-1 active"><a data-style="assets/css/styles.css" href="#"></a></li>
-                <li class="theme-2"><a data-style="assets/css/styles-2.css" href="#"></a></li>
-                <li class="theme-3"><a data-style="assets/css/styles-3.css" href="#"></a></li>
-                <li class="theme-4"><a data-style="assets/css/styles-4.css" href="#"></a></li>     
-                <li class="theme-5"><a data-style="assets/css/styles-5.css" href="#"></a></li>    
-                <li class="theme-6"><a data-style="assets/css/styles-6.css" href="#"></a></li>             
+                <li class="theme-1 active"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css" href="#"></a></li>
+                <li class="theme-2"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-2.css" href="#"></a></li>
+                <li class="theme-3"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-3.css" href="#"></a></li>
+                <li class="theme-4"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-4.css" href="#"></a></li>     
+                <li class="theme-5"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-5.css" href="#"></a></li>    
+                <li class="theme-6"><a data-style=
+"${pageContext.request.contextPath}/resources/ufo/assets/css/styles-6.css" href="#"></a></li>             
             </ul>
             <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
         </div><!--//panel-inner-->
     </div><!--//configure-panel-->
  
     <!-- Javascript -->          
-    <script type="text/javascript" src="assets/plugins/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>    
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>    
+    <script type="text/javascript" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script>
     
     <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-    <script src="assets/js/demo/style-switcher.js"></script>
+    <script src=
+"${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
             
 </body>
 </html> 
