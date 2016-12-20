@@ -255,6 +255,25 @@ public class FestDAO extends SqlSessionDaoSupport{
 		getSqlSession().update("BasicMapper.DeleteNoticeContentByKey", vo.getIdfest_ufo_notice());
 	}
 	
+	//정보사항 업데이트
+	public void UpdateInfoByVo(HashMap<String, Object> vo){
+		if(vo.get("voType").equals("info")){
+			getSqlSession().update("BasicMapper.UpdateInfoByVo", vo);
+		}else if(vo.get("voType").equals("desc")){
+			getSqlSession().update("BasicMapper.UpdateDescByVo", vo);			
+		}else if(vo.get("voType").equals("hist")){
+			getSqlSession().update("BasicMapper.UpdateHistByVo", vo);			
+		}else if(vo.get("voType").equals("cont")){
+			getSqlSession().update("BasicMapper.UpdateContByVo", vo);
+		}else if(vo.get("voType").equals("prog")){
+			getSqlSession().update("BasicMapper.UpdateProgByVo", vo);
+		}else if(vo.get("voType").equals("loca")){
+			getSqlSession().update("BasicMapper.UpdateLocaByVo", vo);
+		}
+		
+	}
+	
+	
 	//모바일 앱을 위해서 이벤트비오를만들어 주기
 	public Event_VO SelectUfoForMobileByPara(String para){
 		Event_VO vo = new Event_VO();

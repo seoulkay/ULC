@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,8 +6,6 @@
 <jsp:include page="ufoHeaderHtml.jsp" flush="false">
 <jsp:param name="param" value="value1"/>
 </jsp:include>
-	<script type="text/jsx" src="${pageContext.request.contextPath}/resources/react/reactApp.jsx"></script>
-	<script type="text/jsx" src="${pageContext.request.contextPath}/resources/react/pixGeneral.jsx"></script>
 	
     <body data-spy="scroll" data-offset="80">
 		
@@ -19,14 +17,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9">              	
-                      	<div class='col lg 12'>
+                      	<%-- <div class='col lg 12'>
                       		<H1>${ufo.title }</H1>
                       	    <img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.logo }.png" class="img-responsive" alt="">      		
                       		<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.main_image }.png" class="img-responsive" alt="">
                             <H3>${ufo.event_date}</H3>
                             <H5>${ufo.event_long_description}</H5>                            
                             <textarea id="long_desc">${ufo.event_long_description }</textarea>
-                      	</div>
+                      	</div> --%>
                                         
                     	
                         
@@ -35,7 +33,7 @@
                             <div class="row">
                                 <div class="col-sm-2 margin-btm-30 hidden-xs">
                                     <div class="post-date   text-right">
-                                        <h2>${var.idfest_ufo_notice }</h2>
+                                        <h2>${status.index }</h2>
                                         <span>만든 날짜 <br>${var.date }</span>
                                     </div>
                                     <div class="post-left-info">
@@ -52,51 +50,40 @@
 <!--                                         </a>  -->
 <!--                                         </div> -->
                                         <div class="col-sm-12">
-                                        <h3><a href="#" onClick="layer_open('layer2${var.idfest_ufo_notice }',${var.idfest_ufo_notice });return false;">${var.title }
-                                        <c:choose>
-                                        	<c:when test="${var.voType == 'cont'}">연락처</c:when>
-                                        	<c:when test="${var.voType == 'info'}">정보</c:when>
-                                        	<c:when test="${var.voType == 'hist'}">역사</c:when>
-                                        	<c:when test="${var.voType == 'prog'}">프로그램</c:when>
-                                        	<c:when test="${var.voType == 'loca'}">위치</c:when>                                        	
-                                        	<c:when test="${var.voType == 'desc'}">${var.title}</c:when>                                        	
-                                        </c:choose>
-                                        </a></h3>
-                                        
+                                        <h3><a href="#" onClick="layer_open('layer2${status.index }',${status.index });return false;">${var.title }</a></h3>
                                         <ul class="list-inline xs-post-info visible-xs">
                                             <li><i class="fa fa-user"></i> <a href="#">만든사람 {var.createdBy}</a></li>
                                             <li><i class="fa fa-tag"></i> <a href="#">태그</a></li>
                                             <li><i class="fa fa-comment"></i> <a href="#">3 Comments</a></li>
                                         </ul>
-                                        
-							            <div class="layer" id="layer${var.idfest_ufo_notice }">
-							                <div class="bg" id="bg${var.idfest_ufo_notice }"></div>
-							                    <div id="layer2${var.idfest_ufo_notice }" class="pop-layer">
+							            <div class="layer" id="layer${status.index }">
+							                <div class="bg" id="bg${status.index }"></div>
+							                    <div id="layer2${status.index }" class="pop-layer">
 							                        <div class="pop-container">
 							                            <div class="pop-conts">
-							                            	<form id="formContentFest${var.idfest_ufo_notice }" method="post" action="updateNotice" enctype="multipart/form-data">
+							                            	<form id="formContentFest${status.index }" method="post" action="updateInfo" enctype="multipart/form-data">
 							                                <p class="ctxt mb20"><input type="text" name="title" id="notiDisplay${var.idfest_ufo_notice }" value="${var.title }" style="width:100%"></input></p>
-							                                <textarea id="noti${var.idfest_ufo_notice }" name="content">${var.content }</textarea>
-							                                <input type="hidden" name="idfest_ufo_notice" value="${var.idfest_ufo_notice }">
+							                                <textarea id="noti${status.index }" name="content">${var.content }</textarea>
+							                                <input type="hidden" name="voType" value="${var.voType }">
+							                                <input type="hidden" name="para" value="${ufo.para 	}">
 							                                <input type="file" name="file" class="form-control"><br>
 							                                </form>
 							                                <div class="btn-r">
-							                                	<a href="#" class="sbtn" onClick="submitNoti(${var.idfest_ufo_notice })">수정하기</a>
-							                                	<a href="#" class="sbtn" onClick="delNoti(${var.idfest_ufo_notice })">삭제하기</a>
+							                                	<a href="#" class="sbtn" onClick="submitNoti(${status.index })">수정하기</a>
+<%-- 							                                	<a href="#" class="sbtn" onClick="delNoti(${status.index })">삭제하기</a> --%>
 							                                    <a href="#" class="cbtn">닫기</a>
 							                                </div>
 							                            </div>
 							                        </div>
 							                    </div>
 							               </div>
-							            <form id="formContentFestDel${var.idfest_ufo_notice }" method="post" action="delNotice">
-                                        <input type="hidden" name="idfest_ufo_notice" value="${var.idfest_ufo_notice }">
-                                        </form>
+<%-- 							            <form id="formContentFestDel${var.idfest_ufo_notice }" method="post" action="delNotice"> --%>
+<%--                                         <input type="hidden" name="idfest_ufo_notice" value="${var.idfest_ufo_notice }"> --%>
+<!--                                         </form> -->
                                         	<c:if test="${var.photo_file ne null}">
                                         		<img src="/PIX/resources/pix/img/${var.photo_file}.png" class="img-responsive" alt="" style="width:300px">
                                         	</c:if>
 							               	<div><p>${var.content }</p></div>
-							               	      
                                         </div>
                                     </div>
                                 </div>
@@ -184,15 +171,16 @@
             
             function validateForm()
             {
+            //이거 TODO
             //타이틀은 없자너	
             //var a=document.forms["newNoticeForm"]["title"].value;
-            var c=document.forms["newNoticeForm"]["createdBy"].value;
-            var d=document.forms["newNoticeForm"]["para"].value;
+            //var c=document.forms["newNoticeForm"]["createdBy"].value;
+            //var d=document.forms["newNoticeForm"]["para"].value;
             
-            if (isNull(c) || isNull(d)){
-              alert("필요항목을 작성해 주세요.");
-              return false;
-              }
+            //if (isNull(c) || isNull(d)){
+            //  alert("필요항목을 작성해 주세요.");
+            //  return false;
+            //  }
             return true;
             }
             
@@ -234,7 +222,7 @@
             	}
 
             	// 화면의 중앙에 레이어를 띄운다.
-            	if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()/2+'px');
+            	if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()/1+'px');
             	else temp.css('top', '0px');
             	if (temp.outerWidth() < $(document).width() ) temp.css('margin-left', '-'+temp.outerWidth()/2+'px');
             	else temp.css('left', '0px');

@@ -129,7 +129,6 @@ public class FestController {
 		FestQ6 q6 = new FestQ6();
 		FestQ7 q7 = new FestQ7();
 		
-		
 		String para  = dao.SelectUfoParaByNumber((Integer)session.getAttribute("currentEvent"));
 		List<String> questionList = dao.SelectUfoQuestionByPara(para);
 		List<FestOption> q1o = dao.SelectUfoOptionQ1ByPara(para);
@@ -155,11 +154,8 @@ public class FestController {
 		q6.setFest_q6_question(questionList.get(5));
 		q7.setFest_q7_question(questionList.get(6));
 		
-		
-		
 		FestUfo ufo = dao.SelectUfoByNumber(idx);
 		model.addAttribute("ufo", ufo);
-		
 		
 		model.addAttribute("q1", q1);
 		model.addAttribute("q2", q2);
@@ -173,10 +169,14 @@ public class FestController {
 	}
 	
 	@RequestMapping(value = "FEV/festInfo", method = RequestMethod.GET)
-	public String festInfo(@RequestParam("idx")int idx, Model model, HttpSession session){	
+	public String festInfo(Model model, HttpSession session){	
 		if(session.getAttribute("UserName") == null){
 			return "redirect:festLoginForm";
 		}
+		
+		//session.setAttribute("currentEvent", idx);
+		int idx = (Integer) session.getAttribute("currentEvent");
+		
 		
 		List<FestEventInfo> infor = new ArrayList<FestEventInfo>();
 		infor = dao.SelectInfo(idx);
@@ -196,32 +196,38 @@ public class FestController {
 		
 		
 		info.setVoType("info");
-		info.setContent(ufo.getInfo_hist_text());
+		info.setTitle("정보");
+		info.setContent(ufo.getInfo_info_text());
 		info.setPhoto_file(ufo.getInfo_info_pic());
 		
 		
 		hist.setVoType("hist");
+		hist.setTitle("역사");
 		hist.setContent(ufo.getInfo_hist_text());
 		hist.setPhoto_file(ufo.getInfo_hist_pic());
 		
 		
 		prog.setVoType("prog");
+		prog.setTitle("프로그램");
 		prog.setContent(ufo.getInfo_program_text());
 		prog.setPhoto_file(ufo.getInfo_program_pic());
 		
 		
 		loca.setVoType("loca");
+		loca.setTitle("위치");
 		loca.setContent(ufo.getInfo_location_text());
 		loca.setPhoto_file(ufo.getInfo_location_pic());
 		
 		
 		cont.setVoType("cont");
+		cont.setTitle("연락처");
 		cont.setContent(ufo.getInfo_contact_text());
 		cont.setPhoto_file(ufo.getInfo_contact_pic());
 		
-		cont.setVoType("desc");
-		cont.setContent(ufo.getEvent_long_description());
-		cont.setPhoto_file(ufo.getMain_image());
+		desc.setVoType("desc");
+		desc.setTitle(ufo.getEvent_short_description());
+		desc.setContent(ufo.getEvent_long_description());
+		desc.setPhoto_file(ufo.getMain_image());
 		
 		noticeList.add(desc);
 		noticeList.add(info);
@@ -403,6 +409,49 @@ public class FestController {
 		dao.DeleteNoticeContentByKey(vo);
 		
 		return "redirect:festNotice";
+	}
+	
+	@RequestMapping(value = "FEV/updateInfo", method = RequestMethod.POST)
+	public String updateInfo(@RequestParam("voType") String voType, @RequestParam("content") String content, @RequestParam("title") String title, @RequestParam("file") MultipartFile file, 
+			@RequestParam("para") String para){
+		HashMap<String, Object> vo = new HashMap<String, Object>();
+		
+		
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+                vo.put("photo_file", fileInfo[0]);
+                vo.put("photo_latitude", fileInfo[1]);
+                vo.put("photo_longitude", fileInfo[2]);
+        		
+                vo.put("voType", voType);
+        		vo.put("content", content);
+        		vo.put("title", title);
+        		vo.put("para", para);
+        		
+        		//dao.UpdateNoticeContentByKey(vo);
+        		
+        		dao.UpdateInfoByVo(vo);
+        		
+        		
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
+                
+            } catch (Exception e) {
+            	System.out.println("You failed to upload => " + e.getMessage() + "at createNotice");
+            }
+        } else {
+        	System.out.println("You failed to upload because the file was empty. at createNotice");
+        	vo.put("voType", voType);
+    		vo.put("content", content);
+    		vo.put("title", title);
+    		vo.put("para", para);
+    		//dao.UpdateNoticeContentByKey(vo);
+    		
+    		dao.UpdateInfoByVo(vo);
+        }
+		
+		
+		return "redirect:festInfo";
 	}
 	
 	

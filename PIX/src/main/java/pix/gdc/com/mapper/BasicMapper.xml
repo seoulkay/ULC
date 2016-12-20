@@ -416,4 +416,77 @@
 	WHERE A.para = #{param};
 	</select>
 	
+	<update id="UpdateInfoByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	    <if test="photo_file != null and photo_file != ''">
+		info_info_pic=#{photo_file},
+		</if>
+	    info_info_text=#{content}	
+	WHERE 
+		para = #{para}	
+	</update>
+	
+	<update id="UpdateHistByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	    <if test="photo_file != null and photo_file != ''">
+	  	info_hist_pic=#{photo_file},
+		</if>
+	    info_hist_text=#{content}
+	WHERE 
+		para = #{para}  
+	</update>
+	
+	<update id="UpdateProgByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	    <if test="photo_file != null and photo_file != ''">
+		info_program_pic=#{photo_file},
+		</if>
+	    info_program_text=#{content}
+	WHERE 
+		para = #{para}  
+	</update> 
+	
+	<update id="UpdateContByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	    <if test="photo_file != null and photo_file != ''">
+		info_contact_pic=#{photo_file},
+		</if>
+	    info_contact_text=#{content}
+	WHERE 
+		para = #{para}  
+	</update>
+	
+	<update id="UpdateLocaByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	    <if test="photo_file != null and photo_file != ''">
+		info_location_pic=#{photo_file},
+		</if>
+	    info_location_text=#{content}
+	WHERE 
+		para = #{para}  
+	</update>
+	
+	<update id="UpdateDescByVo" parameterType="hashmap">
+	UPDATE
+		pix.fest_ufo
+	SET
+	 	<if test="photo_file != null and photo_file != ''">
+		photo_file=#{photo_file},
+		</if>
+		event_short_description=#{title},
+	    event_long_description=#{content}
+	WHERE 
+		para = #{para}  
+	</update>
+	
 </mapper>
