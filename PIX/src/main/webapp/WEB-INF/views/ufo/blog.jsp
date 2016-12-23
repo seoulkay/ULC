@@ -29,60 +29,11 @@
 </head> 
 
 <body class="blog-page">   
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header">  
-        <div class="container">      
-            <h1 class="logo">
-                <a href="index
-"><img src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/logo.svg" alt=""><span class="text">Startup Kit</span></a>
-            </h1><!--//logo-->
-            <nav class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item"><a href="index
-">Home</a></li>
-                        <li class="nav-item"><a href="features
-">Features</a></li>
-                        <li class="nav-item"><a href="stories
-">Stories</a></li>
-                        <li class="nav-item"><a href="pricing
-">Pricing</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">More <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="about
-">About Us</a></li>
-                                <li><a href="story-single
-">Customer Story Single</a></li>
-                                <li><a href="blog
-">Blog</a></li>
-                                <li><a href="blog-single
-">Blog Single</a></li>
-                                <li><a href="support
-">Support Center</a></li>   
-                                <li><a href="career
-">Career</a></li> 
-                                <li><a href="job-single
-">Job Single</a></li> 
-                                <li><a href="contact
-">Contact</a></li>                    
-                            </ul>                            
-                        </li><!--//dropdown-->                         
-                        <li class="nav-item"><a href="#" class="login-trigger" data-toggle="modal" data-target="#login-modal">Log in</a></li>
-                        <li class="nav-item nav-item-cta last"><a class="btn-signup" href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a></li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->                     
-        </div><!--//container-->
-    </header><!--//header-->      
+    <!-- ******HEADER****** -->
+	<jsp:include page="header.jsp" flush="true">
+		<jsp:param name="param" value="value1" />
+	</jsp:include><!--//header-->
+	<!--//header-->      
     
     <section class="heading-section section section-on-bg">
         <div class="hero-wrapper">
@@ -549,71 +500,10 @@
     </div><!--//blog-signup-block-->
 
            
-    <!-- ******FOOTER****** --> 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col col-xs-6 col-md-3">
-                    <div class="footer-col-inner">
-                        <h3 class="col-title">About</h3>
-                        <ul class="footer-menu list-unstyled">
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Jobs</a> <label class="label label-new">We're hiring</label></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div><!--//footer-col-inner-->
-                </div><!--//footer-col-->
-                <div class="footer-col col-xs-6 col-md-3">
-                    <div class="footer-col-inner">
-                        <h3 class="col-title">Product</h3>
-                        <ul class="footer-menu list-unstyled">
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Tutorials</a></li>
-                            <li><a href="#">Support Center</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Customers</a></li>
-                        </ul>
-                    </div>
-                </div><!--//footer-col-->
-                <div class="footer-col col-xs-6 col-md-3">
-                    <div class="footer-col-inner">
-                        <h3 class="col-title">Useful Links</h3>
-                        <ul class="footer-menu list-unstyled">
-                            <li><a href="#">Sign up</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Become our partner</a></li>
-                            <li><a href="#">FAQs</a></li>
-                        </ul>
-                    </div>
-                </div><!--//footer-col-->
-                <div class="footer-col col-xs-6 col-md-3">
-                    <div class="footer-col-inner">
-                        <h3 class="col-title">Legal</h3>
-                        <ul class="footer-menu list-unstyled">
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Terms of Services</a></li>
-                            <li><a href="#">Policies</a></li>
-                        </ul>
-                    </div>
-                </div><!--//footer-col-->
-            </div><!--//row-->
-            <div class="divider"></div>
-            <div class="footer-bottom text-center">
-                <ul class="social-media list-inline">
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                    
-                </ul>
-    
-                <small class="copyright">Template Copyright @ <a href="http://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small> 
-            </div>
-        </div><!--//container-->
-    </footer><!--//footer-->
+    <!-- ******FOOTER****** -->
+	<jsp:include page="footer.jsp" flush="false">
+		<jsp:param name="param" value="value1" />
+	</jsp:include><!--//footer-->
     
     <!-- Login Modal -->
     <div class="modal modal-auth modal-login" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
