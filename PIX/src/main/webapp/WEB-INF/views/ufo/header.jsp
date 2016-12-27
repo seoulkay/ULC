@@ -8,7 +8,7 @@
 			<a href="index
 "><img
 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo.svg"
-				alt=""><span class="text">Startup Kit</span></a>
+				alt=""><span class="text">단오제</span></a>
 		</h1>
 		<!--//logo-->
 		<nav class="main-nav navbar-right" role="navigation">
@@ -23,10 +23,10 @@
 			<!--//navbar-header-->
 			<div id="navbar-collapse" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="nav-item"><a href="index">Home</a></li>
-					<li class="nav-item"><a href="features">Features</a></li>
-					<li class="nav-item"><a href="stories">Stories</a></li>
-					<li class="nav-item"><a href="blog">Blog</a></li>
+					<li class="nav-item"><a href="index">홈</a></li>
+					<li class="nav-item"><a href="blog">공지사항</a></li>
+					<li class="nav-item"><a href="features">축제정보</a></li>
+					<li class="nav-item"><a href="stories">서베이</a></li>					
 				<!--//dropdown-->
 				<li class="nav-item"><a href="#" class="login-trigger"
 					data-toggle="modal" data-target="#login-modal">Log in</a></li>

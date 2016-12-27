@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<title>Responsive website template for products</title>
+<title>2017 단오제</title>
 <!-- Meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,13 +49,13 @@
 			<div class="flexslider hero-slider">
 				<ul class="slides">
 					<li class="slide slide-1"></li>
-					<li class="slide slide-2"></li>
-					<li class="slide slide-3"></li>
+					<!-- <li class="slide slide-2"></li>
+					<li class="slide slide-3"></li> -->
 				</ul>
 			</div>
 			<div class="hero-slider-mask"></div>
 		</div>
-		<!--//hero-slider-wrapper-->
+		<%-- <!--//hero-slider-wrapper-->
 		<div class="container promo-content">
 			<h2 class="headline">
 				The Perfect Design Framework <br>for Startup Businesses
@@ -71,7 +71,7 @@
 					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon.svg"
 					alt="">See how it works</a>
 			</div>
-		</div>
+		</div> --%>
 		<!--//container-->
 	</section>
 	<!--//promo-section-->
@@ -80,12 +80,11 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#overview-section">Overview</a></li>
-					<li><a class="scrollto" href="#features-section">Key
-							Features</a></li>
-					<li><a class="scrollto" href="#customers-section">Customers</a></li>
+					<li><a class="scrollto" href="#overview-section">축제영상</a></li>
+					<li><a class="scrollto" href="#features-section">축제 주요정보</a></li>
+					<li><a class="scrollto" href="#customers-section">서베이 결과보기</a></li>
 					<li><a class="scrollto" href="#signup-section">Get Started</a></li>
-					<li><a class="scrollto" href="#support-section">Support</a></li>
+					<li><a class="scrollto" href="#support-section">찾아오시는 길</a></li>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -95,20 +94,17 @@
 	<!--//page-nav-space-holder-->
 
 	<section id="overview-section" class="overview-section section">
-		<h2 class="section-title">A great way to empower your team</h2>
-		<div class="section-intro">Lorem ipsum dolor sit amet,
-			consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-			Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-			montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</div>
+		<h2 class="section-title">축제영상 : 단오제 메이킹 필름</h2>
+		<div class="section-intro">지나간 축제가 아닌 자나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
 		<!--//section-intro-->
 		<div class="figures-wrapper">
 			<div class="container text-center">
 				<figure class="macbook-screen">
 					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/macbook-screen.png"
+						src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_video.jpg"
 						alt="">
 				</figure>
-				<figure class="ipad-screen">
+				<%-- <figure class="ipad-screen">
 					<img class="img-responsive"
 						src="${pageContext.request.contextPath}/resources/ufo/assets/images/ipad-screen.png"
 						alt="">
@@ -117,7 +113,7 @@
 					<img class="img-responsive"
 						src="${pageContext.request.contextPath}/resources/ufo/assets/images/iphone-screen.png"
 						alt="">
-				</figure>
+				</figure> --%>
 				<a href="#" type="button" class="play-icon" data-toggle="modal"
 					data-target="#modal-video"><img
 					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon-md.svg"
@@ -125,7 +121,7 @@
 			</div>
 			<!--//container-->
 		</div>
-		<!--//figures-wrapper-->
+		<%-- <!--//figures-wrapper-->
 		<div class="benefits-wrapper">
 			<div class="container text-center">
 				<div class="row">
@@ -175,7 +171,7 @@
 				<!--//row-->
 			</div>
 			<!--//container-->
-		</div>
+		</div> --%>
 		<!--//benefits-->
 		<div class="press-wrapper">
 			<div class="container">
@@ -209,34 +205,31 @@
 	<!--//overview-section-->
 
 	<section id="features-section" class="features-section section">
-		<h2 class="section-title">Key Features</h2>
+		<h2 class="section-title">축제 주요정보</h2>
 		<div class="container">
 			<div class="row">
 				<div class="features-content-wrapper col-xs-12 col-sm-7 com-md-7">
-					<div class="intro">Lorem ipsum dolor sit amet, consectetuer
-						adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-						Cum sociis natoque penatibus et magnis dis parturient montes,
-						nascetur ridiculus mus. Donec quam felis, ultricies nec</div>
+					<div class="intro">강릉에서 단오는 큰 명절이다. 단오를 중심으로 8일 간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과 인간의 상생을 위한 휴먼드라마이다.</div>
 					<!--//intro-->
 					<ul class="feature-list list-unstyled">
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature one lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 5 일요일: 수리마당 "단오맞이 실버가요제"</li>
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature two lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 6 월요일: 단오문화제 "2016 주민자체한마당"</li>
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature three lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 7 화요일: 수리마당</li>
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature four lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 8 수요일: 단오문화제</li>
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature five lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 9 목요일: 수리마당</li>
 						<li><img class="tick-icon"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> Feature six lorem ipsum dolor sit amet.</li>
+							alt=""> 2016. 6. 10 금요일: 단오문화제</li>
 					</ul>
 					<!--//feature-list-->
 
@@ -247,10 +240,7 @@
 							<div class="item active">
 								<blockquote class="review center-block">
 									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<p>A great way to Lorem ipsum dolor sit amet, consectetuer
-										adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-										massa. Cum sociis natoque penatibus et magnis dis parturient
-										montes, nascetur ridiculus mus.</p>
+									<p>강릉단오제를 준비하면서 힘들긴 했지만 정말 의미있는 하루하루였습니다.<br>6월 5일부터 열리는 강릉단오제!<br>많이 참석해서 즐거운 추억 많이 만들어가세요~</p>
 								</blockquote>
 								<!--//review-->
 								<div class="source">
@@ -263,7 +253,7 @@
 									<img class="profile"
 										src="${pageContext.request.contextPath}/resources/ufo/assets/images/users/user-1.png"
 										alt="" />
-									<div class="name">Theresa Wood, Product Hunt</div>
+									<div class="name">김칠구 조직위원장</div>
 								</div>
 								<!--//source-->
 							</div>
@@ -341,34 +331,29 @@
 
 		<div class="features-figure-wrapper">
 			<img class="img-responsive"
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/imac-screen.png"
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_feature.jpg"
 				alt="">
 		</div>
 		<!--//features-figure-wrapper-->
 
 		<div class="action-wrapper text-center">
 			<a href="${pageContext.request.contextPath}/features
-" class="btn btn-secondary">View all features</a>
+" class="btn btn-secondary">축제정보 더보기</a>
 		</div>
 
 	</section>
 	<!--//features-section-->
 
 	<section id="customers-section" class="customers-section section">
-		<h2 class="section-title">Trusted by smart businesses</h2>
-		<div class="section-intro">Lorem ipsum dolor sit amet,
-			consectetur adipiscing elit. Phasellus elementum felis at lacus
-			blandit egestas. Donec consectetur mollis leo, et pharetra massa
-			eleifend mollis.</div>
+		<h2 class="section-title">서베이 결과보기</h2>
+		<div class="section-intro">나눌수록 즐거운 축제, 참간한 분들의 솔직하고 재미있는 익명의 서베이 결과를 확인하세요!</div>
 		<div class="container">
 			<div class="stories-wrapper row">
 				<div class="item item-1 col-xs-12 col-md-6">
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">
-								Shipping product <br>at an amazing speed
-							</h3>
+							<h3 class="content-title">#친구와 함께즐기기<br>#농악축제</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
 								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
@@ -387,7 +372,7 @@
 						<div class="item-mask"></div>
 						<div class="item-content">
 							<h3 class="content-title">
-								Better collaboration <br>with remote teams
+								#가면이 살짝 무서워요<br>#관노가면극
 							</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -407,7 +392,7 @@
 						<div class="item-mask"></div>
 						<div class="item-content">
 							<h3 class="content-title">
-								Put UX at the heart of <br>our SaaS business
+								#폭죽<br>#마지막까지 너무 즐거웠습니다.
 							</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -427,7 +412,7 @@
 						<div class="item-mask"></div>
 						<div class="item-content">
 							<h3 class="content-title">
-								A new way to app <br>development
+								#강릉단오제<br>#등이 너무 예뻐요
 							</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -446,8 +431,7 @@
 			<!--//row-->
 			<div class="action-wrapper text-center">
 				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/stories
-">All Customer
-					Stories</a>
+">서베이 결과 더보기</a>
 			</div>
 		</div>
 		<!--//container-->
@@ -534,16 +518,16 @@
 
 	<section id="support-section"
 		class="support-section section text-center">
-		<h2 class="section-title">24/7 Customer Support</h2>
+		<h2 class="section-title">찾아오시는 길</h2>
 		<div class="section-intro">Lorem ipsum dolor sit amet,
 			consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 			Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
 			montes</div>
 		<a class="btn btn-secondary" href="support
-">Our Support Center</a>
+">행사장 및 주차안내</a>
 		<div class="team-figure">
 			<img class="img-responsive support-team"
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/team.png"
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG"
 				alt="">
 		</div>
 		<!--//team-figure-->
@@ -551,7 +535,7 @@
 	<!--//support-section-->
 
 	<section class="apps-section section text-center">
-		<h2 class="section-title">Download Our Apps</h2>
+		<h2 class="section-title">단오제 앱 다운로드</h2>
 		<div class="container">
 			<ul class="apps-list list-inline">
 				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
@@ -802,12 +786,11 @@
 	</div>
 	<!--//modal-->
 
-	<!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
+	<%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
 	<div id="config-panel" class="config-panel hidden-xs hidden-sm">
 		<div class="panel-inner">
 			<a id="config-trigger" class="config-trigger config-panel-hide"
 				href="#"><i class="fa fa-cog"></i></a>
-			<h5 class="panel-title">Choose Colour</h5>
 			<ul id="color-options" class="list-unstyled list-inline">
 				<li class="theme-1 active"><a
 					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css"
@@ -833,7 +816,7 @@
 		</div>
 		<!--//panel-inner-->
 	</div>
-	<!--//configure-panel-->
+	<!--//configure-panel--> --%>
 
 	<!-- Javascript -->
 	<script type="text/javascript"
