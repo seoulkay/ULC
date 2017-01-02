@@ -7,7 +7,7 @@
 		<h1 class="logo">
 			<a href="index
 "><img
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo.svg"
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo.dano.png"
 				alt=""><span class="text">단오제</span></a>
 		</h1>
 		<!--//logo-->
