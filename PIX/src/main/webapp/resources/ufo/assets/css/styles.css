@@ -332,6 +332,31 @@ textarea {
   text-align: center;
   color: #656972;
 }
+.section-content-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: left;
+  color: #35373C;
+}
+.section-content {
+  color: #656972;
+}
+.section-content-title .section-list {
+  margin-bottom: 60px;
+  margin-left: 30px;
+}
+.section-content-title .section-list li {
+  margin-bottom: 15px;
+}
+.section-content-title .section-list .tick-icon {
+  margin-right: 5px;
+}
 /* Generic heading section styling */
 .heading-section {
   height: 500px;
@@ -472,8 +497,8 @@ textarea {
   font-size: 20px;
   font-weight: 500;
   float: left;
-  margin-top: 18px;
-  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .header .logo .text {
   margin-left: 5px;
@@ -481,6 +506,9 @@ textarea {
 .header .logo a {
   color: #fff;
   text-decoration: none;
+}
+.header .logo img {
+	width: 50%;
 }
 /* ====== Nav ======= */
 .main-nav .navbar-toggle {
@@ -499,6 +527,8 @@ textarea {
   height: 3px;
 }
 .main-nav .nav .nav-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-weight: normal;
   text-transform: uppercase;
   font-size: 12px;
@@ -1190,13 +1220,13 @@ body.sticky-page-nav .overview-section {
   padding-bottom: 0;
 }
 .support-section .section-intro {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 .support-section .support-team {
-  padding-top: 45px;
+  padding-top: 30px;
 }
-.support-section .team-figure {
-  max-width: 860px;
+.support-section .team-figure { /* 지도 이미지 padding */
+  max-width: 700px;
   margin: 0 auto;
 }
 .apps-section {
