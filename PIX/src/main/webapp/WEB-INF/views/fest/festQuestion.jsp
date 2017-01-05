@@ -19,10 +19,10 @@
                       		<c:forEach items="${quesVO}" var="ele" varStatus="statusEle">
                       		<c:if test="${statusEle.count % 3 == 1}">
 							<div class="row">
-<!-- 							로스타 -->
+<!-- 							로스타트 -->
 							</c:if>
 	                      		<div class="col-sm-3" style="margin: 10px; vertical-align: middle; text-align: center;">
-	                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q1_img}.png" class="img-responsive" alt=""><br>
+	                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ele.title_img}.png" class="img-responsive" alt=""><br>
 	                            	
 									<div class="panel-heading">${statusEle.count }. ${ele.fest_question }</div>	
 									<div>							

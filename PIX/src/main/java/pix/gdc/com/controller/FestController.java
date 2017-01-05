@@ -142,12 +142,25 @@ public class FestController {
 		qoList.add(q4o);
 		qoList.add(q5o);
 		
+		String[] img_tag = {
+				ufo.getQ1_img(), 
+				ufo.getQ2_img(), 
+				ufo.getQ3_img(), 
+				ufo.getQ4_img(), 
+				ufo.getQ5_img(), 
+				ufo.getQ6_img(), 
+				ufo.getQ7_img(), 
+				};
+		
+		
 		for (int i = 0 ; i < 7 ; i++){
 			FestQuesListVO temp = new FestQuesListVO();
-			try{
+			
 			temp.setFest_question(questionList.get(i));
-			temp.setQuestionOptions(qoList.get(i));
 			temp.setIdx(i);
+			temp.setTitle_img(img_tag[i]);
+			try{
+			temp.setQuestionOptions(qoList.get(i));
 			}catch(Exception e){
 				//6,7번은 객관식이 없다.
 			}

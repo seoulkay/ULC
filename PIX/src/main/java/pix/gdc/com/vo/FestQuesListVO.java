@@ -13,6 +13,14 @@ public class FestQuesListVO {
 	String fest_question;
 	Date fest_created_on;
 	
+	String title_img;
+	
+	public String getTitle_img() {
+		return title_img;
+	}
+	public void setTitle_img(String title_img) {
+		this.title_img = title_img;
+	}
 	public String getQuestion() {
 		return question;
 	}
