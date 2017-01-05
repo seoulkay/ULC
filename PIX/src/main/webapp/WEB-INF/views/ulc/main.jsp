@@ -115,8 +115,8 @@
                     </div>
                     
                     <div class="header-btn">
-                    	<a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Play Store</a>
-                        <a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>App Store</a>
+                    	<a href="/PIX/ufo/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Play Store</a>
+                        <a href="/PIX/FEV/" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>App Store</a>
                     </div>
                     
                     <div class="header-img">
