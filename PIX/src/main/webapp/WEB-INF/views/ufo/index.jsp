@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<title>2017 단오제</title>
+<title>2017 강릉단오제</title>
 <!-- Meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,7 +95,7 @@
 
 	<section id="overview-section" class="overview-section section">
 		<h2 class="section-title">축제영상 : 단오제 메이킹 필름</h2>
-		<div class="section-intro">지나간 축제가 아닌 자나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
+		<div class="section-intro">지나간 축제가 아닌 지나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
 		<!--//section-intro-->
 		<div class="figures-wrapper">
 			<div class="container text-center">
@@ -337,8 +337,8 @@
 		<!--//features-figure-wrapper-->
 
 		<div class="action-wrapper text-center">
-			<a href="${pageContext.request.contextPath}/features
-" class="btn btn-secondary">축제정보 더보기</a>
+			<a href="${pageContext.request.contextPath}/ufo/features
+" class="btn btn-secondary">축제 정보 더보기</a>
 		</div>
 
 	</section>
@@ -353,7 +353,7 @@
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">#친구와 함께즐기기<br>#농악축제</h3>
+							<h3 class="content-title">#친구와 함께 즐기기<br>#농악축제</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
 								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
@@ -430,7 +430,7 @@
 			</div>
 			<!--//row-->
 			<div class="action-wrapper text-center">
-				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/stories
+				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/ufo/stories
 ">서베이 결과 더보기</a>
 			</div>
 		</div>
@@ -518,24 +518,53 @@
 
 	<section id="support-section"
 		class="support-section section text-center">
-		<h2 class="section-title">찾아오시는 길</h2>
-		<div class="section-intro">Lorem ipsum dolor sit amet,
-			consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-			Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-			montes</div>
-		<a class="btn btn-secondary" href="support
-">행사장 및 주차안내</a>
+		<h2 class="section-title">행사장 찾아오는 길</h2>
+		<div class="section-intro">천년의 기다림, 세계인의 어울림! 인류무형문화유산 강릉단오제에 여러분을 초대합니다.</div>
+		<!-- <a class="btn btn-secondary" href="support
+">행사장 및 주차안내</a> -->
 		<div class="team-figure">
 			<img class="img-responsive support-team"
 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG"
 				alt="">
 		</div>
+		<div class="section-content-title">
+			<ul class="section-list list-unstyled">
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+					alt=""> 네비게이션 검색</li>
+					<li><div class="section-content">명칭 검색 : 네비게이션에 [단오문화관]이나 [단오장길]을 검색</div></li>
+					<li><div class="section-content">주소 검색 : 강원도 강릉시 노암동 722-2번지</div></li>
+					<br>
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+					alt=""> 버스터미널, 강릉역에서 택시를 타고 강릉단오장으로 오실 분!</li>
+					<li><div class="section-content">택시 요금 : 강릉역 약 3,000원, 버스터미널 약 4,000원</div></li>
+					<br>
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+ 					alt=""> 버스터미널에서 버스를 타고 강릉단오장으로 오실 분!</li>
+					<li>
+					<table class="table table-striped table-bordered">
+							<tr>
+								<th>출발지</th>
+								<th>오시는 방법</th>
+							</tr>
+							<tr>
+								<td>버스터미널</td>
+								<td>버스터미널에서 길을 건너지 않은 쪽 정류장에서 버스를 기다리세요.<br>
+								버스는 교보생명 혹은 신영극장이라고 써 있는 버스 어떤 것을 골라 타셔도 됩니다.</td>
+							</tr>						
+						</table>
+						</li>
+			</ul>
+		</div>
+		<!--//feature-list-->
 		<!--//team-figure-->
 	</section>
 	<!--//support-section-->
 
 	<section class="apps-section section text-center">
-		<h2 class="section-title">단오제 앱 다운로드</h2>
+		<h2 class="section-title">강릉단오제 앱 다운로드</h2>
 		<div class="container">
 			<ul class="apps-list list-inline">
 				<li><a class="btn btn-download-app btn-apple-download" href="#"><i

@@ -5,10 +5,10 @@
 <header id="header" class="header">
 	<div class="container">
 		<h1 class="logo">
-			<a href="index
-"><img
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo.dano.png"
-				alt=""><span class="text">단오제</span></a>
+			<a href="index"> <img
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo_dano.png"
+				alt=""><span class="text">단오제</span>
+			</a>
 		</h1>
 		<!--//logo-->
 		<nav class="main-nav navbar-right" role="navigation">
@@ -26,13 +26,13 @@
 					<li class="nav-item"><a href="index">홈</a></li>
 					<li class="nav-item"><a href="blog">공지사항</a></li>
 					<li class="nav-item"><a href="features">축제정보</a></li>
-					<li class="nav-item"><a href="stories">서베이</a></li>					
-				<!--//dropdown-->
-				<li class="nav-item"><a href="#" class="login-trigger"
-					data-toggle="modal" data-target="#login-modal">Log in</a></li>
-				<li class="nav-item nav-item-cta last"><a class="btn-signup"
-					href="#" data-toggle="modal" data-target="#signup-modal">Sign
-						Up</a></li>
+					<li class="nav-item"><a href="stories">서베이</a></li>
+					<!--//dropdown-->
+					<li class="nav-item"><a href="#" class="login-trigger"
+						data-toggle="modal" data-target="#login-modal">Log in</a></li>
+					<li class="nav-item nav-item-cta last"><a class="btn-signup"
+						href="#" data-toggle="modal" data-target="#signup-modal">Sign
+							Up</a></li>
 				</ul>
 				<!--//nav-->
 			</div>
