@@ -99,6 +99,10 @@
         <script src="${pageContext.request.contextPath}/resources/pix/js/jqBootstrapValidation.js" type="text/javascript"></script>
         <!--customizable plugin edit according to your needs-->
         <script src="${pageContext.request.contextPath}/resources/pix/js/custom.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/resources/ufo/UfoCommon.js" type="text/javascript"></script>
+
+		<script src="//cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+        
         <script type="text/javascript">
         	function showForm(){
         		document.getElementById("UfoEventForm").style.display="block"

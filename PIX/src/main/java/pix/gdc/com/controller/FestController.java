@@ -35,6 +35,7 @@ import pix.gdc.com.vo.FestQ4;
 import pix.gdc.com.vo.FestQ5;
 import pix.gdc.com.vo.FestQ6;
 import pix.gdc.com.vo.FestQ7;
+import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 
@@ -121,49 +122,39 @@ public class FestController {
 		if(session.getAttribute("UserName") == null){
 			return "redirect:festLoginForm";
 		}
-		FestQ1 q1 = new FestQ1();
-		FestQ2 q2 = new FestQ2();
-		FestQ3 q3 = new FestQ3();
-		FestQ4 q4 = new FestQ4();
-		FestQ5 q5 = new FestQ5();
-		FestQ6 q6 = new FestQ6();
-		FestQ7 q7 = new FestQ7();
 		
 		String para  = dao.SelectUfoParaByNumber((Integer)session.getAttribute("currentEvent"));
 		List<String> questionList = dao.SelectUfoQuestionByPara(para);
 		List<FestOption> q1o = dao.SelectUfoOptionQ1ByPara(para);
-		q1.setOptionlist(q1o);
-		
 		List<FestOption> q2o = dao.SelectUfoOptionQ2ByPara(para);
-		q2.setOptionlist(q2o);
-		
 		List<FestOption> q3o = dao.SelectUfoOptionQ3ByPara(para);
-		q3.setOptionlist(q3o);
-		
 		List<FestOption> q4o = dao.SelectUfoOptionQ4ByPara(para);
-		q4.setOptionlist(q4o);
-		
 		List<FestOption> q5o = dao.SelectUfoOptionQ5ByPara(para);
-		q5.setOptionlist(q5o);
-		
-		q1.setFest_q1_question(questionList.get(0));
-		q2.setFest_q2_question(questionList.get(1));
-		q3.setFest_q3_question(questionList.get(2));
-		q4.setFest_q4_question(questionList.get(3));
-		q5.setFest_q5_question(questionList.get(4));
-		q6.setFest_q6_question(questionList.get(5));
-		q7.setFest_q7_question(questionList.get(6));
 		
 		FestUfo ufo = dao.SelectUfoByNumber(idx);
 		model.addAttribute("ufo", ufo);
 		
-		model.addAttribute("q1", q1);
-		model.addAttribute("q2", q2);
-		model.addAttribute("q3", q3);
-		model.addAttribute("q4", q4);
-		model.addAttribute("q5", q5);
-		model.addAttribute("q6", q6);
-		model.addAttribute("q7", q7);
+		List<FestQuesListVO> quesVO = new ArrayList<FestQuesListVO>();
+		List<List<FestOption>> qoList = new ArrayList<List<FestOption>>();
+		qoList.add(q1o);
+		qoList.add(q2o);
+		qoList.add(q3o);
+		qoList.add(q4o);
+		qoList.add(q5o);
+		
+		for (int i = 0 ; i < 7 ; i++){
+			FestQuesListVO temp = new FestQuesListVO();
+			try{
+			temp.setFest_question(questionList.get(i));
+			temp.setQuestionOptions(qoList.get(i));
+			temp.setIdx(i);
+			}catch(Exception e){
+				//6,7번은 객관식이 없다.
+			}
+			quesVO.add(temp);
+		}
+				
+		model.addAttribute("quesVO", quesVO);
 		
 		return "fest/festQuestion";
 	}

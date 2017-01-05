@@ -16,114 +16,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9">
-                    					
-                      	<div class="blog-post-wrap">
-                      	<div class="row">
-                      		<div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q1_img}.png" class="img-responsive" alt="">
-                     
+                      		<c:forEach items="${quesVO}" var="ele" varStatus="statusEle">
+                      		<c:if test="${statusEle.count % 3 == 1}">
+							<div class="row">
+<!-- 							로스타 -->
+							</c:if>
+	                      		<div class="col-sm-3" style="margin: 10px; vertical-align: middle; text-align: center;">
+	                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q1_img}.png" class="img-responsive" alt=""><br>
+	                            	
+									<div class="panel-heading">${statusEle.count }. ${ele.fest_question }</div>	
+									<div>							
+									  <table class="table">
+									  <c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+											<li class="list-group-item">${status.count}. ${var.fest_option_content }</li>
+									  </c:forEach>
+									  </table>
+									</div>
+	                      	
+	                            </div>
+                            <c:if test="${statusEle.count % 3 == 0}">
+<!--                            로엔드 -->
                             </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q2_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q3_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                      	</div>
-                            <div class="row">
-                               <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                                    
-                            	${q1.fest_q1_question }<br><br>
-                            	<c:forEach items="${q1.optionlist }" var="var" varStatus="status">
-                            		<p style="text-align: left; margin:0px; padding:0px">${status.count}. ${var.fest_option_content }</p>
-                            	</c:forEach>
-                            	
-                            </div>
-                             <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	     
-                            	${q2.fest_q2_question }<br><br>
-                            	<c:forEach items="${q2.optionlist }" var="var" varStatus="status">
-                            		<p style="text-align: left; margin:0px; padding:0px">${status.count}. ${var.fest_option_content }</p>
-                            	</c:forEach>
-                
-                            </div>
-                            
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center; ">
-                            	  
-                            	${q3.fest_q3_question }<br><br>
-                            	<c:forEach items="${q3.optionlist }" var="var" varStatus="status">
-                            		<p style="text-align: left; margin:0px; padding:0px">${status.count}. ${var.fest_option_content }</p>
-                            	</c:forEach>   	
-                            </div>
-                            </div>
-                            <div class="row">
-                      		<div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q4_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q5_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q6_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                            </div>
-                          <div class="row">
-                               <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                                    
-                            	${q4.fest_q4_question }<br>
-                            	<c:forEach items="${q4.optionlist }" var="var" varStatus="status">
-                            		<p style="text-align: left; margin:0px; padding:0px">${status.count}. ${var.fest_option_content }</p>
-                            	</c:forEach>
-                            	
-                
-                            </div>
-                             <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	${q5.fest_q5_question }<br>
-                            	<c:forEach items="${q5.optionlist }" var="var" varStatus="status">
-                            		<p style="text-align: left; margin:0px; padding:0px">${status.count}. ${var.fest_option_content }</p>
-                            	</c:forEach>
-                
-                            </div>
-                            
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center; ">
-                            	${q6.fest_q6_question }<br> 	
-                            </div>
-                            
-                      	</div>
-                      	<div class="row">
-                      		<div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ufo.q7_img}.png" class="img-responsive" alt="">
-                     
-                            </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                     
-                            </div>
-                            <div class="col-sm-3" style="margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                     
-                            </div>
-                      	</div>
-                      	<div class="row">
-                      		<div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;  ">
-                            	${q7.fest_q7_question }<br> 	
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;  ">
-                            	
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;  ">
-                            		
-                            </div>
-                        </div>
-                        </div>
-                                        
-                    	
-                      	
-                      	
-                    </div><!--blog-post col-->
+                            </c:if>
+                          </c:forEach>
+                       </div>
+                      </div>
                     <jsp:include page="sideBar.jsp" flush="false">
 			        	<jsp:param name="param" value="value1"/>
 			        </jsp:include>
