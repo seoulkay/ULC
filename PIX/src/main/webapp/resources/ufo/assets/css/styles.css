@@ -1369,19 +1369,35 @@ body.sticky-page-nav .overview-section {
 }
 .story-item .content .inner {
   padding: 30px;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 .story-item .content .logo {
   margin-bottom: 15px;
 }
-.story-item .content .heading {
-  margin-bottom: 15px;
+.story-item .content .question-number {
+  margin-right: 10px;
+  margin-bottom: 30px;
   margin-top: 0;
-  font-size: 24px;
+  font-size: 20px
+  color: #FBB03B;
+  font-weight: bold;
 }
-.story-item .content .desc {
+.story-item .content .question {
+  margin-bottom: 30px;
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.story-item .content .answer {
   margin-bottom: 30px;
   font-size: 16px;
+}
+.story-item .content .percentage {
+  margin-left: 10px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #FBB03B;
+  font-weight: bold;
 }
 .quote-item {
   padding-top: 40px;
@@ -1409,20 +1425,23 @@ body.sticky-page-nav .overview-section {
   -moz-opacity: 0.3;
   opacity: 0.3;
 }
-.quote-item .quote {
-  font-weight: lighter;
-  font-style: italic;
+.quote-item .result {
+  font-weight: bold;
   font-family: 'Roboto', sans-serif;
   border-left: none;
   margin: 0;
   padding: 0;
 }
-.quote-item .source {
-  font-size: 14px;
-  margin-top: 30px;
+.quote-item .tip-title {
+  font-weight:bold;
+  color: #FBB03B;
 }
-.quote-item .source .title {
+.quote-item .tip {
+  font-size: 16px;
+  margin-top: 30px;
+  margin-left: 10px;
   color: #7d828d;
+  text-align: left;
 }
 .quote-item .profile {
   position: absolute;
@@ -1430,8 +1449,20 @@ body.sticky-page-nav .overview-section {
   top: -40px;
   margin-left: -40px;
 }
-.quote-item .profile img {
+.quote-item .profile .circle {
+  display: table;
   width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #FBB03B;
+  text-align: center;
+}
+.quote-item .profile .circle-percentage {
+  display: table-cell;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24px;
+  vertical-align: middle;
 }
 .story-single-page .hero-holder {
   background: #35373C url('../images/hero/hero-story-single.jpg') no-repeat 50% 50%;
