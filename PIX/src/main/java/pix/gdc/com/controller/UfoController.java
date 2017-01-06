@@ -1,17 +1,33 @@
 package pix.gdc.com.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pix.gdc.com.dao.FestDAO;
+import pix.gdc.com.vo.FestUfoNotice;
+
 @Controller
 public class UfoController {
+	public String para = "dano";
+	
+	@Autowired
+	FestDAO dao;
+	
 	@RequestMapping(value = "ufo/about", method = RequestMethod.GET)
 	public String about(){
 		return "ufo/about";
 	}
 	@RequestMapping(value = "ufo/blog", method = RequestMethod.GET)
-	public String blog(){
+	public String blog(Model model){
+		
+		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		model.addAttribute("noticeList", noticeList);
+		
 		return "ufo/blog";
 	}
 	@RequestMapping(value = "ufo/blog-single", method = RequestMethod.GET)

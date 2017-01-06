@@ -45,8 +45,7 @@
             <div class="intro">2017 강릉단오제 관련 공지사항 입니다.</div>
             <div class="actions">
                  <a class="scrollto-no-offset" href="#posts-promo-block">View featured posts</a>
-                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
         </div><!--//container-->
     </section><!--//heading-section-->
@@ -64,98 +63,41 @@
                     <li data-target="#promo-carousel" data-slide-to="3"></li>
                 </ol><!--//carousel-indicators-->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item item-1 active">
+                <c:forEach var="var" items="${noticeList}" varStatus="status" begin="0" end="3">
+                	<c:choose>
+                	<c:when test="${status.count == 1 }">
+                		<div class="item item-${status.count} active">
+                	</c:when>
+                	<c:otherwise>
+                		<div class="item item-${status.count}">
+                	</c:otherwise>
+                    </c:choose>
                         <div class="row">
                             <div class="item-figure col-md-8 col-sm-7 col-xs-12">
-                                <div class="figure-holder"> 
-                                                                    
-                                </div>
+                                 <c:choose>
+			                	<c:when test="${empty var.photo_file }">
+			                		<div class="figure-holder"> </div>
+			                	</c:when>
+			                	<c:otherwise>
+			                		 <div>
+                                     	<img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
+                                     </div>  
+			                	</c:otherwise>
+			                    </c:choose>
                             </div>
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single
-">최신글 제목1</a></h3>
-                                    <div class="item-meta" >작성자</div>                                 
-                                    <div class="item-intro">최신글 내용1</div>
+                                    <h3 class="item-title"><a href="blog-single">${var.title }</a></h3>
+                                    <div class="item-meta" >${var.createdBy}</div>                                 
+                                    <div class="item-intro">${var.content }</div>
                                     <!--//item-intro-->
-                                                                        
-                                    <a class="item-cta btn btn-secondary" href="blog-single
-">Read more</a>
-                                                                        
+                                    <a class="item-cta btn btn-secondary" href="blog-single">Read more</a>
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
                         </div><!--//row-->
                     </div><!--//item-->
-                    
-                    <div class="item item-2">
-                        <div class="row">
-                            <div class="item-figure col-md-8 col-sm-7 col-xs-12">
-                                <div class="figure-holder"> 
-                                                                    
-                                </div>
-                            </div>
-                            <div class="item-content col-md-4 col-sm-5 col-xs-12">
-                                <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single
-">최신글 제목2</a></h3>
-                                    <div class="item-meta" >작성자</div>                                     
-                                    <div class="item-intro">최신글 내용2</div>
-                                    <!--//item-intro-->
-                                                                        
-                                    <a class="item-cta btn btn-secondary" href="blog-single
-">Read more</a>
-                                                                        
-                                </div><!--//item-content-inner-->
-                            </div><!--//item-content-->
-                        </div><!--//row-->
-                    </div><!--//item-->
-                    
-                    <div class="item item-3">
-                        <div class="row">
-                            <div class="item-figure col-md-8 col-sm-7 col-xs-12">
-                                <div class="figure-holder"> 
-                                                                    
-                                </div>
-                            </div>
-                            <div class="item-content col-md-4 col-sm-5 col-xs-12">
-                                <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single
-">최신글 제목3</a></h3>
-                                    <div class="item-meta" >작성자</div>                                     
-                                    <div class="item-intro">최신글 내용3</div><!--//item-intro-->
-                                                                        
-                                    <a class="item-cta btn btn-secondary" href="blog-single
-">Read more</a>
-                                                                        
-                                </div><!--//item-content-inner-->
-                            </div><!--//item-content-->
-                        </div><!--//row-->
-                    </div><!--//item-->
-                    
-                    <div class="item item-4">
-                        <div class="row">
-                            <div class="item-figure col-md-8 col-sm-7 col-xs-12">
-                                <div class="figure-holder"> 
-                                                                    
-                                </div>
-                            </div>
-                            <div class="item-content col-md-4 col-sm-5 col-xs-12">
-                                <div class="item-content-inner">
-                                    <h3 class="item-title"><a href="blog-single
-">공지사항 제목4</a></h3>
-                                    <div class="item-meta" >작성자</div>                                     
-                                    <div class="item-intro">최신글 내용4</div><!--//item-intro-->
-                                                                        
-                                    <a class="item-cta btn btn-secondary" href="blog-single
-">Read more</a>
-                                                                        
-                                </div><!--//item-content-inner-->
-                            </div><!--//item-content-->
-                        </div><!--//row-->
-                    </div><!--//item-->
-
+                 </c:forEach>
                 </div><!--//carousel-inner-->
-                
             </div><!--//promo-carousel-->
         </div><!--//container-->
     </div><!--//posts-promo-block-->
@@ -173,36 +115,29 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane tab-pane-1 active" id="tab-1">
                     <div class="post post-1">
-                        <h3 class="post-title"><a href="blog-single
-">제목 입니다.</a></h3>
+                        <h3 class="post-title"><a href="blog-single">제목 입니다.</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-1.png" alt="">
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-1.png" alt="">
                                     <div class="author-name">작성자</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">날짜</div>
                                 <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
+                                <a href="blog-single"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
                             </div>
-                            <div class="post-intro">본문 내용 일부(4줄) 입니다. <a href="blog-single
-" class="readmore">더 보기</a>
+                            <div class="post-intro">본문 내용 일부(4줄) 입니다. <a href="blog-single" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-1-->
                     <div class="post post-2">
-                        <h3 class="post-title"><a href="blog-single
-">Say Goodbye To The Nine To Five</a></h3>
+                        <h3 class="post-title"><a href="blog-single">Say Goodbye To The Nine To Five</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-2.png" alt=""> 
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-2.png" alt=""> 
                                     <div class="author-name">By Kate Peterson</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -210,13 +145,10 @@
                                 </div><!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-2.jpg" alt=""></a>
+                                <a href="blog-single"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-2.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
-                                Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single
-" class="readmore">Read More</a>
+                                Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single" class="readmore">Read More</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-2-->
