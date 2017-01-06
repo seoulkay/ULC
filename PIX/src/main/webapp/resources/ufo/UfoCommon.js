@@ -94,6 +94,9 @@ function editNoti(param){
             	    temp.fadeIn();
             	}
 
+            	//1000보다 작으면 위드가 100프로인 에디트 창
+            	if(window.screen.availWidth < 1000) temp.css('width', '100%');
+            	
             	// 화면의 중앙에 레이어를 띄운다.
             	if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()+'px');
             	else temp.css('top', '0px');

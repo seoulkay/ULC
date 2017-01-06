@@ -7,10 +7,10 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
-                            <!--  <span class="icon-bar"><strong>공지사항</strong></span>
-                            <span class="icon-bar">축제정보</span>
-                            <span class="icon-bar">설문작성</span>
-                            <span class="icon-bar">통계</span> -->                           
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/resources/pix/img/symbol.png" class="img-responsive" width="50em"></a>
                     </div>
