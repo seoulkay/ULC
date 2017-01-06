@@ -6,7 +6,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Responsive website template for products</title>
+    <title>2017 강릉단오제</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,8 +41,8 @@
             <div class="hero-mask-gradient"></div>
         </div><!--//hero-wrapper--> 
         <div class="container heading-content">                
-            <h2 class="headline">Blog</h2>
-            <div class="intro">The latest news, stories, and resources from the Startup Kit team.</div>
+            <h2 class="headline">공지사항</h2>
+            <div class="intro">2017 강릉단오제 관련 공지사항 입니다.</div>
             <div class="actions">
                  <a class="scrollto-no-offset" href="#posts-promo-block">View featured posts</a>
                  <a class="scrollto-no-offset" href="#posts-promo-block"><img src=
@@ -74,11 +74,10 @@
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
                                     <h3 class="item-title"><a href="blog-single
-">The Future of UX Design</a></h3>
-                                    <div class="item-meta" >By Alice Aguilar, 2 days ago</div>                                 
-                                    <div class="item-intro">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
-                                    </div><!--//item-intro-->
+">최신글 제목1</a></h3>
+                                    <div class="item-meta" >작성자</div>                                 
+                                    <div class="item-intro">최신글 내용1</div>
+                                    <!--//item-intro-->
                                                                         
                                     <a class="item-cta btn btn-secondary" href="blog-single
 ">Read more</a>
@@ -98,11 +97,10 @@
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
                                     <h3 class="item-title"><a href="blog-single
-">How to build a successful product</a></h3>
-                                    <div class="item-meta" >By Robert Berry, 22 Sep</div>                                     
-                                    <div class="item-intro">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
-                                    </div><!--//item-intro-->
+">최신글 제목2</a></h3>
+                                    <div class="item-meta" >작성자</div>                                     
+                                    <div class="item-intro">최신글 내용2</div>
+                                    <!--//item-intro-->
                                                                         
                                     <a class="item-cta btn btn-secondary" href="blog-single
 ">Read more</a>
@@ -122,11 +120,9 @@
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
                                     <h3 class="item-title"><a href="blog-single
-">When to Ship Your Product</a></h3>
-                                    <div class="item-meta" >By Samuel Coleman, 6 days ago</div>                                     
-                                    <div class="item-intro">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
-                                    </div><!--//item-intro-->
+">최신글 제목3</a></h3>
+                                    <div class="item-meta" >작성자</div>                                     
+                                    <div class="item-intro">최신글 내용3</div><!--//item-intro-->
                                                                         
                                     <a class="item-cta btn btn-secondary" href="blog-single
 ">Read more</a>
@@ -146,11 +142,9 @@
                             <div class="item-content col-md-4 col-sm-5 col-xs-12">
                                 <div class="item-content-inner">
                                     <h3 class="item-title"><a href="blog-single
-">10 Tips for SketchApp</a></h3>
-                                    <div class="item-meta" >By Kate  Nichols, 2 days ago</div>                                     
-                                    <div class="item-intro">
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec...
-                                    </div><!--//item-intro-->
+">공지사항 제목4</a></h3>
+                                    <div class="item-meta" >작성자</div>                                     
+                                    <div class="item-intro">최신글 내용4</div><!--//item-intro-->
                                                                         
                                     <a class="item-cta btn btn-secondary" href="blog-single
 ">Read more</a>
@@ -167,39 +161,37 @@
     </div><!--//posts-promo-block-->
     <div class="posts-block text-center" id="posts-block">
         <div class="container">
-            <h2 class="block-heading text-center">Latest Posts</h2>
+            <h2 class="block-heading text-center">단오소식</h2>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">Latest</a></li>
-                <li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">News</a></li>
-                <li role="presentation"><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">Tips</a></li>
-                <li role="presentation"><a href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab">Resources</a></li>
+                <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">공지사항</a></li>
+                <li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">언론보도</a></li>
+                <li role="presentation"><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">뉴스레터</a></li>
+                <li role="presentation"><a href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab">FAQ</a></li>
             </ul><!--//nav-tabs-->
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane tab-pane-1 active" id="tab-1">
                     <div class="post post-1">
                         <h3 class="post-title"><a href="blog-single
-">How To Work in A Remote Team</a></h3>
+">제목 입니다.</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
 "${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-1.png" alt="">
-                                    <div class="author-name">By Mark Harper</div>
+                                    <div class="author-name">작성자</div>
                                 </div><!--//author-->
-                                <div class="time-stamp">
-                                    1 day ago
-                                </div><!--//time-stamp-->
+                                <div class="time-stamp">날짜</div>
+                                <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
                                 <a href="blog-single
 "><img class="img-responsive" src=
 "${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
                             </div>
-                            <div class="post-intro">
-                                Etiam feugiat nulla ac accumsan euismod. Cras porttitor consectetur metus in imperdiet. Nam mollis finibus ante, sed luctus nibh imperdiet eu. Integer ac aliquam magna, id fermentum metus... <a href="blog-single
-" class="readmore">Read More</a>
+                            <div class="post-intro">본문 내용 일부(4줄) 입니다. <a href="blog-single
+" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-1-->

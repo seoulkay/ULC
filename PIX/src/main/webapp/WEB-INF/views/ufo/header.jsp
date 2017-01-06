@@ -23,10 +23,10 @@
 			<!--//navbar-header-->
 			<div id="navbar-collapse" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="nav-item"><a href="index">홈</a></li>
-					<li class="nav-item"><a href="blog">공지사항</a></li>
-					<li class="nav-item"><a href="features">축제정보</a></li>
-					<li class="nav-item"><a href="stories">서베이</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/index">홈</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/blog">공지사항</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/features">축제정보</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/stories">서베이</a></li>
 					<!--//dropdown-->
 					<li class="nav-item"><a href="#" class="login-trigger"
 						data-toggle="modal" data-target="#login-modal">Log in</a></li>

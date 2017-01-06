@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<title>Responsive website template for products</title>
+<title>2017 강릉단오제</title>
 <!-- Meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,21 +49,16 @@
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-			<h2 class="headline">
-				축제 정보
-			</h2>
-			<p class="tagline">
-				2016 강릉 단오제에 대한 정보를 넣어주세요.
-			</p>
-			<!-- <div class="actions">
-				<a href="#" class="play-trigger btn btn-cta btn-primary"
-					data-toggle="modal" data-target="#modal-video">Watch Our Demo</a> <br
-					class="visible-xs-block"> <a href="pricing
-"
-					class="btn btn-cta btn-ghost">Plans &amp; Pricing</a>
-			</div> -->
+			<h2 class="headline">축제 정보</h2>
+			<div class="intro">2017 강릉단오제 날짜를 넣어주세요.</div>
+			<div class="actions">
+                 <a class="scrollto-no-offset" href="#page-nav">View featured posts</a>
+                 <a class="scrollto-no-offset" href="#page-nav"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+            </div><!--//actions-->
 		</div>
-		//container
+		
+		<!--//container-->
 	</section>
 	<!--//heading-section-->
 
@@ -90,7 +85,8 @@
 					<h3 class="feature-title">단오를 중심으로 8일간의 축제</h3>
 					<div class="feature-desc">
 						<p>&nbsp;강릉에서 단오는 큰 명절이다.</p>
-						<p>&nbsp;단오를 중심으로 8일간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과 인간의 상생을 위한 휴먼드라마이다.</p>
+						<p>&nbsp;단오를 중심으로 8일간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과
+							인간의 상생을 위한 휴먼드라마이다.</p>
 						<!-- <p>
 							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
 							commodo ligula eget dolor. Lorem ipsum dolor sit amet, <a
@@ -122,10 +118,14 @@
 					class="feature-content col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0">
 					<h3 class="feature-title">강릉 단오제의 역사</h3>
 					<div class="feature-desc">
-						<p>&nbsp;문화적 침탈을 일삼았던 일제강점기에도 단오제는 열렸고, 중요한 기록을 남겼다. 한국전쟁 중에도 단오제는 맥을 이어왔다.</p>
-						<p>&nbsp;노인들과 무녀들은 시기적으로 어려울 때는 압박의 눈을 피해 중앙시장이나 남대천 변, 성남동 한구석에서 소규모로 나마 빼놓지 않고 단오제를 치뤘다고 증언한다.</p>
-						<p>&nbsp;이처럼 강릉단오제는 비교적 온전히 전승되고 있거나 고증을 통하여 원형 복원이 가능할 만큼 면면히 이어지고 있었다는 것이다.</p>
-						<p>&nbsp;이런 덕분에 강릉단오제는 1967년 중요무형문화제 13호로 등록되면서 우리민족 전통 민속축제의 원형성을 간직한 단오축제로서 고유의 가치를 획득하였다.</p>
+						<p>&nbsp;문화적 침탈을 일삼았던 일제강점기에도 단오제는 열렸고, 중요한 기록을 남겼다. 한국전쟁 중에도
+							단오제는 맥을 이어왔다.</p>
+						<p>&nbsp;노인들과 무녀들은 시기적으로 어려울 때는 압박의 눈을 피해 중앙시장이나 남대천 변, 성남동
+							한구석에서 소규모로 나마 빼놓지 않고 단오제를 치뤘다고 증언한다.</p>
+						<p>&nbsp;이처럼 강릉단오제는 비교적 온전히 전승되고 있거나 고증을 통하여 원형 복원이 가능할 만큼 면면히
+							이어지고 있었다는 것이다.</p>
+						<p>&nbsp;이런 덕분에 강릉단오제는 1967년 중요무형문화제 13호로 등록되면서 우리민족 전통 민속축제의
+							원형성을 간직한 단오축제로서 고유의 가치를 획득하였다.</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
@@ -173,12 +173,12 @@
 							</tr>
 							<tr>
 								<td>
-								<p>&nbsp;16:30 프린지마당 - 대도호부관아</p>
-								<p>&nbsp;18:00 영신제 - 홍제동 여성황사</p>
-								<p>&nbsp;19:00 영신행차 - 홍제동 여성황사</p>
-								<p>&nbsp;19:00 신통대길 길놀이 - 대도호부관아</p>
-								<p>&nbsp;22:00 불꽃놀이 - 단오섬</p>
-							</tr>							
+									<p>&nbsp;16:30 프린지마당 - 대도호부관아</p>
+									<p>&nbsp;18:00 영신제 - 홍제동 여성황사</p>
+									<p>&nbsp;19:00 영신행차 - 홍제동 여성황사</p>
+									<p>&nbsp;19:00 신통대길 길놀이 - 대도호부관아</p>
+									<p>&nbsp;22:00 불꽃놀이 - 단오섬</p>
+							</tr>
 						</table>
 					</div>
 					<!--//figure-holder-->

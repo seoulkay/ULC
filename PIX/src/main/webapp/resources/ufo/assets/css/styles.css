@@ -1247,6 +1247,40 @@ body.sticky-page-nav .overview-section {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.features-page .actions {
+  margin-top: 60px;
+}
+
+.features-page .actions a {
+  color: #fff;
+  margin-bottom: 10px;
+  display: block;
+  -webkit-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+}
+.features-page .actions a:hover {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  text-decoration: none;
+}
+.features-page .actions a img {
+  -webkit-opacity: 0.7;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+}
+.features-page .actions a img:hover {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+}
+
+.features-page .heading-section {
+  padding-top: 180px;
+}
+
 .feature-blocks {
   padding-top: 90px;
   padding-bottom: 90px;
