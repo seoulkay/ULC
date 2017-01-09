@@ -49,7 +49,7 @@
             <div class="meta">
                 <div class="author">
                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                     <div class="author-name">작성자</div>
                 </div>
                 <!--//author-->
@@ -62,45 +62,9 @@
     <div class="post-single-block" id="post-single-block">
         
         <div class="post-container">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, <a href="#">link example</a>, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-            <h2 class="post-heading">1. Heading Lorem Ipsum</h2>
-            <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.</p>
-            <blockquote class="blog-quote">
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                <p>If you are not embarrassed by the first version of your product, you've launched too late.</p>
-                <small class="source">Reid Hoffman, Linkedin</small>
-                <div class="quote-tweet" href="#"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a></div>
-            </blockquote>
-            <h2 class="post-heading">2. Heading Aenean Vulputate</h2>
-            <p>Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. <strong>Strong text example</strong> ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. </p>
-            <figure class="figure">
-                <img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-single/blog-post-figure-1.jpg" alt="">
-                <figcaption class="figure-caption">(Figure caption example)</figcaption>
-            </figure>
-            
-            <h2 class="post-heading">3. Heading Sed Lectus</h2>
-            <p>Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci.</p>
-            
-            <ul>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Aliquam tincidunt mauris eu risus.</li>
-                <li>Ultricies eget vel aliquam libero.
-                    <ul>
-                        <li>Turpis pulvinar</li>
-                        <li>Feugiat scelerisque</li>
-                        <li>Ut tincidunt</li>
-                    </ul>
-                </li>
-                <li>Pellentesque habitant morbi.</li>
-                <li>Praesent dapibus, neque id cursus.</li>
-            </ul>
-            
-            <p>Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt libero. Phasellus dolor. Maecenas vestibulum mollis diam. </p>
-
-            
+            <p>내용입니다.</p>
         </div><!--//post-container-->
-        <div class="author-container">
+        <%-- <div class="author-container">
             <div class="author">
                 <img class="author-profile" src=
 "${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
@@ -116,7 +80,7 @@
                 </ul>
             </div><!--//intro-->
             
-        </div><!--//author-container-->
+        </div><!--//author-container--> --%>
         
     </div><!--//post-single-block-->
     
@@ -172,13 +136,13 @@
     
     <div class="blog-signup-block">
         <div class="container text-center">
-            <h3 class="block-heading">Get free resources for your startup weekly</h3>
-            <div class="block-intro">Subscribe to our newsletter to be the first to get the freebies.</div>
+            <h3 class="block-heading">강릉단오제 뉴스레터 구독하기</h3>
+            <div class="block-intro">강릉단오제의 소식을 보내드립니다.</div>
             <form class="subscribe-form form-inline" novalidate="novalidate">
                 <div class="form-group">
                     <label class="sr-only" for="semail">Your Email</label>
-                    <input type="text" id="semail" class="form-control email-field" placeholder="Enter your email address" name="email" required="" aria-required="true">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>  
+                    <input type="text" id="semail" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
+                    <button type="submit" class="btn btn-primary">구독하기</button>  
                 </div>                              
             </form>
         </div><!--//container-->
@@ -320,7 +284,7 @@
         </div><!--//modal-dialog-->
     </div><!--//modal-->
     
-    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
     <div id="config-panel" class="config-panel hidden-xs hidden-sm">
         <div class="panel-inner">
             <a id="config-trigger" class="config-trigger config-panel-hide" href="#"><i class="fa fa-cog"></i></a>
@@ -341,7 +305,7 @@
             </ul>
             <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
         </div><!--//panel-inner-->
-    </div><!--//configure-panel-->
+    </div><!--//configure-panel--> --%>
  
     <!-- Javascript -->          
     <script type="text/javascript" src=

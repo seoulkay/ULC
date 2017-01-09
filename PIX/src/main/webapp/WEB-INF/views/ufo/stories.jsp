@@ -89,7 +89,7 @@
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb01.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -164,7 +164,7 @@
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb02.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -173,7 +173,7 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 1</span>강릉단오제를 방문한 이유는?</h3>
+							<h3 class="question"><span class="question-number">문항 2</span>강릉단오제를 방문한 이유는?</h3>
 							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
 							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
 							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
@@ -240,7 +240,7 @@
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb03.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -249,7 +249,7 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 1</span>강릉단오제를 방문한 이유는?</h3>
+							<h3 class="question"><span class="question-number">문항 3</span>강릉단오제를 방문한 이유는?</h3>
 							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
 							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
 							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
@@ -315,7 +315,7 @@
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb04.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -324,7 +324,7 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 1</span>강릉단오제를 방문한 이유는?</h3>
+							<h3 class="question"><span class="question-number">문항 4</span>강릉단오제를 방문한 이유는?</h3>
 							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
 							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
 							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
@@ -390,7 +390,7 @@
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/story-1.jpg"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb05.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -399,7 +399,7 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 1</span>강릉단오제를 방문한 이유는?</h3>
+							<h3 class="question"><span class="question-number">문항 5</span>강릉단오제를 방문한 이유는?</h3>
 							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
 							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
 							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
@@ -688,7 +688,7 @@
 	</div>
 	<!--//modal-->
 
-	<!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
+	<%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
 	<div id="config-panel" class="config-panel hidden-xs hidden-sm">
 		<div class="panel-inner">
 			<a id="config-trigger" class="config-trigger config-panel-hide"
@@ -719,7 +719,7 @@
 		</div>
 		<!--//panel-inner-->
 	</div>
-	<!--//configure-panel-->
+	<!--//configure-panel--> --%>
 
 	<!-- Javascript -->
 	<script type="text/javascript"

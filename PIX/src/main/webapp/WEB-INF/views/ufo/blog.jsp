@@ -44,7 +44,7 @@
             <h2 class="headline">공지사항</h2>
             <div class="intro">2017 강릉단오제 관련 공지사항 입니다.</div>
             <div class="actions">
-                 <a class="scrollto-no-offset" href="#posts-promo-block">View featured posts</a>
+                 <a class="scrollto-no-offset" href="#posts-promo-block">공지사항 보러가기</a>
                  <a class="scrollto-no-offset" href="#posts-promo-block"><img src=
 "${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
@@ -161,10 +161,10 @@
     </div><!--//posts-promo-block-->
     <div class="posts-block text-center" id="posts-block">
         <div class="container">
-            <h2 class="block-heading text-center">단오소식</h2>
+            <h2 class="block-heading text-center">공지사항</h2>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">공지사항</a></li>
+                <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">단오소식</a></li>
                 <li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">언론보도</a></li>
                 <li role="presentation"><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">뉴스레터</a></li>
                 <li role="presentation"><a href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab">FAQ</a></li>
@@ -179,7 +179,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-1.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                                     <div class="author-name">작성자</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">날짜</div>
@@ -188,7 +188,7 @@
                             <div class="post-thumb">
                                 <a href="blog-single
 "><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-1.jpg" alt=""></a>
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">본문 내용 일부(4줄) 입니다. <a href="blog-single
 " class="readmore">더 보기</a>
@@ -202,7 +202,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-2.png" alt=""> 
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt=""> 
                                     <div class="author-name">By Kate Peterson</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -212,7 +212,7 @@
                             <div class="post-thumb">
                                 <a href="blog-single
 "><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-2.jpg" alt=""></a>
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb02.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
                                 Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single
@@ -227,7 +227,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                                     <div class="author-name">By David Chung</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -237,7 +237,7 @@
                             <div class="post-thumb">
                                 <a href="blog-single
 "><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb03.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
                                 Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
@@ -252,7 +252,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-4.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                                     <div class="author-name">By Mike Lee</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -262,7 +262,7 @@
                             <div class="post-thumb">
                                 <a href="blog-single
 "><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb04.jpg" alt=""></a>
                             </div>
                             <div class="post-intro">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
@@ -293,7 +293,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-4.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                                     <div class="author-name">By Mike Lee</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -320,7 +320,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-5.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
                                     <div class="author-name">By Jennifer Hughes</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -347,7 +347,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-6.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
                                     <div class="author-name">By James Doe</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -391,7 +391,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-3.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
                                     <div class="author-name">By David Chung</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -418,7 +418,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-7.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
                                     <div class="author-name">By Tim Wright</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -451,7 +451,7 @@
                             <div class="meta">
                                 <div class="author">
                                     <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/author-8.png" alt="">
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
                                     <div class="author-name">By Betty Diaz</div>
                                 </div><!--//author-->
                                 <div class="time-stamp">
@@ -479,13 +479,13 @@
     
     <div class="blog-signup-block">
         <div class="container text-center">
-            <h3 class="block-heading">Get free resources for your startup weekly</h3>
-            <div class="block-intro">Subscribe to our newsletter to be the first to get the freebies.</div>
+            <h3 class="block-heading">강릉단오제 뉴스레터 구독하기</h3>
+            <div class="block-intro">강릉단오제의 소식을 보내드립니다.</div>
             <form class="subscribe-form form-inline" novalidate="novalidate">
                 <div class="form-group">
                     <label class="sr-only" for="semail">Your Email</label>
-                    <input type="text" id="semail" class="form-control email-field" placeholder="Enter your email address" name="email" required="" aria-required="true">
-                    <button type="submit" class="btn btn-primary">Subscribe</button>  
+                    <input type="text" id="semail" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
+                    <button type="submit" class="btn btn-primary">구독하기</button>  
                 </div>                              
             </form>
         </div><!--//container-->
@@ -627,7 +627,7 @@
         </div><!--//modal-dialog-->
     </div><!--//modal-->
     
-    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+    <%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
     <div id="config-panel" class="config-panel hidden-xs hidden-sm">
         <div class="panel-inner">
             <a id="config-trigger" class="config-trigger config-panel-hide" href="#"><i class="fa fa-cog"></i></a>
@@ -648,7 +648,7 @@
             </ul>
             <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
         </div><!--//panel-inner-->
-    </div><!--//configure-panel-->
+    </div><!--//configure-panel--> --%>
  
     <!-- Javascript -->          
     <script type="text/javascript" src=

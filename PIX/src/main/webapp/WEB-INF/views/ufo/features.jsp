@@ -52,7 +52,7 @@
 			<h2 class="headline">축제 정보</h2>
 			<div class="intro">2017 강릉단오제 날짜를 넣어주세요.</div>
 			<div class="actions">
-                 <a class="scrollto-no-offset" href="#page-nav">View featured posts</a>
+                 <a class="scrollto-no-offset" href="#page-nav">축제 정보 보러가기</a>
                  <a class="scrollto-no-offset" href="#page-nav"><img src=
 "${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
@@ -103,7 +103,7 @@
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
 						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/feature-1.png"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature01.jpg"
 							alt="">
 					</div>
 					<!--//figure-holder-->
@@ -134,7 +134,7 @@
 					class="feature-figure col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">
 					<div class="figure-holder">
 						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/feature-2.png"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
 							alt="">
 					</div>
 					<!--//figure-holder-->
@@ -457,7 +457,7 @@
 	</div>
 	<!--//modal-->
 
-	<!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
+	<%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
 	<div id="config-panel" class="config-panel hidden-xs hidden-sm">
 		<div class="panel-inner">
 			<a id="config-trigger" class="config-trigger config-panel-hide"
@@ -490,7 +490,7 @@
 	</div>
 	<!--//configure-panel-->
 
-	<!-- Javascript -->
+	<!-- Javascript --> --%>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript"

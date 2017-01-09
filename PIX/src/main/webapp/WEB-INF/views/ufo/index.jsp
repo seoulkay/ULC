@@ -575,10 +575,10 @@
 					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
 						class="btn-text"><span class="intro-text">Get it on</span><span
 							class="main-text">Google Play</span></span></a></li>
-				<li><a class="btn btn-download-app btn-windows-download"
+				<!-- <li><a class="btn btn-download-app btn-windows-download"
 					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
 						class="btn-text"><span class="intro-text">Download
-								from</span><span class="main-text">Windows Phone Store</span></span></a></li>
+								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
 			</ul>
 			<!--//apps-list-->
 		</div>

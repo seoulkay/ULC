@@ -61,7 +61,7 @@
                     
                 </ul>
     
-                <small class="copyright">Template Copyright @ <a href="http://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small> 
+                <small class="copyright">Copyright @ <a href="http://themes.3rdwavemedia.com/" target="_blank">3rd Wave Media</a></small> 
             </div>
         </div><!--//container-->
     </footer><!--//footer-->
