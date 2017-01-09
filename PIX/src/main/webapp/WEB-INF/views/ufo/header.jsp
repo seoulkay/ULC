@@ -1,6 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1074619385980281',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+	    //추가의 이닛 옵션들은 여기서 
+	    FB.getLoginStatus(function(response) {
+			  if (response.status === 'connected') {
+			    // the user is logged in and has authenticated your
+			    // app, and response.authResponse supplies
+			    // the user's ID, a valid access token, a signed
+			    // request, and the time the access token 
+			    // and signed request each expire
+			    // alert('1');
+			    var uid = response.authResponse.userID;
+			    var accessToken = response.authResponse.accessToken;
+			  } else if (response.status === 'not_authorized') {
+			    // the user is logged in to Facebook, 
+			    // but has not authenticated your app
+				 // alert('2');
+			  } else {
+			    // the user isn't logged in to Facebook.
+			    //alert('3');
+			  }
+			 });
+	    
+	  };
+	
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
 <!-- ******HEADER****** -->
 <header id="header" class="header">
 	<div class="container">
