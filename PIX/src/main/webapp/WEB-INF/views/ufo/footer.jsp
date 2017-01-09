@@ -109,61 +109,60 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
-				<h4 id="loginModalLabel" class="modal-title text-center">Log in
-					to your account</h4>
+				<h4 id="loginModalLabel" class="modal-title text-center">SNS 계정으로 로그인하기</h4>
 			</div>
 			<div class="modal-body">
 				<div class="social-login text-center">
 					<ul class="social-buttons list-unstyled">
-						<li><a href="#" class="btn btn-social btn-google btn-block"><i
+						<!-- <li><a href="#" class="btn btn-social btn-google btn-block"><i
 								class="fa fa-google" aria-hidden="true"></i><span
-								class="btn-text">Log in with Google</span></a></li>
+								class="btn-text">구글로 로그인하기</span></a></li> -->
 						<li><a href="#" class="btn btn-social btn-facebook btn-block"><i
 								class="fa fa-facebook" aria-hidden="true"></i><span
-								class="btn-text">Log in with Facebook</span></a></li>
+								class="btn-text">페이스북으로 로그인하기</span></a></li>
 					</ul>
 				</div>
 				<div class="divider">
 					<span class="or-text">OR</span>
 				</div>
+				<div class="modal-header2">
+				<h4 id="loginModalLabel" class="modal-title text-center">이메일주소로 로그인하기</h4>
+				</div>
 				<div class="login-form-container">
 					<form class="login-form">
 						<div class="form-group email">
 							<i class="material-icons icon">&#xE0BE;</i> <label
-								class="sr-only" for="login-email">Email</label> <input
+								class="sr-only" for="login-email">이메일주소</label> <input
 								id="login-email" name="login-email" type="email"
-								class="form-control login-email" placeholder="Email">
+								class="form-control login-email" placeholder="이메일주소">
 						</div>
 						<!--//form-group-->
 						<div class="form-group password">
 							<i class="material-icons icon">&#xE897;</i> <label
-								class="sr-only" for="login-password">Password</label> <input
+								class="sr-only" for="login-password">비밀번호</label> <input
 								id="login-password" name="login-password" type="password"
-								class="form-control login-password" placeholder="Password">
+								class="form-control login-password" placeholder="비밀번호">
 							<div class="extra">
 								<div class="checkbox remember">
-									<label> <input type="checkbox"> Remember me
-									</label>
+									<label> <input type="checkbox">로그인 상태 유지</label>
 								</div>
 								<!--//check-box-->
 								<div class="forgotten-password">
 									<a href="#" id="resetpass-link" data-toggle="modal"
-										data-target="#resetpass-modal">Forgotten password?</a>
+										data-target="#resetpass-modal">비밀번호 찾기</a>
 								</div>
 							</div>
 							<!--//extra-->
 						</div>
 						<!--//form-group-->
-						<button type="submit" class="btn btn-cta btn-block btn-primary">Log
-							in</button>
+						<button type="submit" class="btn btn-cta btn-block btn-primary">로그인 하기</button>
 					</form>
 				</div>
 				<!--//login-form-container-->
 
 				<div class="option-container">
-					<div class="lead-text">Don't have an account?</div>
-					<a class="signup-link btn btn-ghost-alt" id="signup-link" href="#">Sign
-						Up</a>
+					<div class="lead-text">계정이 없으신가요?</div>
+					<a class="signup-link btn btn-ghost-alt" id="signup-link" href="#">회원가입</a>
 				</div>
 				<!--//option-container-->
 			</div>
@@ -185,22 +184,24 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
-				<h4 id="signupModalLabel" class="modal-title text-center">Sign
-					up to start your 30 day free trial!</h4>
+				<h4 id="signupModalLabel" class="modal-title text-center">SNS로 계정 생성하기</h4>
 			</div>
 			<div class="modal-body">
 				<div class="social-login text-center">
 					<ul class="social-buttons list-unstyled">
 						<li><a href="#" class="btn btn-social btn-google btn-block"><i
 								class="fa fa-google" aria-hidden="true"></i><span
-								class="btn-text">Sign up with Google</span></a></li>
+								class="btn-text">구글 계정으로 회원가입</span></a></li>
 						<li><a href="#" class="btn btn-social btn-facebook btn-block"><i
 								class="fa fa-facebook" aria-hidden="true"></i><span
-								class="btn-text">Sign up with Facebook</span></a></li>
+								class="btn-text">페이스북 계정으로 회원가입</span></a></li>
 					</ul>
 				</div>
 				<div class="divider">
 					<span class="or-text">OR</span>
+				</div>
+				<div class="modal-header2">
+				<h4 id="loginModalLabel" class="modal-title text-center">이메일주소로 계정 생성하기</h4>
 				</div>
 				<div class="login-form-container">
 					<form class="login-form">
@@ -208,14 +209,14 @@
 							<i class="material-icons icon">&#xE7FD;</i> <label
 								class="sr-only" for="signup-fullname">Your Full Name</label> <input
 								id="signup-fullname" name="signup-fullname" type="text"
-								class="form-control signup-email" placeholder="Your Full Name">
+								class="form-control signup-email" placeholder="성명">
 						</div>
 						<!--//form-group-->
 						<div class="form-group email">
 							<i class="material-icons icon">&#xE0BE;</i> <label
 								class="sr-only" for="signup-email">Your Email</label> <input
 								id="signup-email" name="signup-email" type="email"
-								class="form-control signup-email" placeholder="Your Email">
+								class="form-control signup-email" placeholder="이메일주소">
 						</div>
 						<!--//form-group-->
 						<div class="form-group password">
@@ -223,21 +224,19 @@
 								class="sr-only" for="signup-password">Create a Password</label>
 							<input id="signup-password" name="signup-password"
 								type="password" class="form-control signup-password"
-								placeholder="Create a Password">
+								placeholder="비밀번호">
 						</div>
 						<!--//form-group-->
 						<div class="legal-note">By signing up, you agree to our
 							terms of services and privacy policy.</div>
-						<button type="submit" class="btn btn-block btn-primary btn-cta">Sign
-							up</button>
+						<button type="submit" class="btn btn-block btn-primary btn-cta">회원가입</button>
 
 					</form>
 				</div>
 				<!--//login-form-container-->
 				<div class="option-container">
-					<div class="lead-text">Already have an account?</div>
-					<a class="login-link btn btn-ghost-alt" id="login-link" href="#">Log
-						in</a>
+					<div class="lead-text">이미 계정이 있으신가요?</div>
+					<a class="login-link btn btn-ghost-alt" id="login-link" href="#">로그인하기</a>
 				</div>
 				<!--//option-container-->
 			</div>

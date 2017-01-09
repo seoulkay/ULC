@@ -1422,7 +1422,7 @@ body.sticky-page-nav .overview-section {
   padding-top: 60px;
   position: relative;
 }
-.quote-item .inner .fa-quote-left {
+.quote-item .inner .fa-quora {
   position: absolute;
   left: 30px;
   top: 30px;
@@ -2860,6 +2860,12 @@ body.sticky-page-nav .overview-section {
   padding-top: 45px;
   position: relative;
 }
+
+.modal-header2 {
+  border: none;
+  padding-bottom: 20px;
+  position: relative;
+}
 .modal button.close {
   font-size: 24px;
   font-weight: 300;
@@ -2897,7 +2903,7 @@ body.sticky-page-nav .overview-section {
   opacity: 0.8;
 }
 .modal .modal-title {
-  font-size: 24px;
+  font-size: 20px;
 }
 .modal-auth .form-group {
   margin-bottom: 15px;

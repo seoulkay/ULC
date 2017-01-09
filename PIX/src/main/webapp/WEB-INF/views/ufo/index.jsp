@@ -346,21 +346,23 @@
 
 	<section id="customers-section" class="customers-section section">
 		<h2 class="section-title">서베이 결과보기</h2>
-		<div class="section-intro">나눌수록 즐거운 축제, 참간한 분들의 솔직하고 재미있는 익명의 서베이 결과를 확인하세요!</div>
+		<div class="section-intro">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 서베이 결과를 확인하세요!</div>
 		<div class="container">
 			<div class="stories-wrapper row">
 				<div class="item item-1 col-xs-12 col-md-6">
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">#친구와 함께 즐기기<br>#농악축제</h3>
+							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
 							<div class="content-desc">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-									aenean commodo ligula eget dolor aenean massa. Cum sociis
-									natoque penatibus.</p>
+								<i class="fa fa-quora" aria-hidden="true"></i>
+								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
+								<p>강릉에 놀러왔다가 우연히</p>
+								<p>단오제 행사에 참가자로 참여하게 되어서</p>
+								<p>강릉에 살아서</p>
 							</div>
-							<a class="item-link" href="#"></a>
+							<!-- <a class="item-link" href="#"></a> -->
+							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
 						</div>
 						<!--//item-content-->
 					</div>
