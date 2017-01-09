@@ -17,18 +17,20 @@
 			    // request, and the time the access token 
 			    // and signed request each expire
 			    // alert('1');
+			    alert(JSON.stringfy(response))
 			    var uid = response.authResponse.userID;
 			    var accessToken = response.authResponse.accessToken;
 			  } else if (response.status === 'not_authorized') {
 			    // the user is logged in to Facebook, 
 			    // but has not authenticated your app
 				 // alert('2');
+			  	alert(JSON.stringfy(response))
 			  } else {
 			    // the user isn't logged in to Facebook.
 			    //alert('3');
+			    alert(JSON.stringify(response))
 			  }
-			 });
-	    
+			 }, true);   
 	  };
 	
 	  (function(d, s, id){
@@ -38,6 +40,17 @@
 	     js.src = "//connect.facebook.net/en_US/sdk.js";
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
+	  
+	  FB.login(function(response) {
+		    if (response.authResponse) {
+		     console.log('Welcome!  Fetching your information.... ');
+		     FB.api('/me', function(response) {
+		       console.log('Good to see you, ' + response.name + '.');
+		     });
+		    } else {
+		     console.log('User cancelled login or did not fully authorize.');
+		    }
+		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
 	</script>
 <!-- ******HEADER****** -->
 <header id="header" class="header">
