@@ -83,7 +83,7 @@
 					<li><a class="scrollto" href="#overview-section">축제영상</a></li>
 					<li><a class="scrollto" href="#features-section">축제 주요정보</a></li>
 					<li><a class="scrollto" href="#customers-section">서베이 결과보기</a></li>
-					<li><a class="scrollto" href="#signup-section">Get Started</a></li>
+					<li><a class="scrollto" href="#signup-section">이벤트 참여하기</a></li>
 					<li><a class="scrollto" href="#support-section">찾아오시는 길</a></li>
 				</ul>
 				<!--//page-nav-->
@@ -208,7 +208,7 @@
 		<h2 class="section-title">축제 주요정보</h2>
 		<div class="container">
 			<div class="row">
-				<div class="features-content-wrapper col-xs-12 col-sm-7 com-md-7">
+				<div class="features-content-wrapper col-xs-12 col-sm-6 com-md-6">
 					<div class="intro">강릉에서 단오는 큰 명절이다. 단오를 중심으로 8일 간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과 인간의 상생을 위한 휴먼드라마이다.</div>
 					<!--//intro-->
 					<ul class="feature-list list-unstyled">
@@ -355,7 +355,7 @@
 						<div class="item-content">
 							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
 							<div class="content-desc">
-								<i class="fa fa-quora" aria-hidden="true"></i>
+								<i class="fa fa-quote-left" aria-hidden="true"></i>
 								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
 								<p>강릉에 놀러왔다가 우연히</p>
 								<p>단오제 행사에 참가자로 참여하게 되어서</p>
@@ -373,16 +373,16 @@
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">
-								#가면이 살짝 무서워요<br>#관노가면극
-							</h3>
+							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-									aenean commodo ligula eget dolor aenean massa. Cum sociis
-									natoque penatibus.</p>
+								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
+								<p>강릉에 놀러왔다가 우연히</p>
+								<p>단오제 행사에 참가자로 참여하게 되어서</p>
+								<p>강릉에 살아서</p>
 							</div>
-							<a class="item-link" href="#"></a>
+							<!-- <a class="item-link" href="#"></a> -->
+							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
 						</div>
 						<!--//item-content-->
 					</div>
@@ -393,16 +393,16 @@
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">
-								#폭죽<br>#마지막까지 너무 즐거웠습니다.
-							</h3>
+							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-									aenean commodo ligula eget dolor aenean massa. Cum sociis
-									natoque penatibus.</p>
+								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
+								<p>강릉에 놀러왔다가 우연히</p>
+								<p>단오제 행사에 참가자로 참여하게 되어서</p>
+								<p>강릉에 살아서</p>
 							</div>
-							<a class="item-link" href="#"></a>
+							<!-- <a class="item-link" href="#"></a> -->
+							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
 						</div>
 						<!--//item-content-->
 					</div>
@@ -413,16 +413,16 @@
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">
-								#강릉단오제<br>#등이 너무 예뻐요
-							</h3>
+							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-									aenean commodo ligula eget dolor aenean massa. Cum sociis
-									natoque penatibus.</p>
+								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
+								<p>강릉에 놀러왔다가 우연히</p>
+								<p>단오제 행사에 참가자로 참여하게 되어서</p>
+								<p>강릉에 살아서</p>
 							</div>
-							<a class="item-link" href="#"></a>
+							<!-- <a class="item-link" href="#"></a> -->
+							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
 						</div>
 						<!--//item-content-->
 					</div>
@@ -446,20 +446,20 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 
-				<h2 class="counter-desc">Customers Worldwide</h2>
+				<h2 class="counter-desc">강릉단오제 서베이 이벤트 참여하기</h2>
 
 				<div class="form-wrapper">
-					<h2 class="form-title">Start Your Free Trial Today</h2>
+					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
 					<div class="form-box">
-						<h3 class="form-heading">30 Day Free Trial</h3>
-						<div class="form-desc">Sign up now, it only takes 3 minutes</div>
+						<!-- <h3 class="form-heading">설문조사에 참여하시고 선물을 받아가세요!</h3> -->
+						<div class="form-desc">설문조사에 참여하시고 선물을 받아가세요!</div>
 						<ul class="social-buttons list-unstyled">
-							<li><a href="#" class="btn btn-social btn-google"><i
+							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li>
+									class="btn-text">Sign up with Google</span></a></li> -->
 							<li><a href="#" class="btn btn-social btn-facebook"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Facebook</span></a></li>
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></a></li>
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
@@ -471,25 +471,25 @@
 								<div class="form-group col-xs-12 col-sm-6">
 									<label for="firstname" class="sr-only">First Name</label> <input
 										type="text" class="form-control" id="firstname"
-										name="firstname" placeholder="First Name">
+										name="firstname" placeholder="이름">
 								</div>
 								<!--//form-group-->
 								<div class="form-group col-xs-12 col-sm-6">
 									<label for="lastname" class="sr-only">Last Name</label> <input
 										type="text" class="form-control" id="lastname" name="lastname"
-										placeholder="Last Name">
+										placeholder="성">
 								</div>
 								<!--//form-group-->
 								<div class="form-group col-xs-12 col-sm-6">
 									<label for="firstname" class="sr-only">Email Address</label> <input
 										type="email" class="form-control" id="emailaddress"
-										name="emailaddress" placeholder="Email Address">
+										name="emailaddress" placeholder="이메일주소">
 								</div>
 								<!--//form-group-->
 								<div class="form-group col-xs-12 col-sm-6">
 									<label for="password" class="sr-only">Password</label> <input
 										type="password" class="form-control" id="password"
-										name="password" placeholder="Create a Password">
+										name="password" placeholder="비밀번호">
 								</div>
 								<!--//form-group-->
 
@@ -498,11 +498,9 @@
 							<div class="legal-note">By signing up, you agree to our
 								terms of services and privacy policy.</div>
 
-							<button type="submit" class="btn btn-primary btn-cta">Start
-								Your Free Trial</button>
-							<div class="alter-login">
-								Already have an account? <a class="login-link" href="#"
-									data-toggle="modal" data-target="#login-modal">Log in</a>
+							<button type="submit" class="btn btn-primary btn-cta">회원가입</button>
+							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#"
+									data-toggle="modal" data-target="#login-modal">로그인하기</a>
 							</div>
 						</form>
 						<!--//form-->

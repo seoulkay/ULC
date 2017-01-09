@@ -961,6 +961,7 @@ body.sticky-page-nav .overview-section {
   margin-bottom: 60px;
 }
 .features-content-wrapper .intro {
+  max-width: 100%;
   margin-bottom: 30px;
 }
 .features-content-wrapper .feature-list {
@@ -1106,7 +1107,7 @@ body.sticky-page-nav .overview-section {
 }
 .customers-section .content-title {
   margin-top: 0;
-  margin-bottom: 45px;
+  margin-bottom: 80px; /* 질문이랑 아이콘 사이 */
   line-height: 1.5;
   font-size: 24px;
 }
@@ -1126,6 +1127,7 @@ body.sticky-page-nav .overview-section {
   padding-top: 8px;
   margin-bottom: 15px;
 }
+
 .customers-section .stories-wrapper {
   margin-bottom: 30px;
 }
@@ -1422,7 +1424,7 @@ body.sticky-page-nav .overview-section {
   padding-top: 60px;
   position: relative;
 }
-.quote-item .inner .fa-quora {
+.quote-item .inner .fa-quote-left {
   position: absolute;
   left: 30px;
   top: 30px;
