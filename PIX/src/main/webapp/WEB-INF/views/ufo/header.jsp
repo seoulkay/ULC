@@ -17,18 +17,18 @@
 			    // request, and the time the access token 
 			    // and signed request each expire
 			    // alert('1');
-			    alert(JSON.stringfy(response))
+			    //alert(JSON.stringfy(response))
 			    var uid = response.authResponse.userID;
 			    var accessToken = response.authResponse.accessToken;
 			  } else if (response.status === 'not_authorized') {
 			    // the user is logged in to Facebook, 
 			    // but has not authenticated your app
 				 // alert('2');
-			  	alert(JSON.stringfy(response))
+			  	//alert(JSON.stringfy(response))
 			  } else {
 			    // the user isn't logged in to Facebook.
 			    //alert('3');
-			    alert(JSON.stringify(response))
+			    //alert(JSON.stringify(response))
 			  }
 			 }, true);   
 	  };
