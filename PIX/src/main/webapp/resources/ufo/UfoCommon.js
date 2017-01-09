@@ -94,8 +94,6 @@ function editNoti(param){
             	    temp.fadeIn();
             	}
 
-            	//1000보다 작으면 위드가 100프로인 에디트 창
-            	if(window.screen.availWidth < 1000) temp.css('width', '100%');
             	
             	// 화면의 중앙에 레이어를 띄운다.
             	if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()+'px');
@@ -103,6 +101,17 @@ function editNoti(param){
             	if (temp.outerWidth() < $(document).width() ) temp.css('margin-left', '-'+temp.outerWidth()/2+'px');
             	else temp.css('left', '0px');
 
+            	
+            	
+            	//1000보다 작으면 위드가 100프로인 에디트 창
+            	if(window.screen.availWidth < 1000) {
+            		temp.css('width', '100%');
+            		temp.css('margin')
+            		//var body = document.body;
+                	//body.css('overflow', 'hidden');
+            	}
+            	
+            	
             	temp.find('a.cbtn').click(function(e){
             	    if(bg){
             	        $('#layer'+para).fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다. 
