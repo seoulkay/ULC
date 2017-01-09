@@ -747,13 +747,17 @@ textarea {
 }
 .footer-col .col-title {
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #fff;
   font-weight: normal;
 }
 .footer-col .footer-menu li {
   font-size: 14px;
   margin-bottom: 5px;
+}
+.footer-col .footer-logo {
+  width: 20px;
+  height: auto;
 }
 .footer-col .label-new {
   margin-left: 5px;
