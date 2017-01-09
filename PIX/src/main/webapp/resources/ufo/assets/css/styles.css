@@ -746,7 +746,8 @@ textarea {
   color: rgba(255, 255, 255, 0.4);
 }
 .footer-col .col-title {
-  font-size: 16px;
+  text-align: center;
+  font-size: 14px;
   color: #fff;
   font-weight: normal;
 }
