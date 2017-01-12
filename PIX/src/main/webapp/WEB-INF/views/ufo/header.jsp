@@ -10,7 +10,6 @@
 	    });
 	    //추가의 이닛 옵션들은 여기서 
 	    FB.getLoginStatus(function(response) {
-	    	statusChangeCallback(response);
 	    	 
 	    	if (response.status === 'connected') {
 			    // the user is logged in and has authenticated your
@@ -19,7 +18,7 @@
 			    // request, and the time the access token 
 			    // and signed request each expire
 			    
-			    alert('1');
+			    //alert('1');
 			    //alert(JSON.stringify(response))
 			    $( "#LoginBtn" ).css( "display", "none" );
 			    $( "#SignupBtn" ).css( "display", "none" );
@@ -31,14 +30,14 @@
 			  } else if (response.status === 'not_authorized') {
 			    // the user is logged in to Facebook, 
 			    // but has not authenticated your app
-				alert('2');
+				//alert('2');
 			  	//alert(JSON.stringify(response))
 				    $( "#LoginBtn" ).css( "display", "block" );
 				    $( "#SignupBtn" ).css( "display", "block" );
 				    $( "#UserInfo" ).css( "display", "none" );
 			  } else {
 			    // the user isn't logged in to Facebook.
-			    alert('3');
+			    //alert('3');
 			    //alert(JSON.stringify(response))
 				    $( "#LoginBtn" ).css( "display", "block" );
 				    $( "#SignupBtn" ).css( "display", "block" );
@@ -115,7 +114,7 @@
 					<li class="nav-item nav-item-cta last"><a class="btn-signup"
 						href="" data-toggle="modal" data-target="#signup-modal" id="SignupBtn" )>Sign
 							Up</a></li>
-					<li><button onClick="fbLogout(); return false">LOGOUT</button></li>
+<!-- 					<li><button onClick="fbLogout(); return false">LOGOUT</button></li> -->
 				</ul>
 				<!--//nav-->
 			</div>
