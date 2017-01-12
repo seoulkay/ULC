@@ -23,7 +23,7 @@
 			    $( "#LoginBtn" ).css( "display", "none" );
 			    $( "#SignupBtn" ).css( "display", "none" );
 			    $( "#UserInfo" ).css( "display", "block" );
-			    alert(response.name)
+			    //alert(response.name)
 			    
 			    var uid = response.authResponse.userID;
 			    var accessToken = response.authResponse.accessToken;
