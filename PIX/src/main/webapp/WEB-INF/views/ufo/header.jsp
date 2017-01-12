@@ -61,13 +61,13 @@
 		     FB.api('/me', function(response) {
 		       console.log('Good to see you, ' + response.name + '.');
 		    	// Save data to sessionStorage
-		       alert(response.name );
+		       //alert(response.name );
 		       sessionStorage.setItem('userName', response.name);
 		       location.reload();
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
-		     alert("페이스북 로그인 실패.");
+		     //alert("페이스북 로그인 실패.");
 		     location.reload();
 		    }
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
