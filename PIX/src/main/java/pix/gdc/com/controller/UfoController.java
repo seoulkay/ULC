@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.vo.FestUfoNotice;
@@ -31,7 +33,10 @@ public class UfoController {
 		return "ufo/blog";
 	}
 	@RequestMapping(value = "ufo/blog-single", method = RequestMethod.GET)
-	public String blog_single(){
+	public String blog_single(Model model, @RequestParam("num") Integer num){
+		System.out.println(num+"dksdksjfdklsa;fdjksla;");
+		FestUfoNotice notice = dao.SelectOneUfoNotice(num);
+		model.addAttribute("notice", notice);
 		return "ufo/blog-single";
 	}
 	@RequestMapping(value = "ufo/career", method = RequestMethod.GET)

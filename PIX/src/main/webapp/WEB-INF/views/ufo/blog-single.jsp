@@ -45,15 +45,15 @@
             <div class="back-to-main">
                 <a href="blog"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> 목록으로 돌아가기</a>
             </div><!--//back-to-main-->       
-            <h2 class="headline">제목 입니다.</h2>
+            <h2 class="headline">${notice.title  }</h2>
             <div class="meta">
                 <div class="author">
-                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
-                    <div class="author-name">작성자</div>
+<!--                 어떠 사진이 올라가야 됩니다. -->
+                    <img class="author-profile" src="/image/${notice.photo_file}" alt="">
+                    <div class="author-name">${notice.createdBy}</div>
                 </div>
                 <!--//author-->
-                <div class="time-stamp">날짜</div>
+                <div class="time-stamp">${notice.date}</div>
                 <!--//time-stamp-->
             </div><!--//meta-->
         </div><!--//container-->
@@ -62,7 +62,11 @@
     <div class="post-single-block" id="post-single-block">
         
         <div class="post-container">
-            <p>내용입니다.</p>
+        							<div>
+<!--         					사진이 없으면 없다. 로 처리 하세요.-->
+                                     	<img src="/image/${notice.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
+                                     </div> 
+            ${notice.content }
         </div><!--//post-container-->
         <%-- <div class="author-container">
             <div class="author">

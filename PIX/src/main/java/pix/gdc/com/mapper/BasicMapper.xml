@@ -230,6 +230,14 @@
 	ORDER BY `fest_ufo_notice`.`idfest_ufo_notice` desc;
 	</select>
 	
+	<select id="SelectOneUfoNotice" parameterType="Integer" resultType="FestUfoNotice">
+	SELECT 
+	*
+	FROM `pix`.`fest_ufo_notice`
+	WHERE `fest_ufo_notice`.`idfest_ufo_notice` = #{param}
+	AND `fest_ufo_notice`.`is_use` = 'Y'
+	</select>
+	
 	<select id="SelectUfoParaByNumber" parameterType="Integer" resultType="String">
 		SELECT
 			para

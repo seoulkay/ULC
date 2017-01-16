@@ -46,7 +46,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">쿠키정책</a>
+						<a onClick="fbPost()" href="#">쿠키정책</a>
 					</div>
 				</div>
 			</div>
@@ -117,53 +117,54 @@
 						<!-- <li><a href="#" class="btn btn-social btn-google btn-block"><i
 								class="fa fa-google" aria-hidden="true"></i><span
 								class="btn-text">구글로 로그인하기</span></a></li> -->
-						<li><a href="stories" class="btn btn-social btn-facebook btn-block"><i
+						<li onClick="fbLogin(); return false;"><span class="btn btn-social btn-facebook btn-block"><i
 								class="fa fa-facebook" aria-hidden="true"></i><span
-								class="btn-text" onClick="fbLogin(); return false;">페이스북으로 로그인하기</span></a></li>
+								class="btn-text">
+								페이스북으로 로그인하기</span></span></li>
 					</ul>
 				</div>
-				<div class="divider">
-					<span class="or-text">OR</span>
-				</div>
-				<div class="modal-header2">
-				<h4 id="loginModalLabel" class="modal-title text-center">이메일주소로 로그인하기</h4>
-				</div>
-				<div class="login-form-container">
-					<form class="login-form">
-						<div class="form-group email">
-							<i class="material-icons icon">&#xE0BE;</i> <label
-								class="sr-only" for="login-email">이메일주소</label> <input
-								id="login-email" name="login-email" type="email"
-								class="form-control login-email" placeholder="이메일주소">
-						</div>
-						<!--//form-group-->
-						<div class="form-group password">
-							<i class="material-icons icon">&#xE897;</i> <label
-								class="sr-only" for="login-password">비밀번호</label> <input
-								id="login-password" name="login-password" type="password"
-								class="form-control login-password" placeholder="비밀번호">
-							<div class="extra">
-								<div class="checkbox remember">
-									<label> <input type="checkbox">로그인 상태 유지</label>
-								</div>
-								<!--//check-box-->
-								<div class="forgotten-password">
-									<a href="#" id="resetpass-link" data-toggle="modal"
-										data-target="#resetpass-modal">비밀번호 찾기</a>
-								</div>
-							</div>
-							<!--//extra-->
-						</div>
-						<!--//form-group-->
-						<button type="submit" class="btn btn-cta btn-block btn-primary">로그인 하기</button>
-					</form>
-				</div>
+<!-- 				<div class="divider"> -->
+<!-- 					<span class="or-text">OR</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-header2"> -->
+<!-- 				<h4 id="loginModalLabel" class="modal-title text-center">이메일주소로 로그인하기</h4> -->
+<!-- 				</div> -->
+<!-- 				<div class="login-form-container"> -->
+<!-- 					<form class="login-form"> -->
+<!-- 						<div class="form-group email"> -->
+<!-- 							<i class="material-icons icon">&#xE0BE;</i> <label -->
+<!-- 								class="sr-only" for="login-email">이메일주소</label> <input -->
+<!-- 								id="login-email" name="login-email" type="email" -->
+<!-- 								class="form-control login-email" placeholder="이메일주소"> -->
+<!-- 						</div> -->
+<!-- 						//form-group -->
+<!-- 						<div class="form-group password"> -->
+<!-- 							<i class="material-icons icon">&#xE897;</i> <label -->
+<!-- 								class="sr-only" for="login-password">비밀번호</label> <input -->
+<!-- 								id="login-password" name="login-password" type="password" -->
+<!-- 								class="form-control login-password" placeholder="비밀번호"> -->
+<!-- 							<div class="extra"> -->
+<!-- 								<div class="checkbox remember"> -->
+<!-- 									<label> <input type="checkbox">로그인 상태 유지</label> -->
+<!-- 								</div> -->
+<!-- 								//check-box -->
+<!-- 								<div class="forgotten-password"> -->
+<!-- 									<a href="#" id="resetpass-link" data-toggle="modal" -->
+<!-- 										data-target="#resetpass-modal">비밀번호 찾기</a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							//extra -->
+<!-- 						</div> -->
+<!-- 						//form-group -->
+<!-- 						<button type="submit" class="btn btn-cta btn-block btn-primary">로그인 하기</button> -->
+<!-- 					</form> -->
+<!-- 				</div> -->
 				<!--//login-form-container-->
 
-				<div class="option-container">
-					<div class="lead-text">계정이 없으신가요?</div>
-					<a class="signup-link btn btn-ghost-alt" id="signup-link" href="#">회원가입</a>
-				</div>
+<!-- 				<div class="option-container"> -->
+<!-- 					<div class="lead-text">계정이 없으신가요?</div> -->
+<!-- 					<a class="signup-link btn btn-ghost-alt" id="signup-link" href="#">회원가입</a> -->
+<!-- 				</div> -->
 				<!--//option-container-->
 			</div>
 			<!--//modal-body-->
@@ -352,3 +353,116 @@
 <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
 <script
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
+	
+<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1074619385980281',
+	      version    : 'v2.8',
+	      
+	    	  status: true, // check login status
+              cookie: true, // enable cookies to allow the server to access thesession
+              xfbml: true  // parseXFBML
+	    });
+	    
+	    
+	    
+	    //추가의 이닛 옵션들은 여기서 
+	    FB.getLoginStatus(function(response) {
+	    	 
+	    	if (response.status === 'connected') {
+			    // the user is logged in and has authenticated your
+			    // app, and response.authResponse supplies
+			    // the user's ID, a valid access token, a signed
+			    // request, and the time the access token 
+			    // and signed request each expire
+			    $( "#LoginBtn" ).css( "display", "none" );
+			    $( "#SignupBtn" ).css( "display", "none" );
+			    $( "#UserInfo" ).css( "display", "block" );
+			    $( "#userPic" ).css( "display", "block" );
+			    var uid = response.authResponse.userID;
+			    var accessToken = response.authResponse.accessToken;
+			    
+			  } else if (response.status === 'not_authorized') {
+			    // the user is logged in to Facebook, 
+			    // but has not authenticated your app
+				    $( "#LoginBtn" ).css( "display", "block" );
+				    $( "#SignupBtn" ).css( "display", "block" );
+				    $( "#UserInfo" ).css( "display", "none" );
+				    $( "#userPic" ).css( "display", "none" );
+				    
+			  } else {
+			    // the user isn't logged in to Facebook.
+				    $( "#LoginBtn" ).css( "display", "block" );
+				    $( "#SignupBtn" ).css( "display", "block" );
+				    $( "#UserInfo" ).css( "display", "none" );
+				    $( "#userPic" ).css( "display", "none" );
+				    
+			  }
+			 }, true);   
+	  };
+	
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	  
+	  function fbLogin(){
+	  FB.login(function(response) {
+		    if (response.authResponse) {
+		     FB.api('/me', {fields: 'id, first_name, last_name'}, function(response) {
+		    	// Save data to sessionStorage
+		       window.sessionStorage.setItem('userName', response.first_name);
+		       window.sessionStorage.setItem('uid', response.id);
+		    		
+		       location.reload();
+		     });
+		    } else {
+		     console.log('User cancelled login or did not fully authorize.');
+		     alert("페이스북 로그인 실패.");
+		     location.reload();
+		    }
+		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
+	  }
+	  
+	  function fbLogout(){
+		  FB.logout(function(response) {
+			   // Person is now logged out
+			   		$( "#LoginBtn" ).css( "display", "block" );
+				    $( "#SignupBtn" ).css( "display", "block" );
+				    $( "#UserInfo" ).css( "display", "none" );
+				    $( "#userPic" ).css( "display", "none" );
+				    window.sessionStorage.clear();
+			   window.location.reload();
+			});
+	  }
+	  
+	  
+	  function fbPost(){
+	    	FB.getLoginStatus(function(response) {
+		    	 
+		    	if (response.status === 'connected') {
+		    		var body = 'Reading JS SDK documentation!';
+					  FB.api('/me/feed', 'post', { message: body }, function(response) {
+					    if (!response || response.error) {
+					      alert('Error occured');
+					    } else {
+					      alert('Post ID: ' + response.id);
+					    }
+					  });    		
+		    	
+		    		
+		    	} else if (response.status === 'not_authorized') {
+				    
+		    	} else {
+		    		}
+		    	}, true); 
+	    }
+	  $("#userName").text(window.sessionStorage.getItem('userName'));
+	  $("#userPic").attr('src', 'http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small');
+	  
+
+	</script>

@@ -90,9 +90,9 @@
                                 <div class="item-content-inner">
                                     <h3 class="item-title"><a href="blog-single">${var.title }</a></h3>
                                     <div class="item-meta" >${var.createdBy}</div>                                 
-                                    <div class="item-intro">${var.content }</div>
+<%--                                     <div class="item-intro">${var.content }</div> --%>
                                     <!--//item-intro-->
-                                    <a class="item-cta btn btn-secondary" href="blog-single">Read more</a>
+                                    <a class="item-cta btn btn-secondary" href="blog-single?num=${var.idfest_ufo_notice }">확인하기</a>
                                 </div><!--//item-content-inner-->
                             </div><!--//item-content-->
                         </div><!--//row-->

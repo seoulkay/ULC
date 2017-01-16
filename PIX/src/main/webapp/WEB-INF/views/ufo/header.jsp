@@ -1,85 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '1074619385980281',
-	      xfbml      : true,
-	      version    : 'v2.8'
-	    });
-	    //추가의 이닛 옵션들은 여기서 
-	    FB.getLoginStatus(function(response) {
-	    	 
-	    	if (response.status === 'connected') {
-			    // the user is logged in and has authenticated your
-			    // app, and response.authResponse supplies
-			    // the user's ID, a valid access token, a signed
-			    // request, and the time the access token 
-			    // and signed request each expire
-			    
-			    //alert('1');
-			    //alert(JSON.stringify(response))
-			    $( "#LoginBtn" ).css( "display", "none" );
-			    $( "#SignupBtn" ).css( "display", "none" );
-			    $( "#UserInfo" ).css( "display", "block" );
-			    //alert(response.name)
-			    
-			    var uid = response.authResponse.userID;
-			    var accessToken = response.authResponse.accessToken;
-			  } else if (response.status === 'not_authorized') {
-			    // the user is logged in to Facebook, 
-			    // but has not authenticated your app
-				//alert('2');
-			  	//alert(JSON.stringify(response))
-				    $( "#LoginBtn" ).css( "display", "block" );
-				    $( "#SignupBtn" ).css( "display", "block" );
-				    $( "#UserInfo" ).css( "display", "none" );
-			  } else {
-			    // the user isn't logged in to Facebook.
-			    //alert('3');
-			    //alert(JSON.stringify(response))
-				    $( "#LoginBtn" ).css( "display", "block" );
-				    $( "#SignupBtn" ).css( "display", "block" );
-				    $( "#UserInfo" ).css( "display", "none" );
-			  }
-			 }, true);   
-	  };
 	
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	  
-	  function fbLogin(){
-	  FB.login(function(response) {
-		    if (response.authResponse) {
-		     console.log('Welcome!  Fetching your information.... ');
-		     FB.api('/me', function(response) {
-		       console.log('Good to see you, ' + response.name + '.');
-		    	// Save data to sessionStorage
-		       //alert(response.name );
-		       sessionStorage.setItem('userName', response.name);
-		       location.reload();
-		     });
-		    } else {
-		     console.log('User cancelled login or did not fully authorize.');
-		     //alert("페이스북 로그인 실패.");
-		     location.reload();
-		    }
-		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
-	  }
-	  
-	  function fbLogout(){
-		  FB.logout(function(response) {
-			   // Person is now logged out
-			   location.reload();
-			});
-	  }
-	</script>
 <!-- ******HEADER****** -->
 <header id="header" class="header">
 	<div class="container">
@@ -107,14 +29,20 @@
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/features">축제정보</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/stories">서베이</a></li>
 					<!--//dropdown-->
-					<li class="nav-item"><a href="#" class="login-trigger" id="UserInfo"
-						data-toggle="modal" data-target="#" style="display:none" onClick="fbLogout()">Hello, <%= session.getAttribute( "userName" ) %></a></li>
+					<li class="nav-item nav-item-cta last" style="padding-top: 3em"><img id="userPic" class="img-responsive" style="height:20px"></img></li>
+						<li class="nav-item">
+						<a href="#" class="login-trigger" id="UserInfo"
+						data-toggle="modal" data-target="#" style="display:none;" onClick="fbLogout()">
+								<span id="userName"></span>
+						</a>
+					</li>
+				
 					<li class="nav-item"><a href="#" class="login-trigger" id="LoginBtn"
-						data-toggle="modal" data-target="#login-modal">Log in</a></li>
-					<li class="nav-item nav-item-cta last"><a class="btn-signup"
-						href="" data-toggle="modal" data-target="#signup-modal" id="SignupBtn" )>Sign
-							Up</a></li>
+						data-toggle="modal" data-target="#login-modal">Log in ${sessionScope.userName }</a></li>
+<!-- 					<li class="nav-item nav-item-cta last"><a class="btn-signup" -->
+<!-- 						href="" data-toggle="modal" data-target="#signup-modal" id="SignupBtn" )>Sign Up</a></li> -->
 <!-- 					<li><button onClick="fbLogout(); return false">LOGOUT</button></li> -->
+					
 				</ul>
 				<!--//nav-->
 			</div>
