@@ -48,8 +48,8 @@
             <h2 class="headline">${notice.title  }</h2>
             <div class="meta">
                 <div class="author">
-<!--                 어떠 사진이 올라가야 됩니다. -->
-                    <img class="author-profile" src="/image/${notice.photo_file}" alt="">
+<img class="author-profile" src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
                     <div class="author-name">${notice.createdBy}</div>
                 </div>
                 <!--//author-->
@@ -63,8 +63,9 @@
         
         <div class="post-container">
         							<div>
-<!--         					사진이 없으면 없다. 로 처리 하세요.-->
+									<c:if test="${notice.photo_file ne null}">
                                      	<img src="/image/${notice.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
+                                     </c:if>
                                      </div> 
             ${notice.content }
         </div><!--//post-container-->

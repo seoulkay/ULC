@@ -45,8 +45,7 @@
             <div class="intro">2017 강릉단오제 관련 공지사항 입니다.</div>
             <div class="actions">
                  <a class="scrollto-no-offset" href="#posts-promo-block">공지사항 보러가기</a>
-                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
         </div><!--//container-->
     </section><!--//heading-section-->
@@ -116,304 +115,140 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane tab-pane-1 active" id="tab-1">
+                <c:forEach var="var" items="${danoNotice}" varStatus="status">
                     <div class="post post-1">
-                        <h3 class="post-title"><a href="blog-single
-">제목 입니다.</a></h3>
+                        <h3 class="post-title"><a href="blog-single?num=${var.idfest_ufo_notice }">${var.title }</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
-                                    <div class="author-name">작성자</div>
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
+                                    <div class="author-name">${var.createdBy}</div>
                                 </div><!--//author-->
-                                <div class="time-stamp">날짜</div>
+                                <div class="time-stamp">${var.date }</div>
                                 <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
+                             	<c:choose>
+			                	<c:when test="${empty var.photo_file }">
+			                		<a href="blog-single?num=${var.idfest_ufo_notice }"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
+			                	</c:when>
+			                	<c:otherwise>
+			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
+			                	</c:otherwise>
+			                    </c:choose>
                             </div>
-                            <div class="post-intro">본문 내용 일부(4줄) 입니다. <a href="blog-single
-" class="readmore">더 보기</a>
+                            <div class="post-intro"> <a href="blog-single?num=${var.idfest_ufo_notice }" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
                     </div><!--//post-1-->
-                    <div class="post post-2">
-                        <h3 class="post-title"><a href="blog-single
-">Say Goodbye To The Nine To Five</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt=""> 
-                                    <div class="author-name">By Kate Peterson</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    3 days ago
-                                </div><!--//time-stamp-->
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb02.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Integer facilisis elementum lacus, nec commodo velit scelerisque eget. Donec accumsan tempus purus, sed cursus massa. Ut at semper nisl. Pellentesque sit amet urna a ex lobortis auctor ac ac elit. Etiam ut urna id dui pulvinar vestibulum eget ut erat. Fusce efficitur faucibus tellus, non lacinia nunc efficitur ut...<a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-2-->
-                    <div class="post post-3">
-                        <h3 class="post-title"><a href="blog-single
-">Setting Up Slack For Small Teams</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
-                                    <div class="author-name">By David Chung</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    1 week ago
-                                </div><!--//time-stamp-->
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb03.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-3-->
-                    <div class="post post-4">
-                        <h3 class="post-title"><a href="blog-single
-">How To Use Startup Kit</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
-                                    <div class="author-name">By Mike Lee</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    24 Sep
-                                </div><!--//time-stamp-->
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb04.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-4-->
+                    </c:forEach>
                     
-                    <div class="pagination-container text-center">
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#">Â«</a></li>
-                            <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">Â»</a></li>
-                        </ul><!--//pagination-->
-                    </div>
+                    
+<!--                     <div class="pagination-container text-center"> -->
+<!--                         <ul class="pagination"> -->
+<!--                             <li class="disabled"><a href="#">Â«</a></li> -->
+<!--                             <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li> -->
+<!--                             <li><a href="#">2</a></li> -->
+<!--                             <li><a href="#">3</a></li> -->
+<!--                             <li><a href="#">4</a></li> -->
+<!--                             <li><a href="#">5</a></li> -->
+<!--                             <li><a href="#">Â»</a></li> -->
+<!--                         </ul>//pagination -->
+<!--                     </div> -->
                     
                 </div><!--//tab-pane-1-->
                 
                 <div role="tabpanel" class="tab-pane tab-pane-2" id="tab-2">
-                    <div class="post post-4">
-                        <h3 class="post-title"><a href="blog-single
-">How To Use Startup Kit</a></h3>
+                    <c:forEach var="var" items="${mediaNotice}" varStatus="status">
+                    <div class="post post-1">
+                        <h3 class="post-title"><a href="blog-single?num=${var.idfest_ufo_notice }">${var.title }</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
-                                    <div class="author-name">By Mike Lee</div>
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
+                                    <div class="author-name">${var.createdBy}</div>
                                 </div><!--//author-->
-                                <div class="time-stamp">
-                                    1 day ago
-                                </div><!--//time-stamp-->
-                                
+                                <div class="time-stamp">${var.date }</div>
+                                <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-4.jpg" alt=""></a>
+                             	<c:choose>
+			                	<c:when test="${empty var.photo_file }">
+			                		<a href="blog-single?num=${var.idfest_ufo_notice }"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
+			                	</c:when>
+			                	<c:otherwise>
+			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
+			                	</c:otherwise>
+			                    </c:choose>
                             </div>
-                            <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
-" class="readmore">Read More</a>
+                            <div class="post-intro"> <a href="blog-single?num=${var.idfest_ufo_notice }" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
-                    </div><!--//post-4-->
-                    
-                    <div class="post post-5">
-                        <h3 class="post-title"><a href="blog-single
-">New Features in Startup Kit</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
-                                    <div class="author-name">By Jennifer Hughes</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    22 Aug
-                                </div><!--//time-stamp-->
-                                
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-5.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-5-->
-                    
-                    <div class="post post-6">
-                        <h3 class="post-title"><a href="blog-single
-">Lorem Ipsum Dolor Sit Amet</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
-                                    <div class="author-name">By James Doe</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    22 Aug
-                                </div><!--//time-stamp-->
-                                
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-6.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt sapien in ornare dapibus. Duis laoreet neque eu ullamcorper faucibus. Sed laoreet diam ut lectus congue, sodales euismod mi molestie... <a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-6-->
-                    
-                    <div class="pagination-container text-center">
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#">Â«</a></li>
-                            <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">Â»</a></li>
-                        </ul><!--//pagination-->
-                    </div>
-                    
-                    
+                    </div><!--//post-1-->
+                    </c:forEach>
                 </div><!--//tab-pane-2-->
                 
                 <div role="tabpanel" class="tab-pane tab-pane-3" id="tab-3">
-                    
-                    <div class="post post-3">
-                        <h3 class="post-title"><a href="blog-single
-">Setting Up Slack For Small Teams</a></h3>
+                    <c:forEach var="var" items="${newsLetterNotice}" varStatus="status">
+                    <div class="post post-1">
+                        <h3 class="post-title"><a href="blog-single?num=${var.idfest_ufo_notice }">${var.title }</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
-                                    <div class="author-name">By David Chung</div>
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
+                                    <div class="author-name">${var.createdBy}</div>
                                 </div><!--//author-->
-                                <div class="time-stamp">
-                                    1 week ago
-                                </div><!--//time-stamp-->
-                                
+                                <div class="time-stamp">${var.date }</div>
+                                <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-3.jpg" alt=""></a>
+                             	<c:choose>
+			                	<c:when test="${empty var.photo_file }">
+			                		<a href="blog-single?num=${var.idfest_ufo_notice }"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
+			                	</c:when>
+			                	<c:otherwise>
+			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
+			                	</c:otherwise>
+			                    </c:choose>
                             </div>
-                            <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
-" class="readmore">Read More</a>
+                            <div class="post-intro"> <a href="blog-single?num=${var.idfest_ufo_notice }" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
-                    </div><!--//post-3-->
-                    
-                    <div class="post post-7">
-                        <h3 class="post-title"><a href="blog-single
-">Curabitur Vitae Elit Sit Amet</a></h3>
-                        <div class="post-content">
-                            <div class="meta">
-                                <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
-                                    <div class="author-name">By Tim Wright</div>
-                                </div><!--//author-->
-                                <div class="time-stamp">
-                                    16 July
-                                </div><!--//time-stamp-->
-                                
-                            </div><!--//meta-->
-                            <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-7.jpg" alt=""></a>
-                            </div>
-                            <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
-" class="readmore">Read More</a>
-                            </div><!--//post-intro-->
-                        </div><!--//post-content-->
-                    </div><!--//post-7-->
-                    
+                    </div><!--//post-1-->
+                    </c:forEach>
                 </div><!--//tab-pane-3-->
                 
                 
                 
                 <div role="tabpanel" class="tab-pane tab-pane-4" id="tab-4">
                     
-                    <div class="post post-8">
-                        <h3 class="post-title"><a href="blog-single
-">UI Kit for Designers</a></h3>
+                    <c:forEach var="var" items="${faqNotice}" varStatus="status">
+                    <div class="post post-1">
+                        <h3 class="post-title"><a href="blog-single?num=${var.idfest_ufo_notice }">${var.title }</a></h3>
                         <div class="post-content">
                             <div class="meta">
                                 <div class="author">
-                                    <img class="author-profile" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin02.png" alt="">
-                                    <div class="author-name">By Betty Diaz</div>
+                                    <img class="author-profile" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/authors/dano_admin01.png" alt="">
+                                    <div class="author-name">${var.createdBy}</div>
                                 </div><!--//author-->
-                                <div class="time-stamp">
-                                    23 July
-                                </div><!--//time-stamp-->
-                                
+                                <div class="time-stamp">${var.date }</div>
+                                <!--//time-stamp-->
                             </div><!--//meta-->
                             <div class="post-thumb">
-                                <a href="blog-single
-"><img class="img-responsive" src=
-"${pageContext.request.contextPath}/resources/ufo/assets/images/blog/blog-post-thumb-8.jpg" alt=""></a>
+                             	<c:choose>
+			                	<c:when test="${empty var.photo_file }">
+			                		<a href="blog-single?num=${var.idfest_ufo_notice }"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
+			                	</c:when>
+			                	<c:otherwise>
+			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
+			                	</c:otherwise>
+			                    </c:choose>
                             </div>
-                            <div class="post-intro">
-                                Curabitur vitae elit sit amet risus imperdiet ornare vitae sed lacus. Etiam tellus felis, tempus a nisi ac, commodo consectetur nisl. In tempus commodo facilisis. Aenean at pretium purus. Pellentesque congue leo et lacus maximus, consequat sollicitudin... <a href="blog-single
-" class="readmore">Read More</a>
+                            <div class="post-intro"> <a href="blog-single?num=${var.idfest_ufo_notice }" class="readmore">더 보기</a>
                             </div><!--//post-intro-->
                         </div><!--//post-content-->
-                    </div><!--//post-8-->
+                    </div><!--//post-1-->
+                    </c:forEach>
                     
                 </div><!--//tab-pane-4-->
                 
@@ -428,8 +263,8 @@
             <form class="subscribe-form form-inline" novalidate="novalidate">
                 <div class="form-group">
                     <label class="sr-only" for="semail">Your Email</label>
-                    <input type="text" id="semail" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
-                    <button type="submit" class="btn btn-primary">구독하기</button>  
+                    <input type="text" id="semail"  type="email" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
+                    <button class="btn btn-primary" onClick="sendNewsLetterEmail();">구독하기</button>  
                 </div>                              
             </form>
         </div><!--//container-->

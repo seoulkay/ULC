@@ -13,6 +13,7 @@ import pix.gdc.com.vo.FestEvent;
 import pix.gdc.com.vo.FestEventInfo;
 import pix.gdc.com.vo.FestEventNotice;
 import pix.gdc.com.vo.FestLogin;
+import pix.gdc.com.vo.FestNewsLetterEmail;
 import pix.gdc.com.vo.FestOption;
 import pix.gdc.com.vo.FestQ1;
 import pix.gdc.com.vo.FestQ2;
@@ -21,6 +22,8 @@ import pix.gdc.com.vo.FestQ4;
 import pix.gdc.com.vo.FestQ5;
 import pix.gdc.com.vo.FestQ6;
 import pix.gdc.com.vo.FestQ7;
+import pix.gdc.com.vo.FestQuesListVO;
+import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.Notice_VO;
@@ -347,4 +350,26 @@ public class FestDAO extends SqlSessionDaoSupport{
 		//될꺼야 아마
 		return vo;
 	}
+	
+	//sns로그  찍기 
+	public int insertSnsLog(FestSnsLog vo){
+		return getSqlSession().insert("BasicMapper.insertSnsLog", vo);
+	}
+	
+	//누스레터 찍기
+	public int insertNewsLetterEmail(FestNewsLetterEmail vo){
+		return getSqlSession().insert("BasicMapper.insertNewsLetterEmail", vo);
+	}
+	
+	//세로운 질문option 가지고 오는 방법
+	public List<FestOption> selectUfoQuestionsOptionsNew(String para){
+		return getSqlSession().selectList("BasicMapper.selectUfoQuestionsOptionsNew", para);
+	}
+	
+	//세로운 질문 가지고 오는 방법
+	public List<FestQuesListVO> selectUfoQuestionsNew(String para){
+		return getSqlSession().selectList("BasicMapper.selectUfoQuestionsNew", para);
+	}
+	
+	
 }

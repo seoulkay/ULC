@@ -55,23 +55,25 @@
 			</div>
 			<div class="hero-slider-mask"></div>
 		</div>
-		<%-- <!--//hero-slider-wrapper-->
+		 <!--//hero-slider-wrapper-->
 		<div class="container promo-content">
-			<h2 class="headline">
-				The Perfect Design Framework <br>for Startup Businesses
+			<h2 class="headline center">
+				<button class="btn btn-social btn-facebook" onClick="fbLogin()"><i
+									class="fa fa-facebook" aria-hidden="true"></i><span
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button>
 			</h2>
-			<p class="tagline">Good design is good business, try our demo
-				today!</p>
-			<div class="actions">
-				<a class="btn btn-cta btn-primary" href="#" data-toggle="modal"
-					data-target="#signup-modal">Start Free Trial</a> <br
-					class="visible-xs-block"> <a href="#" class="play-trigger"
-					data-toggle="modal" data-target="#modal-video"><img
-					class="play-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon.svg"
-					alt="">See how it works</a>
-			</div>
-		</div> --%>
+<!-- 			<p class="tagline">Good design is good business, try our demo -->
+<!-- 				today!</p> -->
+<!-- 			<div class="actions"> -->
+<!-- 				<a class="btn btn-cta btn-primary" href="#" data-toggle="modal" -->
+<!-- 					data-target="#signup-modal">Start Free Trial</a> <br -->
+<!-- 					class="visible-xs-block"> <a href="#" class="play-trigger" -->
+<!-- 					data-toggle="modal" data-target="#modal-video"><img -->
+<!-- 					class="play-icon" -->
+<%-- 					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon.svg" --%>
+<!-- 					alt="">See how it works</a> -->
+<!-- 			</div> -->
+		</div> 
 		<!--//container-->
 	</section>
 	<!--//promo-section-->
@@ -349,17 +351,17 @@
 		<div class="section-intro">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 서베이 결과를 확인하세요!</div>
 		<div class="container">
 			<div class="stories-wrapper row">
-				<div class="item item-1 col-xs-12 col-md-6">
+			<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="3">
+				<div class="item item-${statusEle.count } col-xs-12 col-md-6">
 					<div class="item-inner text-center">
 						<div class="item-mask"></div>
 						<div class="item-content">
-							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
+							<h3 class="content-title">${ele.question }</h3>
 							<div class="content-desc">
 								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
-								<p>강릉에 놀러왔다가 우연히</p>
-								<p>단오제 행사에 참가자로 참여하게 되어서</p>
-								<p>강릉에 살아서</p>
+								<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+											<p>${status.count}. ${var.q_option }</p>
+							    </c:forEach>
 							</div>
 							<!-- <a class="item-link" href="#"></a> -->
 							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
@@ -368,72 +370,12 @@
 					</div>
 					<!--//item-inner-->
 				</div>
-				<!--//item-->
-				<div class="item item-2 col-xs-12 col-md-6">
-					<div class="item-inner text-center">
-						<div class="item-mask"></div>
-						<div class="item-content">
-							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
-							<div class="content-desc">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
-								<p>강릉에 놀러왔다가 우연히</p>
-								<p>단오제 행사에 참가자로 참여하게 되어서</p>
-								<p>강릉에 살아서</p>
-							</div>
-							<!-- <a class="item-link" href="#"></a> -->
-							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
-						</div>
-						<!--//item-content-->
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
-				<div class="item item-3 col-xs-12 col-md-6">
-					<div class="item-inner text-center">
-						<div class="item-mask"></div>
-						<div class="item-content">
-							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
-							<div class="content-desc">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
-								<p>강릉에 놀러왔다가 우연히</p>
-								<p>단오제 행사에 참가자로 참여하게 되어서</p>
-								<p>강릉에 살아서</p>
-							</div>
-							<!-- <a class="item-link" href="#"></a> -->
-							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
-						</div>
-						<!--//item-content-->
-					</div>
-					<!--//item-inner-->
-				</div>
-				<!--//item-->
-				<div class="item item-4 col-xs-12 col-md-6">
-					<div class="item-inner text-center">
-						<div class="item-mask"></div>
-						<div class="item-content">
-							<h3 class="content-title">강릉단오제를 방문한 이유는?</h3>
-							<div class="content-desc">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<p>단오제의 의미를 곱씹고 역사적 발자취를 따라서</p>
-								<p>강릉에 놀러왔다가 우연히</p>
-								<p>단오제 행사에 참가자로 참여하게 되어서</p>
-								<p>강릉에 살아서</p>
-							</div>
-							<!-- <a class="item-link" href="#"></a> -->
-							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
-						</div>
-						<!--//item-content-->
-					</div>
-					<!--//item-inner-->
-				</div>
+				</c:forEach>
 				<!--//item-->
 			</div>
 			<!--//row-->
 			<div class="action-wrapper text-center">
-				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/ufo/stories
-">서베이 결과 더보기</a>
+				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/ufo/stories">서베이 결과 더보기</a>
 			</div>
 		</div>
 		<!--//container-->
@@ -457,9 +399,9 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><a href="#" class="btn btn-social btn-facebook"><i
+							<li><button class="btn btn-social btn-facebook" onClick="fbLogin()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></a></li>
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
@@ -468,40 +410,39 @@
 						<!--//divider-->
 						<form class="signup-form">
 							<div class="row">
-								<div class="form-group col-xs-12 col-sm-6">
-									<label for="firstname" class="sr-only">First Name</label> <input
-										type="text" class="form-control" id="firstname"
-										name="firstname" placeholder="이름">
-								</div>
-								<!--//form-group-->
-								<div class="form-group col-xs-12 col-sm-6">
-									<label for="lastname" class="sr-only">Last Name</label> <input
-										type="text" class="form-control" id="lastname" name="lastname"
-										placeholder="성">
-								</div>
-								<!--//form-group-->
-								<div class="form-group col-xs-12 col-sm-6">
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="firstname" class="sr-only">First Name</label> <input -->
+<!-- 										type="text" class="form-control" id="firstname" -->
+<!-- 										name="firstname" placeholder="이름"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="lastname" class="sr-only">Last Name</label> <input -->
+<!-- 										type="text" class="form-control" id="lastname" name="lastname" -->
+<!-- 										placeholder="성"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
+								<div class="form-group col-xs-12 col-sm-12">
 									<label for="firstname" class="sr-only">Email Address</label> <input
-										type="email" class="form-control" id="emailaddress"
+										type="email" class="form-control" id="semail"
 										name="emailaddress" placeholder="이메일주소">
-								</div>
+								</div>     
 								<!--//form-group-->
-								<div class="form-group col-xs-12 col-sm-6">
-									<label for="password" class="sr-only">Password</label> <input
-										type="password" class="form-control" id="password"
-										name="password" placeholder="비밀번호">
-								</div>
-								<!--//form-group-->
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="password" class="sr-only">Password</label> <input -->
+<!-- 										type="password" class="form-control" id="password" -->
+<!-- 										name="password" placeholder="비밀번호"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
 
 							</div>
 							<!--//row-->
-							<div class="legal-note">By signing up, you agree to our
-								terms of services and privacy policy.</div>
+							<div class="legal-note">강릉단오제의 소식을 보내드립니다.</div>
 
-							<button type="submit" class="btn btn-primary btn-cta">회원가입</button>
-							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#"
-									data-toggle="modal" data-target="#login-modal">로그인하기</a>
-							</div>
+							<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
+<!-- 							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#" -->
+<!-- 									data-toggle="modal" data-target="#login-modal">로그인하기</a> -->
+<!-- 							</div> -->
 						</form>
 						<!--//form-->
 					</div>

@@ -81,7 +81,7 @@
 <%--                                         <input type="hidden" name="idfest_ufo_notice" value="${var.idfest_ufo_notice }"> --%>
 <!--                                         </form> -->
                                         	<c:if test="${var.photo_file ne null}">
-                                        		<img src="/PIX/resources/pix/img/${var.photo_file}.png" class="img-responsive" alt="" style="width:300px">
+                                        		<img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:300px">
                                         	</c:if>
 							               	<div><p>${var.content }</p></div>
                                         </div>

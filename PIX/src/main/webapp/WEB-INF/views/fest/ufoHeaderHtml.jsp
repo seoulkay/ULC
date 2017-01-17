@@ -35,4 +35,66 @@
 		<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
 		<!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
 		<script src="http://fb.me/JSXTransformer-0.12.0.js"></script>
+		
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pix/css/remodal.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pix/css/remodal-default-theme.css">
+  		<style>
+		    .remodal-bg.with-red-theme.remodal-is-opening,
+		    .remodal-bg.with-red-theme.remodal-is-opened {
+		      filter: none;
+		    }
+		
+		    .remodal-overlay.with-red-theme {
+		      background-color: #f44336;
+		    }
+		
+		    .remodal.with-red-theme {
+		      background: #fff;
+		    }
+		  </style>
+		  <script src="${pageContext.request.contextPath}/resources/pix/js/remodal.js"></script>
+
+		<!-- Events -->
+		<script>
+		  $(document).on('opening', '.remodal', function () {
+		    console.log('opening');
+		  });
+		
+		  $(document).on('opened', '.remodal', function () {
+		    console.log('opened');
+		  });
+		
+		  $(document).on('closing', '.remodal', function (e) {
+		    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+		  });
+		
+		  $(document).on('closed', '.remodal', function (e) {
+		    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+		  });
+		
+		  $(document).on('confirmation', '.remodal', function () {
+		    console.log('confirmation');
+		  });
+		
+		  $(document).on('cancellation', '.remodal', function () {
+		    console.log('cancellation');
+		  });
+		
+		//  Usage:
+		//  $(function() {
+		//
+		//    // In this case the initialization function returns the already created instance
+		//    var inst = $('[data-remodal-id=modal]').remodal();
+		//
+		//    inst.open();
+		//    inst.close();
+		//    inst.getState();
+		//    inst.destroy();
+		//  });
+		
+		  //  The second way to initialize:
+		  $('[data-remodal-id=modal2]').remodal({
+		    modifier: 'with-red-theme'
+		  });
+		</script>
 </head>

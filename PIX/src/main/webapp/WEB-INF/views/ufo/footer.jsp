@@ -56,13 +56,13 @@
 		<div class="divider"></div>
 		<div class="footer-bottom text-center">
 			<ul class="social-media list-inline">
-				<li><a href="http://www.twitter.com/"><i
+				<li><a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/ufo/index"><i
 						class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="http://www.facebook.com/"><i
+				<li><a href="https://www.facebook.com/sharer.php?u=www.ufo79.com/PIX/ufo/index"><i
 						class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="http://www.google.com/"><i
+				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/index"><i
 						class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-				<li><a href="http://www.instagram.com/"><i
+				<li><a href="http://line.me/R/msg/text/?www.ufo79.com/PIX/ufo/index"><i
 						class="fa fa-instagram" aria-hidden="true"></i></a></li>
 			</ul>
 
@@ -366,7 +366,6 @@
 	    });
 	    
 	    
-	    
 	    //추가의 이닛 옵션들은 여기서 
 	    FB.getLoginStatus(function(response) {
 	    	 
@@ -376,28 +375,20 @@
 			    // the user's ID, a valid access token, a signed
 			    // request, and the time the access token 
 			    // and signed request each expire
-			    $( "#LoginBtn" ).css( "display", "none" );
-			    $( "#SignupBtn" ).css( "display", "none" );
-			    $( "#UserInfo" ).css( "display", "block" );
-			    $( "#userPic" ).css( "display", "block" );
+				$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" class="login-trigger" id="UserInfo" data-toggle="modal" data-target="#" onClick="fbLogout()">'+window.sessionStorage.getItem('userName')+'</a></li>');
+				$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
 			    var uid = response.authResponse.userID;
 			    var accessToken = response.authResponse.accessToken;
-			    
+				 
 			  } else if (response.status === 'not_authorized') {
 			    // the user is logged in to Facebook, 
 			    // but has not authenticated your app
-				    $( "#LoginBtn" ).css( "display", "block" );
-				    $( "#SignupBtn" ).css( "display", "block" );
-				    $( "#UserInfo" ).css( "display", "none" );
-				    $( "#userPic" ).css( "display", "none" );
-				    
+				  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+
 			  } else {
 			    // the user isn't logged in to Facebook.
-				    $( "#LoginBtn" ).css( "display", "block" );
-				    $( "#SignupBtn" ).css( "display", "block" );
-				    $( "#UserInfo" ).css( "display", "none" );
-				    $( "#userPic" ).css( "display", "none" );
-				    
+				  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+
 			  }
 			 }, true);   
 	  };
@@ -413,11 +404,21 @@
 	  function fbLogin(){
 	  FB.login(function(response) {
 		    if (response.authResponse) {
-		     FB.api('/me', {fields: 'id, first_name, last_name'}, function(response) {
+		     FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
 		    	// Save data to sessionStorage
-		       window.sessionStorage.setItem('userName', response.first_name);
-		       window.sessionStorage.setItem('uid', response.id);
+		    	
+		    	var fn = response.first_name;
+		    	var ln = response.last_name;
+		    	var uid = response.id;
+		    	var email = response.email;
+		       window.sessionStorage.setItem('userName', fn);
+		       window.sessionStorage.setItem('uid', uid);
+		       window.sessionStorage.setItem('email', email);
 		    		
+		       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
+		       .done(function( data ) {
+		         alert( "Data Loaded: " + data );
+		       });
 		       location.reload();
 		     });
 		    } else {
@@ -431,10 +432,10 @@
 	  function fbLogout(){
 		  FB.logout(function(response) {
 			   // Person is now logged out
-			   		$( "#LoginBtn" ).css( "display", "block" );
-				    $( "#SignupBtn" ).css( "display", "block" );
-				    $( "#UserInfo" ).css( "display", "none" );
-				    $( "#userPic" ).css( "display", "none" );
+// 			   		$( "#LoginBtn" ).css( "visibility", "visible" );
+// 				    $( "#SignupBtn" ).css( "visibility", "visible" );
+// 				    $( "#UserInfo" ).css( "visibility", "hidden" );
+// 				    $( "#userPic" ).css( "visibility", "hidden" );
 				    window.sessionStorage.clear();
 			   window.location.reload();
 			});
@@ -445,7 +446,7 @@
 	    	FB.getLoginStatus(function(response) {
 		    	 
 		    	if (response.status === 'connected') {
-		    		var body = 'Reading JS SDK documentation!';
+		    		var body = 'Welcome to UFO79';
 					  FB.api('/me/feed', 'post', { message: body }, function(response) {
 					    if (!response || response.error) {
 					      alert('Error occured');
@@ -461,8 +462,16 @@
 		    		}
 		    	}, true); 
 	    }
-	  $("#userName").text(window.sessionStorage.getItem('userName'));
-	  $("#userPic").attr('src', 'http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small');
 	  
-
-	</script>
+	  
+	  function sendNewsLetterEmail(){
+		  var email = $("#semail").val();
+		  $.post( "newsletter", { news_letter_email: email})
+	       .done(function( data ) {
+	    	  //아래코드 잘 작동이 된다 성공하면 1 옴
+	         //alert( "Data Loaded: " + data );
+	       });
+		  alert("구독해주셔서 감사합니다.");
+	  }
+	  
+	  	</script>

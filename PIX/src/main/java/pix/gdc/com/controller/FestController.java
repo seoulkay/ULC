@@ -123,6 +123,9 @@ public class FestController {
 			return "redirect:festLoginForm";
 		}
 		
+		FestUfo ufo = dao.SelectUfoByNumber(idx);
+		model.addAttribute("ufo", ufo);
+		
 		String para  = dao.SelectUfoParaByNumber((Integer)session.getAttribute("currentEvent"));
 		List<String> questionList = dao.SelectUfoQuestionByPara(para);
 		List<FestOption> q1o = dao.SelectUfoOptionQ1ByPara(para);
@@ -130,9 +133,6 @@ public class FestController {
 		List<FestOption> q3o = dao.SelectUfoOptionQ3ByPara(para);
 		List<FestOption> q4o = dao.SelectUfoOptionQ4ByPara(para);
 		List<FestOption> q5o = dao.SelectUfoOptionQ5ByPara(para);
-		
-		FestUfo ufo = dao.SelectUfoByNumber(idx);
-		model.addAttribute("ufo", ufo);
 		
 		List<FestQuesListVO> quesVO = new ArrayList<FestQuesListVO>();
 		List<List<FestOption>> qoList = new ArrayList<List<FestOption>>();
@@ -283,9 +283,7 @@ public class FestController {
 	    return commonsMultipartResolver; 
 	}
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
 	@RequestMapping(value = "/FEV/UfoEventInput", method = RequestMethod.POST)
 	public @ResponseBody String uploadArticle(Locale locale, Model model, @RequestParam("file") MultipartFile file, @ModelAttribute("vo")FestEvent vo) {
 		if (!file.isEmpty()) {

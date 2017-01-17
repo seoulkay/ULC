@@ -497,4 +497,62 @@
 		para = #{para}  
 	</update>
 	
+	<insert id="insertSnsLog" parameterType="FestSnsLog">
+	    insert into fest_sns_log
+	    (
+	    uid						,
+		first_name				,
+		last_name				,
+		email					,
+		log_time					,
+		sns_return					,
+		sns_type				,
+		sns_ip
+		)
+		
+		values
+		
+		(
+		#{uid}					,
+		#{first_name}			,
+		#{last_name}			,
+		#{email}			,
+		now()				,
+		#{sns_return}		,
+		#{sns_type}			,
+		#{sns_ip}	
+		)    
+	</insert>
+	
+	<insert id="insertNewsLetterEmail" parameterType="FestNewsLetterEmail">
+	    insert into fest_news_letter
+	    (
+	    news_letter_email		,
+		news_letter_ip			,
+		news_letter_date			
+		)
+		
+		values
+		
+		(
+		#{news_letter_email}		,
+		#{news_letter_ip}			,
+		now()							
+		)    
+	</insert>
+	<select id="selectUfoQuestionsNew" parameterType="String" resultType="FestQuesListVO">
+		SELECT 
+			*
+		FROM 
+			fest_ufo_questions
+		WHERE 
+			para = #{param} and is_use = 'Y'
+		ORDER BY orderq asc
+	</select>
+	<select id="selectUfoQuestionsOptionsNew" parameterType="String" resultType="FestOption">
+		SELECT *
+		FROM fest_ufo_q
+		WHERE para = #{param} and is_use = 'Y'
+	</select>
+	
 </mapper>

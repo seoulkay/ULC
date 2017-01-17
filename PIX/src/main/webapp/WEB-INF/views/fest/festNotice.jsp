@@ -15,6 +15,7 @@
         
         
 <!--         <div class="divided-50"></div> -->
+<div class="remodal-bg">
         <section id="blog-wrapper" class="section-padding">
             <div class="container">
                 <div class="row">
@@ -70,13 +71,14 @@
 <!--                                         </a>  -->
 <!--                                         </div> -->
                                         <div class="col-sm-12">
-                                        <h3><a href="#" onClick="layer_open('layer2${var.idfest_ufo_notice }',${var.idfest_ufo_notice });return false;">${var.title }</a></h3>
-                                        
+                                        <h3><a href="#" onClick="layer_open('layer2${var.idfest_ufo_notice }',${var.idfest_ufo_notice });return false;" >${var.title }</a></h3>
+<%--                                          --%>
                                         <ul class="list-inline xs-post-info visible-xs">
                                             <li><i class="fa fa-user"></i> <a href="#">만든사람 {var.createdBy}</a></li>
                                             <li><i class="fa fa-tag"></i> <a href="#">태그</a></li>
                                             <li><i class="fa fa-comment"></i> <a href="#">3 Comments</a></li>
                                         </ul>
+                                       
                                         
 							            <div class="layer" id="layer${var.idfest_ufo_notice }">
 							                <div class="bg" id="bg${var.idfest_ufo_notice }"></div>
@@ -105,7 +107,6 @@
                                         		<img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:300px">
                                         	</c:if>
 							               	<div><p>${var.content }</p></div>
-							               	      
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +125,8 @@
                 </div>
             </div>
         </section><!--blog wrapper-->
-        
+  </div>    
+   										
         <jsp:include page="ufoFooter.jsp" flush="false">
         	<jsp:param name="param" value="value1"/>
         </jsp:include>

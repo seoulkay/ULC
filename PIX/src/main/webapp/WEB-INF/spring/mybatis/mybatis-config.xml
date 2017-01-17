@@ -27,6 +27,11 @@
 		<typeAlias type="pix.gdc.com.vo.FestUfoNotice" alias="FestUfoNotice"/>
 		<typeAlias type="pix.gdc.com.vo.FestUfo" alias="FestUfo"/>
 		<typeAlias type="pix.gdc.com.vo.Event_VO" alias="Event_VO"/>
+		<typeAlias type="pix.gdc.com.vo.FestSnsLog" alias="FestSnsLog"/>
+		<typeAlias type="pix.gdc.com.vo.FestNewsLetterEmail" alias="FestNewsLetterEmail"/>
+		<typeAlias type="pix.gdc.com.vo.FestQuesListVO" alias="FestQuesListVO"/>
+		<typeAlias type="pix.gdc.com.vo.FestOption" alias="FestOption"/>
+		
 	</typeAliases>
 	
 	<mappers>

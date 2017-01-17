@@ -29,20 +29,6 @@
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/features">축제정보</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/stories">서베이</a></li>
 					<!--//dropdown-->
-					<li class="nav-item nav-item-cta last" style="padding-top: 3em"><img id="userPic" class="img-responsive" style="height:20px"></img></li>
-						<li class="nav-item">
-						<a href="#" class="login-trigger" id="UserInfo"
-						data-toggle="modal" data-target="#" style="display:none;" onClick="fbLogout()">
-								<span id="userName"></span>
-						</a>
-					</li>
-				
-					<li class="nav-item"><a href="#" class="login-trigger" id="LoginBtn"
-						data-toggle="modal" data-target="#login-modal">Log in ${sessionScope.userName }</a></li>
-<!-- 					<li class="nav-item nav-item-cta last"><a class="btn-signup" -->
-<!-- 						href="" data-toggle="modal" data-target="#signup-modal" id="SignupBtn" )>Sign Up</a></li> -->
-<!-- 					<li><button onClick="fbLogout(); return false">LOGOUT</button></li> -->
-					
 				</ul>
 				<!--//nav-->
 			</div>

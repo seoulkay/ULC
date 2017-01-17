@@ -82,29 +82,25 @@
 		<div id="feature-block-1" class="feature-block feature-block-1">
 			<div class="row">
 				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">단오를 중심으로 8일간의 축제</h3>
+					<h3 class="feature-title">${info.title }</h3>
 					<div class="feature-desc">
-						<p>&nbsp;강릉에서 단오는 큰 명절이다.</p>
-						<p>&nbsp;단오를 중심으로 8일간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과
-							인간의 상생을 위한 휴먼드라마이다.</p>
-						<!-- <p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-							commodo ligula eget dolor. Lorem ipsum dolor sit amet, <a
-								href="https://wrapbootstrap.com/theme/admin-appkit-admin-theme-angularjs-WB051SCJ1"
-								target="_blank">Screenshot: Admin AppKit Theme</a> consectetuer
-							adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum
-							dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-							ligula eget dolor.
-						</p> -->
+						<p>${info.content }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
+					<c:if test="${info.photo_file ne null}">
+						<img class="img-responsive"
+							src="/image/${info.photo_file}"
+							alt="">
+					</c:if>
+					<c:if test="${info.photo_file eq null}">
 						<img class="img-responsive"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature01.jpg"
 							alt="">
+					</c:if>
 					</div>
 					<!--//figure-holder-->
 				</div>
@@ -116,16 +112,9 @@
 			<div class="row">
 				<div
 					class="feature-content col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0">
-					<h3 class="feature-title">강릉 단오제의 역사</h3>
+					<h3 class="feature-title">${hist.title }</h3>
 					<div class="feature-desc">
-						<p>&nbsp;문화적 침탈을 일삼았던 일제강점기에도 단오제는 열렸고, 중요한 기록을 남겼다. 한국전쟁 중에도
-							단오제는 맥을 이어왔다.</p>
-						<p>&nbsp;노인들과 무녀들은 시기적으로 어려울 때는 압박의 눈을 피해 중앙시장이나 남대천 변, 성남동
-							한구석에서 소규모로 나마 빼놓지 않고 단오제를 치뤘다고 증언한다.</p>
-						<p>&nbsp;이처럼 강릉단오제는 비교적 온전히 전승되고 있거나 고증을 통하여 원형 복원이 가능할 만큼 면면히
-							이어지고 있었다는 것이다.</p>
-						<p>&nbsp;이런 덕분에 강릉단오제는 1967년 중요무형문화제 13호로 등록되면서 우리민족 전통 민속축제의
-							원형성을 간직한 단오축제로서 고유의 가치를 획득하였다.</p>
+						<p>${hist.content }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
@@ -133,9 +122,17 @@
 				<div
 					class="feature-figure col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">
 					<div class="figure-holder">
+						
+						<c:if test="${hist.photo_file ne null}">
 						<img class="img-responsive"
+							src="/image/${hist.photo_file}"
+							alt="">
+						</c:if>
+						<c:if test="${hist.photo_file eq null}">
+							<img class="img-responsive"
 							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
 							alt="">
+						</c:if>
 					</div>
 					<!--//figure-holder-->
 				</div>
@@ -146,7 +143,7 @@
 		<div id="feature-block-3" class="feature-block feature-block-3">
 			<div class="row">
 				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">프로그램 일정</h3>
+					<h3 class="feature-title">${prog.title }</h3>
 					<div class="feature-desc">
 						<p>2016.6.5 (일) ~ 2016.6.12 (일)</p>
 					</div>
@@ -155,31 +152,33 @@
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
-						<table class="table table-striped table-bordered">
-							<tr>
-								<td><strong>6월 5일 (일)</strong></td>
-							</tr>
-							<tr>
-								<td>&nbsp;21:00 불꽃놀이 - 단오섬</td>
-							</tr>
-							<tr>
-								<td><strong>6월 6일 (월)</strong></td>
-							</tr>
-							<tr>
-								<td>&nbsp;10:00 묵념</td>
-							</tr>
-							<tr>
-								<td><strong>6월 7일 (화)</strong></td>
-							</tr>
-							<tr>
-								<td>
-									<p>&nbsp;16:30 프린지마당 - 대도호부관아</p>
-									<p>&nbsp;18:00 영신제 - 홍제동 여성황사</p>
-									<p>&nbsp;19:00 영신행차 - 홍제동 여성황사</p>
-									<p>&nbsp;19:00 신통대길 길놀이 - 대도호부관아</p>
-									<p>&nbsp;22:00 불꽃놀이 - 단오섬</p>
-							</tr>
-						</table>
+<!-- 					요테이블 잘 만들었으니 나중에 가져다 쓰세요  -->
+<!-- 						<table class="table table-striped table-bordered"> -->
+<!-- 							<tr> -->
+<!-- 								<td><strong>6월 5일 (일)</strong></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td>&nbsp;21:00 불꽃놀이 - 단오섬</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td><strong>6월 6일 (월)</strong></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td>&nbsp;10:00 묵념</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td><strong>6월 7일 (화)</strong></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td> -->
+<!-- 									<p>&nbsp;16:30 프린지마당 - 대도호부관아</p> -->
+<!-- 									<p>&nbsp;18:00 영신제 - 홍제동 여성황사</p> -->
+<!-- 									<p>&nbsp;19:00 영신행차 - 홍제동 여성황사</p> -->
+<!-- 									<p>&nbsp;19:00 신통대길 길놀이 - 대도호부관아</p> -->
+<!-- 									<p>&nbsp;22:00 불꽃놀이 - 단오섬</p> -->
+<!-- 							</tr> -->
+<!-- 						</table> -->
+						<p>${prog.content }</p>
 					</div>
 					<!--//figure-holder-->
 				</div>
