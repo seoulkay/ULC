@@ -81,15 +81,15 @@
 	<!--//page-nav-space-holder-->
 
 	<div class="stories container">
-
-		<div id="story-block-1" class="story-block story-block-1">
+<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
+		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
 
 			<div class="story-item">
 				<div class="row">
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb01.jpg"
+								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -98,11 +98,10 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 1</span>강릉단오제를 방문한 이유는?</h3>
-							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
-							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
-							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
-							<div class="answer">04 강릉에 살아서<span class="percentage">8%</span></div>
+							<h3 class="question"><span class="question-number">문항 ${ele.question }</span>${ele.question }</h3>
+							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+								<div class="answer">${status.count} ${var.q_option }<span class="percentage">53%</span></div>
+							</c:forEach>
 							<!--//desc-->
 						</div>
 						<!--//inner-->
@@ -123,7 +122,7 @@
 							<!--//profile-->
 
 							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위)단오제의 의미를 곱씻고 역사적 발자취를 따라서</blockquote>
+							<blockquote class="result">(결과1위) ${ele.questionOptions[0].q_option }</blockquote>
 							<!--//blockquote-->
 							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
 							<!--//source-->
@@ -140,7 +139,7 @@
 							<!--//profile-->
 
 							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위)강릉에 놀러왔다가 우연히</blockquote>
+							<blockquote class="result">(결과2위) ${ele.questionOptions[1].q_option }</blockquote>
 							<!--//blockquote-->
 							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
 							<!--//source-->
@@ -156,307 +155,8 @@
 			<!--//quotes-->
 		</div>
 		<!--//story-block-->
-
-		<div id="story-block-2" class="story-block story-block-2">
-
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb02.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 2</span>강릉단오제를 방문한 이유는?</h3>
-							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
-							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
-							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
-							<div class="answer">04 강릉에 살아서<span class="percentage">8%</span></div>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위)단오제의 의미를 곱씻고 역사적 발자취를 따라서</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위)강릉에 놀러왔다가 우연히</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
-		</div>
-		<!--//story-block-->
-
-
-		<div id="story-block-3" class="story-block story-block-3">
-
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb03.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 3</span>강릉단오제를 방문한 이유는?</h3>
-							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
-							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
-							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
-							<div class="answer">04 강릉에 살아서<span class="percentage">8%</span></div>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위)단오제의 의미를 곱씻고 역사적 발자취를 따라서</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위)강릉에 놀러왔다가 우연히</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
-		</div>
-		<!--//story-block-->
+</c:forEach>
 		
-		<div id="story-block-4" class="story-block story-block-4">
-
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb04.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 4</span>강릉단오제를 방문한 이유는?</h3>
-							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
-							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
-							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
-							<div class="answer">04 강릉에 살아서<span class="percentage">8%</span></div>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위)단오제의 의미를 곱씻고 역사적 발자취를 따라서</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위)강릉에 놀러왔다가 우연히</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
-		</div>
-		<!--//story-block-->
-		
-		<div id="story-block-5" class="story-block story-block-5">
-
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb05.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 5</span>강릉단오제를 방문한 이유는?</h3>
-							<div class="answer">01 단오제의 의미를 곱씹고 역사적 발자취를 따라서<span class="percentage">53%</span></div>
-							<div class="answer">02 강릉에 놀러왔다가 우연히<span class="percentage">22%</span></div>
-							<div class="answer">03 단오제 행사에 참가자로 참여하게 되어서<span class="percentage">17%</span></div>
-							<div class="answer">04 강릉에 살아서<span class="percentage">8%</span></div>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위)단오제의 의미를 곱씻고 역사적 발자취를 따라서</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위)강릉에 놀러왔다가 우연히</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
-		</div>
-		<!--//story-block-->
 
 	</div>
 	

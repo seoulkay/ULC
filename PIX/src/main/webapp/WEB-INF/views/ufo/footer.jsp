@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- ******FOOTER****** -->
 <footer class="footer">
 	<div class="container">
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="#">UFO79.com</a>
+					<div class="col-title"><a href="#remodal_q1">UFO79.com</a>
 					</div>
 				</div>
 			</div>
@@ -14,7 +15,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">이용약관</a>
+						<a href="#modal2">이용약관</a>
 					</div>
 				</div>
 			</div>
@@ -324,7 +325,86 @@
 		<!--//panel-inner-->
 	</div>
 	<!--//configure-panel--> --%>
+</div>
 
+<form id="surveyForm" action="surveySubmit" method="post" enctype="multipart/form-data">
+<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
+<div class="remodal" data-remodal-id="remodal_q${statusEle.count }" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+  <h2 id="modal1Title">${ele.question}</h2>
+  <p id="modal1Desc">
+    7문항 중 ${statusEle.count }문항<br>
+    <div class="progress">
+	  <div class="progress-bar progress-bar-success" style="width: ${statusEle.count * 100/ 7 }%">
+	  </div>
+	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
+	  </div>
+	</div>
+  
+	<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+		<div class="input-group">
+	      <span class="input-group-addon">
+	      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }">
+	      </span>
+	      <input type="text" class="form-control" aria-label="..." value="${var.q_option }" name="noUse" readonly="readonly">
+	    </div>
+    </c:forEach>
+ 	<br>
+  </p>
+  <a href="#remodal_q${statusEle.count + 1 }"><button class="remodal-cancel">다음</button></a>
+<!--   <button data-remodal-action="confirm" class="remodal-confirm">OK</button> -->
+</div>
+</c:forEach>
+<div class="remodal" data-remodal-id="remodal_q6" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+  <h2>${quesVO[5].question}</h2>
+  <p>
+  7문항 중 6문항<br>
+  	<div class="progress">
+	  <div class="progress-bar progress-bar-success" style="width: ${6 * 100/ 7 }%">
+	  </div>
+	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
+	  </div>
+	</div>
+  <input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
+  </p>
+  <a href="#remodal_q7"><button class="remodal-cancel">다음</button></a>
+</div>
+<div class="remodal" data-remodal-id="remodal_q7" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+  <h2>${quesVO[6].question}</h2>
+  <p>
+   7문항 중 7문항<br>
+ 	 <div class="progress">
+	  <div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+	  </div>
+	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+	  </div>
+	</div>
+<!--   	<input type="file" id="q7_a" name="q7_a" class="form-control"> -->
+  </p>
+  <button data-remodal-action="confirm" class="remodal-confirm" onclick="surveyPostSubmit()">제출</button>
+</div>
+<input type="hidden" id="uid_a" name="uid_a">
+<input type="hidden" id="first_name_a" name="first_name_a">
+<input type="hidden" id="last_name_a" name="last_name_a">
+<input type="hidden" id="email_a" name="email_a">
+<input type="hidden" id="sns_type_a" name="sns_type_a">
+<input type="hidden" id="access_token_a" name="access_token_a">
+</form>
+
+
+
+<div data-remodal-id="modal2" role="dialog" aria-labelledby="modal2Title" aria-describedby="modal2Desc">
+  <div>
+    <h2 id="modal2Title">Another one window</h2>
+    <p id="modal2Desc">
+      Hello!
+    </p>
+  </div>
+  <br>
+  <button data-remodal-action="confirm" class="remodal-confirm">Hello!</button>
+</div>
 <!-- Javascript -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
@@ -354,6 +434,67 @@
 <script
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
 	
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/remodal.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/remodal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/remodal-default-theme.css">
+<script>
+  $(document).on('opening', '.remodal', function () {
+    console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+  });
+
+//  Usage:
+//  $(function() {
+//
+//    // In this case the initialization function returns the already created instance
+//    var inst = $('[data-remodal-id=modal]').remodal();
+//
+//    inst.open();
+//    inst.close();
+//    inst.getState();
+//    inst.destroy();
+//  });
+
+  //  The second way to initialize:
+  $('[data-remodal-id=modal2]').remodal({
+    modifier: 'with-red-theme'
+  });
+</script>
+
+<style>
+    .remodal-bg.with-red-theme.remodal-is-opening,
+    .remodal-bg.with-red-theme.remodal-is-opened {
+      filter: none;
+    }
+
+    .remodal-overlay.with-red-theme {
+      background-color: #f44336;
+    }
+
+    .remodal.with-red-theme {
+      background: #fff;
+    }
+</style>
+	
 <script>
 	  window.fbAsyncInit = function() {
 	    FB.init({
@@ -379,6 +520,8 @@
 				$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
 			    var uid = response.authResponse.userID;
 			    var accessToken = response.authResponse.accessToken;
+			    window.sessionStorage.setItem("accessToken", accessToken);
+			    //alert(accessToken);
 				 
 			  } else if (response.status === 'not_authorized') {
 			    // the user is logged in to Facebook, 
@@ -411,13 +554,17 @@
 		    	var ln = response.last_name;
 		    	var uid = response.id;
 		    	var email = response.email;
+		    	
 		       window.sessionStorage.setItem('userName', fn);
 		       window.sessionStorage.setItem('uid', uid);
 		       window.sessionStorage.setItem('email', email);
+		       window.sessionStorage.setItem('first_name', fn);
+		       window.sessionStorage.setItem('last_name', ln);
+		       
 		    		
 		       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
 		       .done(function( data ) {
-		         alert( "Data Loaded: " + data );
+		         //alert( "Data Loaded: " + data );
 		       });
 		       location.reload();
 		     });
@@ -429,13 +576,37 @@
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
 	  }
 	  
+	  function surveyPostByFb(){
+		  FB.getLoginStatus(function(response) {
+		  if (response.status === 'connected') {
+			  $( "#fisrt_name_a" ).val(window.sessionStorage.getItem('first_name'));
+			  $( "#last_name_a" ).val(window.sessionStorage.getItem('last_name'));
+			  $( "#uid_a" ).val(window.sessionStorage.getItem('uid'));
+			  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
+			  $( "#sns_type_a" ).val("fb");
+			  
+			  location.href = "#remodal_q1";
+				 
+			  } else if (response.status === 'not_authorized') {
+				  fbLogin();
+				  location.href = "#remodal_q1";
+			  } else {
+				  fbLogin();
+				  location.href = "#remodal_q1";
+
+			  }
+		  }, true);
+	  }
+	  
+	  function surveyPostSubmit(){
+		  alert("감사합니다.");
+		  $("#surveyForm").submit();
+	  }
+	  
+	  
 	  function fbLogout(){
 		  FB.logout(function(response) {
 			   // Person is now logged out
-// 			   		$( "#LoginBtn" ).css( "visibility", "visible" );
-// 				    $( "#SignupBtn" ).css( "visibility", "visible" );
-// 				    $( "#UserInfo" ).css( "visibility", "hidden" );
-// 				    $( "#userPic" ).css( "visibility", "hidden" );
 				    window.sessionStorage.clear();
 			   window.location.reload();
 			});

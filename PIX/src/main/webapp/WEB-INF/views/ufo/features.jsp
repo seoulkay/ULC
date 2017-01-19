@@ -152,32 +152,6 @@
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
-<!-- 					요테이블 잘 만들었으니 나중에 가져다 쓰세요  -->
-<!-- 						<table class="table table-striped table-bordered"> -->
-<!-- 							<tr> -->
-<!-- 								<td><strong>6월 5일 (일)</strong></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>&nbsp;21:00 불꽃놀이 - 단오섬</td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td><strong>6월 6일 (월)</strong></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>&nbsp;10:00 묵념</td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td><strong>6월 7일 (화)</strong></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td> -->
-<!-- 									<p>&nbsp;16:30 프린지마당 - 대도호부관아</p> -->
-<!-- 									<p>&nbsp;18:00 영신제 - 홍제동 여성황사</p> -->
-<!-- 									<p>&nbsp;19:00 영신행차 - 홍제동 여성황사</p> -->
-<!-- 									<p>&nbsp;19:00 신통대길 길놀이 - 대도호부관아</p> -->
-<!-- 									<p>&nbsp;22:00 불꽃놀이 - 단오섬</p> -->
-<!-- 							</tr> -->
-<!-- 						</table> -->
 						<p>${prog.content }</p>
 					</div>
 					<!--//figure-holder-->

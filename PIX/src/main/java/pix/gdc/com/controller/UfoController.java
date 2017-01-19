@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import pix.gdc.com.dao.FestDAO;
+import pix.gdc.com.service.RestService;
+import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestNewsLetterEmail;
 import pix.gdc.com.vo.FestOption;
 import pix.gdc.com.vo.FestQuesListVO;
@@ -31,6 +35,8 @@ public class UfoController {
 	public String para = "dano";
 	public int eventIdx = 1;
 	
+	@Autowired
+	RestService restService;
 	@Autowired
 	FestDAO dao;
 	
@@ -142,7 +148,19 @@ public class UfoController {
 		return "ufo/pricing";
 	}
 	@RequestMapping(value = "ufo/stories", method = RequestMethod.GET)
-	public String stories(){
+	public String stories(Model model){
+		dao.selectUfoAnserByPara(para);
+		//퍼센트 계산해 todo
+		
+		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
+		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
+		
+		for(FestOption ele : ol){
+			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+		}
+			
+		model.addAttribute("quesVO", ql);
+		
 		return "ufo/stories";
 	}
 	@RequestMapping(value = "ufo/story-single", method = RequestMethod.GET)
@@ -164,6 +182,44 @@ public class UfoController {
 		vo.setNews_letter_ip(request.getRemoteAddr());
 		return dao.insertNewsLetterEmail(vo);
 	}
+	// 서베이 받기.
+	@RequestMapping(value = "ufo/surveySubmit", method = RequestMethod.POST)
+	public String surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request){
+		
+		//FestAnswerVO vo = new FestAnswerVO();
+		
+		vo.setIp_log(request.getRemoteAddr());
+		vo.setPara(para);
+		
+//		if (!file.isEmpty()) {
+//            try {
+//                String[] fileInfo = restService.writeFileToServer(file);
+//                
+//                vo.setQ7_a(fileInfo[0]);
+//                vo.setPic_lat(fileInfo[1]);
+//                vo.setPic_lon(fileInfo[2]);
+//                
+//                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at ANSWER : "+para);
+//                
+//            } catch (Exception e) {
+//            	System.out.println("You failed to upload => " + e.getMessage() );
+//            }
+//        } else {
+//        	System.out.println("You failed to upload because the file was empty");
+//        	
+//        }
+		
+		dao.insertUfoAnswer(vo);
+		
+		return "redirect:index";
+	}
 	
+	//To-do 파일 업로드 및 폼받아줘야 됨!
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+	    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(); 
+	    // set any fields
+	    return commonsMultipartResolver; 
+	}
 
 }

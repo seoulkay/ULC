@@ -452,7 +452,6 @@ public class FestController {
     		dao.UpdateInfoByVo(vo);
         }
 		
-		
 		return "redirect:festInfo";
 	}
 	

@@ -554,5 +554,55 @@
 		FROM fest_ufo_q
 		WHERE para = #{param} and is_use = 'Y'
 	</select>
+	<insert id="insertUfoAnswer" parameterType="FestAnswerVO">
+	INSERT INTO
+	fest_ufo_answer
+	(
+		q1_a			,
+		q2_a			,
+		q3_a			,
+		q4_a			,
+		q5_a			,
+		q6_a			,
+		q7_a			,
+		uid_a			,
+		first_name_a	,
+		last_name_a		,
+		email_a			,
+		sns_type_a		,
+		time_log		,
+		ip_log			,
+		access_token_a	,
+		para			,
+		pic_lat			,
+		pic_lon
+	)
+	VALUES
+	(
+		#{q1_a}			,
+		#{q2_a}			,
+		#{q3_a}			,
+		#{q4_a}			,
+		#{q5_a}			,
+		#{q6_a}			,
+		#{q7_a}			,
+		#{uid_a}		,
+		#{first_name_a}	,
+		#{last_name_a}		,
+		#{email_a}			,
+		#{sns_type_a}		,
+		now()		,
+		#{ip_log}			,
+		#{access_token_a}	,
+		#{para}			,
+		#{pic_lat}			,
+		#{pic_lon}
+	)
+	</insert>
+	<select id="selectUfoAnserByPara" parameterType="String" resultType="FestAnswerVO">
+		SELECT *
+		FROM fest_ufo_answer
+		WHERE para = #{param}
+	</select>
 	
 </mapper>

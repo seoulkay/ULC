@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pix.gdc.com.vo.Event_VO;
+import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestEvent;
 import pix.gdc.com.vo.FestEventInfo;
 import pix.gdc.com.vo.FestEventNotice;
@@ -369,6 +370,16 @@ public class FestDAO extends SqlSessionDaoSupport{
 	//세로운 질문 가지고 오는 방법
 	public List<FestQuesListVO> selectUfoQuestionsNew(String para){
 		return getSqlSession().selectList("BasicMapper.selectUfoQuestionsNew", para);
+	}
+	
+	//답변 이벤트별로 다가지고 오기
+	public List<FestAnswerVO> selectUfoAnserByPara(String para){
+		return  getSqlSession().selectList("BasicMapper.selectUfoAnserByPara", para);
+		
+	}
+	//답변 넣기!
+	public int insertUfoAnswer(FestAnswerVO para){
+		return getSqlSession().insert("BasicMapper.insertUfoAnswer", para);
 	}
 	
 	

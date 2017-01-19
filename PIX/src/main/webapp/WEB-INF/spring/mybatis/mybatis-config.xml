@@ -31,6 +31,7 @@
 		<typeAlias type="pix.gdc.com.vo.FestNewsLetterEmail" alias="FestNewsLetterEmail"/>
 		<typeAlias type="pix.gdc.com.vo.FestQuesListVO" alias="FestQuesListVO"/>
 		<typeAlias type="pix.gdc.com.vo.FestOption" alias="FestOption"/>
+		<typeAlias type="pix.gdc.com.vo.FestAnswerVO" alias="FestAnswerVO"/>
 		
 	</typeAliases>
 	

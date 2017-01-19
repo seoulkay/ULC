@@ -32,6 +32,7 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/flexslider.css">
+	
 
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"
@@ -58,7 +59,7 @@
 		 <!--//hero-slider-wrapper-->
 		<div class="container promo-content">
 			<h2 class="headline center">
-				<button class="btn btn-social btn-facebook" onClick="fbLogin()"><i
+				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button>
 			</h2>
@@ -399,7 +400,7 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-social btn-facebook" onClick="fbLogin()"><i
+							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 						</ul>
