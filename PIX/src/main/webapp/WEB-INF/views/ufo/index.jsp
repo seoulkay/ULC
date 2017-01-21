@@ -61,7 +61,10 @@
 			<h2 class="headline center">
 				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button>
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br>
+				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i
+				class="fa fa-facebook" aria-hidden="true"></i><span
+				class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button>
 			</h2>
 <!-- 			<p class="tagline">Good design is good business, try our demo -->
 <!-- 				today!</p> -->
