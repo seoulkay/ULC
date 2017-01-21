@@ -104,7 +104,7 @@
 						<div class="inner">
 							<h3 class="question"><span class="question-number">문항 ${statusEle.count }.</span>${ele.question }</h3>
 							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">53%</span></div>
+								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">${var.percent }%</span></div>
 							</c:forEach>
 							<!--//desc-->
 						</div>
@@ -121,7 +121,7 @@
 					<div class="quote-item col-sm-12 col-sm-6 text-center">
 						<div class="inner">
 							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
+								<div class="circle"><span class="circle-percentage">${ele.questionOptions[0].percent }%</span></div>
 							</div>
 							<!--//profile-->
 
@@ -138,7 +138,7 @@
 					<div class="quote-item col-sm-12 col-sm-6 text-center">
 						<div class="inner">
 							<div class="profile">
-								<div class="circle"><span class="circle-percentage">53%</span></div>
+								<div class="circle"><span class="circle-percentage">${ele.questionOptions[1].percent }%</span></div>
 							</div>
 							<!--//profile-->
 

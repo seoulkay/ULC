@@ -1,6 +1,8 @@
 package pix.gdc.com.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -150,16 +152,48 @@ public class UfoController {
 	}
 	@RequestMapping(value = "ufo/stories", method = RequestMethod.GET)
 	public String stories(Model model){
-		dao.selectUfoAnserByPara(para);
+		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
 		//퍼센트 계산해 todo
+		
+		int length = answer.size();
+		int[][] points = new int[5][4];
+		
+		for(FestAnswerVO ele : answer){
+			points[0][ele.getQ1_a()-1]++;
+			points[1][ele.getQ2_a()-1]++;
+			points[2][ele.getQ3_a()-1]++;
+			points[3][ele.getQ4_a()-1]++;
+			points[4][ele.getQ5_a()-1]++;
+		}
 		
 		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
 		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
 		
+		
 		for(FestOption ele : ol){
 			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
 		}
-			
+		
+		for(int i = 0; i < ql.size() - 2 ; i++){
+			for(int j = 0; j < 4; j++){
+				int point = points[i][j];
+				ql.get(i).getQuestionOptions().get(j).setPoint(point);
+				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
+			}
+		}
+		
+		//SORTING!!
+		for(int i = 0; i < ql.size() - 2; i++){
+			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
+				@Override
+				public int compare(FestOption a, FestOption b){
+					return Integer.compare(b.getPoint(), a.getPoint());
+				}
+			});
+		}
+		
+		
+		
 		model.addAttribute("quesVO", ql);
 		
 		return "ufo/stories";
@@ -191,6 +225,8 @@ public class UfoController {
 		
 		vo.setIp_log(request.getRemoteAddr());
 		vo.setPara(para);
+		
+		System.out.println(vo.getFirst_name_a());
 		
 		if (!file.isEmpty()) {
             try {

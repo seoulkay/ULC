@@ -260,13 +260,13 @@
         <div class="container text-center">
             <h3 class="block-heading">강릉단오제 뉴스레터 구독하기</h3>
             <div class="block-intro">강릉단오제의 소식을 보내드립니다.</div>
-            <form class="subscribe-form form-inline" novalidate="novalidate">
+            <div class="subscribe-form form-inline" novalidate="novalidate">
                 <div class="form-group">
                     <label class="sr-only" for="semail">Your Email</label>
                     <input type="text" id="semail"  type="email" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
                     <button class="btn btn-primary" onClick="sendNewsLetterEmail();">구독하기</button>  
                 </div>                              
-            </form>
+            </div>
         </div><!--//container-->
     </div><!--//blog-signup-block-->
 

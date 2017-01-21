@@ -2,7 +2,7 @@ package pix.gdc.com.vo;
 
 import java.sql.Date;
 
-public class FestOption {
+public class FestOption implements Comparable<FestOption>{
 	private int idfest_ufo_q;
 	private String para;
 	private int orderq;
@@ -10,6 +10,9 @@ public class FestOption {
 	private String is_use;
 	private Date q_time;
 	private int q_number;
+	
+	private int point;
+	private int percent; 
 	
 	
 	//밑에는 역시 안쓰게 될꺼 같지만 우선 둔다.
@@ -82,6 +85,24 @@ public class FestOption {
 	}
 	public void setQ_number(int q_number) {
 		this.q_number = q_number;
+	}
+	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public int getPercent() {
+		return percent;
+	}
+	public void setPercent(int percent) {
+		this.percent = percent;
+	}
+	
+	@Override
+	public int compareTo(FestOption o) {
+		return Integer.compare(this.getPoint(), o.getPoint());
 	}
 	
 	

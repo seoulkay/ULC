@@ -488,9 +488,7 @@
 	    
 	    //추가의 이닛 옵션들은 여기서 
 	    FB.getLoginStatus(function(response) {
-	    	
-	    	var fn = window.sessionStorage.setItem('first_name', fn);
-	    	
+	    	var fn = window.sessionStorage.getItem('first_name');
 	    		if (response.status === 'connected' && fn != null) {
 				    // the user is logged in and has authenticated your
 				    // app, and response.authResponse supplies
@@ -503,16 +501,13 @@
 				    var accessToken = response.authResponse.accessToken;
 				    window.sessionStorage.setItem("accessToken", accessToken);
 				    //alert(accessToken);
-					 
 				  } else if (response.status === 'not_authorized') {
 				    // the user is logged in to Facebook, 
 				    // but has not authenticated your app
 					  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
-
 				  } else {
 				    // the user isn't logged in to Facebook.
 					  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
-
 				  }
 				 }, true);   
 	  };
@@ -558,14 +553,39 @@
 	  }
 	  
 	  function surveyPostByFb(){
+		  var fn = window.sessionStorage.getItem('last_name')
+			FB.login(function(response) {
+		    if (response.authResponse) {
+		     FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
+		    	// Save data to sessionStorage
+		    	
+		    	var fn = response.first_name;
+		    	var ln = response.last_name;
+		    	var uid = response.id;
+		    	var email = response.email;
+		    	
+		       window.sessionStorage.setItem('userName', fn);
+		       window.sessionStorage.setItem('uid', uid);
+		       window.sessionStorage.setItem('email', email);
+		       window.sessionStorage.setItem('first_name', fn);
+		       window.sessionStorage.setItem('last_name', ln);
+		       
+		    		
+		       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
+		       .done(function( data ) {
+		         //alert( "Data Loaded: " + data );
+		       });
+// 		       location.reload();
+		     });
+		    } else {
+		     console.log('User cancelled login or did not fully authorize.');
+		     alert("페이스북 로그인 실패.");
+		     location.reload();
+		    }
+		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
+		  
 		  FB.getLoginStatus(function(response) {
 		  if (response.status === 'connected') {
-			  $( "#fisrt_name_a" ).val(window.sessionStorage.getItem('first_name'));
-			  $( "#last_name_a" ).val(window.sessionStorage.getItem('last_name'));
-			  $( "#uid_a" ).val(window.sessionStorage.getItem('uid'));
-			  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
-			  $( "#sns_type_a" ).val("fb");
-			  
 			  $('#modalTrigger').click();
 				 
 			  } else if (response.status === 'not_authorized') {
@@ -580,7 +600,6 @@
 	  }
 	  
 	  function surveyPostSubmit(){
-		  
 		  
 		  var q1 = $('input[name=q1_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
 		  var q2 = $('input[name=q2_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
@@ -601,7 +620,7 @@
 	  function fbLogout(){
 		  FB.logout(function(response) {
 			   // Person is now logged out
-				    window.sessionStorage.clear();
+			window.sessionStorage.clear();
 			   window.location.reload();
 			});
 	  }
@@ -618,6 +637,12 @@
 					    } else {
 					      //alert('Post ID: ' + response.id);
 					      $( "#sns_return" ).val(response.id);
+					      $( "#first_name_a" ).val(window.sessionStorage.getItem('first_name'));
+						  $( "#last_name_a" ).val(window.sessionStorage.getItem('last_name'));
+						  $( "#uid_a" ).val(window.sessionStorage.getItem('uid'));
+						  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
+						  $( "#sns_type_a" ).val("fb");
+						  
 					      $("#surveyForm").submit();
 					      alert("감사합니다.");
 					    }
