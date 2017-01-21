@@ -383,7 +383,7 @@
 	</div>
 <!--   	<input type="file" id="q7_a" name="q7_a" class="form-control"> -->
   </p>
-  <button data-remodal-action="confirm" class="remodal-confirm" onclick="surveyPostSubmit()">제출</button>
+  <button data-remodal-action="confirm" class="remodal-confirm">제출</button>
 </div>
 <input type="hidden" id="uid_a" name="uid_a">
 <input type="hidden" id="first_name_a" name="first_name_a">
@@ -455,6 +455,7 @@
   });
 
   $(document).on('confirmation', '.remodal', function () {
+	surveyPostSubmit();
     console.log('confirmation');
   });
 

@@ -88,8 +88,12 @@
 				<div class="row">
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
+<!-- 						우선 단오제용 -->
+<!-- 							<img class="img-responsive" -->
+<%-- 								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png" --%>
+<!-- 								alt=""> -->
 							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb0${statusEle.count }.jpg"
 								alt="">
 							<div class="figure-mask"></div>
 						</div>
@@ -98,9 +102,9 @@
 					<!--//figure-holder-->
 					<div class="content col-sm-12 col-sm-6 col-md-5">
 						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 ${ele.question }</span>${ele.question }</h3>
+							<h3 class="question"><span class="question-number">문항 ${statusEle.count }.</span>${ele.question }</h3>
 							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-								<div class="answer">${status.count} ${var.q_option }<span class="percentage">53%</span></div>
+								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">53%</span></div>
 							</c:forEach>
 							<!--//desc-->
 						</div>
