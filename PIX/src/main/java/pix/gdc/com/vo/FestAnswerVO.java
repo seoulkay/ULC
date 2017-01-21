@@ -23,6 +23,8 @@ public class FestAnswerVO {
 	private String access_token_a;
 	private String pic_lat;
 	private String pic_lon;
+	private String sns_msg;
+	private String sns_return;
 	
 	
 	public int getId() {
@@ -138,6 +140,18 @@ public class FestAnswerVO {
 	}
 	public void setPic_lon(String pic_lon) {
 		this.pic_lon = pic_lon;
+	}
+	public String getSns_msg() {
+		return sns_msg;
+	}
+	public void setSns_msg(String sns_msg) {
+		this.sns_msg = sns_msg;
+	}
+	public String getSns_return() {
+		return sns_return;
+	}
+	public void setSns_return(String sns_return) {
+		this.sns_return = sns_return;
 	}
 	
 }

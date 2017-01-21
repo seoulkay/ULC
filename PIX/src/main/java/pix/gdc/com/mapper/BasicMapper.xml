@@ -575,7 +575,9 @@
 		access_token_a	,
 		para			,
 		pic_lat			,
-		pic_lon
+		pic_lon			,
+		sns_msg			,
+		sns_return
 	)
 	VALUES
 	(
@@ -596,7 +598,9 @@
 		#{access_token_a}	,
 		#{para}			,
 		#{pic_lat}			,
-		#{pic_lon}
+		#{pic_lon}		,
+		#{sns_msg}		,
+		#{sns_return}
 	)
 	</insert>
 	<select id="selectUfoAnserByPara" parameterType="String" resultType="FestAnswerVO">
@@ -604,5 +608,20 @@
 		FROM fest_ufo_answer
 		WHERE para = #{param}
 	</select>
+	<select id="selectSnsPost" parameterType="FestAnswerVO" resultType="FestAnswerVO">
+	SELECT 
+		* 
+	FROM 
+		fest_ufo_answer 
+	WHERE
+		first_name_a = #{first_name_a}
+		and last_name_a = #{last_name_a}
+	ORDER BY 
+		id desc 
+	LIMIT
+		1
 	
+	
+	
+	</select>
 </mapper>

@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
+import pix.gdc.com.vo.Event_VO;
 import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestNewsLetterEmail;
 import pix.gdc.com.vo.FestOption;
@@ -184,30 +185,30 @@ public class UfoController {
 	}
 	// 서베이 받기.
 	@RequestMapping(value = "ufo/surveySubmit", method = RequestMethod.POST)
-	public String surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request){
+	public String surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request, @RequestParam("file") MultipartFile file){
 		
 		//FestAnswerVO vo = new FestAnswerVO();
 		
 		vo.setIp_log(request.getRemoteAddr());
 		vo.setPara(para);
 		
-//		if (!file.isEmpty()) {
-//            try {
-//                String[] fileInfo = restService.writeFileToServer(file);
-//                
-//                vo.setQ7_a(fileInfo[0]);
-//                vo.setPic_lat(fileInfo[1]);
-//                vo.setPic_lon(fileInfo[2]);
-//                
-//                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at ANSWER : "+para);
-//                
-//            } catch (Exception e) {
-//            	System.out.println("You failed to upload => " + e.getMessage() );
-//            }
-//        } else {
-//        	System.out.println("You failed to upload because the file was empty");
-//        	
-//        }
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+                
+                vo.setQ7_a(fileInfo[0]);
+                vo.setPic_lat(fileInfo[1]);
+                vo.setPic_lon(fileInfo[2]);
+                
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at ANSWER : "+para);
+                
+            } catch (Exception e) {
+            	System.out.println("You failed to upload => " + e.getMessage() );
+            }
+        } else {
+        	System.out.println("You failed to upload because the file was empty");
+        	
+        }
 		
 		dao.insertUfoAnswer(vo);
 		
@@ -220,6 +221,20 @@ public class UfoController {
 	    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(); 
 	    // set any fields
 	    return commonsMultipartResolver; 
+	}
+	
+	@RequestMapping(value = "ufo/post/{para}", method = {RequestMethod.GET, RequestMethod.POST})
+	public String readPost(@PathVariable("para")String para, Model model){
+		String[] name = para.split("_");
+		FestAnswerVO vo = new FestAnswerVO();
+		vo.setFirst_name_a(name[0]);
+		vo.setLast_name_a(name[1]);
+		
+		System.err.println(name[0]);
+		System.err.println(name[1]);
+		
+		model.addAttribute("vo", dao.selectSnsPost(vo));
+		return "ufo/sns-post";
 	}
 
 }

@@ -325,65 +325,111 @@
 		<!--//panel-inner-->
 	</div>
 	<!--//configure-panel--> --%>
+	
+	<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 
 <form id="surveyForm" action="surveySubmit" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
-<div class="remodal" data-remodal-id="remodal_q${statusEle.count }" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-  <h2 id="modal1Title">${ele.question}</h2>
-  <p id="modal1Desc">
-    7문항 중 ${statusEle.count }문항<br>
-    <div class="progress">
-	  <div class="progress-bar progress-bar-success" style="width: ${statusEle.count * 100/ 7 }%">
+<div class="modal fade" id="remodal_q${statusEle.count }" role="dialog">
+		<div class="modal-content">
+	      <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>${ele.question}</h4>
+	  	 </div>	
+  
+	   <div class="modal-body">
+	    7문항 중 ${statusEle.count }문항<br>
+	    <div class="progress">
+		  <div class="progress-bar progress-bar-success" style="width: ${statusEle.count * 100/ 7 }%">
+		  </div>
+		  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
+		  </div>
+		</div>
+	  
+		<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+			<div class="input-group">
+		      <span class="input-group-addon">
+		      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }" answer="${var.q_option }">
+		      </span>
+		      <input type="text" class="form-control" aria-label="..." value="${var.q_option }" name="noUse" readonly="readonly">
+		    </div>
+	    </c:forEach>
+	 	<br>
 	  </div>
-	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal">다음</button>
 	  </div>
 	</div>
-  
-	<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-		<div class="input-group">
-	      <span class="input-group-addon">
-	      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }">
-	      </span>
-	      <input type="text" class="form-control" aria-label="..." value="${var.q_option }" name="noUse" readonly="readonly">
-	    </div>
-    </c:forEach>
- 	<br>
-  </p>
-  <a href="#remodal_q${statusEle.count + 1 }"><button class="remodal-cancel">다음</button></a>
-<!--   <button data-remodal-action="confirm" class="remodal-confirm">OK</button> -->
 </div>
 </c:forEach>
-<div class="remodal" data-remodal-id="remodal_q6" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-  <h2>${quesVO[5].question}</h2>
-  <p>
-  7문항 중 6문항<br>
-  	<div class="progress">
-	  <div class="progress-bar progress-bar-success" style="width: ${6 * 100/ 7 }%">
-	  </div>
-	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
-	  </div>
+
+<div class="modal" id="remodal_q6" role="dialog">
+  <div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4 id="modal1Title">${quesVO[5].question}</h4>
+	   </div>	
+	   <div class="modal-body">
+  			7문항 중 6문항<br>
+  			<div class="progress">
+	  		<div class="progress-bar progress-bar-success" style="width: ${6 * 100/ 7 }%">
+	  		</div>
+	  		<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
+	  		</div>
+			</div>
+  			<input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
+  		</div>
+  		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal">다음</button>
+	  	</div>
 	</div>
-  <input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
-  </p>
-  <a href="#remodal_q7"><button class="remodal-cancel">다음</button></a>
 </div>
-<div class="remodal" data-remodal-id="remodal_q7" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-  <h2>${quesVO[6].question}</h2>
-  <p>
-   7문항 중 7문항<br>
- 	 <div class="progress">
-	  <div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
-	  </div>
-	  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
-	  </div>
+
+
+
+<div class="modal" id="remodal_q7" role="dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>${quesVO[6].question}</h4>
+	   </div>
+	   <div class="modal-body">
+   		7문항 중 7문항<br>
+	 	 	<div class="progress">
+		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+		  	</div>
+		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	</div>
+			</div>
+			  	<input type="file" id="q7_a" name="file" class="form-control">
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="surveyPostSubmit()">제출</button>
+	  	</div>
 	</div>
-<!--   	<input type="file" id="q7_a" name="q7_a" class="form-control"> -->
-  </p>
-  <button data-remodal-action="confirm" class="remodal-confirm">제출</button>
 </div>
 <input type="hidden" id="uid_a" name="uid_a">
 <input type="hidden" id="first_name_a" name="first_name_a">
@@ -391,20 +437,12 @@
 <input type="hidden" id="email_a" name="email_a">
 <input type="hidden" id="sns_type_a" name="sns_type_a">
 <input type="hidden" id="access_token_a" name="access_token_a">
+<input type="hidden" id="sns_msg" name="sns_msg">
+<input type="hidden" id="sns_return" name="sns_return">
 </form>
 
 
 
-<div data-remodal-id="modal2" role="dialog" aria-labelledby="modal2Title" aria-describedby="modal2Desc">
-  <div>
-    <h2 id="modal2Title">Another one window</h2>
-    <p id="modal2Desc">
-      Hello!
-    </p>
-  </div>
-  <br>
-  <button data-remodal-action="confirm" class="remodal-confirm">Hello!</button>
-</div>
 <!-- Javascript -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
@@ -433,68 +471,8 @@
 <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
 <script
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
-	
-<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/remodal.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/remodal.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/remodal-default-theme.css">
-<script>
-  $(document).on('opening', '.remodal', function () {
-    console.log('opening');
-  });
-
-  $(document).on('opened', '.remodal', function () {
-    console.log('opened');
-  });
-
-  $(document).on('closing', '.remodal', function (e) {
-    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
-  });
-
-  $(document).on('closed', '.remodal', function (e) {
-    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
-  });
-
-  $(document).on('confirmation', '.remodal', function () {
-	surveyPostSubmit();
-    console.log('confirmation');
-  });
-
-  $(document).on('cancellation', '.remodal', function () {
-    console.log('cancellation');
-  });
-
-//  Usage:
-//  $(function() {
-//
-//    // In this case the initialization function returns the already created instance
-//    var inst = $('[data-remodal-id=modal]').remodal();
-//
-//    inst.open();
-//    inst.close();
-//    inst.getState();
-//    inst.destroy();
-//  });
-
-  //  The second way to initialize:
-  $('[data-remodal-id=modal2]').remodal({
-    modifier: 'with-red-theme'
-  });
-</script>
-
-<style>
-    .remodal-bg.with-red-theme.remodal-is-opening,
-    .remodal-bg.with-red-theme.remodal-is-opened {
-      filter: none;
-    }
-
-    .remodal-overlay.with-red-theme {
-      background-color: #f44336;
-    }
-
-    .remodal.with-red-theme {
-      background: #fff;
-    }
-</style>
+<script
+	src="${pageContext.request.contextPath}/resources/ufo/assets/jquery.qrcode.min.js"></script>	
 	
 <script>
 	  window.fbAsyncInit = function() {
@@ -510,31 +488,33 @@
 	    
 	    //추가의 이닛 옵션들은 여기서 
 	    FB.getLoginStatus(function(response) {
-	    	 
-	    	if (response.status === 'connected') {
-			    // the user is logged in and has authenticated your
-			    // app, and response.authResponse supplies
-			    // the user's ID, a valid access token, a signed
-			    // request, and the time the access token 
-			    // and signed request each expire
-				$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" class="login-trigger" id="UserInfo" data-toggle="modal" data-target="#" onClick="fbLogout()">'+window.sessionStorage.getItem('userName')+'</a></li>');
-				$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
-			    var uid = response.authResponse.userID;
-			    var accessToken = response.authResponse.accessToken;
-			    window.sessionStorage.setItem("accessToken", accessToken);
-			    //alert(accessToken);
-				 
-			  } else if (response.status === 'not_authorized') {
-			    // the user is logged in to Facebook, 
-			    // but has not authenticated your app
-				  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+	    	
+	    	var fn = window.sessionStorage.setItem('first_name', fn);
+	    	
+	    		if (response.status === 'connected' && fn != null) {
+				    // the user is logged in and has authenticated your
+				    // app, and response.authResponse supplies
+				    // the user's ID, a valid access token, a signed
+				    // request, and the time the access token 
+				    // and signed request each expire
+					$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" class="login-trigger" id="UserInfo" data-toggle="modal" data-target="#" onClick="fbLogout()">'+window.sessionStorage.getItem('userName')+'</a></li>');
+					$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
+				    var uid = response.authResponse.userID;
+				    var accessToken = response.authResponse.accessToken;
+				    window.sessionStorage.setItem("accessToken", accessToken);
+				    //alert(accessToken);
+					 
+				  } else if (response.status === 'not_authorized') {
+				    // the user is logged in to Facebook, 
+				    // but has not authenticated your app
+					  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
 
-			  } else {
-			    // the user isn't logged in to Facebook.
-				  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+				  } else {
+				    // the user isn't logged in to Facebook.
+					  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
 
-			  }
-			 }, true);   
+				  }
+				 }, true);   
 	  };
 	
 	  (function(d, s, id){
@@ -586,22 +566,35 @@
 			  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
 			  $( "#sns_type_a" ).val("fb");
 			  
-			  location.href = "#remodal_q1";
+			  $('#modalTrigger').click();
 				 
 			  } else if (response.status === 'not_authorized') {
 				  fbLogin();
-				  location.href = "#remodal_q1";
+				  surveyPostByFb();
 			  } else {
 				  fbLogin();
-				  location.href = "#remodal_q1";
+				  surveyPostByFb();
 
 			  }
 		  }, true);
 	  }
 	  
 	  function surveyPostSubmit(){
-		  alert("감사합니다.");
-		  $("#surveyForm").submit();
+		  
+		  
+		  var q1 = $('input[name=q1_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
+		  var q2 = $('input[name=q2_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
+		  var q3 = $('input[name=q3_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
+		  var q4 = $('input[name=q4_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
+		  var q5 = $('input[name=q5_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
+		  var q6 = $('input[name=q6_a]', '#surveyForm').val();
+		  
+		  var fl = window.sessionStorage.getItem('first_name');
+		  var ln = window.sessionStorage.getItem('last_name');
+		  
+		  var msg = q6+" http://www.ufo79.com/PIX/ufo/post/"+fl+"_"+ln+" #"+q1+" #"+q2+" #"+q3+" #"+q4+" #"+q5;
+		  $( "#sns_msg" ).val(msg);
+		  fbPost(msg);
 	  }
 	  
 	  
@@ -614,23 +607,25 @@
 	  }
 	  
 	  
-	  function fbPost(){
+	  function fbPost(msg){
 	    	FB.getLoginStatus(function(response) {
 		    	 
 		    	if (response.status === 'connected') {
-		    		var body = 'Welcome to UFO79';
+		    		var body = msg;
 					  FB.api('/me/feed', 'post', { message: body }, function(response) {
 					    if (!response || response.error) {
-					      alert('Error occured');
+					      alert('페이스북 서버와 연결되지 않습니다.');
 					    } else {
-					      alert('Post ID: ' + response.id);
+					      //alert('Post ID: ' + response.id);
+					      $( "#sns_return" ).val(response.id);
+					      $("#surveyForm").submit();
+					      alert("감사합니다.");
 					    }
 					  });    		
-		    	
-		    		
 		    	} else if (response.status === 'not_authorized') {
-				    
+		    		alert('페이스북 로그인 되어 있지 않습니다.');
 		    	} else {
+		    		alert('연결에 문제가 있습니다.');
 		    		}
 		    	}, true); 
 	    }

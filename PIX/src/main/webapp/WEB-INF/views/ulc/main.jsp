@@ -115,8 +115,8 @@
                     </div>
                     
                     <div class="header-btn">
-                    	<a href="/PIX/ufo/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>단오제 마이크로 사이트</a>
-                        <a href="/PIX/FEV/" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>관리자 사이트</a>
+                    	<a href="www.ufo79.com/PIX/ufo/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>단오제 마이크로 사이트</a>
+                        <a href="www.ufo79.com/PIX/FEV/" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>관리자 사이트</a>
                     </div>
                     
                     <div class="header-img">
