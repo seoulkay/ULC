@@ -28,6 +28,7 @@
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/blog">공지사항</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/features">축제정보</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/stories">서베이</a></li>
+					<li class="nav-item"><a href="" data-toggle="modal" data-target="#stampRally" data-dismiss="modal">스탬프랠리</a></li>
 					<!--//dropdown-->
 				</ul>
 				<!--//nav-->

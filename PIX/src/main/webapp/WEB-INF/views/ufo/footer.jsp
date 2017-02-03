@@ -329,31 +329,12 @@
 	<!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
 
 <form id="surveyForm" action="surveySubmit" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 <div class="modal fade" id="remodal_q${statusEle.count }" role="dialog">
+	<div class="modal-dialog">
 		<div class="modal-content">
 	      <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -383,10 +364,13 @@
 	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal">다음</button>
 	  </div>
 	</div>
+	</div>
 </div>
 </c:forEach>
+	  
 
 <div class="modal" id="remodal_q6" role="dialog">
+<div class="modal-dialog">
   <div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -406,11 +390,13 @@
 	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal">다음</button>
 	  	</div>
 	</div>
+	</div>
 </div>
 
 
 
 <div class="modal" id="remodal_q7" role="dialog">
+	<div class="modal-dialog">
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -430,6 +416,7 @@
 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="surveyPostSubmit()">제출</button>
 	  	</div>
 	</div>
+	</div>
 </div>
 <input type="hidden" id="uid_a" name="uid_a">
 <input type="hidden" id="first_name_a" name="first_name_a">
@@ -439,6 +426,61 @@
 <input type="hidden" id="access_token_a" name="access_token_a">
 <input type="hidden" id="sns_msg" name="sns_msg">
 <input type="hidden" id="sns_return" name="sns_return">
+</form>
+<!-- 스템프  -->
+<form id="stampForm" action="stampSubmit" method="post" enctype="multipart/form-data">
+<div class="modal" id="stampRally" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>스탬프랠리</h4>
+	   </div>
+	   <div class="modal-body">
+	   		<div class="row">
+	   			<c:forEach var="ele" varStatus="statusEle" begin="0" end="8">
+	   			<div class="col-xs-12 col-md-4" >
+	   				<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal">
+	   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/customers/customer-1.jpg">
+	   				</a>
+	   			</div>
+	   			</c:forEach>
+	   		</div>
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+<c:forEach var="ele" varStatus="statusEle" begin="0" end="8">
+<div class="modal" id="stamp_${statusEle.count }" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>스탬프 미션 ${statusEle.count }번</h4>
+	   </div>
+	   <div class="modal-body">
+   		${statusEle.count }번 사진 : 아래와 같은 사진을 찍어주세요.<br>
+	 	 	<div class="progress">
+		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+		  	</div>
+		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	</div>
+			</div>
+				<div>
+	   				<img class="img-responsive"  src="${pageContext.request.contextPath}/resources/ufo/assets/images/customers/customer-1.jpg">
+	   			</div>
+			  	<input type="file" id="stamp_${statusEle.count }_a" name="file" class="form-control">
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+</c:forEach>
 </form>
 
 

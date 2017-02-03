@@ -246,6 +246,15 @@ public class UfoController {
         	
         }
 		
+		//이름에 띄어쓰기가 있으면 %20으로 바꾼다.
+		if(vo.getLast_name_a().contains(" ")){
+			vo.setLast_name_a(vo.getLast_name_a().replaceAll("\\s+", "%20"));
+			
+		}
+		if(vo.getFirst_name_a().contains(" ")){
+			vo.setFirst_name_a(vo.getFirst_name_a().replaceAll("\\s+", "%20"));
+		}
+		
 		dao.insertUfoAnswer(vo);
 		
 		return "redirect:index";
