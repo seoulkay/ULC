@@ -37,6 +37,12 @@
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
+
+<style>
+      #map {
+        height: 600px;
+      }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target="#page-nav">
@@ -98,117 +104,158 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
+<section id="support-section"
+		class="support-section section text-center">
+		<h2 class="section-title">행사장 찾아오는 길</h2>
+		<div class="section-intro">천년의 기다림, 세계인의 어울림! 인류무형문화유산 강릉단오제에 여러분을 초대합니다.</div>
+		<!-- <a class="btn btn-secondary" href="support
+">행사장 및 주차안내</a> -->
+		<div class="team-figure">
+<!-- 			<img class="img-responsive support-team" -->
+<%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG" --%>
+<!-- 				alt=""> -->
+				<div id="map"></div>
+				<script>
+				var neighborhoods = [
+                  {lat: 37.75, lng: 128.87},
+                  {lat: 37.85, lng: 128.80},
+                  {lat: 37.80, lng: 128.70},
+                  {lat: 37.75, lng: 128.90}
+                ];
 
-	<section id="overview-section" class="overview-section section">
-		<h2 class="section-title">축제영상 : 단오제 메이킹 필름</h2>
-		<div class="section-intro">지나간 축제가 아닌 지나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
-		<!--//section-intro-->
-		<div class="figures-wrapper">
-			<div class="container text-center">
-				<figure class="macbook-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_video.jpg"
-						alt="">
-				</figure>
-				<%-- <figure class="ipad-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/ipad-screen.png"
-						alt="">
-				</figure>
-				<figure class="iphone-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/iphone-screen.png"
-						alt="">
-				</figure> --%>
-				<a href="#" type="button" class="play-icon" data-toggle="modal"
-					data-target="#modal-video"><img
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon-md.svg"
-					alt=""></a>
-			</div> 
-			<!--//container-->
+				var contentString = '<div id="content">'+
+			      '<div id="siteNotice">'+
+			      '</div>'+
+			      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+			      '<div id="bodyContent">'+
+			      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+			      'sandstone rock formation in the southern part of the '+
+			      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+			      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+			      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+			      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+			      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+			      'Aboriginal people of the area. It has many springs, waterholes, '+
+			      'rock caves and ancient paintings. Uluru is listed as a World '+
+			      'Heritage Site.</p>'+
+			      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+			      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+			      '(last visited June 22, 2009).</p>'+
+			      '</div>'+
+			      '</div>';
+			  
+              var markers = [];
+			var map;
+			function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			    zoom: 11,
+			    //center: {lat: 37.75, lng: 128.87}
+			    center: {lat: 40.71, lng: -74.00}
+			  });
+			 var infoWindow = new google.maps.InfoWindow({map: map});
+
+			// Try HTML5 geolocation.
+	        if (navigator.geolocation) {
+	          navigator.geolocation.getCurrentPosition(function(position) {
+	            var pos = {
+	              lat: position.coords.latitude,
+	              lng: position.coords.longitude
+	            };
+
+	            infoWindow.setPosition(pos);
+	            infoWindow.setContent('지금 여기 있으십니다!');
+	            map.setCenter(pos);
+	            drop();
+	          }, function() {
+	            handleLocationError(true, infoWindow, map.getCenter());
+	          });
+	        } else {
+	          // Browser doesn't support Geolocation
+	          handleLocationError(false, infoWindow, map.getCenter());
+	        }
+	       
+			}
+			
+			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		        infoWindow.setPosition(pos);
+		        infoWindow.setContent(browserHasGeolocation ?
+		                              'Error: The Geolocation service failed.' :
+		                              'Error: Your browser doesn\'t support geolocation.');
+		    }
+			
+			function drop() {
+			  clearMarkers();
+			  for (var i = 0; i < neighborhoods.length; i++) {
+			    addMarkerWithTimeout(neighborhoods[i], i * 200);
+			  }
+			}
+
+			function addMarkerWithTimeout(position, timeout) {
+			  window.setTimeout(function() {
+			  var infowindow = new google.maps.InfoWindow({
+				    content: contentString
+				  });
+			  
+			 var marker = new google.maps.Marker({
+			      position: position,
+			      map: map,
+			      animation: google.maps.Animation.DROP
+			 });
+			 marker.addListener('click', function() {
+				    infowindow.open(map, marker);
+			  });
+			    markers.push(marker);
+				}, timeout);
+			}
+
+			function clearMarkers() {
+			  for (var i = 0; i < markers.length; i++) {
+			    markers[i].setMap(null);
+			  }
+			  markers = [];
+			}
+			
+			    </script>
+			    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap"
+			        async defer></script>
 		</div>
-		<%-- <!--//figures-wrapper-->
-		<div class="benefits-wrapper">
-			<div class="container text-center">
-				<div class="row">
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/clock-white.svg"
-								alt="">
-							<h3 class="item-title">10X Faster Development</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/presenter-white.svg"
-								alt="">
-							<h3 class="item-title">Increase Productivity</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/chat-white.svg"
-								alt="">
-							<h3 class="item-title">Better Collabration</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//container-->
-		</div> --%>
-		<!--//benefits-->
-		<div class="press-wrapper">
-			<div class="container">
-				<div class="logos row">
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-1.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-2.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-3.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-4.svg"
-							alt="">
-					</div>
-				</div>
-			</div>
-			<!--//container-->
+		<div class="section-content-title">
+			<ul class="section-list list-unstyled">
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+					alt=""> 네비게이션 검색</li>
+					<li><div class="section-content">명칭 검색 : 네비게이션에 [단오문화관]이나 [단오장길]을 검색</div></li>
+					<li><div class="section-content">주소 검색 : 강원도 강릉시 노암동 722-2번지</div></li>
+					<br>
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+					alt=""> 버스터미널, 강릉역에서 택시를 타고 강릉단오장으로 오실 분!</li>
+					<li><div class="section-content">택시 요금 : 강릉역 약 3,000원, 버스터미널 약 4,000원</div></li>
+					<br>
+				<li><img class="tick-icon"
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
+ 					alt=""> 버스터미널에서 버스를 타고 강릉단오장으로 오실 분!</li>
+					<li>
+					<table class="table table-striped table-bordered">
+							<tr>
+								<th>출발지</th>
+								<th>오시는 방법</th>
+							</tr>
+							<tr>
+								<td>버스터미널</td>
+								<td>버스터미널에서 길을 건너지 않은 쪽 정류장에서 버스를 기다리세요.<br>
+								버스는 교보생명 혹은 신영극장이라고 써 있는 버스 어떤 것을 골라 타셔도 됩니다.</td>
+							</tr>						
+						</table>
+						</li>
+			</ul>
+				
 		</div>
-		<!--//press-wrapper-->
+		
+		<!--//feature-list-->
+		<!--//team-figure-->
 	</section>
-	<!--//overview-section-->
+	
 
 	<section id="features-section" class="features-section section">
 		<h2 class="section-title">축제 주요정보</h2>
@@ -461,51 +508,118 @@
 	</section>
 	<!--//signup-section-->
 
-	<section id="support-section"
-		class="support-section section text-center">
-		<h2 class="section-title">행사장 찾아오는 길</h2>
-		<div class="section-intro">천년의 기다림, 세계인의 어울림! 인류무형문화유산 강릉단오제에 여러분을 초대합니다.</div>
-		<!-- <a class="btn btn-secondary" href="support
-">행사장 및 주차안내</a> -->
-		<div class="team-figure">
-			<img class="img-responsive support-team"
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG"
-				alt="">
+	<section id="overview-section" class="overview-section section">
+		<h2 class="section-title">축제영상 : 단오제 메이킹 필름</h2>
+		<div class="section-intro">지나간 축제가 아닌 지나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
+		<!--//section-intro-->
+		<div class="figures-wrapper">
+			<div class="container text-center">
+				<figure class="macbook-screen">
+					<img class="img-responsive"
+						src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_video.jpg"
+						alt="">
+				</figure>
+				<%-- <figure class="ipad-screen">
+					<img class="img-responsive"
+						src="${pageContext.request.contextPath}/resources/ufo/assets/images/ipad-screen.png"
+						alt="">
+				</figure>
+				<figure class="iphone-screen">
+					<img class="img-responsive"
+						src="${pageContext.request.contextPath}/resources/ufo/assets/images/iphone-screen.png"
+						alt="">
+				</figure> --%>
+				<a href="#" type="button" class="play-icon" data-toggle="modal"
+					data-target="#modal-video"><img
+					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon-md.svg"
+					alt=""></a>
+			</div> 
+			<!--//container-->
 		</div>
-		<div class="section-content-title">
-			<ul class="section-list list-unstyled">
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-					alt=""> 네비게이션 검색</li>
-					<li><div class="section-content">명칭 검색 : 네비게이션에 [단오문화관]이나 [단오장길]을 검색</div></li>
-					<li><div class="section-content">주소 검색 : 강원도 강릉시 노암동 722-2번지</div></li>
-					<br>
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-					alt=""> 버스터미널, 강릉역에서 택시를 타고 강릉단오장으로 오실 분!</li>
-					<li><div class="section-content">택시 요금 : 강릉역 약 3,000원, 버스터미널 약 4,000원</div></li>
-					<br>
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
- 					alt=""> 버스터미널에서 버스를 타고 강릉단오장으로 오실 분!</li>
-					<li>
-					<table class="table table-striped table-bordered">
-							<tr>
-								<th>출발지</th>
-								<th>오시는 방법</th>
-							</tr>
-							<tr>
-								<td>버스터미널</td>
-								<td>버스터미널에서 길을 건너지 않은 쪽 정류장에서 버스를 기다리세요.<br>
-								버스는 교보생명 혹은 신영극장이라고 써 있는 버스 어떤 것을 골라 타셔도 됩니다.</td>
-							</tr>						
-						</table>
-						</li>
-			</ul>
+		<%-- <!--//figures-wrapper-->
+		<div class="benefits-wrapper">
+			<div class="container text-center">
+				<div class="row">
+					<div class="item col-xs-12 col-sm-4">
+						<div class="item-inner">
+							<img class="item-icon"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/clock-white.svg"
+								alt="">
+							<h3 class="item-title">10X Faster Development</h3>
+							<div class="item-desc">Lorem ipsum dolor sit amet,
+								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+								Aenean massa. Cum sociis natoque penatibus et magnis dis
+								parturient montes, nascetur ridiculus mus.</div>
+						</div>
+						<!--//item-inner-->
+					</div>
+					<!--//item-->
+					<div class="item col-xs-12 col-sm-4">
+						<div class="item-inner">
+							<img class="item-icon"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/presenter-white.svg"
+								alt="">
+							<h3 class="item-title">Increase Productivity</h3>
+							<div class="item-desc">Lorem ipsum dolor sit amet,
+								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+								Aenean massa. Cum sociis natoque penatibus et magnis dis
+								parturient montes, nascetur ridiculus mus.</div>
+						</div>
+						<!--//item-inner-->
+					</div>
+					<!--//item-->
+					<div class="item col-xs-12 col-sm-4">
+						<div class="item-inner">
+							<img class="item-icon"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/chat-white.svg"
+								alt="">
+							<h3 class="item-title">Better Collabration</h3>
+							<div class="item-desc">Lorem ipsum dolor sit amet,
+								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+								Aenean massa. Cum sociis natoque penatibus et magnis dis
+								parturient montes, nascetur ridiculus mus.</div>
+						</div>
+						<!--//item-inner-->
+					</div>
+					<!--//item-->
+				</div>
+				<!--//row-->
+			</div>
+			<!--//container-->
+		</div> --%>
+		<!--//benefits-->
+		<div class="press-wrapper">
+			<div class="container">
+				<div class="logos row">
+					<div class="logo col-xs-6 col-sm-3">
+						<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-1.svg"
+							alt="">
+					</div>
+					<div class="logo col-xs-6 col-sm-3">
+						<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-2.svg"
+							alt="">
+					</div>
+					<div class="logo col-xs-6 col-sm-3">
+						<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-3.svg"
+							alt="">
+					</div>
+					<div class="logo col-xs-6 col-sm-3">
+						<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-4.svg"
+							alt="">
+					</div>
+				</div>
+			</div>
+			<!--//container-->
 		</div>
-		<!--//feature-list-->
-		<!--//team-figure-->
+		<!--//press-wrapper-->
 	</section>
+	<!--//overview-section-->
+
+    
 	<!--//support-section-->
 
 	<section class="apps-section section text-center">
