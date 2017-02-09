@@ -64,7 +64,7 @@
         <div class="post-container">
         							<div>
 									<c:if test="${notice.photo_file ne null}">
-                                     	<img src="/image/${notice.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
+                                     	<img src="http://www.ufo79.com/image/${notice.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
                                      </c:if>
                                      </div> 
             ${notice.content }

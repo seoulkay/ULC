@@ -23,7 +23,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
-import pix.gdc.com.vo.Event_VO;
 import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestNewsLetterEmail;
 import pix.gdc.com.vo.FestOption;
@@ -31,25 +30,29 @@ import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
-import pix.gdc.com.vo.PixLike;
 
 @Controller
 public class UfoController {
-	public String para = "dano";
-	public int eventIdx = 1;
+	//public String para = "dano";
+	//public int eventIdx = 1;
 	
 	@Autowired
 	RestService restService;
 	@Autowired
 	FestDAO dao;
 	
-	@RequestMapping(value = "ufo/about", method = RequestMethod.GET)
-	public String about(){
+	@RequestMapping(value = "ufo/{para}/about", method = RequestMethod.GET)
+	public String about(@PathVariable("para")String para){
 		return "ufo/about";
 	}
-	@RequestMapping(value = "ufo/blog", method = RequestMethod.GET)
-	public String blog(Model model){
+	@RequestMapping(value = "ufo/{para}/blog", method = RequestMethod.GET)
+	public String blog(Model model, @PathVariable("para")String para, HttpSession session){
+		
 		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		session.setAttribute("eventPara", para);
+		
 		
 		List<FestUfoNotice> danoNotice = new ArrayList<FestUfoNotice>();
 		List<FestUfoNotice> mediaNotice = new ArrayList<FestUfoNotice>();
@@ -78,13 +81,21 @@ public class UfoController {
 		model.addAttribute("mediaNotice", mediaNotice);
 		model.addAttribute("newsLetterNotice", newsLetterNotice);
 		model.addAttribute("danoNotice", danoNotice);
+		model.addAttribute("ufo", ufo);
 		return "ufo/blog";
 	}
-	@RequestMapping(value = "ufo/blog-single", method = RequestMethod.GET)
-	public String blog_single(Model model, @RequestParam("num") Integer num){
+	@RequestMapping(value = "ufo/{para}/blog-single", method = RequestMethod.GET)
+	public String blog_single(Model model, @RequestParam("num") Integer num, @PathVariable("para")String para, HttpSession session){
+		
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		session.setAttribute("eventPara", para);
+		
 		FestUfoNotice notice = dao.SelectOneUfoNotice(num);
 		
 		model.addAttribute("notice", notice);
+		model.addAttribute("ufo", ufo);
+		
 		return "ufo/blog-single";
 	}
 	@RequestMapping(value = "ufo/career", method = RequestMethod.GET)
@@ -95,10 +106,12 @@ public class UfoController {
 	public String contact(){
 		return "ufo/contact";
 	}
-	@RequestMapping(value = "ufo/features", method = RequestMethod.GET)
-	public String features(Model model){
-		FestUfo ufo = dao.SelectUfoByNumber(eventIdx);
-			
+	@RequestMapping(value = "ufo/{para}/features", method = RequestMethod.GET)
+	public String features(Model model, @PathVariable("para")String para, HttpSession session){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		
 		//ufo를 notice list로 바꿔 보자!
 		FestUfoNotice info = new FestUfoNotice();
 		FestUfoNotice hist = new FestUfoNotice();
@@ -126,20 +139,92 @@ public class UfoController {
 		model.addAttribute("info", info);
 		model.addAttribute("hist", hist);
 		model.addAttribute("prog", prog);
-		
+		model.addAttribute("ufo", ufo);
 		return "ufo/features";
 	}
-	@RequestMapping(value = "ufo/index", method = RequestMethod.GET)
-	public String index(Model model){
+	@RequestMapping(value = "ufo/{para}/index", method = RequestMethod.GET)
+	public String index(Model model, @PathVariable("para")String para, HttpSession session){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		
+		
+//		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
+//		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
+//		
+//		for(FestOption ele : ol){
+//			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+//		}
+		
+		//ufo를 notice list로 바꿔 보자!
+		FestUfoNotice info = new FestUfoNotice();
+		FestUfoNotice hist = new FestUfoNotice();
+		FestUfoNotice prog = new FestUfoNotice();
+	
+		
+		info.setVoType("info");
+		info.setTitle("정보");
+		info.setContent(ufo.getInfo_info_text());
+		info.setPhoto_file(ufo.getInfo_info_pic());
+		
+		
+		hist.setVoType("hist");
+		hist.setTitle("역사");
+		hist.setContent(ufo.getInfo_hist_text());
+		hist.setPhoto_file(ufo.getInfo_hist_pic());
+		
+		
+		prog.setVoType("prog");
+		prog.setTitle("프로그램");
+		prog.setContent(ufo.getInfo_program_text());
+		prog.setPhoto_file(ufo.getInfo_program_pic());
+
+		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
+		//퍼센트 계산해 todo
+		int length = answer.size();
+		int[][] points = new int[5][4];
+		
+		for(FestAnswerVO ele : answer){
+			points[0][ele.getQ1_a()-1]++;
+			points[1][ele.getQ2_a()-1]++;
+			points[2][ele.getQ3_a()-1]++;
+			points[3][ele.getQ4_a()-1]++;
+			points[4][ele.getQ5_a()-1]++;
+		}
 		
 		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
 		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
 		
+		
 		for(FestOption ele : ol){
 			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
 		}
+		
+		for(int i = 0; i < ql.size() - 2 ; i++){
+			for(int j = 0; j < 4; j++){
+				int point = points[i][j];
+				ql.get(i).getQuestionOptions().get(j).setPoint(point);
+				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
+			}
+		}
+		
+		//SORTING!!
+		for(int i = 0; i < ql.size() - 2; i++){
+			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
+				@Override
+				public int compare(FestOption a, FestOption b){
+					return Integer.compare(b.getPoint(), a.getPoint());
+				}
+			});
+		}
+	
+		model.addAttribute("info", info);
+		model.addAttribute("hist", hist);
+		model.addAttribute("prog", prog);
+
 			
 		model.addAttribute("quesVO", ql);
+		model.addAttribute("ufo", ufo);
 		return "ufo/index";
 	}
 	@RequestMapping(value = "ufo/job-single", method = RequestMethod.GET)
@@ -150,11 +235,15 @@ public class UfoController {
 	public String pricing(){
 		return "ufo/pricing";
 	}
-	@RequestMapping(value = "ufo/stories", method = RequestMethod.GET)
-	public String stories(Model model){
+	@RequestMapping(value = "ufo/{para}/stories", method = RequestMethod.GET)
+	public String stories(Model model, @PathVariable("para")String para, HttpSession session){
+		
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		
 		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
 		//퍼센트 계산해 todo
-		
 		int length = answer.size();
 		int[][] points = new int[5][4];
 		
@@ -192,10 +281,8 @@ public class UfoController {
 			});
 		}
 		
-		
-		
 		model.addAttribute("quesVO", ql);
-		
+		model.addAttribute("ufo", ufo);
 		return "ufo/stories";
 	}
 	@RequestMapping(value = "ufo/story-single", method = RequestMethod.GET)
@@ -218,9 +305,12 @@ public class UfoController {
 		return dao.insertNewsLetterEmail(vo);
 	}
 	// 서베이 받기.
-	@RequestMapping(value = "ufo/surveySubmit", method = RequestMethod.POST)
-	public String surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request, @RequestParam("file") MultipartFile file){
-		
+	@RequestMapping(value = "ufo/{para}/surveySubmit", method = RequestMethod.POST)
+	public String surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request, @RequestParam("file") MultipartFile file
+			, @PathVariable("para")String para, HttpSession session, Model model){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
 		//FestAnswerVO vo = new FestAnswerVO();
 		
 		vo.setIp_log(request.getRemoteAddr());
@@ -256,7 +346,7 @@ public class UfoController {
 		}
 		
 		dao.insertUfoAnswer(vo);
-		
+		model.addAttribute("ufo", ufo);
 		return "redirect:index";
 	}
 	
@@ -269,7 +359,11 @@ public class UfoController {
 	}
 	
 	@RequestMapping(value = "ufo/post/{para}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String readPost(@PathVariable("para")String para, Model model){
+	public String readPost(@PathVariable("para")String para, Model model, HttpSession session){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		
 		String[] name = para.split("_");
 		FestAnswerVO vo = new FestAnswerVO();
 		vo.setFirst_name_a(name[0]);
@@ -279,6 +373,7 @@ public class UfoController {
 		System.err.println(name[1]);
 		
 		model.addAttribute("vo", dao.selectSnsPost(vo));
+		model.addAttribute("ufo", ufo);
 		return "ufo/sns-post";
 	}
 

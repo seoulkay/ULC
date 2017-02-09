@@ -93,7 +93,7 @@
 					<div class="figure-holder">
 					<c:if test="${info.photo_file ne null}">
 						<img class="img-responsive"
-							src="/image/${info.photo_file}"
+							src="http://www.ufo79.com/image/${info.photo_file}"
 							alt="">
 					</c:if>
 					<c:if test="${info.photo_file eq null}">
@@ -125,7 +125,7 @@
 						
 						<c:if test="${hist.photo_file ne null}">
 						<img class="img-responsive"
-							src="/image/${hist.photo_file}"
+							src="http://www.ufo79.com/image/${hist.photo_file}"
 							alt="">
 						</c:if>
 						<c:if test="${hist.photo_file eq null}">
@@ -145,7 +145,7 @@
 				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
 					<h3 class="feature-title">${prog.title }</h3>
 					<div class="feature-desc">
-						<p>2016.6.5 (일) ~ 2016.6.12 (일)</p>
+						<p>${ufo.event_date }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>

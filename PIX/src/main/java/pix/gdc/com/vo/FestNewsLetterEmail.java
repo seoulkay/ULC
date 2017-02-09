@@ -5,6 +5,7 @@ public class FestNewsLetterEmail {
 	private String news_letter_email;
 	private String news_letter_ip;
 	private String news_letter_date;
+	private String para;
 	
 	public int getNews_letter_id() {
 		return news_letter_id;
@@ -30,7 +31,10 @@ public class FestNewsLetterEmail {
 	public void setNews_letter_date(String news_letter_date) {
 		this.news_letter_date = news_letter_date;
 	}
-	
-	
-
+	public String getPara() {
+		return para;
+	}
+	public void setPara(String para) {
+		this.para = para;
+	}
 }

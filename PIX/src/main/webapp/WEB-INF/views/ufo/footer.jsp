@@ -57,13 +57,13 @@
 		<div class="divider"></div>
 		<div class="footer-bottom text-center">
 			<ul class="social-media list-inline">
-				<li><a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/ufo/index"><i
+				<li><a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				<li><a href="https://www.facebook.com/sharer.php?u=www.ufo79.com/PIX/ufo/index"><i
+				<li><a href="https://www.facebook.com/sharer.php?u=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-facebook" aria-hidden="true"></i></a></li>
-				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/index"><i
+				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-				<li><a href="http://line.me/R/msg/text/?www.ufo79.com/PIX/ufo/index"><i
+				<li><a href="https://story.kakao.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-instagram" aria-hidden="true"></i></a></li>
 			</ul>
 
@@ -294,37 +294,6 @@
 </div>
 <!--//modal-->
 
-<%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
-	<div id="config-panel" class="config-panel hidden-xs hidden-sm">
-		<div class="panel-inner">
-			<a id="config-trigger" class="config-trigger config-panel-hide"
-				href="#"><i class="fa fa-cog"></i></a>
-			<ul id="color-options" class="list-unstyled list-inline">
-				<li class="theme-1 active"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css"
-					href="#"></a></li>
-				<li class="theme-2"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-2.css"
-					href="#"></a></li>
-				<li class="theme-3"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-3.css"
-					href="#"></a></li>
-				<li class="theme-4"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-4.css"
-					href="#"></a></li>
-				<li class="theme-5"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-5.css"
-					href="#"></a></li>
-				<li class="theme-6"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-6.css"
-					href="#"></a></li>
-			</ul>
-			<a id="config-close" class="close" href="#"><i
-				class="fa fa-times-circle"></i></a>
-		</div>
-		<!--//panel-inner-->
-	</div>
-	<!--//configure-panel--> --%>
 	
 	<!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
@@ -700,7 +669,8 @@
 	  
 	  function sendNewsLetterEmail(){
 		  var email = $("#semail").val();
-		  $.post( "newsletter", { news_letter_email: email})
+		  var para = $("#news_para").val();
+		  $.post( "newsletter", { news_letter_email: email, para:para})
 	       .done(function( data ) {
 	    	  //아래코드 잘 작동이 된다 성공하면 1 옴
 	         //alert( "Data Loaded: " + data );

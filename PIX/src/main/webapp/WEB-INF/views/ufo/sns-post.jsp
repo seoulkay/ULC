@@ -38,7 +38,7 @@
 <row>
 ${vo.first_name_a} ${vo.last_name_a }의 포스트<br>
 ${vo.sns_msg }<br>
-<img alt="sns사진" src="/image/${vo.q7_a }"><br>
+<img alt="sns사진" src="/image/${vo.q7_a }" style="width: 300px"><br>
 ${vo.sns_return }
 </p>
 </row>

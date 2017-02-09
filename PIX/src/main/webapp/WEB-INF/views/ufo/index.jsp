@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<title>2017 강릉단오제</title>
+<title>${ufo.title }</title>
 <!-- Meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,68 +35,50 @@
 	
 
 <!-- Theme CSS -->
-<link id="theme-style" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
+<link id="theme-style" rel="stylesheet"	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
 
 <style>
       #map {
-        height: 600px;
+        height: 350px;
       }
     </style>
 </head>
 
-<body data-spy="scroll" data-target="#page-nav">
+<body data-spy="scroll" data-target="#page-nav" class="blog-page">
 	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
 
-	<section class="promo-section section section-on-bg">
-		<div class="hero-slider-wrapper">
-			<div class="flexslider hero-slider">
-				<ul class="slides">
-					<li class="slide slide-1"></li>
-					<!-- <li class="slide slide-2"></li>
-					<li class="slide slide-3"></li> -->
-				</ul>
-			</div>
-			<div class="hero-slider-mask"></div>
+	<section class="heading-section section section-on-bg">
+		<div class="hero-wrapper">
+			<div class="hero-holder" style="background-image: url(http://www.ufo79.com/image/${ufo.main_image})"></div>
+			<div class="hero-mask-gradient"></div>
 		</div>
-		 <!--//hero-slider-wrapper-->
-		<div class="container promo-content">
-			<h2 class="headline center">
-				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
-									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br>
-				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i
-				class="fa fa-facebook" aria-hidden="true"></i><span
-				class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button>
-			</h2>
-<!-- 			<p class="tagline">Good design is good business, try our demo -->
-<!-- 				today!</p> -->
-<!-- 			<div class="actions"> -->
-<!-- 				<a class="btn btn-cta btn-primary" href="#" data-toggle="modal" -->
-<!-- 					data-target="#signup-modal">Start Free Trial</a> <br -->
-<!-- 					class="visible-xs-block"> <a href="#" class="play-trigger" -->
-<!-- 					data-toggle="modal" data-target="#modal-video"><img -->
-<!-- 					class="play-icon" -->
-<%-- 					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon.svg" --%>
-<!-- 					alt="">See how it works</a> -->
-<!-- 			</div> -->
-		</div> 
+		<!--//hero-wrapper-->
+		<div class="container heading-content">
+			<h2 class="headline">${ufo.title }</h2>
+			<div class="intro">${ufo.event_date }</div><br>
+			<div class="actions">
+<!-- 				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br> -->
+<!-- 				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
+                 <a class="scrollto-no-offset" href="#page-nav">축제 정보 보러가기</a>
+                 <a class="scrollto-no-offset" href="#page-nav"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+            </div><!--//actions-->
+		</div>
 		<!--//container-->
 	</section>
-	<!--//promo-section-->
+	<!--//heading-section-->
 
 	<div class="page-nav-space-holder hidden-xs">
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#overview-section">축제영상</a></li>
-					<li><a class="scrollto" href="#features-section">축제 주요정보</a></li>
-					<li><a class="scrollto" href="#customers-section">서베이 결과보기</a></li>
-					<li><a class="scrollto" href="#signup-section">이벤트 참여하기</a></li>
-					<li><a class="scrollto" href="#support-section">찾아오시는 길</a></li>
+					<li><a class="scrollto" href="#support-section">스탬프 랠리</a></li>
+					<li><a class="scrollto" href="#signup-section">서베이 참여하기</a></li>
+					<li><a class="scrollto" href="#info-section">행사	정보</a></li>
+					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
+					<li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -104,17 +86,336 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
+	
+
 <section id="support-section"
 		class="support-section section text-center">
-		<h2 class="section-title">행사장 찾아오는 길</h2>
-		<div class="section-intro">천년의 기다림, 세계인의 어울림! 인류무형문화유산 강릉단오제에 여러분을 초대합니다.</div>
+		<h2 class="section-title">스탬프 랠리</h2>
+		
 		<!-- <a class="btn btn-secondary" href="support
 ">행사장 및 주차안내</a> -->
-		<div class="team-figure">
+		
 <!-- 			<img class="img-responsive support-team" -->
 <%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG" --%>
 <!-- 				alt=""> -->
-				<div id="map"></div>
+				
+		<div class="team-figure">
+		<div id="map"></div>
+		</div>
+		<br><br>
+		<div class="team-figure">
+		<div class="section-title">${ufo.event_short_description }</div><br>
+		<div class="section-content">${ufo.event_long_description }</div><br>
+		</div>
+		<br><br>
+		<!--//feature-list-->
+		<!--//team-figure-->
+</section>
+	
+<section id="signup-section" class="signup-section section">
+		<div class="section-inner">
+			<div class="container text-center">
+				<div class="counter-container"></div>
+				<!--//counter-container-->
+
+				<h2 class="counter-desc">강릉단오제 서베이 이벤트 참여하기</h2>
+
+				<div class="form-wrapper">
+					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
+					<div class="form-box">
+						<!-- <h3 class="form-heading">설문조사에 참여하시고 선물을 받아가세요!</h3> -->
+						<div class="form-desc">설문조사에 참여하시고 선물을 받아가세요!</div>
+						<ul class="social-buttons list-unstyled">
+							<!-- <li><a href="#" class="btn btn-social btn-google"><i
+									class="fa fa-google" aria-hidden="true"></i><span
+									class="btn-text">Sign up with Google</span></a></li> -->
+							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
+									class="fa fa-facebook" aria-hidden="true"></i><span
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
+							<li>
+								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br>
+							</li>		
+						</ul>
+						<!--//social-buttons-->
+						<div class="divider">
+							<span class="or-text">OR</span>
+						</div>
+						<!--//divider-->
+						<form class="signup-form">
+							<div class="row">
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="firstname" class="sr-only">First Name</label> <input -->
+<!-- 										type="text" class="form-control" id="firstname" -->
+<!-- 										name="firstname" placeholder="이름"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="lastname" class="sr-only">Last Name</label> <input -->
+<!-- 										type="text" class="form-control" id="lastname" name="lastname" -->
+<!-- 										placeholder="성"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
+								<div class="form-group col-xs-12 col-sm-12">
+									<label for="firstname" class="sr-only">Email Address</label>
+									<input type="email" class="form-control" id="semail" name="emailaddress" placeholder="이메일주소">
+									<input type="hidden" id="news_para" value="${ufo.para }">  
+								</div>     
+								<!--//form-group-->
+<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
+<!-- 									<label for="password" class="sr-only">Password</label> <input -->
+<!-- 										type="password" class="form-control" id="password" -->
+<!-- 										name="password" placeholder="비밀번호"> -->
+<!-- 								</div> -->
+<!-- 								//form-group -->
+
+							</div>
+							<!--//row-->
+							<div class="legal-note">${ufo.title }의 소식을 보내드립니다.</div>
+
+							<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
+<!-- 							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#" -->
+<!-- 									data-toggle="modal" data-target="#login-modal">로그인하기</a> -->
+<!-- 							</div> -->
+						</form>
+						<!--//form-->
+					</div>
+					<!--//form-box-->
+				</div>
+				<!--//form-wrapper-->
+
+			</div>
+			<!--//container-->
+		</div>
+		<!--//section-inner-->
+	</section>
+	
+<section id="info-section">
+	<!--//signup-section-->
+	<div class="feature-blocks container">
+		<div id="feature-block-1" class="feature-block feature-block-1">
+			<div class="row">
+				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
+					<h3 class="feature-title">${info.title }</h3>
+					<div class="feature-desc">
+						<p>${info.content }</p>
+					</div>
+					<!--//feature-desc-->
+				</div>
+				<!--//feature-content-->
+				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
+					<div class="figure-holder">
+					<c:if test="${info.photo_file ne null}">
+						<img class="img-responsive"
+							src="http://www.ufo79.com/image/${info.photo_file}"
+							alt="">
+					</c:if>
+					<c:if test="${info.photo_file eq null}">
+						<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature01.jpg"
+							alt="">
+					</c:if>
+					</div>
+					<!--//figure-holder-->
+				</div>
+			</div>
+			<!--//row-->
+		</div>
+		<!--//feature-block-1-->
+		<div id="feature-block-2" class="feature-block feature-block-2">
+			<div class="row">
+				<div
+					class="feature-content col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0">
+					<h3 class="feature-title">${hist.title }</h3>
+					<div class="feature-desc">
+						<p>${hist.content }</p>
+					</div>
+					<!--//feature-desc-->
+				</div>
+				<!--//feature-content-->
+				<div
+					class="feature-figure col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">
+					<div class="figure-holder">
+						<c:if test="${hist.photo_file ne null}">
+						<img class="img-responsive"
+							src="http://www.ufo79.com/image/${hist.photo_file}"
+							alt="">
+						</c:if>
+						<c:if test="${hist.photo_file eq null}">
+							<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							alt="">
+						</c:if>
+					</div>
+					<!--//figure-holder-->
+				</div>
+			</div>
+			<!--//row-->
+		</div>
+		<!--//feature-block-2-->
+		<div id="feature-block-3" class="feature-block feature-block-3">
+			<div class="row">
+				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
+					<h3 class="feature-title">${prog.title }</h3>
+					<div class="feature-desc">
+						<p>${ufo.event_date }</p>
+					</div>
+					<!--//feature-desc-->
+				</div>
+				<!--//feature-content-->
+				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
+					<div class="figure-holder">
+						<p>${prog.content }</p>
+					</div>
+					<!--//figure-holder-->
+				</div>
+			</div>
+			<!--//row-->
+		</div>
+		<div id="feature-block-4" class="feature-block feature-block-3">
+			<div class="row">
+				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
+					<h3 class="feature-title">행사장 찾아오는 길</h3>
+					<div class="feature-desc">
+						<p>${ufo.info_location_text }</p>
+					</div>
+					<!--//feature-desc-->
+				</div>
+				<!--//feature-content-->
+				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
+					<div class="figure-holder">
+						<c:if test="${ufo.info_location_pic ne null}">
+						<img class="img-responsive"
+							src="http://www.ufo79.com/image/${ufo.info_location_pic}"
+							alt="">
+						</c:if>
+						<c:if test="${ufo.info_location_pic eq null}">
+							<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							alt="">
+						</c:if>
+					</div>
+					<!--//figure-holder-->
+				</div>
+			</div>
+			<!--//row-->
+		</div>
+		<!--//feature-block-3-->
+	</div>
+<!-- 	<section id="features-section" class="features-section section"> -->
+</section>
+
+	<section id="app-section" class="apps-section section text-center">
+		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
+		<div class="container">
+			<ul class="apps-list list-inline">
+				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
+						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
+							class="intro-text">Download on the</span><span class="main-text">App
+								Store</span></span></a></li>
+				<li><a class="btn btn-download-app btn-andriod-download"
+					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Get it on</span><span
+							class="main-text">Google Play</span></span></a></li>
+				<!-- <li><a class="btn btn-download-app btn-windows-download"
+					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Download
+								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
+			</ul>
+			<!--//apps-list-->
+		</div>
+		<!--//container-->
+	</section>
+	<!--//apps-section-->
+<section id="survey-section"
+		class="support-section section text-center">
+<h2 class="section-title">${ufo.title } 서베이</h2>
+
+<div class="stories container">
+<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
+		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
+
+			<div class="story-item">
+				<div class="row">
+					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
+						<div class="inner">
+<!-- 						우선 단오제용 -->
+<!-- 							<img class="img-responsive" -->
+<%-- 								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png" --%>
+<!-- 								alt=""> -->
+							<img class="img-responsive"
+								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb0${statusEle.count }.jpg"
+								alt="">
+							<div class="figure-mask"></div>
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//figure-holder-->
+					<div class="content col-sm-12 col-sm-6 col-md-5">
+						<div class="inner">
+							<h3 class="question"><span class="question-number">문항 ${statusEle.count }.</span>${ele.question }</h3>
+							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">${var.percent }%</span></div>
+							</c:forEach>
+							<!--//desc-->
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//content-->
+				</div>
+				<!--//row-->
+			</div>
+			<!--//story-item-->
+
+			<div class="quotes">
+				<div class="row">
+					<div class="quote-item col-sm-12 col-sm-6 text-center">
+						<div class="inner">
+							<div class="profile">
+								<div class="circle"><span class="circle-percentage">${ele.questionOptions[0].percent }%</span></div>
+							</div>
+							<!--//profile-->
+
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
+							<blockquote class="result">(결과1위) ${ele.questionOptions[0].q_option }</blockquote>
+							<!--//blockquote-->
+							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
+							<!--//source-->
+
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//quote-item-->
+					<div class="quote-item col-sm-12 col-sm-6 text-center">
+						<div class="inner">
+							<div class="profile">
+								<div class="circle"><span class="circle-percentage">${ele.questionOptions[1].percent }%</span></div>
+							</div>
+							<!--//profile-->
+
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
+							<blockquote class="result">(결과2위) ${ele.questionOptions[1].q_option }</blockquote>
+							<!--//blockquote-->
+							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
+							<!--//source-->
+
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//quote-item-->
+
+				</div>
+				<!--//row-->
+			</div>
+			<!--//quotes-->
+		</div>
+		<!--//story-block-->
+</c:forEach>
+</div>
+</section>
+	<!-- ******FOOTER****** -->
+	<jsp:include page="footer.jsp" flush="false">
+		<jsp:param name="param" value="value1" />
+	</jsp:include><!--//footer-->
 				<script>
 				var neighborhoods = [
                   {lat: 37.75, lng: 128.87},
@@ -218,438 +519,6 @@
 			    </script>
 			    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap"
 			        async defer></script>
-		</div>
-		<div class="section-content-title">
-			<ul class="section-list list-unstyled">
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-					alt=""> 네비게이션 검색</li>
-					<li><div class="section-content">명칭 검색 : 네비게이션에 [단오문화관]이나 [단오장길]을 검색</div></li>
-					<li><div class="section-content">주소 검색 : 강원도 강릉시 노암동 722-2번지</div></li>
-					<br>
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-					alt=""> 버스터미널, 강릉역에서 택시를 타고 강릉단오장으로 오실 분!</li>
-					<li><div class="section-content">택시 요금 : 강릉역 약 3,000원, 버스터미널 약 4,000원</div></li>
-					<br>
-				<li><img class="tick-icon"
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
- 					alt=""> 버스터미널에서 버스를 타고 강릉단오장으로 오실 분!</li>
-					<li>
-					<table class="table table-striped table-bordered">
-							<tr>
-								<th>출발지</th>
-								<th>오시는 방법</th>
-							</tr>
-							<tr>
-								<td>버스터미널</td>
-								<td>버스터미널에서 길을 건너지 않은 쪽 정류장에서 버스를 기다리세요.<br>
-								버스는 교보생명 혹은 신영극장이라고 써 있는 버스 어떤 것을 골라 타셔도 됩니다.</td>
-							</tr>						
-						</table>
-						</li>
-			</ul>
-				
-		</div>
-		
-		<!--//feature-list-->
-		<!--//team-figure-->
-	</section>
-	
-
-	<section id="features-section" class="features-section section">
-		<h2 class="section-title">축제 주요정보</h2>
-		<div class="container">
-			<div class="row">
-				<div class="features-content-wrapper col-xs-12 col-sm-6 com-md-6">
-					<div class="intro">강릉에서 단오는 큰 명절이다. 단오를 중심으로 8일 간의 축제, 그 속에서 펼쳐지는 신과 인간의 소통은 자연과 인간, 인간과 인간의 상생을 위한 휴먼드라마이다.</div>
-					<!--//intro-->
-					<ul class="feature-list list-unstyled">
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 5 일요일: 수리마당 "단오맞이 실버가요제"</li>
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 6 월요일: 단오문화제 "2016 주민자체한마당"</li>
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 7 화요일: 수리마당</li>
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 8 수요일: 단오문화제</li>
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 9 목요일: 수리마당</li>
-						<li><img class="tick-icon"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/tick.svg"
-							alt=""> 2016. 6. 10 금요일: 단오문화제</li>
-					</ul>
-					<!--//feature-list-->
-
-					<div id="reviews-carousel" class="reviews-carousel carousel slide"
-						data-ride="carousel">
-						<!--//wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-							<div class="item active">
-								<blockquote class="review center-block">
-									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<p>강릉단오제를 준비하면서 힘들긴 했지만 정말 의미있는 하루하루였습니다.<br>6월 5일부터 열리는 강릉단오제!<br>많이 참석해서 즐거운 추억 많이 만들어가세요~</p>
-								</blockquote>
-								<!--//review-->
-								<div class="source">
-									<div class="rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-									<!--//rating-->
-									<img class="profile"
-										src="${pageContext.request.contextPath}/resources/ufo/assets/images/users/user-1.png"
-										alt="" />
-									<div class="name">김칠구 조직위원장</div>
-								</div>
-								<!--//source-->
-							</div>
-							<!--//item-->
-
-							<div class="item">
-								<blockquote class="review center-block">
-									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<p>A great way to Lorem ipsum dolor sit amet, consectetuer
-										adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-										massa. Cum sociis natoque penatibus et magnis dis parturient
-										montes, nascetur ridiculus mus.</p>
-								</blockquote>
-								<!--//review-->
-								<div class="source">
-									<div class="rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-									<!--//rating-->
-									<img class="profile"
-										src="${pageContext.request.contextPath}/resources/ufo/assets/images/users/user-2.png"
-										alt="" />
-									<div class="name">Rob Kim, Mashable</div>
-								</div>
-								<!--//source-->
-							</div>
-							<!--//item-->
-
-							<div class="item">
-								<blockquote class="review center-block">
-									<i class="fa fa-quote-left" aria-hidden="true"></i>
-									<p>A great way to Lorem ipsum dolor sit amet, consectetuer
-										adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-										massa. Cum sociis natoque penatibus et magnis dis parturient
-										montes, nascetur ridiculus mus.</p>
-								</blockquote>
-								<!--//review-->
-								<div class="source">
-									<div class="rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-									<!--//rating-->
-									<img class="profile"
-										src="${pageContext.request.contextPath}/resources/ufo/assets/images/users/user-3.png"
-										alt="" />
-									<div class="name">Kevin Howell, Wired</div>
-								</div>
-								<!--//source-->
-							</div>
-							<!--//item-->
-
-						</div>
-						<!--//carousel-inner-->
-
-						<!--//Indicators-->
-						<ol class="carousel-indicators">
-							<li data-target="#reviews-carousel" data-slide-to="0"
-								class="active"></li>
-							<li data-target="#reviews-carousel" data-slide-to="1"></li>
-							<li data-target="#reviews-carousel" data-slide-to="2"></li>
-						</ol>
-
-					</div>
-					<!--//reviews-carousel-->
-				</div>
-				<!--//features-content-wrapper-->
-			</div>
-			<!--//row-->
-		</div>
-		<!--//container-->
-
-		<div class="features-figure-wrapper">
-			<img class="img-responsive"
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_feature.jpg"
-				alt="">
-		</div>
-		<!--//features-figure-wrapper-->
-
-		<div class="action-wrapper text-center">
-			<a href="${pageContext.request.contextPath}/ufo/features
-" class="btn btn-secondary">축제 정보 더보기</a>
-		</div>
-
-	</section>
-	<!--//features-section-->
-
-	<section id="customers-section" class="customers-section section">
-		<h2 class="section-title">서베이 결과보기</h2>
-		<div class="section-intro">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 서베이 결과를 확인하세요!</div>
-		<div class="container">
-			<div class="stories-wrapper row">
-			<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="3">
-				<div class="item item-${statusEle.count } col-xs-12 col-md-6">
-					<div class="item-inner text-center">
-						<div class="item-mask"></div>
-						<div class="item-content">
-							<h3 class="content-title">${ele.question }</h3>
-							<div class="content-desc">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-								<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-											<p>${status.count}. ${var.q_option }</p>
-							    </c:forEach>
-							</div>
-							<!-- <a class="item-link" href="#"></a> -->
-							<a class="item-link" href="http://www.ufo79.com/PIX/ufo/stories#story-block-1"></a>
-						</div>
-						<!--//item-content-->
-					</div>
-					<!--//item-inner-->
-				</div>
-				</c:forEach>
-				<!--//item-->
-			</div>
-			<!--//row-->
-			<div class="action-wrapper text-center">
-				<a class="btn btn-secondary" href="${pageContext.request.contextPath}/ufo/stories">서베이 결과 더보기</a>
-			</div>
-		</div>
-		<!--//container-->
-	</section>
-	<!--//customers-section-->
-
-	<section id="signup-section" class="signup-section section">
-		<div class="section-inner">
-			<div class="container text-center">
-				<div class="counter-container"></div>
-				<!--//counter-container-->
-
-				<h2 class="counter-desc">강릉단오제 서베이 이벤트 참여하기</h2>
-
-				<div class="form-wrapper">
-					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
-					<div class="form-box">
-						<!-- <h3 class="form-heading">설문조사에 참여하시고 선물을 받아가세요!</h3> -->
-						<div class="form-desc">설문조사에 참여하시고 선물을 받아가세요!</div>
-						<ul class="social-buttons list-unstyled">
-							<!-- <li><a href="#" class="btn btn-social btn-google"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
-									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
-						</ul>
-						<!--//social-buttons-->
-						<div class="divider">
-							<span class="or-text">OR</span>
-						</div>
-						<!--//divider-->
-						<form class="signup-form">
-							<div class="row">
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="firstname" class="sr-only">First Name</label> <input -->
-<!-- 										type="text" class="form-control" id="firstname" -->
-<!-- 										name="firstname" placeholder="이름"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="lastname" class="sr-only">Last Name</label> <input -->
-<!-- 										type="text" class="form-control" id="lastname" name="lastname" -->
-<!-- 										placeholder="성"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-								<div class="form-group col-xs-12 col-sm-12">
-									<label for="firstname" class="sr-only">Email Address</label> <input
-										type="email" class="form-control" id="semail"
-										name="emailaddress" placeholder="이메일주소">
-								</div>     
-								<!--//form-group-->
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="password" class="sr-only">Password</label> <input -->
-<!-- 										type="password" class="form-control" id="password" -->
-<!-- 										name="password" placeholder="비밀번호"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-
-							</div>
-							<!--//row-->
-							<div class="legal-note">강릉단오제의 소식을 보내드립니다.</div>
-
-							<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
-<!-- 							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#" -->
-<!-- 									data-toggle="modal" data-target="#login-modal">로그인하기</a> -->
-<!-- 							</div> -->
-						</form>
-						<!--//form-->
-					</div>
-					<!--//form-box-->
-				</div>
-				<!--//form-wrapper-->
-
-			</div>
-			<!--//container-->
-		</div>
-		<!--//section-inner-->
-	</section>
-	<!--//signup-section-->
-
-	<section id="overview-section" class="overview-section section">
-		<h2 class="section-title">축제영상 : 단오제 메이킹 필름</h2>
-		<div class="section-intro">지나간 축제가 아닌 지나온 축제!<br>강릉 단오제에 대한 간단한 메인 소개, 또는 메이킹 필름 등 관련 내용</div>
-		<!--//section-intro-->
-		<div class="figures-wrapper">
-			<div class="container text-center">
-				<figure class="macbook-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_video.jpg"
-						alt="">
-				</figure>
-				<%-- <figure class="ipad-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/ipad-screen.png"
-						alt="">
-				</figure>
-				<figure class="iphone-screen">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/ufo/assets/images/iphone-screen.png"
-						alt="">
-				</figure> --%>
-				<a href="#" type="button" class="play-icon" data-toggle="modal"
-					data-target="#modal-video"><img
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/play-icon-md.svg"
-					alt=""></a>
-			</div> 
-			<!--//container-->
-		</div>
-		<%-- <!--//figures-wrapper-->
-		<div class="benefits-wrapper">
-			<div class="container text-center">
-				<div class="row">
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/clock-white.svg"
-								alt="">
-							<h3 class="item-title">10X Faster Development</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/presenter-white.svg"
-								alt="">
-							<h3 class="item-title">Increase Productivity</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-					<div class="item col-xs-12 col-sm-4">
-						<div class="item-inner">
-							<img class="item-icon"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/chat-white.svg"
-								alt="">
-							<h3 class="item-title">Better Collabration</h3>
-							<div class="item-desc">Lorem ipsum dolor sit amet,
-								consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-								Aenean massa. Cum sociis natoque penatibus et magnis dis
-								parturient montes, nascetur ridiculus mus.</div>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//container-->
-		</div> --%>
-		<!--//benefits-->
-		<div class="press-wrapper">
-			<div class="container">
-				<div class="logos row">
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-1.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-2.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-3.svg"
-							alt="">
-					</div>
-					<div class="logo col-xs-6 col-sm-3">
-						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/logos/logo-4.svg"
-							alt="">
-					</div>
-				</div>
-			</div>
-			<!--//container-->
-		</div>
-		<!--//press-wrapper-->
-	</section>
-	<!--//overview-section-->
-
-    
-	<!--//support-section-->
-
-	<section class="apps-section section text-center">
-		<h2 class="section-title">강릉단오제 앱 다운로드</h2>
-		<div class="container">
-			<ul class="apps-list list-inline">
-				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
-						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
-							class="intro-text">Download on the</span><span class="main-text">App
-								Store</span></span></a></li>
-				<li><a class="btn btn-download-app btn-andriod-download"
-					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Get it on</span><span
-							class="main-text">Google Play</span></span></a></li>
-				<!-- <li><a class="btn btn-download-app btn-windows-download"
-					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Download
-								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
-			</ul>
-			<!--//apps-list-->
-		</div>
-		<!--//container-->
-	</section>
-	<!--//apps-section-->
-
-	<!-- ******FOOTER****** -->
-	<jsp:include page="footer.jsp" flush="false">
-		<jsp:param name="param" value="value1" />
-	</jsp:include><!--//footer-->
-
 	
 </body>
 </html>

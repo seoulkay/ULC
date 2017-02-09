@@ -80,7 +80,7 @@
 			                	</c:when>
 			                	<c:otherwise>
 			                		 <div>
-                                     	<img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
+                                     	<img src="http://www.ufo79.com/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px">
                                      </div>  
 			                	</c:otherwise>
 			                    </c:choose>
@@ -101,7 +101,7 @@
                 
             </div><!--//promo-carousel-->
         </div><!--//container-->
-    </div><!--//posts-promo-block-->
+    </div>
     <div class="posts-block text-center" id="posts-block">
         <div class="container">
             <h2 class="block-heading text-center">공지사항</h2>
@@ -133,7 +133,7 @@
 			                		<a href="blog-single?num=${var.idfest_ufo_notice }"><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/blog/dano_notice_thumb01.jpg" alt=""></a>
 			                	</c:when>
 			                	<c:otherwise>
-			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
+			                		 <a href="blog-single?num=${var.idfest_ufo_notice }"><img src="http://www.ufo79.com/image/${var.photo_file}" class="img-responsive" alt="" style="width:750px; height: 340px"></a>
 			                	</c:otherwise>
 			                    </c:choose>
                             </div>

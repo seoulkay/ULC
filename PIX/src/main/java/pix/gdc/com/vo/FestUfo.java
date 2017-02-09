@@ -34,6 +34,8 @@ public class FestUfo {
 	private Date ufo_time_stamp;
 	private String q_graphic;
 	private String para;
+	private String menu;
+	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
 	}
@@ -219,6 +221,12 @@ public class FestUfo {
 	}
 	public void setPara(String para) {
 		this.para = para;
+	}
+	public String getMenu() {
+		return menu;
+	}
+	public void setMenu(String menu) {
+		this.menu = menu;
 	}
 	
 	

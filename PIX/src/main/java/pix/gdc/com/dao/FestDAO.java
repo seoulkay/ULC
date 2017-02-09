@@ -220,6 +220,11 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("BasicMapper.SelectUfoByNumber", param);
 	}
 	
+	// UFO 다가지고 오기
+	public FestUfo SelectUfoByPara(String param){
+		return getSqlSession().selectOne("BasicMapper.SelectUfoByPara", param);
+	}
+	
 	//질문 다가지고 오기
 	public List<String> SelectUfoQuestionByPara(String param){
 		return getSqlSession().selectList("BasicMapper.SelectUfoQuestionByPara", param);

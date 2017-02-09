@@ -8,7 +8,7 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-<title>2017 강릉단오제</title>
+<title>${ufo.title }</title>
 <!-- Meta -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -160,8 +160,6 @@
 		</div>
 		<!--//story-block-->
 </c:forEach>
-		
-
 	</div>
 	
 	<!-- ******FOOTER****** -->
