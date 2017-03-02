@@ -52,7 +52,7 @@
 
 	<section class="heading-section section section-on-bg">
 		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(http://www.ufo79.com/image/${ufo.main_image})"></div>
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.main_image})"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
