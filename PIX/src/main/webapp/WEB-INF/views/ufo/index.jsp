@@ -215,7 +215,7 @@
 					<div class="figure-holder">
 					<c:if test="${info.photo_file ne null}">
 						<img class="img-responsive"
-							src="http://www.ufo79.com/image/${info.photo_file}"
+							src="https://www.ufo79.com/image/${info.photo_file}"
 							alt="">
 					</c:if>
 					<c:if test="${info.photo_file eq null}">
@@ -246,7 +246,7 @@
 					<div class="figure-holder">
 						<c:if test="${hist.photo_file ne null}">
 						<img class="img-responsive"
-							src="http://www.ufo79.com/image/${hist.photo_file}"
+							src="https://www.ufo79.com/image/${hist.photo_file}"
 							alt="">
 						</c:if>
 						<c:if test="${hist.photo_file eq null}">
@@ -294,7 +294,7 @@
 					<div class="figure-holder">
 						<c:if test="${ufo.info_location_pic ne null}">
 						<img class="img-responsive"
-							src="http://www.ufo79.com/image/${ufo.info_location_pic}"
+							src="https://www.ufo79.com/image/${ufo.info_location_pic}"
 							alt="">
 						</c:if>
 						<c:if test="${ufo.info_location_pic eq null}">

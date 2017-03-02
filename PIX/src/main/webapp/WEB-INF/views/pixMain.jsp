@@ -20,8 +20,8 @@
         <!-- animated css  -->
         <link href="${pageContext.request.contextPath}/resources/pix/css/animate.css" rel="stylesheet" type="text/css" media="screen">
         <!--web fonts-->      
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,400italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400,400italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
         <!--owl carousel css-->
         <link href="${pageContext.request.contextPath}/resources/pix/css/owl.carousel.css" rel="stylesheet" type="text/css" media="screen">
@@ -178,7 +178,7 @@
                                 <div class="col-sm-10">
                                     <div class="blog-post-info">
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe src="http://player.vimeo.com/video/57175742"></iframe>
+<!--                                             <iframe src="http://player.vimeo.com/video/57175742"></iframe> -->
                                         </div>
                                         <h3><a href="#">Video post formate</a></h3>
                                         <ul class="list-inline xs-post-info visible-xs">
