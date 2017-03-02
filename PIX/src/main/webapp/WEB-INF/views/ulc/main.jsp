@@ -275,11 +275,11 @@
                     <div class="slick-slide"> <!-- 1 -->
                         <div class="affa-testimonial">
                             <div class="testimonial-txt">
-                                <p>"Aenean erat turpis, iaculis at ultricies eget, malesuada sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."</p>
+                                <p>"좋네요(80년대 스타일 따봉 엄지척)"</p>
                             </div>
                             <div class="testimonial-name">
-                                <h4>Mugiwara Kiwolen</h4>
-                                <p>Founder Of Minima</p>
+                                <h4>김서현</h4>
+                                <p>부산 사하구청 주무관</p>
                             </div>
                         </div>
                     </div>
@@ -287,11 +287,11 @@
                     <div class="slick-slide"> <!-- 2 -->
                         <div class="affa-testimonial">
                             <div class="testimonial-txt">
-                                <p>"Aenean erat turpis, iaculis at ultricies eget, malesuada sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."</p>
+                                <p>"정보 콘텐츠 + 게임 콘텐츠 + 피드백 콘텐츠가 조화를 잘 이루고 있고, 모바일 앱을 통해 스탬프 랠리를 구현한 점은 독특하면서도 아날로그 감성을 자극하네요."</p>
                             </div>
                             <div class="testimonial-name">
-                                <h4>Rendy Jagerjack</h4>
-                                <p>Developer Of Minima</p>
+                                <h4>정수용</h4>
+                                <p>아토스 서비스데스크 듀티매니저</p>
                             </div>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
                     <div class="slick-slide"> <!-- 3 -->
                         <div class="affa-testimonial">
                             <div class="testimonial-txt">
-                                <p>"Aenean erat turpis, iaculis at ultricies eget, malesuada sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."</p>
+                                <p>"Best app ever!"</p>
                             </div>
                             <div class="testimonial-name">
                                 <h4>Bebbh Duduls</h4>
@@ -332,23 +332,23 @@
                 <div class="col-sm-6 col-lg-5 col-sm-offset-0 col-md-offset-1 margin-bottom40-xs">
                 	<div class="padding-top140 padding-top80-sm padding-top0-xs text-center-xs">
                     	<div class="post-heading-left">
-                        	<p>UFO 서베이 서비스</p>
+                        	<p>UFO 통합형 축제관리 서비스</p>
                             <h2>축제 방문객의 참여와 피드백을 이끌어내는 간편한 매개체</h2>
-                            <h5>UFO는 설문조사, 퀴즈, 미션 등을 생성하여 축제 방문객의 참여를 유도하고 피드백을 받을 수 있는 서베이 서비스를 제공합니다. </h5>
+                            <h5>UFO는 스탬프랠리와 설문조사를 솔루션을 통해 축제 방문객의 참여를 유도하고 피드백을 받을 수 있는 통합형 축제관리 서비스를 제공합니다. </h5>
                         </div>
                         
                         <div class="row">
                         	<div class="col-sm-6"> <!-- 1 -->
                             	<div class="affa-feature-icon2">
                                     <i class="ion ion-paper-airplane"></i>
-                                    <p><strong>스토리가 있는 서베이</strong> 방문객의 참여를 최대로 이끌어낼 수 있도록 컨설팅 지원</p>
+                                    <p><strong>스토리가 있는 서베이</strong><br>객/주관식 문항, 사진 올리기 등 원하는 형태의 설문조사 제작 지원</p>
                                 </div>
                             </div>
                             
                             <div class="col-sm-6"> <!-- 2 -->
                             	<div class="affa-feature-icon2">
-                                    <i class="ion ion-speakerphone"></i>
-                                    <p><strong>맞춤형 서베이 폼</strong> 객/주관식 문항, 사진 올리기 등 원하는 형태의 설문조사 제작 지원</p>
+                                    <i class="ion ion-android-phone-portrait"></i>
+                                    <p><strong>모바일 스탬프 랠리</strong><br>방문객의 참여를 최대로 이끌어낼 수 있는 쉽고 재밌는 콘텐츠</p>
                                 </div>
                             </div>
                         </div>
@@ -356,15 +356,15 @@
                         <div class="row">
                         	<div class="col-sm-6"> <!-- 3 -->
                             	<div class="affa-feature-icon2">
-                                    <i class="ion ion-trophy"></i>
-                                    <p><strong>보상 프로그램</strong> 설문조사에 참여하는 참가자들에게 제공하는 상품 쿠폰 발행 가능</p>
+                                    <i class="ion ion-social-rss"></i>
+                                    <p><strong>바이럴 마케팅 솔루션</strong><br>이벤트 내용을 자동으로 SNS에 업데이트 해주는 바이럴마케팅 지원</p>
                                 </div>
                             </div>
                             
                             <div class="col-sm-6"> <!-- 4 -->
                             	<div class="affa-feature-icon2">
                                     <i class="ion ion-stats-bars"></i>
-                                    <p><strong>피드백 결과 분석</strong> 참가자에게 받은 피드백을 심층적으로 분석한 서베이 결과 제공</p>
+                                    <p><strong>피드백 결과 분석</strong><br>참가자의 스탬프 랠리 참여 패턴 + 서베이를 심층적으로 분석한 결과 제공</p>
                                 </div>
                             </div>
                         </div>
@@ -455,10 +455,10 @@
             <div class="container text-center">
                 
                 <div class="post-heading-center">
-                	<h2>Simple solution. Built for everyone.</h2>
+                	<h2>웹과 모바일 지워</h2>
                 </div>
                 
-                <p class="text-lg text-padding margin-bottom50">Morbi condimentum, lorem acid vulputate elementum, tellus dolor dictum erat, porttitor in augue nisi libero. Phasellus vel ante molestie, vehicula augue nec purus, lobortis mentum eros inceptos bibendum.</p>
+                <p class="text-left text-lg text-padding margin-bottom50">UFO는 웹사이트와 모바일사이트를 통합형으로 구축하여 사이트 관리에 최적화되어 있습니다. UFO는 모바일 앱을 다운로드 하는 번거로움이 없습니다.</p>
                 
                 <div class="post-btn">
                 	<a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Play Store</a>
@@ -485,14 +485,14 @@
             	
                 <div class="pull-left">
                 	<div class="pull-left post-heading-left padding-top10-lg padding-top10-md">
-                        <h2>Stay updated on the release</h2>
+                        <h2>UFO의 소식을 받아보세요</h2>
                         <h5>Be the first to know when we start!</h5>
                     </div>
                 </div>
                 
                 <div class="pull-right">
                     <form method="post" action="#" class="pull-right affa-form-subscribe">
-                        <input type="text" name="email" placeholder="Email address">
+                        <input type="text" name="email" placeholder="이메일 주소">
                         <input type="submit" name="submit" value="Subscribe Now">
                     </form>
                 </div>
@@ -522,7 +522,7 @@
             </div>
             
             <div class="footer-copyright">
-            	<p>&copy; 2016 by <a href="http://affapress.com" target="_blank">Affapress</a>. All Rights Reserved.</p>
+            	<p>&copy; <a href="http://affapress.com" target="_blank">UFO79 Corp.</a> All Rights Reserved.</p>
             </div>
             
 		</div>

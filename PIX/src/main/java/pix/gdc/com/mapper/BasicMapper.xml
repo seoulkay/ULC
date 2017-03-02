@@ -527,7 +527,7 @@
 		pix.fest_ufo
 	SET
 	 	<if test="photo_file != null and photo_file != ''">
-		photo_file=#{photo_file},
+		main_image=#{photo_file},
 		</if>
 		event_short_description=#{title},
 	    event_long_description=#{content}

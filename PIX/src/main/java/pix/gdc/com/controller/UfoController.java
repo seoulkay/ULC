@@ -358,13 +358,13 @@ public class UfoController {
 	    return commonsMultipartResolver; 
 	}
 	
-	@RequestMapping(value = "ufo/post/{para}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String readPost(@PathVariable("para")String para, Model model, HttpSession session){
+	@RequestMapping(value = "ufo/post/{para}/{partName}", method = {RequestMethod.GET, RequestMethod.POST})
+	public String readPost(@PathVariable("partName")String partName, @PathVariable("para")String para, Model model, HttpSession session){
 		session.setAttribute("eventPara", para);
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
 		
-		String[] name = para.split("_");
+		String[] name = partName.split("_");
 		FestAnswerVO vo = new FestAnswerVO();
 		vo.setFirst_name_a(name[0]);
 		vo.setLast_name_a(name[1]);

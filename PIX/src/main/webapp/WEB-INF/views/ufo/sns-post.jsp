@@ -42,14 +42,27 @@ ${vo.sns_msg }<br>
 ${vo.sns_return }
 </p>
 </row>
+<br>
+<div style="margin:10px">
 <div id="qrcode"></div>
-
+</div>
+<br>
 <!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
 <script>
-$('#qrcode').qrcode({width: 130,height: 130,text:'${vo.sns_return }'});
+// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
+// 	text:'https://www.facebook.com/${vo.sns_return }'});
+var qrcode = new QRCode("qrcode", {
+    text: "https://www.facebook.com/${vo.sns_return }",
+    width: 200,
+    height: 200,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
 </script>
 </body>
 </html>

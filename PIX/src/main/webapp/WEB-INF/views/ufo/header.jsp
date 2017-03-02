@@ -8,7 +8,7 @@
 		<h1 class="logo">
 			<a href="index"> <img
 <%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo_dano.png" --%>
-				src="http://www.ufo79.com/image/${ufo.logo }"
+				src="https://www.ufo79.com/image/${ufo.logo }"
 				alt=""><span class="text">${ufo.title }</span>
 			</a>
 		</h1>

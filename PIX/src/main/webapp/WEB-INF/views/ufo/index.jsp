@@ -74,11 +74,11 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">스탬프 랠리</a></li>
-					<li><a class="scrollto" href="#signup-section">서베이 참여하기</a></li>
-					<li><a class="scrollto" href="#info-section">행사	정보</a></li>
+					<li><a class="scrollto" href="#support-section">2017 감천문화마을 축제</a></li>
+					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
+					<li><a class="scrollto" href="#info-section">감천문화마을 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
-					<li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li>
+					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -90,19 +90,19 @@
 
 <section id="support-section"
 		class="support-section section text-center">
-		<h2 class="section-title">스탬프 랠리</h2>
+		<%-- <h2 class="section-title">스탬프 랠리</h2>
 		
 		<!-- <a class="btn btn-secondary" href="support
 ">행사장 및 주차안내</a> -->
 		
 <!-- 			<img class="img-responsive support-team" -->
-<%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG" --%>
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG"
 <!-- 				alt=""> -->
 				
 		<div class="team-figure">
 		<div id="map"></div>
 		</div>
-		<br><br>
+		<br><br> --%>
 		<div class="team-figure">
 		<div class="section-title">${ufo.event_short_description }</div><br>
 		<div class="section-content">${ufo.event_long_description }</div><br>
@@ -118,13 +118,16 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 
-				<h2 class="counter-desc">강릉단오제 서베이 이벤트 참여하기</h2>
+				<h2 class="counter-desc">감천문화마을 스탬프랠리 참여하기</h2>
 
 				<div class="form-wrapper">
 					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
 					<div class="form-box">
 						<!-- <h3 class="form-heading">설문조사에 참여하시고 선물을 받아가세요!</h3> -->
-						<div class="form-desc">설문조사에 참여하시고 선물을 받아가세요!</div>
+						<div class="form-desc">스탬프랠리에 참여하시고 선물을 받아가세요!</div>
+						<div class="team-figure">
+		<div id="map"></div>
+		</div><br><br>
 						<ul class="social-buttons list-unstyled">
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
@@ -138,7 +141,13 @@
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
-							<span class="or-text">OR</span>
+							<span class="or-text">참여방법</span>
+						</div>						
+						<div class="team-figure">
+							<div class="form-desc">1. GPS를 켜고, 위치정보 수집에 동의해주세요.</div>
+							<div class="form-desc">2. 페이스북/카카오톡 로그인을 해주세요.</div>
+							<div class="form-desc">3. 페이스북/카카오톡 로그인을 해주세요.</div>
+							<div class="form-desc">4. 페이스북/카카오톡 로그인을 해주세요.</div>
 						</div>
 						<!--//divider-->
 						<form class="signup-form">
@@ -326,7 +335,7 @@
 		<!--//container-->
 	</section>
 	<!--//apps-section-->
-<section id="survey-section"
+<%-- <section id="survey-section"
 		class="support-section section text-center">
 <h2 class="section-title">${ufo.title } 서베이</h2>
 
@@ -340,7 +349,7 @@
 						<div class="inner">
 <!-- 						우선 단오제용 -->
 <!-- 							<img class="img-responsive" -->
-<%-- 								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png" --%>
+								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png"
 <!-- 								alt=""> -->
 							<img class="img-responsive"
 								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb0${statusEle.count }.jpg"
@@ -411,7 +420,7 @@
 		<!--//story-block-->
 </c:forEach>
 </div>
-</section>
+</section> --%>
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
