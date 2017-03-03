@@ -67,8 +67,8 @@
 						class="fa fa-instagram" aria-hidden="true"></i></a></li>
 			</ul>
 
-			<small class="copyright"><a href="http://www.ufo79.com/"
-				target="_blank">© UFO79 Corp.</a></small>
+			<small class="copyright"><a href="https://www.ufo79.com/"
+				target="_blank">© UFO79 Corp.</a> ${ufo.info_contact_text }</small>
 		</div>
 	</div>
 	<!--//container-->
@@ -475,15 +475,15 @@
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/home.js"></script>
 
 <!-- Vimeo video API -->
-<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/ufo/assets/js/vimeo.js"></script>
+<!-- <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script> -->
+<!-- <script type="text/javascript" -->
+<%-- 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/vimeo.js"></script> --%>
 
 <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
 <script
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/ufo/assets/jquery.qrcode.min.js"></script>	
+	src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 	
 <script>
 	  window.fbAsyncInit = function() {
@@ -622,7 +622,7 @@
 		  var fl = window.sessionStorage.getItem('first_name');
 		  var ln = window.sessionStorage.getItem('last_name');
 		  
-		  var msg = q6+" http://www.ufo79.com/PIX/ufo/post/"+fl+"_"+ln+" #"+q1+" #"+q2+" #"+q3+" #"+q4+" #"+q5;
+		  var msg = q6+" https://www.ufo79.com/PIX/ufo/post/"+fl+"_"+ln+" #"+q1+" #"+q2+" #"+q3+" #"+q4+" #"+q5;
 		  $( "#sns_msg" ).val(msg);
 		  fbPost(msg);
 	  }
