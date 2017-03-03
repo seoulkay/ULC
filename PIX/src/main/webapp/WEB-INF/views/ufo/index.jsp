@@ -75,7 +75,6 @@
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li><a class="scrollto" href="#support-section">2017 ${ufo.title }</a></li>
-					<li><a class="scrollto" href="#support-section">제 7회 감천문화마을 골목축제</a></li>
 					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
 					<li><a class="scrollto" href="#info-section">${ufo.title } 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
@@ -109,7 +108,7 @@
 
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc">스탬프랠리를 완성 후, 감천문화마을 안내센터에서 선물과 교환하세요!</div>
+						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
 						<div class="team-figure">
 							<div id="map"></div>
 						</div><br><br>
@@ -132,7 +131,7 @@
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<blockquote class="result">감천문화마을 스탬프랠리 참여방법</blockquote>
+										<blockquote class="result">${ufo.title } 스탬프랠리 참여방법</blockquote>
 										<!--//blockquote-->
 										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북/카카오톡 로그인하기!<br>3. 지도에서 현재 위치와 포토존 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 받기!<br>5. 스탬프 랠리 완성 후, 안내센터에서 선물 받기!</div>
 										<!--//source-->
@@ -228,13 +227,23 @@
 					<h3 class="feature-title">${prog.title }</h3>
 					<div class="feature-desc">
 						<p>${ufo.event_date }</p>
+						<p>${prog.content }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
-						<p>${prog.content }</p>
+						<c:if test="${ufo.info_program_pic ne null}">
+						<img class="img-responsive"
+							src="https://www.ufo79.com/image/${ufo.info_program_pic}"
+							alt="">
+						</c:if>
+						<c:if test="${ufo.info_program_pic eq null}">
+							<img class="img-responsive"
+							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							alt="">
+						</c:if>
 					</div>
 					<!--//figure-holder-->
 				</div>
