@@ -5,13 +5,20 @@
 <!-- ******HEADER****** -->
 <header id="header" class="header">
 	<div class="container">
-		<h1 class="logo">
+<%-- 		<h1 class="logo">
 			<a href="index"> <img
-<%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo_dano.png" --%>
+				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo_dano.png"
 				src="https://www.ufo79.com/image/${ufo.logo }"
 				alt=""><span class="text">${ufo.title }</span>
 			</a>
-		</h1>
+		</h1> --%>
+		<div class="logo">
+			<a href="index"> <img
+<%-- 				src="${pageContext.request.contextPath}/resources/ufo/assets/images/logo_dano.png" --%>
+				src="https://www.ufo79.com/image/${ufo.logo }"
+				alt="">
+			</a>
+		</div>
 		<!--//logo-->
 		<nav class="main-nav navbar-right" role="navigation">
 			<div class="navbar-header">

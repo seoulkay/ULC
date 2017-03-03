@@ -74,7 +74,7 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">2017 감천문화마을 축제</a></li>
+					<li><a class="scrollto" href="#support-section">제 7회 감천문화마을 골목축제</a></li>
 					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
 					<li><a class="scrollto" href="#info-section">감천문화마을 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
@@ -86,26 +86,12 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-	
 
 <section id="support-section"
-		class="support-section section text-center">
-		<%-- <h2 class="section-title">스탬프 랠리</h2>
-		
-		<!-- <a class="btn btn-secondary" href="support
-">행사장 및 주차안내</a> -->
-		
-<!-- 			<img class="img-responsive support-team" -->
-				src="${pageContext.request.contextPath}/resources/ufo/assets/images/index_dano_home_map.JPG"
-<!-- 				alt=""> -->
-				
-		<div class="team-figure">
-		<div id="map"></div>
-		</div>
-		<br><br> --%>
+		class="support-section section text-center" style="padding-top:50px">
 		<div class="team-figure">
 		<div class="section-title">${ufo.event_short_description }</div><br>
-		<div class="section-content">${ufo.event_long_description }</div><br>
+		<div class="section-content" align="left">${ufo.event_long_description }</div><br>
 		</div>
 		<br><br>
 		<!--//feature-list-->
@@ -121,13 +107,11 @@
 				<h2 class="counter-desc">감천문화마을 스탬프랠리 참여하기</h2>
 
 				<div class="form-wrapper">
-					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
 					<div class="form-box">
-						<!-- <h3 class="form-heading">설문조사에 참여하시고 선물을 받아가세요!</h3> -->
-						<div class="form-desc">스탬프랠리에 참여하시고 선물을 받아가세요!</div>
+						<div class="form-desc">스탬프랠리를 완성 후, 감천문화마을 안내센터에서 선물과 교환하세요!</div>
 						<div class="team-figure">
-		<div id="map"></div>
-		</div><br><br>
+							<div id="map"></div>
+						</div><br><br>
 						<ul class="social-buttons list-unstyled">
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
@@ -141,52 +125,26 @@
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
-							<span class="or-text">참여방법</span>
-						</div>						
-						<div class="team-figure">
-							<div class="form-desc">1. GPS를 켜고, 위치정보 수집에 동의해주세요.</div>
-							<div class="form-desc">2. 페이스북/카카오톡 로그인을 해주세요.</div>
-							<div class="form-desc">3. 페이스북/카카오톡 로그인을 해주세요.</div>
-							<div class="form-desc">4. 페이스북/카카오톡 로그인을 해주세요.</div>
 						</div>
-						<!--//divider-->
-						<form class="signup-form">
+						<div class="quotes">
 							<div class="row">
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="firstname" class="sr-only">First Name</label> <input -->
-<!-- 										type="text" class="form-control" id="firstname" -->
-<!-- 										name="firstname" placeholder="이름"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="lastname" class="sr-only">Last Name</label> <input -->
-<!-- 										type="text" class="form-control" id="lastname" name="lastname" -->
-<!-- 										placeholder="성"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-								<div class="form-group col-xs-12 col-sm-12">
-									<label for="firstname" class="sr-only">Email Address</label>
-									<input type="email" class="form-control" id="semail" name="emailaddress" placeholder="이메일주소">
-									<input type="hidden" id="news_para" value="${ufo.para }">  
-								</div>     
-								<!--//form-group-->
-<!-- 								<div class="form-group col-xs-12 col-sm-6"> -->
-<!-- 									<label for="password" class="sr-only">Password</label> <input -->
-<!-- 										type="password" class="form-control" id="password" -->
-<!-- 										name="password" placeholder="비밀번호"> -->
-<!-- 								</div> -->
-<!-- 								//form-group -->
-
+								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
+									<div class="inner">			
+										<i class="fa fa-quote-left" aria-hidden="true"></i>
+										<blockquote class="result">감천문화마을 스탬프랠리 참여방법</blockquote>
+										<!--//blockquote-->
+										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북/카카오톡 로그인하기!<br>3. 지도에서 현재 위치와 포토존 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 받기!<br>5. 스탬프 랠리 완성 후, 안내센터에서 선물 받기!</div>
+										<!--//source-->
+									</div>
+									<!--//inner-->
+								</div>
+								<!--//quote-item2-->			
 							</div>
 							<!--//row-->
-							<div class="legal-note">${ufo.title }의 소식을 보내드립니다.</div>
-
-							<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
-<!-- 							<div class="alter-login">이미 계정이 있으신가요?<a class="login-link" href="#" -->
-<!-- 									data-toggle="modal" data-target="#login-modal">로그인하기</a> -->
-<!-- 							</div> -->
-						</form>
-						<!--//form-->
+						</div>
+						<!--//quotes-->			
+						<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
+						<!--//divider-->
 					</div>
 					<!--//form-box-->
 				</div>
@@ -203,7 +161,8 @@
 	<div class="feature-blocks container">
 		<div id="feature-block-1" class="feature-block feature-block-1">
 			<div class="row">
-				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
+				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
+				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
 					<h3 class="feature-title">${info.title }</h3>
 					<div class="feature-desc">
 						<p>${info.content }</p>
@@ -211,8 +170,9 @@
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
-					<div class="figure-holder">
+<!-- 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12"> -->
+				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+					<div class="figure-holder" align="center">
 					<c:if test="${info.photo_file ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${info.photo_file}"
@@ -233,7 +193,7 @@
 		<div id="feature-block-2" class="feature-block feature-block-2">
 			<div class="row">
 				<div
-					class="feature-content col-md-4 col-sm-6 col-xs-12 col-md-push-8 col-sm-push-6 col-xs-push-0">
+					class="feature-content col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6 col-xs-push-0">
 					<h3 class="feature-title">${hist.title }</h3>
 					<div class="feature-desc">
 						<p>${hist.content }</p>
@@ -242,8 +202,8 @@
 				</div>
 				<!--//feature-content-->
 				<div
-					class="feature-figure col-md-8 col-sm-6 col-xs-12 col-md-pull-4 col-sm-pull-6 col-xs-pull-0">
-					<div class="figure-holder">
+					class="feature-figure col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 col-xs-pull-0">
+					<div class="figure-holder" align="center">
 						<c:if test="${hist.photo_file ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${hist.photo_file}"

@@ -508,7 +508,7 @@ textarea {
   text-decoration: none;
 }
 .header .logo img {
-	width: 50%;
+  padding-top: 10px;
 }
 /* ====== Nav ======= */
 .main-nav .navbar-toggle {
@@ -1205,7 +1205,6 @@ body.sticky-page-nav .overview-section {
 .signup-section .divider {
   border-bottom: 1px solid #ccc;
   position: relative;
-  margin-bottom: 45px;
 }
 .signup-section .or-text {
   position: relative;
