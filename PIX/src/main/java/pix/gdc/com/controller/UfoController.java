@@ -30,6 +30,7 @@ import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
+import pix.gdc.com.vo.UfoGoVO;
 
 @Controller
 public class UfoController {
@@ -147,7 +148,7 @@ public class UfoController {
 		session.setAttribute("eventPara", para);
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
-		
+		List<UfoGoVO> ufoGo = dao.selectUfoGoByPara(para);
 		
 //		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
 //		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
@@ -225,6 +226,7 @@ public class UfoController {
 			
 		model.addAttribute("quesVO", ql);
 		model.addAttribute("ufo", ufo);
+		model.addAttribute("ufoGo", ufoGo);
 		return "ufo/index";
 	}
 	@RequestMapping(value = "ufo/job-single", method = RequestMethod.GET)

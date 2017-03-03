@@ -74,9 +74,9 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">2017 감천문화마을 축제</a></li>
+					<li><a class="scrollto" href="#support-section">2017 ${ufo.title }</a></li>
 					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
-					<li><a class="scrollto" href="#info-section">감천문화마을 안내</a></li>
+					<li><a class="scrollto" href="#info-section">${ufo.title } 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
@@ -118,7 +118,7 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 
-				<h2 class="counter-desc">감천문화마을 스탬프랠리 참여하기</h2>
+				<h2 class="counter-desc">${ufo.title } 스탬프랠리 참여하기</h2>
 
 				<div class="form-wrapper">
 					<!-- <h2 class="form-title">설문조사에 참여하시고 선물을 받아가세요!</h2> -->
@@ -425,191 +425,7 @@
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
-		<script>
-			var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-		        var icons = {
-		          parking: {
-		            icon: iconBase + 'parking_lot_maps.png'
-		          },
-		          library: {
-		            icon: iconBase + 'library_maps.png'
-		          },
-		          info: {
-		            icon: iconBase + 'info-i_maps.png'
-		          }
-		        };
-		        
-				var neighborhoods = [
-				  {lat:37.7737, lng:128.8927, type:'parking', content:'포인트'},
-                  {lat:37.7739, lng:128.8929, type:'info', content:'1번 포키'},
-                  {lat:37.7735, lng:128.8925, type:'info', content:'2번 포키'},
-                  {lat:37.7735, lng:128.8929, type:'info', content:'3번 포키'},
-                  {lat:37.7739, lng:128.8925, type:'info', content:'<div id="content">'+
-    			      '<div id="siteNotice">'+
-    			      '</div>'+
-    			      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-    			      '<div id="bodyContent">'+
-    			      '<p><b>UFO 스탑</b>, 여기는 성지 입니다. <b>Ayers Rock</b>, is a large ' +
-    			      'sandstone rock formation in the southern part of the '+
-    			      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-    			      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-    			      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-    			      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-    			      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-    			      'Aboriginal people of the area. It has many springs, waterholes, '+
-    			      'rock caves and ancient paintings. Uluru is listed as a World '+
-    			      'Heritage Site.</p>'+
-    			      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-    			      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-    			      '(last visited June 22, 2009).</p>'+
-    			      '</div>'+
-    			      '</div>'}
-                ];
 
-			  
-            var markers = [];
-			var map;
-			
-			
-			function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-			    zoom: 18,
-			    //center: {lat: 37.75, lng: 128.87}
-			    center: {lat: 40.71, lng: -74.00}
-			  });
-			var infoWindow = new google.maps.InfoWindow({map: map});
-			 
-			
-
-			// Try HTML5 geolocation.
-	        if (navigator.geolocation) {
-	          navigator.geolocation.getCurrentPosition(function(position) {
-	            var pos = {
-	              lat: position.coords.latitude,
-	              lng: position.coords.longitude,
-	              type: "library"
-	            };
-	  
-	           
-	            var target = {};
-	            //alert(pos.lat);
-	          	//소수점 네자리의 위치 구하기
-				//alert(parseFloat(Math.round(pos.lat * 100) / 100).toFixed(4)+" "+parseFloat(Math.round(pos.lng * 100) / 100).toFixed(4));
-	            //infoWindow.setPosition(pos);
-	            //infoWindow.setContent('지금 여기 있으십니다!');
-	            target.lat = parseFloat((pos.lat+ 0.0001).toFixed(4));
-	            target.lng = parseFloat((pos.lng+ 0.0001).toFixed(4));
-	            target.type = "parking";
-	            target.content = "타겟";
-	            neighborhoods.push(target);
-	            
-	            var ref = {};
-	            ref.lat = parseFloat((pos.lat+ 0.0002).toFixed(4));
-	            ref.lng = parseFloat((pos.lng).toFixed(4));
-	            ref.type = "info";
-	            ref.content = "타겟";
-	            neighborhoods.push(ref);
-	            
-	            var ref2 = {};
-	            ref2.lat = parseFloat((pos.lat).toFixed(4));
-	            ref2.lng = parseFloat((pos.lng+ 0.0002).toFixed(4));
-	            ref2.type = "info";
-	            ref2.content = "타겟";
-	            neighborhoods.push(ref2);
-	            
-	            var ref3 = {};
-	            ref3.lat = parseFloat((pos.lat).toFixed(4));
-	            ref3.lng = parseFloat((pos.lng- 0.0002).toFixed(4));
-	            ref3.type = "info";
-	            ref3.content = "타겟";
-	            neighborhoods.push(ref3);
-	            
-	            var ref4 = {};
-	            ref4.lat = parseFloat((pos.lat- 0.0002).toFixed(4));
-	            ref4.lng = parseFloat((pos.lng).toFixed(4));
-	            ref4.type = "info";
-	            ref4.content = "타겟";
-	            neighborhoods.push(ref4);
-	            
-	            
-	            console.log(pos);
-	            console.log(target);
-	            
-	            addMarkerWithTimeout(pos, 100);
-	            
-	            map.setCenter(pos);
-	            drop();
-	            
-	           	if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0002, 2) ){
-	           		console.log("IN");
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
-	           	}else{
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
-	           	}
-	          }, function() {
-	            handleLocationError(true, infoWindow, map.getCenter());
-	          });
-	        } else {
-	          // Browser doesn't support Geolocation
-	          handleLocationError(false, infoWindow, map.getCenter());
-	        }
-	       
-			}
-			
-			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		        infoWindow.setPosition(pos);
-		        infoWindow.setContent(browserHasGeolocation ?
-		                              'Error: The Geolocation service failed.' :
-		                              'Error: Your browser doesn\'t support geolocation.');
-		    }
-			
-			function drop() {
-			  clearMarkers();
-			  for (var i = 0; i < neighborhoods.length; i++) {
-			    addMarkerWithTimeout(neighborhoods[i], i * 200);
-			  }
-			}
-
-			function addMarkerWithTimeout(position, timeout) {
-			  window.setTimeout(function() {
-			  var infowindow = new google.maps.InfoWindow({
-				    content: position.content
-				  });
-			  
-			  var pos = {
-		              lat: position.lat,
-		              lng: position.lng
-		            };
-			  
-			 var marker = new google.maps.Marker({
-			      position: pos,
-			      map: map,
-			      animation: google.maps.Animation.DROP,
-			      icon: icons[position.type].icon
-			 });
-			 marker.addListener('click', function() {
-				    infowindow.open(map, marker);
-			  });
-			    markers.push(marker);
-				}, timeout);
-			}
-
-			function clearMarkers() {
-			  for (var i = 0; i < markers.length; i++) {
-			    markers[i].setMap(null);
-			  }
-			  markers = [];
-			}
-			
-			
-			
-		</script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
-	
 </body>
 </html>
 
