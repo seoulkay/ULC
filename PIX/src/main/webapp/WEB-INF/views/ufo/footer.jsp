@@ -487,6 +487,7 @@
 	src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 	
 <script>
+		
 	  window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '1074619385980281',
@@ -558,7 +559,6 @@
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
-		     alert("페이스북 로그인 실패.");
 		     location.reload();
 		    }
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
@@ -585,13 +585,12 @@
 		    		
 		       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
 		       .done(function( data ) {
-		         //alert( "Data Loaded: " + data );
+		        //alert( "Data Loaded: " + data );
 		       });
-// 		       location.reload();
+				//location.reload();
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
-		     alert("페이스북 로그인 실패.");
 		     location.reload();
 		    }
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
@@ -645,7 +644,7 @@
 		    		var body = msg;
 					  FB.api('/me/feed', 'post', { message: body }, function(response) {
 					    if (!response || response.error) {
-					      alert('페이스북 서버와 연결되지 않습니다.');
+					     console.log('Did not connected to facebook server : ufo')
 					    } else {
 					      //alert('Post ID: ' + response.id);
 					      $( "#sns_return" ).val(response.id);
@@ -660,9 +659,9 @@
 					    }
 					  });    		
 		    	} else if (response.status === 'not_authorized') {
-		    		alert('페이스북 로그인 되어 있지 않습니다.');
+		    		console.log('페이스북 로그인 되어 있지 않습니다.');
 		    	} else {
-		    		alert('연결에 문제가 있습니다.');
+		    		console.log('연결에 문제가 있습니다.');
 		    		}
 		    	}, true); 
 	    }
@@ -680,6 +679,21 @@
 	  }
 	  </script>
 	  		<script>
+	  		console.log('${sessionScope.eventPara }');
+	  		
+	  		$.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
+		       .done(function( data ) {
+		         //alert(data);
+		    	 //var response = jQuery.parseJSON(data);
+		         //var json = $.parseJSON(data);
+		         //console.log( "Data Loaded: " + json );
+		         var go = JSON.JSON.stringify(data);
+		         //var ufogo = {};
+		         //for(var ele in go){}
+		         
+		         
+		         console.log(go.length);
+		       });
 			var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 		        var icons = {
 		          parking: {
@@ -733,6 +747,7 @@
             var markers = [];
 			var map;
 			
+			console.log(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null);
 			
 			function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
@@ -740,7 +755,7 @@
 			    //center: {lat: 37.75, lng: 128.87}
 			    center: {lat: 40.71, lng: -74.00}
 			  });
-			var infoWindow = new google.maps.InfoWindow({map: map});
+			//var infoWindow = new google.maps.InfoWindow({map: map});
 			 
 			
 
@@ -811,25 +826,26 @@
 		        //    neighborhoods.push(ref);
 				//	}
 	         
-	            console.log(${fn:length(ufoGo)});
-	            console.log(pos);
-	            console.log(target);
+	            //console.log(${fn:length(ufoGo)});
+	            //console.log(pos);
+	            //console.log(target);
 	            
-	            addMarkerWithTimeout(pos, 100);
+	            //addMarkerWithTimeout(pos, 100);
+	            neighborhoods.push(pos);
 	            
 	            map.setCenter(pos);
 	            drop();
 	            
 	           	if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0002, 2) ){
 	           		console.log("IN");
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
+	           		//console.log(Math.pow(target.lat - pos.lat, 2));
+	           		//console.log(Math.pow(target.lng - pos.lng, 2));
+	           		//console.log(Math.pow(0.0001, 2));
 	           	}else{
 	           		console.log("OUT")
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
+	           		//console.log(Math.pow(target.lat - pos.lat, 2));
+	           		//console.log(Math.pow(target.lng - pos.lng, 2));
+	           		//console.log(Math.pow(0.0001, 2));
 	           	}
 	          }, function() {
 	            handleLocationError(true, infoWindow, map.getCenter());

@@ -222,8 +222,7 @@ public class UfoController {
 		model.addAttribute("info", info);
 		model.addAttribute("hist", hist);
 		model.addAttribute("prog", prog);
-
-			
+	
 		model.addAttribute("quesVO", ql);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
