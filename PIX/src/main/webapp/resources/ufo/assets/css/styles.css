@@ -762,6 +762,7 @@ textarea {
 .footer-col .label-new {
   margin-left: 5px;
 }
+
 /* ======= Home ======= */
 .promo-section {
   color: #fff;
@@ -2887,6 +2888,11 @@ body.sticky-page-nav .overview-section {
 .modal-body iframe {
   max-width: 100%;
 }
+.stamp{
+  margin-bottom: 10px;
+  width:100%;
+  border:1px solid #ADADAD;	
+}
 .modal-content {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -2947,6 +2953,7 @@ body.sticky-page-nav .overview-section {
 .modal .modal-title {
   font-size: 20px;
 }
+
 .modal-auth .form-group {
   margin-bottom: 15px;
   position: relative;
@@ -3059,6 +3066,8 @@ body.sticky-page-nav .overview-section {
 .modal-video .modal-header {
   padding-top: 30px;
 }
+
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .main-nav .navbar-header {
