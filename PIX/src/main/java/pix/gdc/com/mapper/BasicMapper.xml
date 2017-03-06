@@ -248,75 +248,13 @@
 	</select>
 	
 	<select id="SelectUfoByNumber" parameterType="Integer" resultType="FestUfo">
-	SELECT `fest_ufo`.`idfest_ufo`,
-    `fest_ufo`.`title`,
-    `fest_ufo`.`logo`,
-    `fest_ufo`.`main_image`,
-    `fest_ufo`.`event_date`,
-    `fest_ufo`.`event_long_description`,
-    `fest_ufo`.`event_short_description`,
-    `fest_ufo`.`info_info_pic`,
-    `fest_ufo`.`info_info_text`,
-    `fest_ufo`.`info_hist_pic`,
-    `fest_ufo`.`info_hist_text`,
-    `fest_ufo`.`q_coupon_img`,
-    `fest_ufo`.`info_program_pic`,
-    `fest_ufo`.`info_program_text`,
-    `fest_ufo`.`info_location_pic`,
-    `fest_ufo`.`info_location_text`,
-    `fest_ufo`.`info_contact_pic`,
-    `fest_ufo`.`info_contact_text`,
-    `fest_ufo`.`q1_img`,
-    `fest_ufo`.`q2_img`,
-    `fest_ufo`.`q3_img`,
-    `fest_ufo`.`q4_img`,
-    `fest_ufo`.`q5_img`,
-    `fest_ufo`.`q6_img`,
-    `fest_ufo`.`q7_img`,
-    `fest_ufo`.`q_coupon_txt`,
-    `fest_ufo`.`q_coupon_txt2`,
-    `fest_ufo`.`q_coupon_txt3`,
-    `fest_ufo`.`ufo_time_stamp`,
-    `fest_ufo`.`q_graphic`,
-    `fest_ufo`.`para`,
-    `fest_ufo`.`menu`
+	SELECT *
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`idfest_ufo` = #{param}
 	</select>
 	
 	<select id="SelectUfoByPara" parameterType="String" resultType="FestUfo">
-	SELECT `fest_ufo`.`idfest_ufo`,
-    `fest_ufo`.`title`,
-    `fest_ufo`.`logo`,
-    `fest_ufo`.`main_image`,
-    `fest_ufo`.`event_date`,
-    `fest_ufo`.`event_long_description`,
-    `fest_ufo`.`event_short_description`,
-    `fest_ufo`.`info_info_pic`,
-    `fest_ufo`.`info_info_text`,
-    `fest_ufo`.`info_hist_pic`,
-    `fest_ufo`.`info_hist_text`,
-    `fest_ufo`.`q_coupon_img`,
-    `fest_ufo`.`info_program_pic`,
-    `fest_ufo`.`info_program_text`,
-    `fest_ufo`.`info_location_pic`,
-    `fest_ufo`.`info_location_text`,
-    `fest_ufo`.`info_contact_pic`,
-    `fest_ufo`.`info_contact_text`,
-    `fest_ufo`.`q1_img`,
-    `fest_ufo`.`q2_img`,
-    `fest_ufo`.`q3_img`,
-    `fest_ufo`.`q4_img`,
-    `fest_ufo`.`q5_img`,
-    `fest_ufo`.`q6_img`,
-    `fest_ufo`.`q7_img`,
-    `fest_ufo`.`q_coupon_txt`,
-    `fest_ufo`.`q_coupon_txt2`,
-    `fest_ufo`.`q_coupon_txt3`,
-    `fest_ufo`.`ufo_time_stamp`,
-    `fest_ufo`.`q_graphic`,
-    `fest_ufo`.`para`,
-    `fest_ufo`.`menu`
+	SELECT *
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>

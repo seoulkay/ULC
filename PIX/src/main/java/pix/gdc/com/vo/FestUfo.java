@@ -35,6 +35,11 @@ public class FestUfo {
 	private String q_graphic;
 	private String para;
 	private String menu;
+	private String location_title;
+	private String info_title;
+	private String program_title;
+	private String history_title;
+	
 	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
@@ -228,7 +233,28 @@ public class FestUfo {
 	public void setMenu(String menu) {
 		this.menu = menu;
 	}
-	
-	
-	
+	public String getLocation_title() {
+		return location_title;
+	}
+	public void setLocation_title(String location_title) {
+		this.location_title = location_title;
+	}
+	public String getInfo_title() {
+		return info_title;
+	}
+	public void setInfo_title(String info_title) {
+		this.info_title = info_title;
+	}
+	public String getProgram_title() {
+		return program_title;
+	}
+	public void setProgram_title(String program_title) {
+		this.program_title = program_title;
+	}
+	public String getHistory_title() {
+		return history_title;
+	}
+	public void setHistory_title(String history_title) {
+		this.history_title = history_title;
+	}
 }
