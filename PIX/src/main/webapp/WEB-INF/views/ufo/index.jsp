@@ -91,7 +91,7 @@
 		class="support-section section text-center" style="padding-top:50px">
 		<div class="team-figure">
 		<div class="section-title">${ufo.event_short_description }</div><br>
-		<div class="section-content" align="left">${ufo.event_long_description }</div><br>
+		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }</div><br>
 		</div>
 		<br><br>
 		<!--//feature-list-->
@@ -129,9 +129,9 @@
 						<div class="quotes">
 							<div class="row">
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner">			
+									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<blockquote class="result">${ufo.title } 스탬프랠리 참여방법</blockquote>
+										<blockquote class="result">스탬프랠리 참여방법</blockquote>
 										<!--//blockquote-->
 										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북/카카오톡 로그인하기!<br>3. 지도에서 현재 위치와 포토존 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 받기!<br>5. 스탬프 랠리 완성 후, 안내센터에서 선물 받기!</div>
 										<!--//source-->

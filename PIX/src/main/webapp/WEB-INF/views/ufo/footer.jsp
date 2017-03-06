@@ -409,9 +409,9 @@
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach var="ele" varStatus="statusEle" begin="0" end="8">
-	   			<div class="col-xs-12 col-md-4" >
+	   			<div class="col-xs-4" style="padding:0px;">
 	   				<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal">
-	   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/customers/customer-1.jpg">
+	   					<img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   				</a>
 	   			</div>
 	   			</c:forEach>
