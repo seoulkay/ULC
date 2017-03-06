@@ -28,6 +28,7 @@ import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.Notice_VO;
+import pix.gdc.com.vo.UfoGoVO;
 
 
 @Repository
@@ -390,5 +391,10 @@ public class FestDAO extends SqlSessionDaoSupport{
 	//개인포스트 가지고 오기
 	public FestAnswerVO selectSnsPost(FestAnswerVO para){
 		return getSqlSession().selectOne("BasicMapper.selectSnsPost", para);
+	}
+	
+	//유에포 가지고 오기
+	public List<UfoGoVO> selectUfoGoByPara(String para){
+		return getSqlSession().selectList("BasicMapper.selectUfoGoByPara", para);
 	}
 }

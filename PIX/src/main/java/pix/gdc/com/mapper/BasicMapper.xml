@@ -657,9 +657,14 @@
 	ORDER BY 
 		id desc 
 	LIMIT
-		1
-	
-	
-	
+		1	
+	</select>
+	<select id="selectUfoGoByPara" parameterType="String" resultType="UfoGoVO">
+	SELECT
+		*
+	FROM
+		pix.ufo_go
+	WHERE
+		go_para = #{param}
 	</select>
 </mapper>
