@@ -119,7 +119,7 @@
 						<!-- <li><a href="#" class="btn btn-social btn-google btn-block"><i
 								class="fa fa-google" aria-hidden="true"></i><span
 								class="btn-text">구글로 로그인하기</span></a></li> -->
-						<li onClick="fbLogin(); return false;"><span class="btn btn-social btn-facebook btn-block"><i
+						<li onClick="fbLogin('index'); return false;"><span class="btn btn-social btn-facebook btn-block"><i
 								class="fa fa-facebook" aria-hidden="true"></i><span
 								class="btn-text">
 								페이스북으로 로그인하기</span></span></li>
@@ -298,6 +298,8 @@
 	
 	<!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stampRally" data-dismiss="modal" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
+
 
 
 
@@ -408,9 +410,10 @@
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row">
-	   			<c:forEach var="ele" varStatus="statusEle" begin="0" end="8">
+	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;">
 	   				<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal">
+	   					${ele.go_content }
 	   					<img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   				</a>
 	   			</div>
@@ -533,7 +536,7 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 	  
-	  function fbLogin(){
+	  function fbLogin(para){
 	  FB.login(function(response) {
 		    if (response.authResponse) {
 		     FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
@@ -555,7 +558,16 @@
 		       .done(function( data ) {
 		         //alert( "Data Loaded: " + data );
 		       });
-		       location.reload();
+		       //location.reload();
+		       if(para == 'go'){
+		    	   location.reload();
+		    	   stampRally();
+		       }else if(para == 'qr'){
+		    	   location.reload();
+		    	   stampRally();
+		       }else{
+		    	   top.location.href="index";
+		       }       
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
@@ -600,10 +612,10 @@
 			  $('#modalTrigger').click();
 				 
 			  } else if (response.status === 'not_authorized') {
-				  fbLogin();
+				  fbLogin('index');
 				  surveyPostByFb();
 			  } else {
-				  fbLogin();
+				  fbLogin('index');
 				  surveyPostByFb();
 
 			  }
@@ -632,7 +644,7 @@
 		  FB.logout(function(response) {
 			   // Person is now logged out
 			window.sessionStorage.clear();
-			   window.location.reload();
+			location.reload();
 			});
 	  }
 	  
@@ -677,8 +689,6 @@
 	       });
 		  alert("구독해주셔서 감사합니다.");
 	  }
-	  </script>
-	  		<script>
 	  		
 			var iconBase = 'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/';
 		        var icons = {
@@ -697,15 +707,14 @@
             var markers = [];
 			var map;
 			
-			console.log(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null);
-			
 			function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
 			    zoom: 20,
 			    center: {lat: 37.75, lng: 128.87}
 			  });
-				makeGo();
+			makeGo();
 			}
+	
 			
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		        infoWindow.setPosition(pos);
@@ -753,19 +762,20 @@
 			}
 			
 			function makeGo(){
+				
 				// Try HTML5 geolocation.
 		        if (navigator.geolocation) {
 		          navigator.geolocation.getCurrentPosition(function(position) {
 		            var pos = {
 		              lat: position.coords.latitude,
 		              lng: position.coords.longitude,
-		              type: "me"
+		              type: "me",
+		              content:'<h1 id="firstHeading" class="firstHeading">나</h1>'
 		            };
 		  
 		            $.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
 				       .done(function( data ) {
 				         var go = JSON.parse(JSON.stringify(data));		         
-				         console.log(go[1]);
 				         
 				         for(var i = 0; i < go.length; i++){
 				        	 var target = {};
@@ -785,9 +795,11 @@
 				         drop();
 				    });
 		          }, function() {
+		        	  var infoWindow = new google.maps.InfoWindow({map: map});
 		            handleLocationError(true, infoWindow, map.getCenter());
 		          });
 		        } else {
+		        	var infoWindow = new google.maps.InfoWindow({map: map});
 		          // Browser doesn't support Geolocation
 		          handleLocationError(false, infoWindow, map.getCenter());
 		        }
@@ -798,9 +810,27 @@
 				makeGo();
 				drop();
 			}
-
 			
+			
+		function stampRally(){
+			if(checkLogin()){
+				document.getElementById('rallyTrigger').click();
+			}else{
+				fbLogin('go');
+			}
+			
+		}
+			
+		function checkLogin(){
+			if(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null){
+				return false;
+			}else{
+				return true;	
+			}
+		}
+		
 		</script>
+		
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
 	
         

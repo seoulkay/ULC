@@ -604,5 +604,40 @@
 		pix.ufo_go
 	WHERE
 		go_para = #{param}
+	AND
+		ufo_go_type = 'go'
 	</select>
+	<select id="selectUfoGoRecordByPara" parameterType="String" resultType="UfoGoRecord">
+	SELECT 
+	*
+	FROM
+	pix.ufo_go_record
+	WHERE
+	para = #{param}
+	</select>
+	<insert id="insertUfoRecord" parameterType="UfoGoRecord">
+	INSERT INTO
+	pix.ufo_go_record
+	(
+		first_name,
+		last_name,
+		ufo_date,
+		ufo_image,
+		para,
+		ufo_go_num,
+		user_uis,
+		ufo_go_type
+	)
+	VALUES
+	(
+		#{first_name},
+		#{last_name},
+		now(),
+		#{ufo_image},
+		#{para},
+		#{ufo_go_num},
+		#{user_uis},
+		#{ufo_go_type}
+	)
+	</insert>
 </mapper>

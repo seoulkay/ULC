@@ -33,6 +33,7 @@
 		<typeAlias type="pix.gdc.com.vo.FestOption" alias="FestOption"/>
 		<typeAlias type="pix.gdc.com.vo.FestAnswerVO" alias="FestAnswerVO"/>
 		<typeAlias type="pix.gdc.com.vo.UfoGoVO" alias="UfoGoVO"/>
+		<typeAlias type="pix.gdc.com.vo.UfoGoRecord" alias="UfoGoRecord"/>
 		
 	</typeAliases>
 	
