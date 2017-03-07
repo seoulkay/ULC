@@ -231,13 +231,13 @@
 					<h3 class="feature-title">${prog.title }</h3>
 					<div class="feature-desc">
 						<p>${ufo.event_date }</p>
-						<p>${prog.content }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
+						<p>${prog.content }</p>
 						<c:if test="${ufo.info_program_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_program_pic}"
