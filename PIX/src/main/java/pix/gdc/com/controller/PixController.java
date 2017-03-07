@@ -29,6 +29,7 @@ import pix.gdc.com.util.MetaDataUtil;
 import pix.gdc.com.vo.PixArticle;
 import pix.gdc.com.vo.PixComment;
 import pix.gdc.com.vo.PixLike;
+import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
 
 /**
@@ -160,5 +161,43 @@ public class PixController {
 		return ufoGo;
 	}
 	
+	@RequestMapping(value = "/ufogo/insert", method = {RequestMethod.POST})
+	public @ResponseBody int insertUfogo(@ModelAttribute("vo")UfoGoRecord vo, @RequestParam("file") MultipartFile file){
+		
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+                
+                vo.setUfo_image(fileInfo[0]);
+                vo.setImage_lat(fileInfo[1]);
+                vo.setImage_alt(fileInfo[2]);
+                int result;
+            	try{
+            		result = dao.insertUfoRecord(vo);
+            	}catch(Exception e){
+            		result = 0;
+            	}
+            	return  result; 
+            } catch (Exception e) {
+                System.out.println("You failed to upload => " + e.getMessage());
+                return 0;
+            }
+        } else {
+        	int result;
+        	try{
+        		result = dao.insertUfoRecord(vo);
+        	}catch(Exception e){
+        		result = 0;
+        	}
+        	return  result; 
+        }
+	}
 	
+	@RequestMapping(value = "/ufogo/get/{para}/{uid}", method = {RequestMethod.POST, RequestMethod.GET})
+	public @ResponseBody List<UfoGoRecord> getUfogo(@PathVariable("uid")String uid, @PathVariable("para")String para){
+		UfoGoRecord vo = new UfoGoRecord();
+		vo.setUser_uid(uid);
+		vo.setPara(para);
+		return dao.selectUfoGoRecordByParaAndUid(vo);
+	}
 }

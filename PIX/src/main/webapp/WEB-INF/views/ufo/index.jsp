@@ -103,12 +103,15 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
+				
 
 				<h2 class="counter-desc">${ufo.title } 스탬프랠리 참여하기</h2>
 
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
+						<button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br>
+						<br>
 						<div class="team-figure">
 							<div id="map"></div>
 						</div><br><br>
@@ -116,9 +119,7 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li>
-								<button class="btn btn-social btn-facebook" onClick="refreshGo()" style="background-color: BLACK;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스템프렐리 리프레쉬!</span></button><br>
-							</li>	
+								
 							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
@@ -139,6 +140,7 @@
 										<!--//blockquote-->
 										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북/카카오톡 로그인하기!<br>3. 지도에서 현재 위치와 포토존 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 받기!<br>5. 스탬프 랠리 완성 후, 안내센터에서 선물 받기!</div>
 										<!--//source-->
+										
 									</div>
 									<!--//inner-->
 								</div>
@@ -147,13 +149,75 @@
 							<!--//row-->
 						</div>
 						<!--//quotes-->			
-						<button onClick="sendNewsLetterEmail();" class="btn btn-primary btn-cta">구독하기</button>
+						
 						<!--//divider-->
 					</div>
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
+				<br><br><br>
+				<h2 class="counter-desc">${ufo.title } 큐알코드랠리 참여하기</h2>
+				
+				<div class="form-wrapper">
+					<div class="form-box">
+						<div class="form-desc">큐알 코드 랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
+						
+						<div class="team-figure">
 
+					
+							<div class="subscribe-form form-inline" novalidate="novalidate">
+				                <div class="form-group">
+				                <div id="qrcode"></div>
+				                <br>
+				                    <input type="text" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요 ${gid } + ${type }" name="qrNumber" required="" aria-required="true">
+				                    <button class="btn btn-primary" onClick="qrRally();">큐알코드 인증</button>  
+				                </div>                              
+				            </div>
+						</div><br><br>
+						<ul class="social-buttons list-unstyled">
+							<!-- <li><a href="#" class="btn btn-social btn-google"><i
+									class="fa fa-google" aria-hidden="true"></i><span
+									class="btn-text">Sign up with Google</span></a></li> -->
+								
+							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
+									class="fa fa-facebook" aria-hidden="true"></i><span
+									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
+							<li>
+								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br>
+							</li>
+								
+						</ul>
+						<!--//social-buttons-->
+						<div class="divider">
+						</div>
+						<div class="quotes">
+							<div class="row">
+								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
+									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
+										<i class="fa fa-quote-left" aria-hidden="true"></i>
+										<blockquote class="result">큐알코드랠리 참여방법</blockquote>
+										<!--//blockquote-->
+										<div class="tip">
+										1. 큐알 코드를 읽어주세요.<br>
+										2. 페이스북/카카오톡 로그인하기!<br>
+										3. 큐알코드 인증 버튼 누르기!<br>
+										4. 큐알 코드 랠리 완성 후, 안내센터에서 선물 받기!
+										</div>
+										<!--//source-->
+									</div>
+									<!--//inner-->
+								</div>
+								<!--//quote-item2-->			
+							</div>
+							<!--//row-->
+						</div>
+						<!--//quotes-->			
+						
+						<!--//divider-->
+					</div>
+					<!--//form-box-->
+				</div>
+				<!--//form-wrapper-->
 			</div>
 			<!--//container-->
 		</div>
@@ -184,7 +248,7 @@
 					</c:if>
 					<c:if test="${info.photo_file eq null}">
 						<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature01.jpg"
+							src="https://www.ufo79.com/image/white.png"
 							alt="">
 					</c:if>
 					</div>
@@ -215,7 +279,7 @@
 						</c:if>
 						<c:if test="${hist.photo_file eq null}">
 							<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							src="https://www.ufo79.com/image/white.png"
 							alt="">
 						</c:if>
 					</div>
@@ -224,6 +288,35 @@
 			</div>
 			<!--//row-->
 		</div>
+		</div>
+</section>	
+
+
+<section id="app-section" class="apps-section section text-center">
+		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
+		<div class="container">
+			<ul class="apps-list list-inline">
+				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
+						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
+							class="intro-text">Download on the</span><span class="main-text">App
+								Store</span></span></a></li>
+				<li><a class="btn btn-download-app btn-andriod-download"
+					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Get it on</span><span
+							class="main-text">Google Play</span></span></a></li>
+				<!-- <li><a class="btn btn-download-app btn-windows-download"
+					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Download
+								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
+			</ul>
+			<!--//apps-list-->
+		</div>
+		<!--//container-->
+	</section>
+	<!--//apps-section-->
+
+<section id="info-section1">
+	<div class="feature-blocks container">
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-3">
 			<div class="row">
@@ -245,7 +338,7 @@
 						</c:if>
 						<c:if test="${ufo.info_program_pic eq null}">
 							<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							src="https://www.ufo79.com/image/white.png"
 							alt="">
 						</c:if>
 					</div>
@@ -273,7 +366,7 @@
 						</c:if>
 						<c:if test="${ufo.info_location_pic eq null}">
 							<img class="img-responsive"
-							src="${pageContext.request.contextPath}/resources/ufo/assets/images/features/dano_feature02.jpg"
+							src="https://www.ufo79.com/image/white.png"
 							alt="">
 						</c:if>
 					</div>
@@ -288,25 +381,21 @@
 </section>
 
 	<section id="app-section" class="apps-section section text-center">
-		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
-		<div class="container">
-			<ul class="apps-list list-inline">
-				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
-						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
-							class="intro-text">Download on the</span><span class="main-text">App
-								Store</span></span></a></li>
-				<li><a class="btn btn-download-app btn-andriod-download"
-					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Get it on</span><span
-							class="main-text">Google Play</span></span></a></li>
-				<!-- <li><a class="btn btn-download-app btn-windows-download"
-					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Download
-								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
-			</ul>
-			<!--//apps-list-->
-		</div>
-		<!--//container-->
+		
+		
+		<div class="blog-signup-block">
+        <div class="container text-center">
+            <h3 class="block-heading">${ufo.title } 뉴스레터 구독하기</h3>
+            <div class="block-intro">${ufo.title }의 소식을 보내드립니다.</div>
+            <div class="subscribe-form form-inline" novalidate="novalidate">
+                <div class="form-group">
+                    <label class="sr-only" for="semail">Your Email</label>
+                    <input type="text" id="semail"  type="email" class="form-control email-field" placeholder="이메일 주소를 입력하세요." name="email" required="" aria-required="true">
+                    <button class="btn btn-primary" onClick="sendNewsLetterEmail();">구독하기</button>  
+                </div>                              
+            </div>
+        </div><!--//container-->
+    </div><!--//blog-signup-block-->
 	</section>
 	<!--//apps-section-->
 <%-- <section id="survey-section"

@@ -615,6 +615,19 @@
 	WHERE
 	para = #{param}
 	</select>
+	<select id="selectUfoGoRecordByParaAndUid" parameterType="UfoGoRecord" resultType="UfoGoRecord">
+	SELECT 
+	distinct a.ufo_gid
+    ,a.ufo_go_type
+    ,b.go_content
+	FROM
+	pix.ufo_go_record a
+	left join pix.ufo_go b on a.ufo_gid = b.ufo_gid
+	WHERE
+	para = #{para}
+	and
+	user_uid = #{user_uid}
+	</select>
 	<insert id="insertUfoRecord" parameterType="UfoGoRecord">
 	INSERT INTO
 	pix.ufo_go_record
@@ -625,8 +638,11 @@
 		ufo_image,
 		para,
 		ufo_go_num,
-		user_uis,
-		ufo_go_type
+		user_uid,
+		ufo_go_type,
+		image_lat,
+		image_alt,
+		ufo_gid
 	)
 	VALUES
 	(
@@ -636,8 +652,11 @@
 		#{ufo_image},
 		#{para},
 		#{ufo_go_num},
-		#{user_uis},
-		#{ufo_go_type}
+		#{user_uid},
+		#{ufo_go_type},
+		#{image_lat},
+		#{image_alt},
+		#{ufo_gid}
 	)
 	</insert>
 </mapper>

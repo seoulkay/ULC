@@ -11,6 +11,13 @@ public class UfoGoRecord {
 	private String para;
 	private int ufo_go_num;
 	private String user_uid;
+	private String email;
+	private String ufo_go_type;
+	private String image_lat;
+	private String image_alt;
+	private String ufo_gid;
+	private String go_content;
+	
 	public int getId() {
 		return id;
 	}
@@ -59,6 +66,41 @@ public class UfoGoRecord {
 	public void setUser_uid(String user_uid) {
 		this.user_uid = user_uid;
 	}
-	
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUfo_go_type() {
+		return ufo_go_type;
+	}
+	public void setUfo_go_type(String ufo_go_type) {
+		this.ufo_go_type = ufo_go_type;
+	}
+	public String getImage_lat() {
+		return image_lat;
+	}
+	public void setImage_lat(String image_lat) {
+		this.image_lat = image_lat;
+	}
+	public String getImage_alt() {
+		return image_alt;
+	}
+	public void setImage_alt(String image_alt) {
+		this.image_alt = image_alt;
+	}
+	public String getUfo_gid() {
+		return ufo_gid;
+	}
+	public void setUfo_gid(String ufo_gid) {
+		this.ufo_gid = ufo_gid;
+	}
+	public String getGo_content() {
+		return go_content;
+	}
+	public void setGo_content(String go_content) {
+		this.go_content = go_content;
+	}
+
 }

@@ -310,13 +310,13 @@ public class UfoController {
 	public String support(){
 		return "ufo/support";
 	}
-	@RequestMapping(value = "ufo/snsLog/fb", method = RequestMethod.POST)
+	@RequestMapping(value = "ufo/{para}/snsLog/fb", method = RequestMethod.POST)
 	public @ResponseBody int inputFacebookLogin(@ModelAttribute("vo")FestSnsLog log, HttpServletRequest request){
 		log.setSns_ip(request.getRemoteAddr());
 		return dao.insertSnsLog(log);
 	}
 	
-	@RequestMapping(value = "ufo/newsletter", method = RequestMethod.POST)
+	@RequestMapping(value = "ufo/{para}/newsletter", method = RequestMethod.POST)
 	public @ResponseBody int inputNewsLetterEmail(@ModelAttribute("vo")FestNewsLetterEmail vo, HttpServletRequest request){
 		vo.setNews_letter_ip(request.getRemoteAddr());
 		return dao.insertNewsLetterEmail(vo);

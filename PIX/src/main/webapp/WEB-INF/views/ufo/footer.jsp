@@ -400,7 +400,7 @@
 <input type="hidden" id="sns_return" name="sns_return">
 </form>
 <!-- 스템프  -->
-<form id="stampForm" action="stampSubmit" method="post" enctype="multipart/form-data">
+
 <div class="modal" id="stampRally" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -411,11 +411,15 @@
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
-	   			<div class="col-xs-4" style="padding:0px;">
-	   				<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal">
-	   					${ele.go_content }
-	   					<img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
-	   				</a>
+	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }'>
+	   			
+		   			<div class="link${ele.ufo_gid }">
+		   				<p>${ele.go_content }</p>
+		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }" data-dismiss="modal">
+		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
+		   				</a>
+		   			</div>
+	   				
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -426,8 +430,8 @@
 	</div>
 	</div>
 </div>
-<c:forEach var="ele" varStatus="statusEle" begin="0" end="8">
-<div class="modal" id="stamp_${statusEle.count }" role="dialog">
+<c:forEach var="ele" varStatus="statusEle" begin="0" end="8" items="${ufoGo }">
+<div class="modal" id="stamp_${ele.ufo_gid }" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
 	   <div class="modal-header">
@@ -445,7 +449,51 @@
 				<div>
 	   				<img class="img-responsive"  src="${pageContext.request.contextPath}/resources/ufo/assets/images/customers/customer-1.jpg">
 	   			</div>
-			  	<input type="file" id="stamp_${statusEle.count }_a" name="file" class="form-control">
+	   			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="file" class="form-control">
+				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
+				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
+				<input type="hidden" id="uid_go${ele.ufo_gid }" name="user_uid">
+				<input type="hidden" id="email_go${ele.ufo_gid }" name="email">
+				<input type="hidden" id="type_go${ele.ufo_gid }" name="ufo_go_type" value="go">
+				<input type="hidden" id="gid_go${ele.ufo_gid }" name="ufo_gid" value="${ele.ufo_gid }">
+				<input type="hidden" id="para${ele.ufo_gid }" name="para" value="${sessionScope.eventPara}">
+				</form>
+			  	
+			  	
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+</c:forEach>
+<form id="stampForm" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+<input type="file" id="stamp_go" name="file" class="form-control">
+<input type="hidden" id="first_name_go" name="first_name">
+<input type="hidden" id="last_name_go" name="last_name">
+<input type="hidden" id="uid_go" name="user_uid">
+<input type="hidden" id="email_go" name="email">
+<input type="hidden" id="type_go" name="ufo_go_type" value="${type}">
+<input type="hidden" id="gid_go" name="ufo_gid" value="${gid}">
+<input type="hidden" id="para" name="para" value="${sessionScope.eventPara}">
+</form>
+
+<div class="modal" id="qrRallyList" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>큐알 코드 랠리</h4>
+	   </div>
+	   <div class="modal-body">
+	   		<div class="row" id="qrList">
+	   			
+	   			
+	   			
+	   			
+	   		</div>
 		</div>
 		<div class="modal-footer">
 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button>
@@ -453,10 +501,6 @@
 	</div>
 	</div>
 </div>
-</c:forEach>
-</form>
-
-
 
 <!-- Javascript -->
 <script type="text/javascript"
@@ -560,11 +604,9 @@
 		       });
 		       //location.reload();
 		       if(para == 'go'){
-		    	   location.reload();
 		    	   stampRally();
 		       }else if(para == 'qr'){
-		    	   location.reload();
-		    	   stampRally();
+		    	   qrRally();
 		       }else{
 		    	   top.location.href="index";
 		       }       
@@ -681,7 +723,7 @@
 	  
 	  function sendNewsLetterEmail(){
 		  var email = $("#semail").val();
-		  var para = $("#news_para").val();
+		  var para = '${sessionScope.eventPara}';
 		  $.post( "newsletter", { news_letter_email: email, para:para})
 	       .done(function( data ) {
 	    	  //아래코드 잘 작동이 된다 성공하면 1 옴
@@ -709,7 +751,7 @@
 			
 			function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
-			    zoom: 20,
+			    zoom: 18,
 			    center: {lat: 37.75, lng: 128.87}
 			  });
 			makeGo();
@@ -762,7 +804,6 @@
 			}
 			
 			function makeGo(){
-				
 				// Try HTML5 geolocation.
 		        if (navigator.geolocation) {
 		          navigator.geolocation.getCurrentPosition(function(position) {
@@ -772,7 +813,7 @@
 		              type: "me",
 		              content:'<h1 id="firstHeading" class="firstHeading">나</h1>'
 		            };
-		  
+		            
 		            $.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
 				       .done(function( data ) {
 				         var go = JSON.parse(JSON.stringify(data));		         
@@ -795,7 +836,7 @@
 				         drop();
 				    });
 		          }, function() {
-		        	  var infoWindow = new google.maps.InfoWindow({map: map});
+		        	var infoWindow = new google.maps.InfoWindow({map: map});
 		            handleLocationError(true, infoWindow, map.getCenter());
 		          });
 		        } else {
@@ -814,9 +855,85 @@
 			
 		function stampRally(){
 			if(checkLogin()){
-				document.getElementById('rallyTrigger').click();
+				getUfo('go');
 			}else{
 				fbLogin('go');
+			}
+		}
+		
+		function qrRally(){
+			if(checkLogin()){
+   		  $( "#first_name_go" ).val(window.sessionStorage.getItem('first_name'));
+		  $( "#last_name_go" ).val(window.sessionStorage.getItem('last_name'));
+		  $( "#uid_go" ).val(window.sessionStorage.getItem('uid'));
+		  $( "#email_go" ).val(window.sessionStorage.getItem('email'));		  
+		  
+		//$("#stampForm").submit();
+  	      
+     	
+	     
+				     	if($("#type_go").val() == '' || $("#gid_go").val() == '' || $("#para").val() == ''){
+				     		if($("#qrNumber").val() != ''){
+				     			$("#gid_go").val($("#qrNumber").val());
+				     			$("#type_go").val("qr");
+				     			$("#para").val('${sessionScope.eventPara}');
+				     			var form = new FormData($("#stampForm")[0]);
+				  	   	    	  $.ajax({
+				  	   	              url: '/PIX/ufogo/insert',
+				  	   	              method: "POST",
+				  	   	              dataType: 'json',
+				  	   	              data: form,
+				  	   	              processData: false,
+				  	   	              contentType: false,
+				  	   	              success: function(result){
+				  	   	            	  alert("처리되었습니다. : "+result);
+				  	   	            	  location.reload();
+				  	   	              },
+				  	   	              error: function(er){}
+				  	      				});
+				  	   	    	  
+				     		}else{
+				     			alert("큐알코드를 넣어주세요.");
+				     		}
+				     	}else{
+				     		var form = new FormData($("#stampForm")[0]);
+			  	   	    	  $.ajax({
+			  	   	              url: '/PIX/ufogo/insert',
+			  	   	              method: "POST",
+			  	   	              dataType: 'json',
+			  	   	              data: form,
+			  	   	              processData: false,
+			  	   	              contentType: false,
+			  	   	              success: function(result){},
+			  	   	              error: function(er){}
+			  	      				});
+				     	}
+			 
+	     	
+			}else{
+				fbLogin('qr');
+			}
+		}
+		
+		function stampPostSubmit(para){
+			if(checkLogin()){
+				 $( "#first_name_go"+para ).val(window.sessionStorage.getItem('first_name'));
+				  $( "#last_name_go"+para ).val(window.sessionStorage.getItem('last_name'));
+				  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
+				  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
+				  var form = new FormData($("#stampForm"+para)[0]);
+			      $.ajax({
+			              url: '/PIX/ufogo/insert',
+			              method: "POST",
+			              dataType: 'json',
+			              data: form,
+			              processData: false,
+			              contentType: false,
+			              success: function(result){},
+			              error: function(er){}
+			      });
+			}else{
+				fbLogin('qr');
 			}
 			
 		}
@@ -828,10 +945,60 @@
 				return true;	
 			}
 		}
-		
-		</script>
-		
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
+
+		// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
+		// 	text:'https://www.facebook.com/${vo.sns_return }'});
+		var qrcode = new QRCode("qrcode", {
+		    text: "https://www.ufo79.com/",
+		    width: 300,
+		    height: 300,
+		    colorDark : "#000000",
+		    colorLight : "#ffffff",
+		    correctLevel : QRCode.CorrectLevel.H
+		});
+
+		function getUfo(param){
+			if(checkLogin()){
+			var uid = window.sessionStorage.getItem('uid');
+			var para = '${sessionScope.eventPara}';
+			$.post( "/PIX/ufogo/get/"+para+"/"+uid)
+		       .done(function( data ) {
+		        //alert( "Data Loaded: " + JSON.parse(JSON.stringify(data))[0].last_name );
+		        
+		        var go = JSON.parse(JSON.stringify(data));
+		        
+		        $("#qrList").empty();
+		        
+		        for(var i = 0; i < go.length; i++){
+		        	if(go[i].ufo_go_type == 'qr'){
+		        	  	//중복을 막는 코드가 필요함 
+		       
+		        		$("#qrList").append('<div class="col-xs-4" style="padding:0px;">'+go[i].ufo_go_type+go[i].ufo_gid+go[i].go_content+'<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal"><img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg01.png"></a></div>');
+		  		        		
+		        	}else if(go[i].ufo_go_type == 'go'){
+		        		$('#'+go[i].ufo_gid).empty();
+		        		$('.link'+go[i].ufo_gid).remove();
+		        		var d = '<div class="col-xs-6 link'+go[i].go_gid+'"><p>'+go[i].go_content+'</p><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png"></div>';
+		        		$('#'+go[i].ufo_gid).append(d);
+	
+		        		
+		        	}
+		        }
+		        
+		        if(param == 'qr'){
+		        	$('#qrRallyList').modal('show');
+		        }else if(param == 'go'){
+		        	$('#stampRally').modal('show');
+		        }
+		        
+		       });
+			
+			}else{
+				alert("로그인을 해주세요.");
+			}
+		}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
 	
         
         
