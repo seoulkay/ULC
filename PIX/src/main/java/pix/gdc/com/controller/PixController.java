@@ -1,6 +1,7 @@
 package pix.gdc.com.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import pix.gdc.com.dao.BasicDAO;
+import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
 import pix.gdc.com.util.MetaDataUtil;
 import pix.gdc.com.vo.PixArticle;
 import pix.gdc.com.vo.PixComment;
 import pix.gdc.com.vo.PixLike;
+import pix.gdc.com.vo.UfoGoVO;
 
 /**
  * Handles requests for the application home page.
@@ -41,6 +44,9 @@ public class PixController {
 	
 	@Autowired
 	BasicDAO basicDao;
+	
+	@Autowired
+	FestDAO dao;
 	
 	@RequestMapping(value = "insertForm", method = RequestMethod.GET)
 	public String insertForm(){
@@ -146,6 +152,12 @@ public class PixController {
 	@RequestMapping(value = "read/comment/{pixIdx}", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody List<PixComment> readPixArticleComment(@PathVariable("pixIdx")int pixIdx){
 		return basicDao.getPixCommentByIdx(pixIdx);
+	}
+	
+	@RequestMapping(value = "get/ufogo/{para}", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<UfoGoVO> getUfogo(@PathVariable("para")String para){
+		List<UfoGoVO> ufoGo = dao.selectUfoGoByPara(para); 
+		return ufoGo;
 	}
 	
 	

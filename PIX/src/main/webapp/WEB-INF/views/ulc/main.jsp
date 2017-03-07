@@ -10,7 +10,7 @@
 <head>
     
     <!-- Your Basic Site Informations -->
-	<title>UFO79 Landing Page</title>
+	<title>UFO79</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="UFO79 is a simple and clean design landing page that built-in professional responsive template, elegant style, smooth-animation and have a slew of features.">
