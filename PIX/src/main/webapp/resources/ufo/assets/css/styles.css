@@ -2888,10 +2888,17 @@ body.sticky-page-nav .overview-section {
 .modal-body iframe {
   max-width: 100%;
 }
-.stamp{
+.stamp-suc{
+  position:relative;
   margin-bottom: 10px;
   width:100%;
-  border:1px solid #ADADAD;	
+}
+.stamp{
+  position:relative;
+  margin-bottom: 10px;
+  width:100%;
+  z-index: -1;
+  border:1px solid #ADADAD;
 }
 .modal-content {
   -webkit-border-radius: 4px;
