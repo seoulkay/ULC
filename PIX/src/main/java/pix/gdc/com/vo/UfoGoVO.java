@@ -9,6 +9,8 @@ public class UfoGoVO {
 	private String go_para;
 	private String go_content;
 	private Date ufo_go_date;
+	private String ufo_go_type;
+	
 	public int getId_ufo_go() {
 		return id_ufo_go;
 	}
@@ -44,6 +46,12 @@ public class UfoGoVO {
 	}
 	public void setUfo_go_date(Date ufo_go_date) {
 		this.ufo_go_date = ufo_go_date;
+	}
+	public String getUfo_go_type() {
+		return ufo_go_type;
+	}
+	public void setUfo_go_type(String ufo_go_type) {
+		this.ufo_go_type = ufo_go_type;
 	}
 	
 	

@@ -45,7 +45,10 @@
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-						<li class="nav-item"><a href="" data-toggle="modal" data-target="#stampRally" data-dismiss="modal">스탬프랠리</a></li>
+						<li class="nav-item"><a href="#" onclick="stampRally()">스탬프랠리</a></li>
+					</c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
+						<li class="nav-item"><a href="#" onclick="qrRally()">QR코드랠리</a></li>
 					</c:if>
 					<!--//dropdown-->
 				</ul>

@@ -28,6 +28,7 @@ import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.Notice_VO;
+import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
 
 
@@ -396,5 +397,15 @@ public class FestDAO extends SqlSessionDaoSupport{
 	//유에포 가지고 오기
 	public List<UfoGoVO> selectUfoGoByPara(String para){
 		return getSqlSession().selectList("BasicMapper.selectUfoGoByPara", para);
+	}
+	
+	//유에포 레코드 가지고 오기
+	public List<UfoGoRecord> selectUfoGoRecordByPara(String para){
+		return getSqlSession().selectList("BasicMapper.selectUfoGoRecordByPara", para);
+	}
+	
+	//유에포 레코드 넣기
+	public List<UfoGoRecord> insertUfoRecord(UfoGoRecord vo){
+		return getSqlSession().selectList("BasicMapper.insertUfoRecord", vo);
 	}
 }
