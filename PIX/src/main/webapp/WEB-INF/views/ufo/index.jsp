@@ -116,12 +116,16 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
+							<li>
+								<button class="btn btn-social btn-facebook" onClick="refreshGo()" style="background-color: BLACK;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스템프렐리 리프레쉬!</span></button><br>
+							</li>	
 							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 							<li>
 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br>
-							</li>		
+							</li>
+								
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
@@ -253,7 +257,7 @@
 		<div id="feature-block-4" class="feature-block feature-block-3">
 			<div class="row">
 				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">행사장 찾아오는 길</h3>
+					<h3 class="feature-title">${ufo.location_title}</h3>
 					<div class="feature-desc">
 						<p>${ufo.info_location_text }</p>
 					</div>

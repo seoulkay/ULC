@@ -487,6 +487,7 @@
 	src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 	
 <script>
+		
 	  window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '1074619385980281',
@@ -558,7 +559,6 @@
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
-		     alert("페이스북 로그인 실패.");
 		     location.reload();
 		    }
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
@@ -585,13 +585,12 @@
 		    		
 		       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
 		       .done(function( data ) {
-		         //alert( "Data Loaded: " + data );
+		        //alert( "Data Loaded: " + data );
 		       });
-// 		       location.reload();
+				//location.reload();
 		     });
 		    } else {
 		     console.log('User cancelled login or did not fully authorize.');
-		     alert("페이스북 로그인 실패.");
 		     location.reload();
 		    }
 		}, {scope: 'email,user_likes,publish_actions', return_scope: true});
@@ -645,7 +644,7 @@
 		    		var body = msg;
 					  FB.api('/me/feed', 'post', { message: body }, function(response) {
 					    if (!response || response.error) {
-					      alert('페이스북 서버와 연결되지 않습니다.');
+					     console.log('Did not connected to facebook server : ufo')
 					    } else {
 					      //alert('Post ID: ' + response.id);
 					      $( "#sns_return" ).val(response.id);
@@ -660,9 +659,9 @@
 					    }
 					  });    		
 		    	} else if (response.status === 'not_authorized') {
-		    		alert('페이스북 로그인 되어 있지 않습니다.');
+		    		console.log('페이스북 로그인 되어 있지 않습니다.');
 		    	} else {
-		    		alert('연결에 문제가 있습니다.');
+		    		console.log('연결에 문제가 있습니다.');
 		    		}
 		    	}, true); 
 	    }
@@ -680,165 +679,32 @@
 	  }
 	  </script>
 	  		<script>
-			var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+	  		
+			var iconBase = 'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/';
 		        var icons = {
-		          parking: {
-		            icon: iconBase + 'parking_lot_maps.png'
-		          },
-		          library: {
-		            icon: iconBase + 'library_maps.png'
-		          },
-		          info: {
-		            icon: iconBase + 'info-i_maps.png'
-		          },
-		          poke:{
-		        	  icon: 'http://i795.photobucket.com/albums/yy232/PixKaruumi/Pokemon%20Pixels/thPokemon_logo___Umbreon_by_PrinzeBur.gif'
+		          me:{
+		        	  icon: iconBase + 'me_icon01.png'
 		          },
 		          ufoOn:{
-		        	  icon:'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/photo_spot_on.png'
+		        	  icon: iconBase + 'UFO_ON.png'
 		          },
 		          ufoOff:{
-		        	  icon:'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/photo_spot_off.png'
+		        	  icon: iconBase +'UFO_OFF.png'
 		          }
 		        };
 		        
-				var neighborhoods = [
-				  {lat:37.7737, lng:128.8927, type:'poke', content:'포인트'},
-                  {lat:37.7739, lng:128.8929, type:'poke', content:'1번 포키'},
-                  {lat:37.7735, lng:128.8925, type:'info', content:'2번 포키'},
-                  {lat:37.7735, lng:128.8929, type:'info', content:'3번 포키'},
-                  {lat:37.7739, lng:128.8925, type:'info', content:'<div id="content">'+
-    			      '<div id="siteNotice">'+
-    			      '</div>'+
-    			      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-    			      '<div id="bodyContent">'+
-    			      '<p><b>UFO 스탑</b>, 여기는 성지 입니다. <b>Ayers Rock</b>, is a large ' +
-    			      'sandstone rock formation in the southern part of the '+
-    			      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-    			      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-    			      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-    			      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-    			      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-    			      'Aboriginal people of the area. It has many springs, waterholes, '+
-    			      'rock caves and ancient paintings. Uluru is listed as a World '+
-    			      'Heritage Site.</p>'+
-    			      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-    			      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-    			      '(last visited June 22, 2009).</p>'+
-    			      '</div>'+
-    			      '</div>'}
-                ];
-
-			  
+			var neighborhoods = [];
             var markers = [];
 			var map;
 			
+			console.log(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null);
 			
 			function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
-			    zoom: 18,
-			    //center: {lat: 37.75, lng: 128.87}
-			    center: {lat: 40.71, lng: -74.00}
+			    zoom: 20,
+			    center: {lat: 37.75, lng: 128.87}
 			  });
-			var infoWindow = new google.maps.InfoWindow({map: map});
-			 
-			
-
-			// Try HTML5 geolocation.
-	        if (navigator.geolocation) {
-	          navigator.geolocation.getCurrentPosition(function(position) {
-	            var pos = {
-	              lat: position.coords.latitude,
-	              lng: position.coords.longitude,
-	              type: "ufoOn"
-	            };
-	  
-	           
-	            var target = {};
-	            //alert(pos.lat);
-	          	//소수점 네자리의 위치 구하기
-				//alert(parseFloat(Math.round(pos.lat * 100) / 100).toFixed(4)+" "+parseFloat(Math.round(pos.lng * 100) / 100).toFixed(4));
-	            //infoWindow.setPosition(pos);
-	            //infoWindow.setContent('지금 여기 있으십니다!');
-	            target.lat = parseFloat((pos.lat+ 0.0003).toFixed(4));
-	            target.lng = parseFloat((pos.lng+ 0.0003).toFixed(4));
-	            target.type = "ufoOff";
-	            target.content = "타겟";
-	            neighborhoods.push(target);
-	            
-	            var ref = {};
-	            ref.lat = parseFloat((pos.lat+ 0.0002).toFixed(4));
-	            ref.lng = parseFloat((pos.lng).toFixed(4));
-	            ref.type = "info";
-	            ref.content = "타겟";
-	            neighborhoods.push(ref);
-	            
-	            var ref2 = {};
-	            ref2.lat = parseFloat((pos.lat).toFixed(4));
-	            ref2.lng = parseFloat((pos.lng+ 0.0002).toFixed(4));
-	            ref2.type = "info";
-	            ref2.content = "타겟";
-	            neighborhoods.push(ref2);
-	            
-	            var ref3 = {};
-	            ref3.lat = parseFloat((pos.lat).toFixed(4));
-	            ref3.lng = parseFloat((pos.lng- 0.0002).toFixed(4));
-	            ref3.type = "info";
-	            ref3.content = "타겟";
-	            neighborhoods.push(ref3);
-	            
-	            var ref4 = {};
-	            ref4.lat = parseFloat((pos.lat- 0.0002).toFixed(4));
-	            ref4.lng = parseFloat((pos.lng).toFixed(4));
-	            ref4.type = "info";
-	            ref4.content = "타겟";
-	            neighborhoods.push(ref4);
-	            
-	         	//working!
-	            //var ref5 = {};
-	            //ref5.lat = parseFloat((${ufoGo[1].go_lat}).toFixed(4));
-	            //ref5.lng = parseFloat((${ufoGo[1].go_alt}).toFixed(4));
-	            //ref5.type = "ufoOff";
-	            //ref5.content = "타겟";
-	            //neighborhoods.push(ref5);
-	            
-	            //for (i = 0; i < ${fn:length(ufoGo)}; i++) { 
-				//    var ref = {};
-				//  	ref.lat = parseFloat((${ufoGo[i].go_lat}).toFixed(4));
-		        //    ref.lng = parseFloat((${ufoGo[i].go_alt}).toFixed(4));
-		        //    ref.type = "ufoOff";
-		        //    ref.content = "유에프오고";
-		        //    neighborhoods.push(ref);
-				//	}
-	         
-	            console.log(${fn:length(ufoGo)});
-	            console.log(pos);
-	            console.log(target);
-	            
-	            addMarkerWithTimeout(pos, 100);
-	            
-	            map.setCenter(pos);
-	            drop();
-	            
-	           	if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0002, 2) ){
-	           		console.log("IN");
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
-	           	}else{
-	           		console.log("OUT")
-	           		console.log(Math.pow(target.lat - pos.lat, 2));
-	           		console.log(Math.pow(target.lng - pos.lng, 2));
-	           		console.log(Math.pow(0.0001, 2));
-	           	}
-	          }, function() {
-	            handleLocationError(true, infoWindow, map.getCenter());
-	          });
-	        } else {
-	          // Browser doesn't support Geolocation
-	          handleLocationError(false, infoWindow, map.getCenter());
-	        }
-	       
+				makeGo();
 			}
 			
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -886,7 +752,53 @@
 			  markers = [];
 			}
 			
+			function makeGo(){
+				// Try HTML5 geolocation.
+		        if (navigator.geolocation) {
+		          navigator.geolocation.getCurrentPosition(function(position) {
+		            var pos = {
+		              lat: position.coords.latitude,
+		              lng: position.coords.longitude,
+		              type: "me"
+		            };
+		  
+		            $.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
+				       .done(function( data ) {
+				         var go = JSON.parse(JSON.stringify(data));		         
+				         console.log(go[1]);
+				         
+				         for(var i = 0; i < go.length; i++){
+				        	 var target = {};
+				        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
+				        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
+				        	 target.content = '<h1 id="firstHeading" class="firstHeading">'+go[i].go_content+'</h1>';
+				        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0002, 2) ){
+				        		 target.type = "ufoOn";
+				        	 }else{
+				        		 target.type = "ufoOff";
+				        	 }
+					         neighborhoods.push(target);
+				         }
+				         
+				         neighborhoods.push(pos);
+				         map.setCenter(pos);
+				         drop();
+				    });
+		          }, function() {
+		            handleLocationError(true, infoWindow, map.getCenter());
+		          });
+		        } else {
+		          // Browser doesn't support Geolocation
+		          handleLocationError(false, infoWindow, map.getCenter());
+		        }
+			}
 			
+			function refreshGo(){
+				neighborhoods = [];
+				makeGo();
+				drop();
+			}
+
 			
 		</script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
