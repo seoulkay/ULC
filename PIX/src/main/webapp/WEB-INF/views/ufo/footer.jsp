@@ -418,8 +418,8 @@
 		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
 		   				</a>
 <!-- 		   			</div> -->
-		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
-	   				<img id="stamp_back_${ele.ufo_gid }" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
+		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
+	   				<img id="stamp_back_${ele.ufo_gid }" style="opacity : 0.2;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -712,7 +712,7 @@
 						  $( "#sns_type_a" ).val("fb");
 						  
 					      $("#surveyForm").submit();
-					      alert("감사합니다.");
+					      console.log("감사합니다.");
 					    }
 					  });    		
 		    	} else if (response.status === 'not_authorized') {
@@ -889,7 +889,9 @@
 	  	   	              contentType: false,
 	  	   	              success: function(result){
 	  	   	            	  alert("처리되었습니다. : "+result);
-	  	   	            	  location.reload();
+	  	   	            	  var msg = '${ufo.title} 의 큐알코드랠리에 참여했네요!';
+	  	   	            	  fbPost(msg);
+	  	   	            	  //location.reload();
 	  	   	              },
 	  	   	              error: function(er){}
 	  	      				});
@@ -982,7 +984,7 @@
 		        for(var i = 0; i < go.length; i++){
 		        	if(go[i].ufo_go_type == 'qr'){
 		        	  	//중복을 막는 코드가 필요함 
-		        		$("#qrList").append('<div class="col-xs-3" style="position:relative;"><p style="position:absolute; top:0; left:0;">'+go[i].go_content+'</p><img class="img-responsive" src="https://www.ufo79.com/image/logo_gc.png"></div>');
+		        		$("#qrList").append('<div class="col-xs-3" style="position:relative;"><p style="position:absolute; top:40%; left:40%;">'+go[i].go_content+'</p><img class="img-responsive" style=" opacity: 0.2;" src="https://www.ufo79.com/image/stamp-01.png"></div>');
 		        	}else if(go[i].ufo_go_type == 'go'){
 		        		$('#stamp_yes_'+go[i].ufo_gid).show();
 		        	}

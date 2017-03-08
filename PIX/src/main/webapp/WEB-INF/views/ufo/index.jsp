@@ -63,8 +63,8 @@
 			<div class="actions">
 <!-- 				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
-                 <a class="scrollto-no-offset" href="#page-nav">축제 정보 보러가기</a>
-                 <a class="scrollto-no-offset" href="#page-nav"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto-no-offset" href="#support-section">축제 정보 보러가기</a>
+                 <a class="scrollto-no-offset" href="#support-section"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -88,8 +88,7 @@
 	</div>
 	<!--//page-nav-space-holder-->
 
-<section id="support-section"
-		class="support-section section text-center" style="padding-top:50px">
+<section id="support-section" class="support-section section text-center">
 		<div class="team-figure">
 		<div class="section-title">${ufo.event_short_description }</div><br>
 		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }</div><br>
@@ -233,9 +232,9 @@
 			<div class="row">
 				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
 				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${info.title }</h3>
+					<h3 class="feature-title">${ufo.info_title }</h3>
 					<div class="feature-desc">
-						<p>${info.content }</p>
+						<p>${ufo.info_info_text }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
@@ -243,12 +242,12 @@
 <!-- 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12"> -->
 				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
 					<div class="figure-holder" align="center">
-					<c:if test="${info.photo_file ne null}">
+					<c:if test="${ufo.info_info_pic ne null}">
 						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${info.photo_file}"
+							src="https://www.ufo79.com/image/${ufo.info_info_pic}"
 							alt="">
 					</c:if>
-					<c:if test="${info.photo_file eq null}">
+					<c:if test="${ufo.info_info_pic eq null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/white.png"
 							alt="">
@@ -264,9 +263,9 @@
 			<div class="row">
 				<div
 					class="feature-content col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6 col-xs-push-0">
-					<h3 class="feature-title">${hist.title }</h3>
+					<h3 class="feature-title">${ufo.history_title }</h3>
 					<div class="feature-desc">
-						<p>${hist.content }</p>
+						<p>${ufo.info_hist_text }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
@@ -274,12 +273,12 @@
 				<div
 					class="feature-figure col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 col-xs-pull-0">
 					<div class="figure-holder" align="center">
-						<c:if test="${hist.photo_file ne null}">
+						<c:if test="${ufo.info_hist_pic ne null}">
 						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${hist.photo_file}"
+							src="https://www.ufo79.com/image/${ufo.info_hist_pic}"
 							alt="">
 						</c:if>
-						<c:if test="${hist.photo_file eq null}">
+						<c:if test="${ufo.info_hist_pic eq null}">
 							<img class="img-responsive"
 							src="https://www.ufo79.com/image/white.png"
 							alt="">
@@ -296,7 +295,7 @@
 		<div id="feature-block-3" class="feature-block feature-block-3">
 			<div class="row">
 				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${prog.title }</h3>
+					<h3 class="feature-title">${ufo.program_title }</h3>
 					<div class="feature-desc">
 						<p>${ufo.event_date }</p>
 					</div>
@@ -305,7 +304,7 @@
 				<!--//feature-content-->
 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
 					<div class="figure-holder">
-						<p>${prog.content }</p>
+						<p>${ufo.info_program_text }</p>
 						<c:if test="${ufo.info_program_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_program_pic}"
