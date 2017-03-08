@@ -413,7 +413,7 @@
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<p style="position:absolute; top:0; left:0">${ele.go_content }</p>
+	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
 <%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
@@ -557,7 +557,7 @@
 				    // request, and the time the access token 
 				    // and signed request each expire
 					$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" id="UserInfo" onclick="fbLogout();">'+window.sessionStorage.getItem('userName')+'</a></li>');
-					$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
+					$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="https://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
 				    var uid = response.authResponse.userID;
 				    var accessToken = response.authResponse.accessToken;
 				    window.sessionStorage.setItem("accessToken", accessToken);
@@ -716,7 +716,7 @@
 						  
 					      $("#surveyForm").submit();
 					      console.log("감사합니다.");
-					      location.reload();
+					      //location.reload();
 					    }
 					  });    		
 		    	} else if (response.status === 'not_authorized') {
@@ -726,7 +726,6 @@
 		    		}
 		    	}, true); 
 	    }
-	  
 	  
 	  function sendNewsLetterEmail(){
 		  var email = $("#semail").val();
