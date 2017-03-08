@@ -412,14 +412,13 @@
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }'>
-	   			
-		   			<div class="link${ele.ufo_gid }">
-		   				<p>${ele.go_content }</p>
+	   				<p>${ele.go_content }</p>
+		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }">
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }" data-dismiss="modal">
-		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
+		   					잡으러가기!
 		   				</a>
 		   			</div>
-	   				
+	   				<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -470,7 +469,7 @@
 </div>
 </c:forEach>
 <form id="stampForm" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
-<input type="file" id="stamp_go" name="file" class="form-control">
+<input type="file" id="stamp_go" name="file" class="form-control" style="display:none">
 <input type="hidden" id="first_name_go" name="first_name">
 <input type="hidden" id="last_name_go" name="last_name">
 <input type="hidden" id="uid_go" name="user_uid">
@@ -534,7 +533,6 @@
 	src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 	
 <script>
-		
 	  window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '1074619385980281',
@@ -555,7 +553,7 @@
 				    // the user's ID, a valid access token, a signed
 				    // request, and the time the access token 
 				    // and signed request each expire
-					$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" class="login-trigger" id="UserInfo" data-toggle="modal" data-target="#" onClick="fbLogout()">'+window.sessionStorage.getItem('userName')+'</a></li>');
+					$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" id="UserInfo" onclick="fbLogout();">'+window.sessionStorage.getItem('userName')+'</a></li>');
 					$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="http://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
 				    var uid = response.authResponse.userID;
 				    var accessToken = response.authResponse.accessToken;
@@ -685,6 +683,9 @@
 	  function fbLogout(){
 		  FB.logout(function(response) {
 			   // Person is now logged out
+			   console.log(response);
+			   $("#snsName").remove();
+			   $("#snsPic").remove();
 			window.sessionStorage.clear();
 			location.reload();
 			});
@@ -756,7 +757,6 @@
 			  });
 			makeGo();
 			}
-	
 			
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		        infoWindow.setPosition(pos);
@@ -827,6 +827,7 @@
 				        		 target.type = "ufoOn";
 				        	 }else{
 				        		 target.type = "ufoOff";
+				        		 $("#stamp_"+go[i].ufo_gid).hide();
 				        	 }
 					         neighborhoods.push(target);
 				         }
@@ -869,45 +870,46 @@
 		  $( "#email_go" ).val(window.sessionStorage.getItem('email'));		  
 		  
 		//$("#stampForm").submit();
-  	      
-     	
-	     
-				     	if($("#type_go").val() == '' || $("#gid_go").val() == '' || $("#para").val() == ''){
-				     		if($("#qrNumber").val() != ''){
-				     			$("#gid_go").val($("#qrNumber").val());
-				     			$("#type_go").val("qr");
-				     			$("#para").val('${sessionScope.eventPara}');
-				     			var form = new FormData($("#stampForm")[0]);
-				  	   	    	  $.ajax({
-				  	   	              url: '/PIX/ufogo/insert',
-				  	   	              method: "POST",
-				  	   	              dataType: 'json',
-				  	   	              data: form,
-				  	   	              processData: false,
-				  	   	              contentType: false,
-				  	   	              success: function(result){
-				  	   	            	  alert("처리되었습니다. : "+result);
-				  	   	            	  location.reload();
-				  	   	              },
-				  	   	              error: function(er){}
-				  	      				});
-				  	   	    	  
-				     		}else{
-				     			alert("큐알코드를 넣어주세요.");
-				     		}
-				     	}else{
-				     		var form = new FormData($("#stampForm")[0]);
-			  	   	    	  $.ajax({
-			  	   	              url: '/PIX/ufogo/insert',
-			  	   	              method: "POST",
-			  	   	              dataType: 'json',
-			  	   	              data: form,
-			  	   	              processData: false,
-			  	   	              contentType: false,
-			  	   	              success: function(result){},
-			  	   	              error: function(er){}
-			  	      				});
-				     	}
+
+	     	if($("#type_go").val() == '' || $("#gid_go").val() == '' || $("#para").val() == ''){
+	     		if($("#qrNumber").val() != ''){
+	     			$("#gid_go").val($("#qrNumber").val());
+	     			$("#type_go").val("qr");
+	     			$("#para").val('${sessionScope.eventPara}');
+	     			var form = new FormData($("#stampForm")[0]);
+	  	   	    	  $.ajax({
+	  	   	              url: '/PIX/ufogo/insert',
+	  	   	              method: "POST",
+	  	   	              dataType: 'json',
+	  	   	              data: form,
+	  	   	              processData: false,
+	  	   	              contentType: false,
+	  	   	              success: function(result){
+	  	   	            	  alert("처리되었습니다. : "+result);
+	  	   	            	  location.reload();
+	  	   	              },
+	  	   	              error: function(er){}
+	  	      				});
+	  	   	    	  
+	     		}else{
+	     			alert("큐알코드를 넣어주세요.");
+	     		}
+	     	}else{
+	     		var form = new FormData($("#stampForm")[0]);
+  	   	    	  $.ajax({
+  	   	              url: '/PIX/ufogo/insert',
+  	   	              method: "POST",
+  	   	              dataType: 'json',
+  	   	              data: form,
+  	   	              processData: false,
+  	   	              contentType: false,
+  	   	              success: function(result){
+  	   	            	alert("처리되었습니다. : "+result);
+  	   	            	  location.reload();
+  	   	              },
+  	   	              error: function(er){}
+  	      				});
+	     	}
 			 
 	     	
 			}else{
@@ -929,7 +931,10 @@
 			              data: form,
 			              processData: false,
 			              contentType: false,
-			              success: function(result){},
+			              success: function(result){
+			            	  alert("처리되었습니다. : "+result);
+	  	   	            	  location.reload();
+			              },
 			              error: function(er){}
 			      });
 			}else{
@@ -946,6 +951,7 @@
 			}
 		}
 
+		<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
 		// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
 		// 	text:'https://www.facebook.com/${vo.sns_return }'});
 		var qrcode = new QRCode("qrcode", {
@@ -956,6 +962,7 @@
 		    colorLight : "#ffffff",
 		    correctLevel : QRCode.CorrectLevel.H
 		});
+		</c:if>
 
 		function getUfo(param){
 			if(checkLogin()){
@@ -998,8 +1005,9 @@
 			}
 		}
 </script>
+<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
-	
+</c:if>	
         
         
    

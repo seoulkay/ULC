@@ -11,6 +11,8 @@ public class UfoGoVO {
 	private Date ufo_go_date;
 	private String ufo_go_type;
 	private String ufo_gid;
+	private String go_desc;
+	private String go_image;
 	
 	public int getId_ufo_go() {
 		return id_ufo_go;
@@ -59,6 +61,18 @@ public class UfoGoVO {
 	}
 	public void setUfo_gid(String ufo_gid) {
 		this.ufo_gid = ufo_gid;
+	}
+	public String getGo_desc() {
+		return go_desc;
+	}
+	public void setGo_desc(String go_desc) {
+		this.go_desc = go_desc;
+	}
+	public String getGo_image() {
+		return go_image;
+	}
+	public void setGo_image(String go_image) {
+		this.go_image = go_image;
 	}
 	
 	

@@ -39,6 +39,7 @@ public class FestUfo {
 	private String info_title;
 	private String program_title;
 	private String history_title;
+	private String apk_name;
 	
 	
 	public Integer getIdfest_ufo() {
@@ -257,4 +258,11 @@ public class FestUfo {
 	public void setHistory_title(String history_title) {
 		this.history_title = history_title;
 	}
+	public String getApk_name() {
+		return apk_name;
+	}
+	public void setApk_name(String apk_name) {
+		this.apk_name = apk_name;
+	}
+	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -104,9 +105,8 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 				
-
+			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 				<h2 class="counter-desc">${ufo.title } 스탬프랠리 참여하기</h2>
-
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
@@ -123,9 +123,9 @@
 							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
-							<li>
-								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br>
-							</li>
+<!-- 							<li> -->
+<!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
+<!-- 							</li> -->
 								
 						</ul>
 						<!--//social-buttons-->
@@ -155,7 +155,9 @@
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
+				</c:if>
 				<br><br><br>
+				<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
 				<h2 class="counter-desc">${ufo.title } 큐알코드랠리 참여하기</h2>
 				
 				<div class="form-wrapper">
@@ -167,7 +169,7 @@
 					
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
-				                <div id="qrcode"></div>
+				                <div id="qrcode" class="img-responsive"></div>
 				                <br>
 				                    <input type="text" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요 ${gid } + ${type }" name="qrNumber" required="" aria-required="true">
 				                    <button class="btn btn-primary" onClick="qrRally();">큐알코드 인증</button>  
@@ -182,9 +184,9 @@
 							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
-							<li>
-								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br>
-							</li>
+<!-- 							<li> -->
+<!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
+<!-- 							</li> -->
 								
 						</ul>
 						<!--//social-buttons-->
@@ -218,6 +220,7 @@
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
+				</c:if>
 			</div>
 			<!--//container-->
 		</div>
@@ -289,33 +292,6 @@
 			<!--//row-->
 		</div>
 		</div>
-</section>	
-
-
-<section id="app-section" class="apps-section section text-center">
-		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
-		<div class="container">
-			<ul class="apps-list list-inline">
-				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
-						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
-							class="intro-text">Download on the</span><span class="main-text">App
-								Store</span></span></a></li>
-				<li><a class="btn btn-download-app btn-andriod-download"
-					href="#"><i class="fa fa-android" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Get it on</span><span
-							class="main-text">Google Play</span></span></a></li>
-				<!-- <li><a class="btn btn-download-app btn-windows-download"
-					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Download
-								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
-			</ul>
-			<!--//apps-list-->
-		</div>
-		<!--//container-->
-	</section>
-	<!--//apps-section-->
-
-<section id="info-section1">
 	<div class="feature-blocks container">
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-3">
@@ -380,9 +356,8 @@
 <!-- 	<section id="features-section" class="features-section section"> -->
 </section>
 
+<c:if test="${fn:contains(sessionScope.eventMenu, 'newsletter')}">
 	<section id="app-section" class="apps-section section text-center">
-		
-		
 		<div class="blog-signup-block">
         <div class="container text-center">
             <h3 class="block-heading">${ufo.title } 뉴스레터 구독하기</h3>
@@ -398,6 +373,7 @@
     </div><!--//blog-signup-block-->
 	</section>
 	<!--//apps-section-->
+</c:if>
 <%-- <section id="survey-section"
 		class="support-section section text-center">
 <h2 class="section-title">${ufo.title } 서베이</h2>
@@ -484,6 +460,28 @@
 </c:forEach>
 </div>
 </section> --%>
+<section id="app-section" class="apps-section section text-center">
+		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
+		<div class="container">
+			<ul class="apps-list list-inline">
+				<li><a class="btn btn-download-app btn-apple-download" href="#"><i
+						class="fa fa-apple" aria-hidden="true"></i> <span class="btn-text"><span
+							class="intro-text">Download on the</span><span class="main-text">App
+								Store</span></span></a></li>
+				<li><a class="btn btn-download-app btn-andriod-download"
+					href="https://www.ufo79.com/image/${ufo.apk_name }"><i class="fa fa-android" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Get it on</span><span
+							class="main-text">Google Play</span></span></a></li>
+				<!-- <li><a class="btn btn-download-app btn-windows-download"
+					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
+						class="btn-text"><span class="intro-text">Download
+								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
+			</ul>
+			<!--//apps-list-->
+		</div>
+		<!--//container-->
+	</section>
+	<!--//apps-section-->
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />

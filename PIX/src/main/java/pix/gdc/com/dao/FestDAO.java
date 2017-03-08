@@ -409,7 +409,7 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().insert("BasicMapper.insertUfoRecord", vo);
 	}
 	
-	
+	//유에포 레코드 가지고 오기
 	public List<UfoGoRecord> selectUfoGoRecordByParaAndUid(UfoGoRecord vo){
 		return getSqlSession().selectList("BasicMapper.selectUfoGoRecordByParaAndUid", vo);
 	}
