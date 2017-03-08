@@ -412,13 +412,13 @@
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<p>${ele.go_content }</p>
+	   				<p style="position:absolute; top:0; left:0;" >${ele.go_content }</p>
 <%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
 		   				</a>
 <!-- 		   			</div> -->
-		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:150px; display:none" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
+		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
 	   				<img id="stamp_back_${ele.ufo_gid }" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   			</div>
 	   			</c:forEach>
@@ -808,7 +808,7 @@
 			}
 			
 			function makeGo(){
-				// Try HTML5 geolocation.
+				// Try HTML5 geolocation. 
 		        if (navigator.geolocation) {
 		          navigator.geolocation.getCurrentPosition(function(position) {
 		            var pos = {
@@ -985,7 +985,6 @@
 		        	if(go[i].ufo_go_type == 'qr'){
 		        	  	//중복을 막는 코드가 필요함 
 		        		$("#qrList").append('<div class="col-xs-4" style="padding:0px;">'+go[i].ufo_go_type+go[i].ufo_gid+go[i].go_content+'<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal"><img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg01.png"></a></div>');
-		  		        		
 		        	}else if(go[i].ufo_go_type == 'go'){
 		        		$('#stamp_yes_'+go[i].ufo_gid).show();
 		        	}
@@ -1000,7 +999,8 @@
 		       });
 			
 			}else{
-				alert("로그인을 해주세요.");
+				fbLogin(param);
+				//alert("로그인을 해주세요.");
 			}
 		}
 		

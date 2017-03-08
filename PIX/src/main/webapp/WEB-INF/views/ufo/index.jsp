@@ -120,7 +120,7 @@
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
 								
-							<li><button class="btn btn-social btn-facebook" onClick="fbLogin('go')"><i
+							<li><button class="btn btn-social btn-facebook" onClick="getUfo('go')"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 <!-- 							<li> -->
@@ -169,19 +169,21 @@
 					
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
-				                <div id="qrcode" class="img-responsive"></div>
+					                <div id="qrcode" class="img-responsive">
+					                </div>
 				                <br>
 				                    <input type="text" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요 ${gid } + ${type }" name="qrNumber" required="" aria-required="true">
-				                    <button class="btn btn-primary" onClick="qrRally();">큐알코드 인증</button>  
+				                    <button class="btn btn-primary" onClick="qrRally();" style="margin lef=">큐알코드 인증</button>  
 				                </div>                              
 				            </div>
-						</div><br><br>
+						</div>
+						<br><br>
 						<ul class="social-buttons list-unstyled">
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
 								
-							<li><button class="btn btn-social btn-facebook" onClick="fbLogin('qr')"><i
+							<li><button class="btn btn-social btn-facebook" onClick="getUfo('qr')"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 <!-- 							<li> -->
