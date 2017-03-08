@@ -398,6 +398,7 @@
 <input type="hidden" id="access_token_a" name="access_token_a">
 <input type="hidden" id="sns_msg" name="sns_msg">
 <input type="hidden" id="sns_return" name="sns_return">
+<input type="hidden" id="sns_gid" name="sns_gid">
 </form>
 <!-- 스템프  -->
 
@@ -412,7 +413,7 @@
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<p style="position:absolute; top:0; left:0;" >${ele.go_content }</p>
+	   				<p style="position:absolute; top:0; left:0">${ele.go_content }</p>
 <%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
@@ -677,8 +678,8 @@
 		  var ln = window.sessionStorage.getItem('last_name');
 		  
 		  var msg = q6+" https://www.ufo79.com/PIX/ufo/post/"+fl+"_"+ln+" #"+q1+" #"+q2+" #"+q3+" #"+q4+" #"+q5;
-		  $( "#sns_msg" ).val(msg);
-		  fbPost(msg);
+		  
+		  fbPost(msg, "fb_survey", "survey");
 	  }
 	  
 	  
@@ -694,7 +695,7 @@
 	  }
 	  
 	  
-	  function fbPost(msg){
+	  function fbPost(msg, type, gid){
 	    	FB.getLoginStatus(function(response) {
 		    	 
 		    	if (response.status === 'connected') {
@@ -709,10 +710,13 @@
 						  $( "#last_name_a" ).val(window.sessionStorage.getItem('last_name'));
 						  $( "#uid_a" ).val(window.sessionStorage.getItem('uid'));
 						  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
-						  $( "#sns_type_a" ).val("fb");
+						  $( "#sns_type_a" ).val(type);
+						  $( "#sns_msg" ).val(msg);
+						  $( "#sns_gid" ).val(gid);
 						  
 					      $("#surveyForm").submit();
 					      console.log("감사합니다.");
+					      location.reload();
 					    }
 					  });    		
 		    	} else if (response.status === 'not_authorized') {
@@ -890,7 +894,7 @@
 	  	   	              success: function(result){
 	  	   	            	  alert("처리되었습니다. : "+result);
 	  	   	            	  var msg = '${ufo.title} 의 큐알코드랠리에 참여했네요!';
-	  	   	            	  fbPost(msg);
+	  	   	            	  fbPost(msg, "fb_qr", $("#qrNumber").val());
 	  	   	            	  //location.reload();
 	  	   	              },
 	  	   	              error: function(er){}
@@ -910,7 +914,9 @@
   	   	              contentType: false,
   	   	              success: function(result){
   	   	            	alert("처리되었습니다. : "+result);
-  	   	            	  location.reload();
+  	   	           		var msg = '${ufo.title} 의 큐알코드랠리에 참여했네요!';
+  	            	  	fbPost(msg, "fb_qr", $("#qrNumber").val());
+  	   	            	//location.reload();
   	   	              },
   	   	              error: function(er){}
   	      				});
@@ -938,7 +944,9 @@
 			              contentType: false,
 			              success: function(result){
 			            	  alert("처리되었습니다. : "+result);
-	  	   	            	  location.reload();
+			            	  var msg = "${ufo.title} 스탬프렐리에 참여하셨습니다! https://www.ufo79.com/PIX/get/"+window.sessionStorage.getItem('uid')+"/"+para;
+	  	   	            	  fbPost(msg, "fb_go", para);
+			            	  //location.reload();
 			              },
 			              error: function(er){}
 			      });

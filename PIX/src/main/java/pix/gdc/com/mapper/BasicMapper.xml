@@ -553,7 +553,8 @@
 		pic_lat			,
 		pic_lon			,
 		sns_msg			,
-		sns_return
+		sns_return		,
+		sns_gid
 	)
 	VALUES
 	(
@@ -576,7 +577,8 @@
 		#{pic_lat}			,
 		#{pic_lon}		,
 		#{sns_msg}		,
-		#{sns_return}
+		#{sns_return}	,
+		#{sns_gid}
 	)
 	</insert>
 	<select id="selectUfoAnserByPara" parameterType="String" resultType="FestAnswerVO">

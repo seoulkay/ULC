@@ -25,6 +25,7 @@ public class FestAnswerVO {
 	private String pic_lon;
 	private String sns_msg;
 	private String sns_return;
+	private String sns_gid;
 	
 	
 	public int getId() {
@@ -152,6 +153,12 @@ public class FestAnswerVO {
 	}
 	public void setSns_return(String sns_return) {
 		this.sns_return = sns_return;
+	}
+	public String getSns_gid() {
+		return sns_gid;
+	}
+	public void setSns_gid(String sns_gid) {
+		this.sns_gid = sns_gid;
 	}
 	
 }
