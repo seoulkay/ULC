@@ -411,14 +411,15 @@
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
-	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }'>
+	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 	   				<p>${ele.go_content }</p>
-		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }">
-		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }" data-dismiss="modal">
-		   					잡으러가기!
+<%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
+		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
+		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
 		   				</a>
-		   			</div>
-	   				<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
+<!-- 		   			</div> -->
+		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:150px; display:none" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
+	   				<img id="stamp_back_${ele.ufo_gid }" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -430,7 +431,7 @@
 	</div>
 </div>
 <c:forEach var="ele" varStatus="statusEle" begin="0" end="8" items="${ufoGo }">
-<div class="modal" id="stamp_${ele.ufo_gid }" role="dialog">
+<div class="modal" id="stamp_${ele.ufo_gid }_modal" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
 	   <div class="modal-header">
@@ -438,7 +439,7 @@
 	  		<h4>스탬프 미션 ${statusEle.count }번</h4>
 	   </div>
 	   <div class="modal-body">
-   		${statusEle.count }번 사진 : 다음 장소에서 사진을 찍어주세요.<br>
+   		${statusEle.count }번 사진 : ${ele.go_content }<br>
 	 	 	<div class="progress">
 			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
 			  	</div>
@@ -447,9 +448,9 @@
 			</div>
 			<!-- 스탬프 미션 사진, 내용 -->
 			<div>
-   				<img class="img-responsive" style="padding:10px" src="${pageContext.request.contextPath}/resources/ufo/assets/images/point/gc_point0${statusEle.count }.jpg">
+   				<img class="img-responsive" style="padding:10px" src="https://www.ufo79.com/image/${ele.go_image }">
    			</div>
-   			<div style="padding:10px">별을 떠나 지구로 온 어린왕자와 사막여우는 감천문화마을에 도착하여 여행 중 난간에 앉아 마을을 내려다 본다.<br>
+   			<div style="padding:10px">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="file" class="form-control">
@@ -826,11 +827,12 @@
 				        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
 				        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
 				        	 target.content = '<h1 id="firstHeading" class="firstHeading">'+go[i].go_content+'</h1>';
-				        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0002, 2) ){
+				        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0022, 2) ){
 				        		 target.type = "ufoOn";
+				        		 $("#stamp_back_"+go[i].ufo_gid).hide();
+				        		 $("#stamp_"+go[i].ufo_gid).show();
 				        	 }else{
 				        		 target.type = "ufoOff";
-				        		 $("#stamp_"+go[i].ufo_gid).hide();
 				        	 }
 					         neighborhoods.push(target);
 				         }
@@ -982,16 +984,10 @@
 		        for(var i = 0; i < go.length; i++){
 		        	if(go[i].ufo_go_type == 'qr'){
 		        	  	//중복을 막는 코드가 필요함 
-		       
 		        		$("#qrList").append('<div class="col-xs-4" style="padding:0px;">'+go[i].ufo_go_type+go[i].ufo_gid+go[i].go_content+'<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal"><img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg01.png"></a></div>');
 		  		        		
 		        	}else if(go[i].ufo_go_type == 'go'){
-		        		$('#'+go[i].ufo_gid).empty();
-		        		$('.link'+go[i].ufo_gid).remove();
-		        		var d = '<div class="col-xs-6 link'+go[i].go_gid+'"><p>'+go[i].go_content+'</p><img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png"></div>';
-		        		$('#'+go[i].ufo_gid).append(d);
-	
-		        		
+		        		$('#stamp_yes_'+go[i].ufo_gid).show();
 		        	}
 		        }
 		        
@@ -1007,6 +1003,7 @@
 				alert("로그인을 해주세요.");
 			}
 		}
+		
 </script>
 <c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>

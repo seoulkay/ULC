@@ -120,7 +120,7 @@
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
 								
-							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
+							<li><button class="btn btn-social btn-facebook" onClick="fbLogin('go')"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 <!-- 							<li> -->
@@ -181,7 +181,7 @@
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
 								
-							<li><button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i
+							<li><button class="btn btn-social btn-facebook" onClick="fbLogin('qr')"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 <!-- 							<li> -->
