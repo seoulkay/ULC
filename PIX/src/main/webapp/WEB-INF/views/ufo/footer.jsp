@@ -439,17 +439,20 @@
 	  		<h4>스탬프 미션 ${statusEle.count }번</h4>
 	   </div>
 	   <div class="modal-body">
-   		${statusEle.count }번 사진 : 아래와 같은 사진을 찍어주세요.<br>
+   		${statusEle.count }번 사진 : 다음 장소에서 사진을 찍어주세요.<br>
 	 	 	<div class="progress">
-		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
-		  	</div>
-		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
-		  	</div>
+			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+			  	</div>
+			  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+			  	</div>
 			</div>
-				<div>
-	   				<img class="img-responsive"  src="${pageContext.request.contextPath}/resources/ufo/assets/images/customers/customer-1.jpg">
-	   			</div>
-	   			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+			<!-- 스탬프 미션 사진, 내용 -->
+			<div>
+   				<img class="img-responsive" style="padding:10px" src="${pageContext.request.contextPath}/resources/ufo/assets/images/point/gc_point0${statusEle.count }.jpg">
+   			</div>
+   			<div style="padding:10px">별을 떠나 지구로 온 어린왕자와 사막여우는 감천문화마을에 도착하여 여행 중 난간에 앉아 마을을 내려다 본다.<br>
+   			</div>
+   			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="file" class="form-control">
 				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
 				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
@@ -458,7 +461,7 @@
 				<input type="hidden" id="type_go${ele.ufo_gid }" name="ufo_go_type" value="go">
 				<input type="hidden" id="gid_go${ele.ufo_gid }" name="ufo_gid" value="${ele.ufo_gid }">
 				<input type="hidden" id="para${ele.ufo_gid }" name="para" value="${sessionScope.eventPara}">
-				</form>
+			</form>
 			  	
 			  	
 		</div>

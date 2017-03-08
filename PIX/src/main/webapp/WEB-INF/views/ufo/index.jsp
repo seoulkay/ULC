@@ -74,7 +74,7 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">2017 ${ufo.title }</a></li>
+					<li><a class="scrollto" href="#support-section">제 7회 ${ufo.title }</a></li>
 					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
 					<li><a class="scrollto" href="#info-section">${ufo.title } 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
