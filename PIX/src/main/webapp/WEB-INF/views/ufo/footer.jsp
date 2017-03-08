@@ -462,8 +462,6 @@
 				<input type="hidden" id="gid_go${ele.ufo_gid }" name="ufo_gid" value="${ele.ufo_gid }">
 				<input type="hidden" id="para${ele.ufo_gid }" name="para" value="${sessionScope.eventPara}">
 			</form>
-			  	
-			  	
 		</div>
 		<div class="modal-footer">
 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
@@ -956,18 +954,18 @@
 			}
 		}
 
-		<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-		// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
-		// 	text:'https://www.facebook.com/${vo.sns_return }'});
-		var qrcode = new QRCode("qrcode", {
-		    text: "https://www.ufo79.com/",
-		    width: 300,
-		    height: 300,
-		    colorDark : "#000000",
-		    colorLight : "#ffffff",
-		    correctLevel : QRCode.CorrectLevel.H
-		});
-		</c:if>
+// 		<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
+// 		// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
+// 		// 	text:'https://www.facebook.com/${vo.sns_return }'});
+// 		var qrcode = new QRCode("qrcode", {
+// 		    text: "https://www.ufo79.com/",
+// 		    width: 300,
+// 		    height: 300,
+// 		    colorDark : "#000000",
+// 		    colorLight : "#ffffff",
+// 		    correctLevel : QRCode.CorrectLevel.H
+// 		});
+// 		</c:if>
 
 		function getUfo(param){
 			if(checkLogin()){
@@ -984,7 +982,7 @@
 		        for(var i = 0; i < go.length; i++){
 		        	if(go[i].ufo_go_type == 'qr'){
 		        	  	//중복을 막는 코드가 필요함 
-		        		$("#qrList").append('<div class="col-xs-4" style="padding:0px;">'+go[i].ufo_go_type+go[i].ufo_gid+go[i].go_content+'<a href="" data-toggle="modal" data-target="#stamp_${statusEle.count }" data-dismiss="modal"><img class="img-responsive stamp" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg01.png"></a></div>');
+		        		$("#qrList").append('<div class="col-xs-3" style="position:relative;"><p style="position:absolute; top:0; left:0;">'+go[i].go_content+'</p><img class="img-responsive" src="https://www.ufo79.com/image/logo_gc.png"></div>');
 		        	}else if(go[i].ufo_go_type == 'go'){
 		        		$('#stamp_yes_'+go[i].ufo_gid).show();
 		        	}

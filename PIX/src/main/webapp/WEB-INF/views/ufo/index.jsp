@@ -104,7 +104,6 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-				
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 				<h2 class="counter-desc">${ufo.title } 스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
@@ -119,14 +118,12 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-								
 							<li><button class="btn btn-social btn-facebook" onClick="getUfo('go')"><i
 									class="fa fa-facebook" aria-hidden="true"></i><span
 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li>
 <!-- 							<li> -->
 <!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 							</li> -->
-								
 						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
@@ -159,7 +156,6 @@
 				<br><br><br>
 				<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
 				<h2 class="counter-desc">${ufo.title } 큐알코드랠리 참여하기</h2>
-				
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">큐알 코드 랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
@@ -169,8 +165,9 @@
 					
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
-					                <div id="qrcode" class="img-responsive">
-					                </div>
+<!-- 					                <div id="qrcode" class="img-responsive"> -->
+<!-- 					                </div> -->
+					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png">
 				                <br>
 				                    <input type="text" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요 ${gid } + ${type }" name="qrNumber" required="" aria-required="true">
 				                    <button class="btn btn-primary" onClick="qrRally();" style="margin lef=">큐알코드 인증</button>  
