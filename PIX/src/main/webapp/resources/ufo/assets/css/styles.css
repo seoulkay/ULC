@@ -1160,7 +1160,10 @@ body.sticky-page-nav .overview-section {
 }
 .signup-section .form-box {
   background: #fff;
-  padding: 45px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
   position: relative;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -1444,8 +1447,9 @@ body.sticky-page-nav .overview-section {
   color: #FBB03B;
 }
 .quote-item .tip {
-  font-size: 16px;
-  margin-top: 30px;
+  font-size: 15px;
+  line-height: 2;
+  margin-top: 20px;
   margin-left: 10px;
   color: #7d828d;
   text-align: left;
