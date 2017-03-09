@@ -240,7 +240,8 @@ public class UfoController {
 //		model.addAttribute("prog", prog);
 //		model.addAttribute("loca", loca);
 //	
-		
+		List<UfoGoVO> ufoqr = dao.selectUfoQrByPara(para);
+		model.addAttribute("ufoqr", ufoqr);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
 		return "ufo/index";
