@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic'
 	rel='stylesheet' type='text/css'>
@@ -104,7 +104,7 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-				<h2 class="counter-desc">${ufo.title } 스탬프랠리 참여하기</h2>
+				<h2 class="counter-desc">${ufo.title }<br>스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
@@ -134,7 +134,7 @@
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
 										<blockquote class="result">스탬프랠리 참여방법</blockquote>
 										<!--//blockquote-->
-										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북/카카오톡 로그인하기!<br>3. 지도에서 현재 위치와 포토존 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 받기!<br>5. 스탬프 랠리 완성 후, 안내센터에서 선물 받기!</div>
+										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북 로그인하기!<br>3. 지도에서 포토존 위치 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 찍기!<br>5. 스탬프 랠리 완성 후, 선물 받기!</div>
 										<!--//source-->
 										
 									</div>
@@ -154,7 +154,7 @@
 				</c:if>
 				<br><br><br>
 				<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-				<h2 class="counter-desc">${ufo.title } 큐알코드랠리 참여하기</h2>
+				<h2 class="counter-desc">${ufo.title }<br>큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">큐알 코드 랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
@@ -199,9 +199,10 @@
 										<!--//blockquote-->
 										<div class="tip">
 										1. 큐알 코드를 읽어주세요.<br>
-										2. 페이스북/카카오톡 로그인하기!<br>
-										3. 큐알코드 인증 버튼 누르기!<br>
-										4. 큐알 코드 랠리 완성 후, 안내센터에서 선물 받기!
+										2. 페이스북 로그인하기!<br>
+										3. 곳곳에 숨어있는 큐알코드 찾기!<br>
+										4. 큐알코드 인증 버튼 누르기!<br>
+										5. 큐알 코드 랠리 완성 후, 선물 받기!
 										</div>
 										<!--//source-->
 									</div>
