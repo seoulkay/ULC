@@ -609,16 +609,6 @@
 	AND
 		ufo_go_type = 'go'
 	</select>
-	<select id="selectUfoQrByPara" parameterType="String" resultType="UfoGoVO">
-	SELECT
-		*
-	FROM
-		pix.ufo_go
-	WHERE
-		go_para = #{param}
-	AND
-		ufo_go_type = 'qr'
-	</select>
 	<select id="selectUfoGoRecordByPara" parameterType="String" resultType="UfoGoRecord">
 	SELECT 
 	*
