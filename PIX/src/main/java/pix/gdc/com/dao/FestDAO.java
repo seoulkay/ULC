@@ -399,11 +399,6 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("BasicMapper.selectUfoGoByPara", para);
 	}
 	
-	//유에큐알 가지고 오기
-	public List<UfoGoVO> selectUfoQrByPara(String para){
-		return getSqlSession().selectList("BasicMapper.selectUfoQrByPara", para);
-	}
-	
 	//유에포 레코드 가지고 오기
 	public List<UfoGoRecord> selectUfoGoRecordByPara(String para){
 		return getSqlSession().selectList("BasicMapper.selectUfoGoRecordByPara", para);

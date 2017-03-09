@@ -200,9 +200,4 @@ public class PixController {
 		vo.setPara(para);
 		return dao.selectUfoGoRecordByParaAndUid(vo);
 	}
-	
-	@RequestMapping(value = "/ufogo/qr/get/{para}", method = {RequestMethod.POST, RequestMethod.GET})
-	public @ResponseBody List<UfoGoVO> getUfogoAll(@PathVariable("para")String para){
-		return dao.selectUfoQrByPara(para);
-	}
 }
