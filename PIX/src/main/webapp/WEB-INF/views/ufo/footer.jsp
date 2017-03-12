@@ -421,7 +421,7 @@
 <!-- 		   			</div> -->
 		   			
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity : 1;width:100%" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
-	   				<p style="font-family:yoon320">${ele.go_content }</p>
+	   				<p style="font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
 		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity : 0.7;width:100%" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   				
 	   			</div>
@@ -429,7 +429,7 @@
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330">완료</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330, NanumBarunGothic">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -440,9 +440,9 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 style="font-family:yoon330;">스탬프 미션 ${statusEle.count }번</h4>
+	  		<h4 style="font-family:yoon330, NanumBarunGothic;">스탬프 미션 ${statusEle.count }번</h4>
 	   </div>
-	   <div class="modal-body" style="font-family:yoon320">
+	   <div class="modal-body" style="font-family:yoon320, NanumBarunGothic">
    		${statusEle.count }번 사진 : ${ele.go_content }<br>
 	 	 	<div class="progress">
 			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
@@ -468,7 +468,7 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" style="font-family: yoon330;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+	    <button type="button" style="font-family: yoon330, NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -784,6 +784,44 @@ var icons = {
     var markers = [];
 	var map;
 
+	/**
+     * The CenterControl adds a control to the map that recenters the map on
+     * Chicago.
+     * This constructor takes the control DIV as an argument.
+     * @constructor
+     */
+    function CenterControl(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.style.marginTop = '5px';
+      controlUI.title = 'Click to recenter the map';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;">';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        refreshGo();
+      });
+
+    }
  /**
    * 
  */
@@ -792,6 +830,15 @@ function initMap() {
 	    zoom: 18,
 	    center: {lat: 37.75, lng: 128.87}
 	  });
+	
+	 // Create the DIV to hold the control and call the CenterControl()
+    // constructor passing in this DIV.
+    var centerControlDiv = document.createElement('div');
+    var centerControl = new CenterControl(centerControlDiv, map);
+    
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
 	makeGo();
 }
 
