@@ -957,6 +957,7 @@ function qrRally(){
    	    	  
  		}else{
  			alert("큐알코드를 넣어주세요.");
+ 			location.reload();
  		}
  	}else{
  		showPleaseWait();
