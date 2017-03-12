@@ -13,8 +13,8 @@
 	<title>UFO79</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="UFO79 is a simple and clean design landing page that built-in professional responsive template, elegant style, smooth-animation and have a slew of features.">
-    <meta name="keywords" content="Landing Page, One Page Template, Simple Design, Clean Design, Responsive Template, Smooth Animation, App Showcase, PSD, HTML5, CSS3, jQuery">
+    <meta name="description" content="UFO79, 축제를 위한, 축제에 의한 플랫폼!">
+<!--     <meta name="keywords" content="Landing Page, One Page Template, Simple Design, Clean Design, Responsive Template, Smooth Animation, App Showcase, PSD, HTML5, CSS3, jQuery"> -->
     <meta name="author" content="TEAM U.F.O.">
     
     <!-- Mobile Specific Meta -->
@@ -117,7 +117,7 @@
                     <div class="header-btn">
                     	<a href="https://www.ufo79.com/PIX/ufo/dano/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 단오제 마이크로 사이트</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제 마이크로 사이트</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 커피 축제 마이크로 사이트</a>
+u                    	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 커피 축제 마이크로 사이트(영어)</a>
                         <a href="https://www.ufo79.com/PIX/FEV/" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>관리자 사이트</a>
                     </div>
                     
