@@ -3378,3 +3378,24 @@ body.sticky-page-nav .overview-section {
 .config-panel .close .fa {
   color: #fff;
 }
+
+@font-face {
+    font-family: football;
+    src: url("../NEXON Football Gothic L.otf") format("opentype");
+}
+
+@font-face {
+    font-family: football;
+    font-weight: bold;
+    src: url("../NEXON Football Gothic B.otf") format("opentype");
+}
+
+@font-face {
+    font-family: yoon320;
+    src: url("../yoon320.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: yoon330;
+    src: url("../yoon330.ttf") format('truetype');
+}

@@ -407,28 +407,29 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>스탬프랠리</h4>
+	  		<h4 style="font-family:football;">스탬프랠리</h4>
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
+	   				
 <%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
-		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
+		   					<img class="img-responsive" style="width:100%" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }.svg ">
 		   				</a>
 <!-- 		   			</div> -->
-				<!-- Grace : 새로 바뀌는 이미지 추가했음 ${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/
-				스탬프 판 이미지: bg_stamp_01_off.svg / 스탬프 on: bg_stamp_01.svg / 스탬프 이미지: bg_stamp.svg -->
-		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
-	   				<img id="stamp_back_${ele.ufo_gid }" style="opacity : 0.2;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
+		   			
+		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity : 1;width:100%" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
+	   				<p style="font-family:yoon320">${ele.go_content }</p>
+		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity : 0.7;width:100%" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   				
 	   			</div>
 	   			</c:forEach>
 	   		</div>
 		</div>
 		<div class="modal-footer">
-<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button> -->
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -439,9 +440,9 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>스탬프 미션 ${statusEle.count }번</h4>
+	  		<h4 style="font-family:yoon330;">스탬프 미션 ${statusEle.count }번</h4>
 	   </div>
-	   <div class="modal-body">
+	   <div class="modal-body" style="font-family:yoon320">
    		${statusEle.count }번 사진 : ${ele.go_content }<br>
 	 	 	<div class="progress">
 			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
@@ -467,7 +468,7 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+	    <button type="button" style="font-family: yoon330;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -764,7 +765,6 @@ function sendNewsLetterEmail(){
   alert("구독해주셔서 감사합니다.");
   }
 
- /* Grace: 아이콘 대체 (로컬에서 테스트 위해 iconBase 경로 바꿔놨음) */	
 // var iconBase = 'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/';'
 
 var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
@@ -867,7 +867,7 @@ function makeGo(){
           lat: position.coords.latitude,
           lng: position.coords.longitude,
           type: "me",
-          content:'<h1 id="firstHeading" class="firstHeading">나</h1>'
+          content:'<h1 id="firstHeading" style="font-family:football">나</h1>'
         };
         
         $.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
@@ -878,7 +878,7 @@ function makeGo(){
 	        	 var target = {};
 	        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
 	        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
-	        	 target.content = '<h1 id="firstHeading" class="firstHeading">'+go[i].go_content+'</h1>';
+	        	 target.content = '<p><h3 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:50px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg01.png">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">이벤트 참여하기</span></button>';
 	        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0022, 2) ){
 	        		 target.type = "ufoOn";
 	        		 $("#stamp_back_"+go[i].ufo_gid).hide();
@@ -1095,7 +1095,7 @@ function showPleaseWait() {
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h4 class="modal-title">잠시만 기대려 주세요.</h4>\
+                <h4 class="modal-title" style="font-family:football;">잠시만 기대려 주세요.</h4>\
             </div>\
             <div class="modal-body">\
                 <div class="progress">\

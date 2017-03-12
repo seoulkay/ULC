@@ -108,13 +108,11 @@
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
-						<!-- Grace: Refresh 아이콘으로 대체 -->
 						<!-- <button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br> -->
-							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg"/ style="width: 35px; height: 35px;">
+							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;">
 						<div class="team-figure">
 							<div id="map"></div>
 						</div><br><br>
-						<!-- Grace: 지도 상 마커 화면에도 넣어야 함, 페이스북으로 이벤트 참여하기 -> 스탬프 찍기 -->
 						<ul class="social-buttons list-unstyled">
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
