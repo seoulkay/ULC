@@ -419,6 +419,8 @@
 		   					<img class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/y_stamp_bg09.png">
 		   				</a>
 <!-- 		   			</div> -->
+				<!-- Grace : 새로 바뀌는 이미지 추가했음 ${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/
+				스탬프 판 이미지: bg_stamp_01_off.svg / 스탬프 on: bg_stamp_01.svg / 스탬프 이미지: bg_stamp.svg -->
 		   			<img id="stamp_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
 	   				<img id="stamp_back_${ele.ufo_gid }" style="opacity : 0.2;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp_bg0${statusEle.count }.png">
 	   			</div>
@@ -761,17 +763,20 @@ function sendNewsLetterEmail(){
    });
   alert("구독해주셔서 감사합니다.");
   }
-	
-var iconBase = 'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/';
+
+ /* Grace: 아이콘 대체 (로컬에서 테스트 위해 iconBase 경로 바꿔놨음) */	
+// var iconBase = 'https://www.ufo79.com/PIX/resources/ufo/assets/images/icons/';'
+
+var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
 var icons = {
-  me:{
-	  icon: iconBase + 'me_icon01.png'
+  me:{//아이콘 svg로 me_icon01.png --> icon_me_30px-01.svg
+	  icon: iconBase + 'icon_me_30px-01.svg'
   },
-  ufoOn:{
-	  icon: iconBase + 'UFO_ON.png'
+  ufoOn:{//아이콘 svg로 UFO_ON.png --> icon_pin_20px.svg
+	  icon: iconBase + 'icon_pin_20px.svg'
   },
-  ufoOff:{
-	  icon: iconBase +'UFO_OFF.png'
+  ufoOff:{//아이콘 svg로 UFO_OFF.png --> icon_pin_15px_off.svg
+	  icon: iconBase +'icon_pin_15px_off.svg'
   }
 };
         
