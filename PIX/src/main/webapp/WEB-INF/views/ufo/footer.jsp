@@ -424,8 +424,7 @@
 		   			
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
 	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
-		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:25%; left:25%; display:none; opacity:0.7; width:50%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-	   				
+		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -442,7 +441,7 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h3 style="font-family:yoon330, NanumBarunGothic;">스탬프 미션 ${statusEle.count }번</h3>
+	  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
 	   </div>
 	   <div class="modal-body" style="font-family:yoon320, NanumBarunGothic">
    		${statusEle.count }번 사진 : ${ele.go_content }<br>
@@ -470,6 +469,7 @@
 			</form>
 		</div>
 		<div class="modal-footer">
+		<button type="button" style="font-family: yoon330, NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
 	    <button type="button" style="font-family: yoon330, NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
@@ -499,7 +499,7 @@
 	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
 	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
-		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:15%; left:15%; width:70%; display:none; opacity : 1;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
 	   			</c:forEach>
@@ -798,6 +798,7 @@ FB.getLoginStatus(function(response) {
   /**
    * 
    */
+   //showDone("완료하였습니다.");
   function fbPost(msg, type, gid){
     	FB.getLoginStatus(function(response) {
 	    	 
@@ -805,7 +806,9 @@ FB.getLoginStatus(function(response) {
     		var body = msg;
 			  FB.api('/me/feed', 'post', { message: body }, function(response) {
 			    if (!response || response.error) {
-			     console.log('Did not connected to facebook server : ufo')
+			     console.log('Did not connected to facebook server : ufo');
+			     hidePleaseWait();
+			     showDone("실패하였습니다.", type);
 			    } else {
 			      //alert('Post ID: ' + response.id);
 			      $( "#sns_return" ).val(response.id);
@@ -817,15 +820,35 @@ FB.getLoginStatus(function(response) {
 				  $( "#sns_msg" ).val(msg);
 				  $( "#sns_gid" ).val(gid);
 				  
-			      $("#surveyForm").submit();
-			      console.log("감사합니다.");
+				 
+				 
+				  
+			      //$("#surveyForm").submit();
+			      //setTimeout(function(){ $("#surveyForm").submit();}, 3000);
+			      //console.log("감사합니다.");
 			      //location.reload();
+			      var form = new FormData($("#surveyForm")[0]);
+	   	    	  $.ajax({
+	   	              data: form,
+	   	              processData: false,
+	   	              contentType: false,
+	   	              success: function(result){
+	   	            	  console.log("처리되었습니다. : "+result);
+	   	              },
+	   	              error: function(er){}
+	      				});
+	   	    	 hidePleaseWait();
+	   	    	 showDone("완료하였습니다.", type);
 			    }
 			  });    		
     	} else if (response.status === 'not_authorized') {
     		console.log('페이스북 로그인 되어 있지 않습니다.');
+    		hidePleaseWait();
+    		showDone("실패하였습니다.", type);
     	} else {
     		console.log('연결에 문제가 있습니다.');
+    		hidePleaseWait();
+		     showDone("실패하였습니다.", type);
 	    		}
 	    	}, true); 
     }
@@ -1014,7 +1037,7 @@ function makeGo(){
 	        	 }
 		         neighborhoods.push(target);
 	         }
-	         
+
 	         neighborhoods.push(pos);
 	         map.setCenter(pos);
 	         drop();
@@ -1211,7 +1234,7 @@ function showPleaseWait() {
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h3 class="modal-title" style="font-family:football;">잠시만 기다려 주세요.</h3>\
+                <h3 class="modal-title" style="font-family:football;" align="center">잠시만 기다려 주세요.</h3>\
             </div>\
             <div class="modal-body">\
                 <div class="progress">\
@@ -1233,6 +1256,36 @@ $("#pleaseWaitDialog").modal("show");
 function hidePleaseWait() {
     $("#pleaseWaitDialog").modal("hide");
 }
+
+/**<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 완료되었습니다.
+ * Displays overlay with "Please wait" text. Based on bootstrap modal. Contains animated progress bar.
+ */
+function showDone(para, type) {
+	var tt = type.substring(3, 5).toString();
+    var modalLoading = '<div class="modal" id="showDone" data-backdrop="static" data-keyboard="false role="dialog">\
+    <div class="modal-dialog">\
+        <div class="modal-content">\
+            <div class="modal-header">\
+                <h3 class="modal-title" style="font-family:football;" align="center"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> ' + para.toString()+'</h3>\
+            </div>\
+            <div class="modal-body">\
+                <div class="progress">\
+                  <div class="progress-bar progress-bar-success active" role="progressbar"\
+                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%; height: 40px">\
+                  </div>\
+                </div>\
+            </div>\
+            <div class="modal-footer">\
+    		<button type="button" style="font-family: yoon330, NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo(\''+tt+'\')">나의 기록보기</button>\
+    		<button type="button" style="font-family: yoon330, NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="javascript:location.reload();">확인</button>\
+    	  	</div>\
+        </div>\
+    </div>\
+</div>';
+$(document.body).append(modalLoading);
+$("#showDone").modal("show");
+}
+
 
 function showModal(){
 	$("#qrRallyResult").modal("show");

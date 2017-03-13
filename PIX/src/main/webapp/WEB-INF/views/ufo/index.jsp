@@ -58,8 +58,8 @@
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-			<h2 class="headline">${ufo.title }</h2>
-			<div class="intro">${ufo.event_date }</div><br>
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
 			<div class="actions">
 <!-- 				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
@@ -75,7 +75,7 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">제 7회 ${ufo.title }</a></li>
+					<li><a class="scrollto" href="#support-section">${ufo.title }</a></li>
 					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
 					<li><a class="scrollto" href="#info-section">${ufo.title } 안내</a></li>
 					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
