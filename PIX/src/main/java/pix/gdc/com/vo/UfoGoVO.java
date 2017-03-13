@@ -13,6 +13,7 @@ public class UfoGoVO {
 	private String ufo_gid;
 	private String go_desc;
 	private String go_image;
+	private boolean submit = false;
 	
 	public int getId_ufo_go() {
 		return id_ufo_go;
@@ -73,6 +74,12 @@ public class UfoGoVO {
 	}
 	public void setGo_image(String go_image) {
 		this.go_image = go_image;
+	}
+	public boolean isSubmit() {
+		return submit;
+	}
+	public void setSubmit(boolean submit) {
+		this.submit = submit;
 	}
 	
 	

@@ -430,7 +430,7 @@
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330, NanumBarunGothic; color:#d7579f; border-color: #d7579f;" data-target="#stampRallyResult" data-toggle="modal">완료</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330, NanumBarunGothic; color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -506,7 +506,7 @@
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal"  data-target="#qrRallyResult" data-toggle="modal" style="color:#d7579f; border-color: #d7579f;">완료</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal"  data-toggle="modal" style="color:#d7579f; border-color: #d7579f;" onClick="fbLogin('qr_re')">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -702,6 +702,10 @@ FB.getLoginStatus(function(response) {
     	   stampRally();
        }else if(para == 'qr'){
     	   qrRally();
+       }else if(para == 'go_re'){
+    	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/go/"+window.sessionStorage.getItem('uid');
+       }else if(para == 'qr_re'){
+    	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid');
        }else{
     	   top.location.href="index";
        }       
@@ -1093,7 +1097,7 @@ function qrRally(){
    	              contentType: false,
    	              success: function(result){
    	            	  console.log("처리되었습니다. : "+result);
-   	            	  var msg = '${ufo.title} 의 큐알코드랠리에 참여했네요!';
+   	            	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid')+" 큐알코드랠리에 참여했네요! ${ufo.ufo_tag}"  ;
    	            	  fbPost(msg, "fb_qr", $("#qrNumber").val());
    	            	  //location.reload();
    	              },
@@ -1116,7 +1120,7 @@ function qrRally(){
               contentType: false,
               success: function(result){
             	console.log("처리되었습니다. : "+result);
-           		var msg = '${ufo.title} 의 큐알코드랠리에 참여했네요!';
+           		var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid')+" 큐알코드랠리에 참여했네요! ${ufo.ufo_tag}"  ;
         	  	fbPost(msg, "fb_qr", $("#qrNumber").val());
             	//location.reload();
               },
@@ -1151,7 +1155,7 @@ function stampPostSubmit(para){
 	              contentType: false,
 	              success: function(result){
 	            	  console.log("처리되었습니다. : "+result);
-	            	  var msg = "${ufo.title} 스탬프렐리에 참여하셨습니다! https://www.ufo79.com/PIX/get/"+window.sessionStorage.getItem('uid')+"/"+para;
+	            	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/go/"+window.sessionStorage.getItem('uid')+" 스탬프랠리를 참여하였습니다! ${ufo.ufo_tag}"  ;
    	            	  fbPost(msg, "fb_go", para);
 	            	  //location.reload();
 	              },

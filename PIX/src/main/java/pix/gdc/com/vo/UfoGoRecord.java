@@ -17,6 +17,7 @@ public class UfoGoRecord {
 	private String image_alt;
 	private String ufo_gid;
 	private String go_content;
+	private boolean submit = false;
 	
 	public int getId() {
 		return id;
@@ -101,6 +102,12 @@ public class UfoGoRecord {
 	}
 	public void setGo_content(String go_content) {
 		this.go_content = go_content;
+	}
+	public boolean isSubmit() {
+		return submit;
+	}
+	public void setSubmit(boolean submit) {
+		this.submit = submit;
 	}
 
 }

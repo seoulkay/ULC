@@ -628,17 +628,16 @@
 	para = #{param}
 	</select>
 	<select id="selectUfoGoRecordByParaAndUid" parameterType="UfoGoRecord" resultType="UfoGoRecord">
-	SELECT 
-	distinct a.ufo_gid
-    ,a.ufo_go_type
-    ,b.go_content
-	FROM
-	pix.ufo_go_record a
-	left join pix.ufo_go b on a.ufo_gid = b.ufo_gid
-	WHERE
-	para = #{para}
-	and
-	user_uid = #{user_uid}
+	select
+	a.ufo_gid,
+	a.ufo_go_type,
+	c.go_content,
+	a.ufo_image 
+	from ufo_go_record a 
+	left join (select ufo_gid, max(id) bid from ufo_go_record where user_uid =#{user_uid} 
+	and para = #{para} group by ufo_gid) b on a.id = b.bid
+	left join pix.ufo_go c on a.ufo_gid = c.ufo_gid
+	where b.bid is not null
 	</select>
 	<insert id="insertUfoRecord" parameterType="UfoGoRecord">
 	INSERT INTO
