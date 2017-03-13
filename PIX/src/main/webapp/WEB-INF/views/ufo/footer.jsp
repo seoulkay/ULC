@@ -407,11 +407,11 @@
 <div class="modal" id="stampRally" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
-	   <div class="modal-header">
+	   <div class="modal-header" style="padding-bottom: 0px;">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  		<h3 style="font-family:football;">스탬프랠리</h3>
 	   </div>
-	   <div class="modal-body">
+	   <div class="modal-body" style="padding-bottom: 15px;">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle" begin="0" end="8">
 	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
@@ -423,8 +423,13 @@
 <!-- 		   			</div> -->
 		   			
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
+<<<<<<< HEAD
 	   				<p style="font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
 		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:25%; left:25%; display:none; opacity:0.7; width:50%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+=======
+	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
+		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity:0.7; width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+>>>>>>> branch 'master' of https://github.com/seoulkay/ULC.git
 	   				
 	   			</div>
 	   			</c:forEach>
@@ -1004,7 +1009,7 @@ function makeGo(){
 	        	 var target = {};
 	        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
 	        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
-	        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">이벤트 참여하기</span></button>';
+	        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
 	        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0022, 2) ){
 	        		 target.type = "ufoOn";
 	        		 $("#stamp_back_"+go[i].ufo_gid).hide();

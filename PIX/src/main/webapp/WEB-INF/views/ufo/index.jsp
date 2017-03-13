@@ -111,7 +111,7 @@
 						<!-- <button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br> -->
 <%-- 							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;"> --%>
 						<div class="team-figure">
-							<div id="map"></div>
+							<div id="map" style="height: 30em;"></div>
 						</div><br><br>
 						<ul class="social-buttons list-unstyled">
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
