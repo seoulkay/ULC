@@ -40,7 +40,7 @@
 
 <style>
       #map {
-        height: 350px;
+        height: 30em;
       }
     </style>
 </head>
