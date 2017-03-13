@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<c:set var="now" value="<%=new java.util.Date()%>" />
 <!-- ******FOOTER****** -->
 <footer class="footer">
 	<div class="container">
@@ -407,7 +409,7 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 style="font-family:football;">스탬프랠리</h4>
+	  		<h3 style="font-family:football;">스탬프랠리</h3>
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row">
@@ -422,14 +424,14 @@
 		   			
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
 	   				<p style="font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
-		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity:0.7; width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:25%; left:25%; display:none; opacity:0.7; width:50%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   				
 	   			</div>
 	   			</c:forEach>
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330, NanumBarunGothic">완료</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:yoon330, NanumBarunGothic; color:#d7579f; border-color: #d7579f;" data-target="#stampRallyResult" data-toggle="modal">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -440,7 +442,7 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 style="font-family:yoon330, NanumBarunGothic;">스탬프 미션 ${statusEle.count }번</h4>
+	  		<h3 style="font-family:yoon330, NanumBarunGothic;">스탬프 미션 ${statusEle.count }번</h3>
 	   </div>
 	   <div class="modal-body" style="font-family:yoon320, NanumBarunGothic">
    		${statusEle.count }번 사진 : ${ele.go_content }<br>
@@ -490,7 +492,7 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>큐알 코드 랠리 </h4>
+	  		<h3 style="font-family: football">큐알 코드 랠리 </h3>
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row" id="qrList">
@@ -504,7 +506,7 @@
 	   		</div>
 		</div>
 		<div class="modal-footer">
-<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button> -->
+	    <button type="button" class="btn btn-default" data-dismiss="modal"  data-target="#qrRallyResult" data-toggle="modal" style="color:#d7579f; border-color: #d7579f;">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -515,22 +517,34 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>스탬프랠리를 완성하였습니다!</h4>
+	  		<h3 style="color : #d7579f; font-family:football;">스탬프랠리를 완성하였습니다!</h3>
 	   </div>
-	   <div class="modal-body">
+	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
 	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
-		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   			<div class="col-xs-4" id='qr_div_${ele.ufo_gid }' style="position : relative; ">
+	   				<div style="padding-top:3px; padding-bottom:3px">
+	   					<div style="border: 2px solid #FFF; background: url('https://www.ufo79.com/image/${ele.go_image}'); height:100px">
+<%-- 		   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div> --%>
+<%-- 			   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
+<%-- 		   				<img id="qr_back_${ele.ufo_gid }" style="border: 2px solid #FFF;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
+	   					</div>
+	   				</div>
 	   			</div>
 	   			</c:forEach>
 	   		</div>
+	   		<br>
+	   		<h4 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> 감천문화마을</h4>
+			<br>
 		</div>
-		<div class="modal-footer">
-<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button> -->
-	  	</div>
+	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
+			<div class="modal-footer">
+			<br>
+		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f"><span class="btn-text">인쇄하기</span></span>
+		    	<span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
+		    <br>
+		    </div>
+  		</div>
 	</div>
 	</div>
 </div>
@@ -540,22 +554,34 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>큐알랠리를 완성하였습니다!</h4>
+	  		<h3 style="color : #d7579f; font-family:football;">큐알랠리를 완성하였습니다!</h3>
 	   </div>
-	   <div class="modal-body">
-	   		<div class="row" id="resultList">
+	   <div class="modal-body" style="background-color: #d7579f;">
+	   		<div class="row" id="qrResultList">
 	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
-	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
-		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   			<div class="col-xs-4" id='qr_div_${ele.ufo_gid }' style="position : relative; ">
+	   				<div style="padding-top:3px; padding-bottom:3px">
+	   					<div style="border: 2px solid #FFF; background: url('https://www.ufo79.com/image/${ele.go_image}'); height:100px">
+<%-- 		   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div> --%>
+<%-- 			   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
+<%-- 		   				<img id="qr_back_${ele.ufo_gid }" style="border: 2px solid #FFF;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
+	   					</div>
+	   				</div>
 	   			</div>
 	   			</c:forEach>
 	   		</div>
+	   		<br>
+	   		<h4 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> 감천문화마을</h4>
+			<br>
 		</div>
-		<div class="modal-footer" style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px') no-repeat fixed center">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button>
-	  	</div>
+	 	<div class="modal-footer">
+			<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
+			<br><br>
+		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="javascript:printGo();"><span class="btn-text">인쇄하기</span></span>
+		    	<span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
+		    <br><br>
+		    </div>
+  		</div>
 	</div>
 	</div>
 </div>
@@ -589,8 +615,9 @@
 <!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
 <script
 	src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/printThis.js"></script>	
+	
 	
 <script>
 /**
@@ -1156,7 +1183,6 @@ function getUfo(param){
         for(var i = 0; i < go.length; i++){
         	if(go[i].ufo_go_type == 'qr'){
         	  	//중복을 막는 코드가 필요함 
-        		//$("#qrList").append('<div class="col-xs-3" style="position:relative;"><p style="position:absolute; top:40%; left:40%;">'+go[i].go_content+'</p><img class="img-responsive" style=" opacity: 0.2;" src="https://www.ufo79.com/image/stamp-01.png"></div>');
         		$('#qr_yes_'+go[i].ufo_gid).show();
         	}else if(go[i].ufo_go_type == 'go'){
         		$('#stamp_yes_'+go[i].ufo_gid).show();
@@ -1185,7 +1211,7 @@ function showPleaseWait() {
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h4 class="modal-title" style="font-family:football;">잠시만 기다려 주세요.</h4>\
+                <h3 class="modal-title" style="font-family:football;">잠시만 기다려 주세요.</h3>\
             </div>\
             <div class="modal-body">\
                 <div class="progress">\
@@ -1210,6 +1236,21 @@ function hidePleaseWait() {
 
 function showModal(){
 	$("#qrRallyResult").modal("show");
+}
+
+function printGo(){
+	$("#qrRallyResult").printThis({ 
+	    debug: false,              
+	    importCSS: true,             
+	    importStyle: true,         
+	    printContainer: true,       
+	    loadCSS: "../css/style.css", 
+	    pageTitle: "My Modal",             
+	    removeInline: false,        
+	    printDelay: 333,            
+	    header: null,             
+	    formValues: true          
+	}); 
 }
 </script>
 	
