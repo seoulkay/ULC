@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="#remodal_q1">UFO79.com</a>
+					<div class="col-title"><a href="javascript:showModal();">UFO79.com</a>
 					</div>
 				</div>
 			</div>
@@ -495,10 +495,10 @@
 	   <div class="modal-body">
 	   		<div class="row" id="qrList">
 	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-3" style="padding:0px;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
+	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
 	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
-		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
-	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.2;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/stamp-01.png">
+		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -509,6 +509,57 @@
 	</div>
 	</div>
 </div>
+
+<div class="modal" id="stampRallyResult" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>스탬프랠리를 완성하였습니다!</h4>
+	   </div>
+	   <div class="modal-body">
+	   		<div class="row" id="stampResultList">
+	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
+	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
+	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
+		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   			</div>
+	   			</c:forEach>
+	   		</div>
+		</div>
+		<div class="modal-footer">
+<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button> -->
+	  	</div>
+	</div>
+	</div>
+</div>
+
+<div class="modal" id="qrRallyResult" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>큐알랠리를 완성하였습니다!</h4>
+	   </div>
+	   <div class="modal-body">
+	   		<div class="row" id="resultList">
+	   			<c:forEach items="${ufoqr }" var="ele" varStatus="statusEle">
+	   			<div class="col-xs-3" style="padding:0px; border: 2px solid #000;" id='qr_div_${ele.ufo_gid }' style="position : relative; max-width:150px">
+	   				<div style="position:absolute; top:0; left:0">${ele.go_content }</div>
+		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   			</div>
+	   			</c:forEach>
+	   		</div>
+		</div>
+		<div class="modal-footer" style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px') no-repeat fixed center">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit()">제출</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+
 
 <!-- Javascript -->
 <script type="text/javascript"
@@ -818,7 +869,7 @@ var icons = {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        refreshGo();
+        makeGo();
       });
 
     }
@@ -910,6 +961,7 @@ function makeGo(){
 	// Try HTML5 geolocation. 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
+    	neighborhoods = [];
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -951,16 +1003,7 @@ function makeGo(){
 	}
 }
 	
-	
-/**
- * 
-*/	
-function refreshGo(){
-	neighborhoods = [];
-	makeGo();
-	drop();
-}
-			
+		
 /**
  * 
 */			
@@ -1142,7 +1185,7 @@ function showPleaseWait() {
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h4 class="modal-title" style="font-family:football;">잠시만 기대려 주세요.</h4>\
+                <h4 class="modal-title" style="font-family:football;">잠시만 기다려 주세요.</h4>\
             </div>\
             <div class="modal-body">\
                 <div class="progress">\
@@ -1163,6 +1206,10 @@ $("#pleaseWaitDialog").modal("show");
  */
 function hidePleaseWait() {
     $("#pleaseWaitDialog").modal("hide");
+}
+
+function showModal(){
+	$("#qrRallyResult").modal("show");
 }
 </script>
 	
