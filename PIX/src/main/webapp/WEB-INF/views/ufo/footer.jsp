@@ -416,13 +416,13 @@
 	   				
 <%-- 		   			<div class="link${ele.ufo_gid }" id="stamp_${ele.ufo_gid }" style="display: none;"> --%>
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
-		   					<img class="img-responsive" style="width:100%" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }.svg ">
+		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }.svg">
 		   				</a>
 <!-- 		   			</div> -->
 		   			
-		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity : 1;width:100%" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
+		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count }_off.svg">
 	   				<p style="font-family:yoon320, NanumBarunGothic">${ele.go_content }</p>
-		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity : 0.7;width:100%" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+		   			<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:0; left:0; display:none; opacity:0.7; width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   				
 	   			</div>
 	   			</c:forEach>
@@ -925,7 +925,7 @@ function makeGo(){
 	        	 var target = {};
 	        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
 	        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
-	        	 target.content = '<p><h3 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:50px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/y_stamp_bg09.png">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">이벤트 참여하기</span></button>';
+	        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">이벤트 참여하기</span></button>';
 	        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(0.0022, 2) ){
 	        		 target.type = "ufoOn";
 	        		 $("#stamp_back_"+go[i].ufo_gid).hide();
