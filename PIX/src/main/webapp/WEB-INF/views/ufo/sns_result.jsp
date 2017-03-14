@@ -7,12 +7,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>UFO79</title>
+    <title>${ufo.title }</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="${ufo.event_short_description }">
     <meta name="author" content="">    
     <link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">  
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -51,24 +51,21 @@
 	   					<c:if test="${not ele.submit}">
 		   				<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
 		   				</c:if>
-			   				<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
-		   						<div style="border: 2px solid #FFF; background: url('https://www.ufo79.com/image/${ele.go_image}'); height:10em"></div>
-			   				</a>
-<%-- 			   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
-<%-- 		   				<img id="qr_back_${ele.ufo_gid }" style="border: 2px solid #FFF;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
-	   					
+		   				<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
+	   						<div style="border: 2px solid #FFF; height:10em; overflow:hidden;background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+		   				</a>
 	   				</div>
 	   			</div>
 	   			</c:forEach>
 	   		</div>
 	   		<br>
-	   		<h4 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title } </h4>
+	   		<h5 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title } </h5>
 			<br>
 		</div>
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
 			<div class="modal-footer">
 			<br>
-		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="window.print()"><span class="btn-text">인쇄하기</span></span>
+		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/index'"><span class="btn-text">확인</span></span>
 		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a>
 		    <br>
 		    </div>

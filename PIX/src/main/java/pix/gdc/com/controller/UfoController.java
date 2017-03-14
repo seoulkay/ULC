@@ -337,6 +337,9 @@ public class UfoController {
 		model.addAttribute("rallyType", typeString);
 		model.addAttribute("shareLink", link);
 		model.addAttribute("pick", gid);
+		model.addAttribute("type", type);
+		model.addAttribute("uid", uid);
+		
 		return "ufo/sns_result_single";
 	}
 	@RequestMapping(value = "ufo/job-single", method = RequestMethod.GET)
@@ -504,81 +507,84 @@ public class UfoController {
 //		}
 		
 		//ufo를 notice list로 바꿔 보자!
-		FestUfoNotice info = new FestUfoNotice();
-		FestUfoNotice hist = new FestUfoNotice();
-		FestUfoNotice prog = new FestUfoNotice();
-		FestUfoNotice loca = new FestUfoNotice();
+//		FestUfoNotice info = new FestUfoNotice();
+//		FestUfoNotice hist = new FestUfoNotice();
+//		FestUfoNotice prog = new FestUfoNotice();
+//		FestUfoNotice loca = new FestUfoNotice();
+//	
+//		
+//		info.setVoType("info");
+//		info.setTitle(ufo.getInfo_title());
+//		info.setContent(ufo.getInfo_info_text());
+//		info.setPhoto_file(ufo.getInfo_info_pic());
+//		
+//		
+//		hist.setVoType("hist");
+//		hist.setTitle(ufo.getHistory_title());
+//		hist.setContent(ufo.getInfo_hist_text());
+//		hist.setPhoto_file(ufo.getInfo_hist_pic());
+//		
+//		
+//		prog.setVoType("prog");
+//		prog.setTitle(ufo.getProgram_title());
+//		prog.setContent(ufo.getInfo_program_text());
+//		prog.setPhoto_file(ufo.getInfo_program_pic());
+//		
+//		loca.setVoType("loca");
+//		loca.setTitle(ufo.getLocation_title());
+//		loca.setContent(ufo.getInfo_location_text());
+//		loca.setPhoto_file(ufo.getInfo_location_pic());
+//		
+//		
+//
+//		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
+//		//퍼센트 계산해 todo
+//		int length = answer.size();
+//		int[][] points = new int[5][4];
+//		
+//		for(FestAnswerVO ele : answer){
+//			points[0][ele.getQ1_a()-1]++;
+//			points[1][ele.getQ2_a()-1]++;
+//			points[2][ele.getQ3_a()-1]++;
+//			points[3][ele.getQ4_a()-1]++;
+//			points[4][ele.getQ5_a()-1]++;
+//		}
+//		
+//		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
+//		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
+//		
+//		
+//		for(FestOption ele : ol){
+//			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+//		}
+//		
+//		for(int i = 0; i < ql.size() - 2 ; i++){
+//			for(int j = 0; j < 4; j++){
+//				int point = points[i][j];
+//				ql.get(i).getQuestionOptions().get(j).setPoint(point);
+//				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
+//			}
+//		}
+//		
+//		//SORTING!!
+//		for(int i = 0; i < ql.size() - 2; i++){
+//			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
+//				@Override
+//				public int compare(FestOption a, FestOption b){
+//					return Integer.compare(b.getPoint(), a.getPoint());
+//				}
+//			});
+//		}
 	
+//		model.addAttribute("info", info);
+//		model.addAttribute("hist", hist);
+//		model.addAttribute("prog", prog);
+//		model.addAttribute("loca", loca);
+//	
+//		model.addAttribute("quesVO", ql);
+		List<UfoGoVO> ufoqr = dao.selectUfoQrByPara(para);
+		model.addAttribute("ufoqr", ufoqr);
 		
-		info.setVoType("info");
-		info.setTitle(ufo.getInfo_title());
-		info.setContent(ufo.getInfo_info_text());
-		info.setPhoto_file(ufo.getInfo_info_pic());
-		
-		
-		hist.setVoType("hist");
-		hist.setTitle(ufo.getHistory_title());
-		hist.setContent(ufo.getInfo_hist_text());
-		hist.setPhoto_file(ufo.getInfo_hist_pic());
-		
-		
-		prog.setVoType("prog");
-		prog.setTitle(ufo.getProgram_title());
-		prog.setContent(ufo.getInfo_program_text());
-		prog.setPhoto_file(ufo.getInfo_program_pic());
-		
-		loca.setVoType("loca");
-		loca.setTitle(ufo.getLocation_title());
-		loca.setContent(ufo.getInfo_location_text());
-		loca.setPhoto_file(ufo.getInfo_location_pic());
-		
-		
-
-		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
-		//퍼센트 계산해 todo
-		int length = answer.size();
-		int[][] points = new int[5][4];
-		
-		for(FestAnswerVO ele : answer){
-			points[0][ele.getQ1_a()-1]++;
-			points[1][ele.getQ2_a()-1]++;
-			points[2][ele.getQ3_a()-1]++;
-			points[3][ele.getQ4_a()-1]++;
-			points[4][ele.getQ5_a()-1]++;
-		}
-		
-		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
-		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
-		
-		
-		for(FestOption ele : ol){
-			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
-		}
-		
-		for(int i = 0; i < ql.size() - 2 ; i++){
-			for(int j = 0; j < 4; j++){
-				int point = points[i][j];
-				ql.get(i).getQuestionOptions().get(j).setPoint(point);
-				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
-			}
-		}
-		
-		//SORTING!!
-		for(int i = 0; i < ql.size() - 2; i++){
-			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
-				@Override
-				public int compare(FestOption a, FestOption b){
-					return Integer.compare(b.getPoint(), a.getPoint());
-				}
-			});
-		}
-	
-		model.addAttribute("info", info);
-		model.addAttribute("hist", hist);
-		model.addAttribute("prog", prog);
-		model.addAttribute("loca", loca);
-	
-		model.addAttribute("quesVO", ql);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
 		model.addAttribute("type", type);

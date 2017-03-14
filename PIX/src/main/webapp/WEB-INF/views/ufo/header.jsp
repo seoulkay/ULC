@@ -48,7 +48,7 @@
 						<li class="nav-item"><a href="#" onclick="stampRally()">스탬프랠리</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-						<li class="nav-item"><a href="#" onclick="getUfo('qr')">QR코드랠리</a></li>
+						<li class="nav-item"><a href="#" onclick="getUfo('qr')">큐알코드랠리</a></li>
 					</c:if>
 					<!--//dropdown-->
 				</ul>
