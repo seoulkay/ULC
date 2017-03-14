@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-    <title>2017 강릉단오제</title>
+    <title>UFO79</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,12 +45,14 @@ ${vo.sns_return }
 <br>
 <div style="margin:10px">
 <div id="qrcode"></div>
+<div><img id="barcode" style="width:350px"/></div>
 </div>
 <br>
 <!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
 <script>
 // $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
 // 	text:'https://www.facebook.com/${vo.sns_return }'});
@@ -62,7 +64,10 @@ var qrcode = new QRCode("qrcode", {
     colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
 });
-
+JsBarcode("#barcode", "go/1214903321890044/2222");
+//or with jQuery
+//$("#barcode").JsBarcode("https://www.facebook.com/${vo.sns_return }");
 </script>
+
 </body>
 </html>

@@ -46,14 +46,12 @@
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-4" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
-	   				<div style="padding-top:3px; padding-bottom:3px">
-	   					<c:if test="${not ele.submit}">
-		   				<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
+	   			<div class="col-xs-12" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
+	   				<div style="padding-top:12px; padding-bottom:3px">
+	   					<c:if test="${pick eq ele.ufo_gid}">
+		   				<div style="border: 2px solid #FFF;"><img alt="" src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
 		   				</c:if>
-			   				<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
-		   						<div style="border: 2px solid #FFF; background: url('https://www.ufo79.com/image/${ele.go_image}'); height:10em"></div>
-			   				</a>
+		   				
 <%-- 			   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:0; left:0; width:50%; display:none; opacity : 0.5;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
 <%-- 		   				<img id="qr_back_${ele.ufo_gid }" style="border: 2px solid #FFF;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
 	   					
@@ -61,7 +59,6 @@
 	   			</div>
 	   			</c:forEach>
 	   		</div>
-	   		<br>
 	   		<h4 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title } </h4>
 			<br>
 		</div>
@@ -70,15 +67,18 @@
 			<br>
 		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="window.print()"><span class="btn-text">인쇄하기</span></span>
 		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a>
-		    <br>
+		    <br><br>
+		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block"/></div>
 		    </div>
   		</div>
 	</div>
 </div>
+
 <!-- ******FOOTER****** -->
 <%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
 <%-- 		<jsp:param name="param" value="value1" /> --%>
 <%-- 	</jsp:include><!--//footer--> --%>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
 <script>
 
 // var qrcode = new QRCode("qrcode", {
@@ -89,7 +89,11 @@
 //     colorLight : "#ffffff",
 //     correctLevel : QRCode.CorrectLevel.H
 // });
-
+var barString = "${shareLink}";
+var n = barString.indexOf("/result/");
+var e = barString.length;
+barString = barString.substring(n+8, e);
+JsBarcode("#barcode", barString);
 </script>
 </body>
 </html>

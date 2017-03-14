@@ -281,7 +281,7 @@ public class UfoController {
 			}
 		}
 		
-		String link = "https://www.ufo79.com/PIX/ufo/"+para+"result/"+type+"/"+uid;
+		String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid;
 		
 		model.addAttribute("ufoResult", ufoResult);
 		model.addAttribute("ufo", ufo);
@@ -289,7 +289,55 @@ public class UfoController {
 		model.addAttribute("userSize", userSize);
 		model.addAttribute("rallyType", typeString);
 		model.addAttribute("shareLink", link);
+		model.addAttribute("type", type);
+		model.addAttribute("uid", uid);
 		return "ufo/sns_result";
+	}
+	
+	@RequestMapping(value = "ufo/{para}/result/{type}/{uid}/{gid}", method = RequestMethod.GET)
+	public String getResultSolo(Model model, @PathVariable("para")String para, HttpSession session, @PathVariable("uid")String uid, @PathVariable("type")String type, @PathVariable("gid")String gid){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		List<UfoGoVO> ufoResult = new ArrayList<UfoGoVO>();
+		List<UfoGoRecord> userResult = new ArrayList<UfoGoRecord>();
+		
+		UfoGoRecord vo = new UfoGoRecord();
+		vo.setPara(para);
+		vo.setUfo_go_type(type);
+		vo.setUser_uid(uid);
+
+		userResult = dao.selectUfoGoRecordByParaAndUid(vo);
+		int userSize = 0;
+		String typeString = "";
+		if(type.equals("go")){
+			ufoResult = dao.selectUfoGoByPara(para);
+			typeString = "스탬프랠리";
+		}else if(type.equals("qr")){
+			ufoResult = dao.selectUfoQrByPara(para);
+			typeString = "큐알랠리";
+		}
+		
+		for(UfoGoRecord ele: userResult){
+			for(UfoGoVO ele2 : ufoResult){
+				if(ele.getUfo_gid().equals(ele2.getUfo_gid())){
+					ele2.setGo_image(ele.getUfo_image());
+					ele2.setSubmit(true);
+					userSize++;
+				}
+			}
+		}
+		
+		String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid+"/"+gid;
+		
+		model.addAttribute("ufoResult", ufoResult);
+		model.addAttribute("ufo", ufo);
+		model.addAttribute("ufoSize", ufoResult.size());
+		model.addAttribute("userSize", userSize);
+		model.addAttribute("rallyType", typeString);
+		model.addAttribute("shareLink", link);
+		model.addAttribute("pick", gid);
+		return "ufo/sns_result_single";
 	}
 	@RequestMapping(value = "ufo/job-single", method = RequestMethod.GET)
 	public String job_single(){
@@ -537,6 +585,12 @@ public class UfoController {
 		model.addAttribute("gid", gid);
 		
 		return "ufo/index";
+	}
+	
+	@RequestMapping(value = "ufo/{para}/reader", method = RequestMethod.GET)
+	public String reader(Model model, @PathVariable("para")String para){
+		model.addAttribute("para", para);
+		return "ufo/reader";
 	}
 
 }

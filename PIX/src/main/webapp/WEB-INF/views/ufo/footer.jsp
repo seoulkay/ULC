@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="javascript:showModal();">UFO79.com</a>
+					<div class="col-title"><a href="reader">UFO79.com</a>
 					</div>
 				</div>
 			</div>
@@ -588,8 +588,7 @@
 
 
 <!-- Javascript -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript"
@@ -812,7 +811,7 @@ FB.getLoginStatus(function(response) {
 			    if (!response || response.error) {
 			     console.log('Did not connected to facebook server : ufo');
 			     hidePleaseWait();
-			     showDone("실패하였습니다.", type);
+			     showDone("완료되었습니다.", type);
 			    } else {
 			      //alert('Post ID: ' + response.id);
 			      $( "#sns_return" ).val(response.id);
@@ -842,17 +841,17 @@ FB.getLoginStatus(function(response) {
 	   	              error: function(er){}
 	      				});
 	   	    	 hidePleaseWait();
-	   	    	 showDone("완료하였습니다.", type);
+	   	    	 showDone("성공하였습니다.", type);
 			    }
 			  });    		
     	} else if (response.status === 'not_authorized') {
     		console.log('페이스북 로그인 되어 있지 않습니다.');
     		hidePleaseWait();
-    		showDone("실패하였습니다.", type);
+    		showDone("완료되었습니다.", type);
     	} else {
     		console.log('연결에 문제가 있습니다.');
     		hidePleaseWait();
-		     showDone("실패하였습니다.", type);
+		     showDone("완료되었습니다.", type);
 	    		}
 	    	}, true); 
     }

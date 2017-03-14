@@ -1,10 +1,13 @@
 package pix.gdc.com.service;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,4 +73,5 @@ public class RestService {
         
         return returnString;
 	}
+	
 }
