@@ -596,7 +596,7 @@
  window.fbAsyncInit = function() {
 	    FB.init({
 	      appId      : '1074619385980281',
-  version    : 'v2.8',
+  		version    : 'v2.8',
   
 	  status: true, // check login status
       cookie: true, // enable cookies to allow the server to access thesession
@@ -629,9 +629,15 @@ FB.getLoginStatus(function(response) {
 		  } else {
 		    // the user isn't logged in to Facebook.
 			  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
-			  }
-			 }, true);   
-  };
+		  }
+		
+		//바로 뜨는거는 안된다 ㅠ
+		if($("#qrNumber").val() != null){
+		 	getUfo('qr_list');
+		}	
+			 
+			 
+			 }, true);   };
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -675,6 +681,8 @@ FB.getLoginStatus(function(response) {
     	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/go/"+window.sessionStorage.getItem('uid');
        }else if(para == 'qr_re'){
     	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid');
+       }else if(para == 'qr_list'){
+    	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/catch/qr/${gid}";
        }else{
     	   top.location.href="index";
        }       
@@ -1009,7 +1017,6 @@ function makeGo(){
 	        	 }
 		         neighborhoods.push(target);
 	         }
-
 	         neighborhoods.push(pos);
 	         map.setCenter(pos);
 	         drop();
@@ -1050,11 +1057,9 @@ function qrRally(){
 
 function qrRallyLog(){
 	if(checkLogin()){
-		console.log("yes");
 		getUfo('qr_list');
 	}else{
-		console.log("no");
-		fbLogin('qr');
+		fbLogin('qr_list');
 	}
 }
 
@@ -1128,19 +1133,6 @@ function checkLogin(){
 	}
 }
 
-// 		<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-// 		// $('#qrcode').qrcode({width: 130,height: 130, render	: "table",
-// 		// 	text:'https://www.facebook.com/${vo.sns_return }'});
-// 		var qrcode = new QRCode("qrcode", {
-// 		    text: "https://www.ufo79.com/",
-// 		    width: 300,
-// 		    height: 300,
-// 		    colorDark : "#000000",
-// 		    colorLight : "#ffffff",
-// 		    correctLevel : QRCode.CorrectLevel.H
-// 		});
-// 		</c:if>
-
 /**
  * 
 */
@@ -1177,8 +1169,8 @@ function getUfo(param){
  				}else{
  					alert("잘못된 큐알 코드 입니다.");
  				}
- 				
-			}else{
+
+        	}else{
 				alert("큐알코드를 넣어주세요.");
 				//location.reload();
 			}
@@ -1247,7 +1239,7 @@ function showDone(para, type) {
             </div>\
             <div class="modal-footer">\
     		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo(\''+tt+'\')">나의 기록보기</button>\
-    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="javascript:location.reload();">확인</button>\
+    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal">확인</button>\
     	  	</div>\
         </div>\
     </div>\
@@ -1261,9 +1253,7 @@ function showModal(){
 	$("#qrRallyResult").modal("show");
 }
 
-if($("#qrNumber").val() != null){
-	getUfo('qr_list');
-}
+
 </script>
 	
 <c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">

@@ -168,7 +168,7 @@
 <!-- 					                </div> -->
 					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png">
 				                <br>
-				                    <input type="text" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요 ${gid } ${type }" value="${gid} "name="qrNumber" required="" aria-required="true">
+				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid} "name="qrNumber" required="" aria-required="true">
 				                    <button class="btn btn-primary" onClick="qrRallyLog();" style="margin lef=">큐알코드 인증</button>  
 				                </div>                              
 				            </div>
