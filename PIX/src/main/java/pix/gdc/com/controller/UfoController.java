@@ -30,6 +30,7 @@ import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
+import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
 
 @Controller
@@ -245,6 +246,50 @@ public class UfoController {
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
 		return "ufo/index";
+	}
+	@RequestMapping(value = "ufo/{para}/result/{type}/{uid}", method = RequestMethod.GET)
+	public String getResult(Model model, @PathVariable("para")String para, HttpSession session, @PathVariable("uid")String uid, @PathVariable("type")String type){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		List<UfoGoVO> ufoResult = new ArrayList<UfoGoVO>();
+		List<UfoGoRecord> userResult = new ArrayList<UfoGoRecord>();
+		
+		UfoGoRecord vo = new UfoGoRecord();
+		vo.setPara(para);
+		vo.setUfo_go_type(type);
+		vo.setUser_uid(uid);
+
+		userResult = dao.selectUfoGoRecordByParaAndUid(vo);
+		int userSize = 0;
+		String typeString = "";
+		if(type.equals("go")){
+			ufoResult = dao.selectUfoGoByPara(para);
+			typeString = "스탬프랠리";
+		}else if(type.equals("qr")){
+			ufoResult = dao.selectUfoQrByPara(para);
+			typeString = "큐알랠리";
+		}
+		
+		for(UfoGoRecord ele: userResult){
+			for(UfoGoVO ele2 : ufoResult){
+				if(ele.getUfo_gid().equals(ele2.getUfo_gid())){
+					ele2.setGo_image(ele.getUfo_image());
+					ele2.setSubmit(true);
+					userSize++;
+				}
+			}
+		}
+		
+		String link = "https://www.ufo79.com/PIX/ufo/"+para+"result/"+type+"/"+uid;
+		
+		model.addAttribute("ufoResult", ufoResult);
+		model.addAttribute("ufo", ufo);
+		model.addAttribute("ufoSize", ufoResult.size());
+		model.addAttribute("userSize", userSize);
+		model.addAttribute("rallyType", typeString);
+		model.addAttribute("shareLink", link);
+		return "ufo/sns_result";
 	}
 	@RequestMapping(value = "ufo/job-single", method = RequestMethod.GET)
 	public String job_single(){
