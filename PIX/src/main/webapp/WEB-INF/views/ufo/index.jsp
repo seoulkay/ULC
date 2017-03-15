@@ -61,9 +61,6 @@
 			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
 			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
 			<div class="actions">
-<!-- 				<button class="btn btn-social btn-facebook" onClick="surveyPostByFb()"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button><br> -->
-<!-- 				<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
-                 <a class="scrollto-no-offset" href="#support-section">축제 정보 보러가기</a>
                  <a class="scrollto-no-offset" href="#support-section"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
 		</div>
@@ -76,9 +73,10 @@
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li><a class="scrollto" href="#support-section">${ufo.title }</a></li>
-					<li><a class="scrollto" href="#signup-section">스탬프랠리</a></li>
-					<li><a class="scrollto" href="#info-section">${ufo.title } 안내</a></li>
-					<li><a class="scrollto" href="#app-section">앱 다운로드</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}"><li><a class="scrollto" href="#qr-section">큐알코드랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}"><li><a class="scrollto" href="#info-section">안내</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'app')}"><li><a class="scrollto" href="#app-section">앱 다운로드</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -104,7 +102,7 @@
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-				<h2 class="counter-desc">${ufo.title }<br>스탬프랠리 참여하기</h2>
+				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
@@ -132,11 +130,7 @@
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<blockquote class="result">스탬프랠리 참여방법</blockquote>
-										<!--//blockquote-->
-										<div class="tip">1. GPS를 켜고, 위치정보 사용에 동의하기!<br>2. 페이스북 로그인하기!<br>3. 지도에서 포토존 위치 확인하기!<br>4. 포토존에서 사진을 찍고, 스탬프 찍기!<br>5. 스탬프 랠리 완성 후, 선물 받기!</div>
-										<!--//source-->
-										
+										${ufo.ufo_go_desc}
 									</div>
 									<!--//inner-->
 								</div>
@@ -153,42 +147,22 @@
 				<!--//form-wrapper-->
 				</c:if>
 				<br><br><br>
-				<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-				<h2 class="counter-desc">${ufo.title }<br>큐알코드랠리 참여하기</h2>
+<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
+				<h2 class="counter-desc" id="qr-section">큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">큐알 코드 랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
-						
 						<div class="team-figure">
-
-					
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
-<!-- 					                <div id="qrcode" class="img-responsive"> -->
-<!-- 					                </div> -->
 					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png" style="margin-left: 0 auto; margin-right: 0 auto;">
-				                	
 				                	<br>
 				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid}" name="qrNumber" required="" aria-required="true">
-				                    <button class="btn btn-primary" onClick="qrRallyLog();" style="margin:1em">큐알코드 인증</button>  
+				                    <button class="btn btn-primary" onClick="qrRally();" style="margin:1em">큐알코드 인증</button>  
 				                </div>                              
 				            </div>
 						</div>
 						<br><br>
-<!-- 						<ul class="social-buttons list-unstyled"> -->
-							<!-- <li><a href="#" class="btn btn-social btn-google"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li> -->
-								
-<!-- 							<li><button class="btn btn-social btn-facebook" onClick="getUfo('qr')"><i -->
-<!-- 									class="fa fa-facebook" aria-hidden="true"></i><span -->
-<!-- 									class="btn-text">페이스북 계정으로 이벤트 참여하기</span></button></li> -->
-<!-- 							<li> -->
-<!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
-<!-- 							</li> -->
-								
-<!-- 						</ul> -->
-						<!--//social-buttons-->
 						<div class="divider">
 						</div>
 						<div class="quotes">
@@ -220,13 +194,13 @@
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
-				</c:if>
+</c:if>
 			</div>
 			<!--//container-->
 		</div>
 		<!--//section-inner-->
 	</section>
-	
+<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}">
 <section id="info-section">
 	<!--//signup-section-->
 	<div class="feature-blocks container">
@@ -355,7 +329,7 @@
 	</div>
 <!-- 	<section id="features-section" class="features-section section"> -->
 </section>
-
+</c:if>
 <c:if test="${fn:contains(sessionScope.eventMenu, 'newsletter')}">
 	<section id="app-section" class="apps-section section text-center">
 		<div class="blog-signup-block">
@@ -374,10 +348,11 @@
 	</section>
 	<!--//apps-section-->
 </c:if>
-<%-- <section id="survey-section"
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+<!-- 수정이 필요하다 -->
+<section id="survey-section"
 		class="support-section section text-center">
 <h2 class="section-title">${ufo.title } 서베이</h2>
-
 <div class="stories container">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
@@ -459,7 +434,9 @@
 		<!--//story-block-->
 </c:forEach>
 </div>
-</section> --%>
+</section>
+</c:if>
+<c:if test="${fn:contains(sessionScope.eventMenu, 'app')}">
 <section id="app-section" class="apps-section section text-center">
 		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>
 		<div class="container">
@@ -480,8 +457,9 @@
 			<!--//apps-list-->
 		</div>
 		<!--//container-->
-	</section>
-	<!--//apps-section-->
+</section>
+<!--//apps-section-->
+</c:if>
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />

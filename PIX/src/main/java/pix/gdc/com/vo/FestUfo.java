@@ -42,6 +42,7 @@ public class FestUfo {
 	private String apk_name;
 	private String go_rad;
 	private String ufo_tag;
+	private String ufo_go_desc;
 	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
@@ -276,6 +277,12 @@ public class FestUfo {
 	}
 	public void setUfo_tag(String ufo_tag) {
 		this.ufo_tag = ufo_tag;
+	}
+	public String getUfo_go_desc() {
+		return ufo_go_desc;
+	}
+	public void setUfo_go_desc(String ufo_go_desc) {
+		this.ufo_go_desc = ufo_go_desc;
 	}
 	
 }

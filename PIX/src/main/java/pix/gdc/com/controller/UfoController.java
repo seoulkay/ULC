@@ -362,13 +362,13 @@ public class UfoController {
 		int length = answer.size();
 		int[][] points = new int[5][4];
 		
-		for(FestAnswerVO ele : answer){
-			points[0][ele.getQ1_a()-1]++;
-			points[1][ele.getQ2_a()-1]++;
-			points[2][ele.getQ3_a()-1]++;
-			points[3][ele.getQ4_a()-1]++;
-			points[4][ele.getQ5_a()-1]++;
-		}
+//		for(FestAnswerVO ele : answer){
+//			points[0][ele.getQ1_a()-1]++;
+//			points[1][ele.getQ2_a()-1]++;
+//			points[2][ele.getQ3_a()-1]++;
+//			points[3][ele.getQ4_a()-1]++;
+//			points[4][ele.getQ5_a()-1]++;
+//		}
 		
 		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
 		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);

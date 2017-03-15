@@ -119,6 +119,11 @@
                     	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제 마이크로 사이트</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제 마이크로 사이트(영어)</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 커피 축제 마이크로 사이트</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/tanger/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>삼척맹방유채꽃축제</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/squid/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>주문진오징어축제</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/art/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>춘천아트페어</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/worldbidde/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>월드비더스</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/seoul_sub/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>서울지하철 스탬프투어</a>
                         <a href="https://www.ufo79.com/PIX/FEV/" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>관리자 사이트</a>
                     </div>
                     
