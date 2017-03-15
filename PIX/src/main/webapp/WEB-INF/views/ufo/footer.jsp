@@ -632,9 +632,9 @@ FB.getLoginStatus(function(response) {
 		  }
 		
 		//바로 뜨는거는 안된다 ㅠ
-		if($("#qrNumber").val() != null){
-		 	getUfo('qr_list');
-		}	
+// 		if($("#qrNumber").val() != null){
+// 		 	getUfo('qr_list');
+// 		}	
 			 
 			 
 			 }, true);   };
@@ -1059,7 +1059,7 @@ function qrRallyLog(){
 	if(checkLogin()){
 		getUfo('qr_list');
 	}else{
-		fbLogin('qr_list');
+		fbLogin('qr');
 	}
 }
 

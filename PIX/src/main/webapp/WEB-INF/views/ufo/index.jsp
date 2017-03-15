@@ -166,15 +166,16 @@
 				                <div class="form-group">
 <!-- 					                <div id="qrcode" class="img-responsive"> -->
 <!-- 					                </div> -->
-					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png">
-				                <br>
-				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid} "name="qrNumber" required="" aria-required="true">
-				                    <button class="btn btn-primary" onClick="qrRallyLog();" style="margin lef=">큐알코드 인증</button>  
+					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png" style="margin-left: 0 auto; margin-right: 0 auto;">
+				                	
+				                	<br>
+				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid}" name="qrNumber" required="" aria-required="true">
+				                    <button class="btn btn-primary" onClick="qrRallyLog();" style="margin:1em">큐알코드 인증</button>  
 				                </div>                              
 				            </div>
 						</div>
 						<br><br>
-						<ul class="social-buttons list-unstyled">
+<!-- 						<ul class="social-buttons list-unstyled"> -->
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
@@ -186,7 +187,7 @@
 <!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 							</li> -->
 								
-						</ul>
+<!-- 						</ul> -->
 						<!--//social-buttons-->
 						<div class="divider">
 						</div>
