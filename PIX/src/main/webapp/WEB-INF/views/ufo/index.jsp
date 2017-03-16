@@ -105,7 +105,7 @@
 				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc">스탬프랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
+						<div class="form-desc">${ufo.ufo_go_title }</div>
 						<!-- <button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br> -->
 <%-- 							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;"> --%>
 						<div class="team-figure">
@@ -151,7 +151,7 @@
 				<h2 class="counter-desc" id="qr-section">큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc">큐알 코드 랠리를 완성 후, ${ufo.title } 안내센터에서 선물과 교환하세요!</div>
+						<div class="form-desc">${ufo.ufo_qr_title }</div>
 						<div class="team-figure">
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
@@ -173,11 +173,7 @@
 										<blockquote class="result">큐알코드랠리 참여방법</blockquote>
 										<!--//blockquote-->
 										<div class="tip">
-										1. 큐알 코드를 읽어주세요.<br>
-										2. 페이스북 로그인하기!<br>
-										3. 곳곳에 숨어있는 큐알코드 찾기!<br>
-										4. 큐알코드 인증 버튼 누르기!<br>
-										5. 큐알 코드 랠리 완성 후, 선물 받기!
+										${ufo.ufo_qr_desc }
 										</div>
 										<!--//source-->
 									</div>

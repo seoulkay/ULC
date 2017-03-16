@@ -115,6 +115,7 @@
                     </div>
                     
                     <div class="header-btn">
+                    	<a href="https://www.ufo79.com/PIX/ufo/pyc2018/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>평창2018 베뉴 랠리</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/dano/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 단오제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Gamcheon culture village</a>

@@ -43,6 +43,9 @@ public class FestUfo {
 	private String go_rad;
 	private String ufo_tag;
 	private String ufo_go_desc;
+	private String ufo_qr_title;
+	private String ufo_go_title;
+	private String ufo_qr_desc;
 	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
@@ -283,6 +286,24 @@ public class FestUfo {
 	}
 	public void setUfo_go_desc(String ufo_go_desc) {
 		this.ufo_go_desc = ufo_go_desc;
+	}
+	public String getUfo_qr_title() {
+		return ufo_qr_title;
+	}
+	public void setUfo_qr_title(String ufo_qr_title) {
+		this.ufo_qr_title = ufo_qr_title;
+	}
+	public String getUfo_go_title() {
+		return ufo_go_title;
+	}
+	public void setUfo_go_title(String ufo_go_title) {
+		this.ufo_go_title = ufo_go_title;
+	}
+	public String getUfo_qr_desc() {
+		return ufo_qr_desc;
+	}
+	public void setUfo_qr_desc(String ufo_qr_desc) {
+		this.ufo_qr_desc = ufo_qr_desc;
 	}
 	
 }

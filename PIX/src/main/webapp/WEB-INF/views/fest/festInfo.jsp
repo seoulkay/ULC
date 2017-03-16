@@ -23,8 +23,8 @@
                     	<tr><td>main_image <c:if test="${ufo.main_image ne null}"><img src="https://www.ufo79.com/image/${ufo.main_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="main_image_file"></td></tr>
                    		<tr><td>title</td><td><input class="form-control" type="text" name="title" value="${ufo.title }" maxlength="50"></td></tr>
                    		<tr><td>event_date</td><td><input type="text" class="form-control" name="event_date" value="${ufo.event_date }" maxlength="125"></td></tr>
-                   		<tr><td>event_long_description</td><td><input type="text" class="form-control" name="event_long_description" value="${ufo.event_long_description }" maxlength="125"></td></tr>
-                   		<tr><td>event_short_descriptio</td><td><input type="text" class="form-control" name="event_short_description" value="${ufo.event_short_description }" maxlength="1000"></td></tr>
+                   		<tr><td>event_long_description</td><td><textarea form="ufoForm" class="form-control" name="event_long_description"  maxlength="2500">${ufo.event_long_description }</textarea></td></tr>
+                   		<tr><td>event_short_descriptio</td><td><textarea form="ufoForm" class="form-control" name="event_short_description"  maxlength="1000">${ufo.event_short_description }</textarea></td></tr>
                    		<tr><td>info_info_pic <c:if test="${ufo.info_info_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_info_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_info_pic_file"></td></tr>
                    		<tr><td>info_info_text</td><td><textarea form="ufoForm" class="form-control" name="info_info_text" maxlength="1000">${ufo.info_info_text }</textarea></td></tr>
                    		<tr><td>info_hist_pic <c:if test="${ufo.info_hist_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_hist_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_hist_pic_file"></td></tr>
@@ -56,7 +56,10 @@
                    		<tr><td>apk_name</td><td><input type="text" class="form-control" name="apk_name" value="${ufo.apk_name }" maxlength="200"></td></tr>
                    		<tr><td>go_rad</td><td><input type="text" class="form-control" name="go_rad" value="${ufo.go_rad }" maxlength="20"></td></tr>
                    		<tr><td>ufo_tag</td><td><input type="text" class="form-control" name="ufo_tag" value="${ufo.ufo_tag }" maxlength="200"></td></tr>
-                   		<tr><td>ufo_go_desc</td><td><textarea class="form-control" name="ufo_go_desc" maxlength="1000">${ufo.ufo_go_desc }</textarea></td></tr>
+                   		<tr><td>ufo_go_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_desc" maxlength="1000">${ufo.ufo_go_desc }</textarea></td></tr>
+                   		<tr><td>ufo_qr_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_title" maxlength="1000">${ufo.ufo_qr_title }</textarea></td></tr>
+                   		<tr><td>ufo_go_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_title" maxlength="1000">${ufo.ufo_go_title }</textarea></td></tr>
+                   		<tr><td>ufo_qr_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_desc" maxlength="1000">${ufo.ufo_qr_desc }</textarea></td></tr>
                     </table>
                     <input type="submit" class="form-control primary" value="나의 홈페이지를 업데이트!">
                 </form>

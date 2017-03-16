@@ -310,7 +310,7 @@
 		</div>
 		<div class="modal-footer">
 		<button type="button" style="font-family:NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-	    <button type="button" style="font-family:NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="qrRallyPost('${ele.ufo_gid }')">제출</button>
+	    <button type="button" style="font-family:NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
 	</div>
