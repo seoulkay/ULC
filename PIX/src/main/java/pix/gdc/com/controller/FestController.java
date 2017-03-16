@@ -493,6 +493,9 @@ public class FestController {
 		if(!info_program_pic_file.isEmpty()){
 			vo = updateFileFestUfo(info_program_pic_file, "info_program_pic_file", vo);
 		}
+		if(!info_hist_pic_file.isEmpty()){
+			vo = updateFileFestUfo(info_hist_pic_file, "info_hist_pic_file", vo);
+		}
 		if(!info_location_pic_file.isEmpty()){
 			vo = updateFileFestUfo(info_location_pic_file, "info_location_pic_file", vo);
 		}

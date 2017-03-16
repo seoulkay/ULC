@@ -360,6 +360,9 @@
 		<if test="info_info_text != null and info_info_text != ''">
 			,info_info_text = #{info_info_text}
 		</if>
+		<if test="info_info_pic != null and info_info_pic != ''">
+			,info_info_pic = #{info_info_pic}
+		</if>
 		<if test="info_hist_pic != null and info_hist_pic != ''">
 			,info_hist_pic = #{info_hist_pic}
 		</if>
