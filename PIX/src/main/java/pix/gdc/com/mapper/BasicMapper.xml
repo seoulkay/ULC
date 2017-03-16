@@ -459,6 +459,12 @@
 		<if test="ufo_qr_desc != null and ufo_qr_desc != ''">
 			,ufo_qr_desc = #{ufo_qr_desc}
 		</if>
+		<if test="ufo_survey_title != null and ufo_survey_title != ''">
+			,ufo_survey_title = #{ufo_survey_title}
+		</if>
+		<if test="ufo_survey_desc != null and ufo_survey_desc != ''">
+			,ufo_survey_desc = #{ufo_survey_desc}
+		</if>
 	WHERE
 		idfest_ufo = #{idfest_ufo}
 	</update>

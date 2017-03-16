@@ -57,6 +57,8 @@
                    		<tr><td>ufo_qr_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_title" maxlength="1000">${ufo.ufo_qr_title }</textarea></td></tr>
                    		<tr><td>ufo_go_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_title" maxlength="1000">${ufo.ufo_go_title }</textarea></td></tr>
                    		<tr><td>ufo_qr_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_desc" maxlength="1000">${ufo.ufo_qr_desc }</textarea></td></tr>
+                    	<tr><td>ufo_survey_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_title" maxlength="500">${ufo.ufo_survey_title }</textarea></td></tr>
+                   		<tr><td>ufo_survey_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_desc" maxlength="500">${ufo.ufo_survey_desc }</textarea></td></tr>
                     </table>
                     <input type="submit" class="form-control btn-warning" style="background-color: PINK" value="나의 홈페이지를 업데이트!">
                 </form>

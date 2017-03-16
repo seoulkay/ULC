@@ -197,7 +197,7 @@
 			<h2 class="counter-desc">서베이 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc"></div>
+						<div class="form-desc">${ufo.ufo_survey_title }</div>
 						<div class="team-figure">
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
@@ -216,6 +216,7 @@
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
 										<!--//blockquote-->
 										<div class="tip">
+										${ufo.ufo_survey_desc }
 										</div>
 										<!--//source-->
 									</div>
