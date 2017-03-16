@@ -68,15 +68,16 @@
 	</section>
 	<!--//heading-section-->
 
-	<div class="page-nav-space-holder hidden-xs">
+	<div class="page-nav-space-holder">
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">${ufo.title }</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}"><li><a class="scrollto" href="#qr-section">큐알코드랠리</a></li></c:if>
+					<li><a class="scrollto" href="#support-section">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}"><li><a class="scrollto" href="#qr-section">큐알</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="#survey-section">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}"><li><a class="scrollto" href="#info-section">안내</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'app')}"><li><a class="scrollto" href="#app-section">앱 다운로드</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'app')}"><li><a class="scrollto" href="#app-section">앱</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -146,9 +147,10 @@
 				</div>
 				<!--//form-wrapper-->
 				</c:if>
-				<br><br><br>
+				
 <c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-				<h2 class="counter-desc" id="qr-section">큐알코드랠리 참여하기</h2>
+	<div id="qr-section" style="height:5em"></div>
+				<h2 class="counter-desc">큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">${ufo.ufo_qr_title }</div>
@@ -170,7 +172,6 @@
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<blockquote class="result">큐알코드랠리 참여방법</blockquote>
 										<!--//blockquote-->
 										<div class="tip">
 										${ufo.ufo_qr_desc }
@@ -191,6 +192,49 @@
 				</div>
 				<!--//form-wrapper-->
 </c:if>
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+			<div id="survey-section" style="height:5em"></div>
+			<h2 class="counter-desc">서베이 참여하기</h2>
+				<div class="form-wrapper">
+					<div class="form-box">
+						<div class="form-desc"></div>
+						<div class="team-figure">
+							<div class="subscribe-form form-inline" novalidate="novalidate">
+				                <div class="form-group">
+				                    <button class="btn btn-primary" onClick="surveyInit();" style="margin:1em">서베이에 참여!</button>  
+				                    <button class="btn btn-primary" onClick="getUfo('ve');" style="margin:1em">서베이결과</button>  
+				                </div>                              
+				            </div>
+						</div>
+						<br><br>
+						<div class="divider">
+						</div>
+						<div class="quotes">
+							<div class="row">
+								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
+									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
+										<i class="fa fa-quote-left" aria-hidden="true"></i>
+										<!--//blockquote-->
+										<div class="tip">
+										</div>
+										<!--//source-->
+									</div>
+									<!--//inner-->
+								</div>
+								<!--//quote-item2-->			
+							</div>
+							<!--//row-->
+						</div>
+						<!--//quotes-->			
+						
+						<!--//divider-->
+					</div>
+					<!--//form-box-->
+				</div>
+				<!--//form-wrapper-->
+	
+</c:if>
+	
 			</div>
 			<!--//container-->
 		</div>
@@ -219,11 +263,6 @@
 							src="https://www.ufo79.com/image/${ufo.info_info_pic}"
 							alt="">
 					</c:if>
-					<c:if test="${ufo.info_info_pic eq null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/white.png"
-							alt="">
-					</c:if>
 					</div>
 					<!--//figure-holder-->
 				</div>
@@ -233,8 +272,22 @@
 		<!--//feature-block-1-->
 		<div id="feature-block-2" class="feature-block feature-block-2">
 			<div class="row">
-				<div
-					class="feature-content col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6 col-xs-push-0">
+				<div class="feature-content col-md-12 col-sm-12 col-xs-12" >
+					<h3 class="feature-title">${ufo.program_title }</h3>
+					<div class="feature-desc">
+						<p>${ufo.info_program_text }</p>
+					</div>
+					<!--//feature-desc-->
+				</div>
+				<!--//feature-content-->
+			</div>
+			<!--//row-->
+		</div>
+
+		<!--//feature-block-2-->
+		<div id="feature-block-3" class="feature-block feature-block-1">
+			<div class="row">
+				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
 					<h3 class="feature-title">${ufo.history_title }</h3>
 					<div class="feature-desc">
 						<p>${ufo.info_hist_text }</p>
@@ -242,77 +295,11 @@
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-				<div
-					class="feature-figure col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6 col-xs-pull-0">
-					<div class="figure-holder" align="center">
+				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
+					<div class="figure-holder">
 						<c:if test="${ufo.info_hist_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_hist_pic}"
-							alt="">
-						</c:if>
-						<c:if test="${ufo.info_hist_pic eq null}">
-							<img class="img-responsive"
-							src="https://www.ufo79.com/image/white.png"
-							alt="">
-						</c:if>
-					</div>
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		</div>
-	<div class="feature-blocks container">
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-3">
-			<div class="row">
-				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${ufo.program_title }</h3>
-					<div class="feature-desc">
-						<p>${ufo.event_date }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
-					<div class="figure-holder">
-						<p>${ufo.info_program_text }</p>
-						<c:if test="${ufo.info_program_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_program_pic}"
-							alt="">
-						</c:if>
-						<c:if test="${ufo.info_program_pic eq null}">
-							<img class="img-responsive"
-							src="https://www.ufo79.com/image/white.png"
-							alt="">
-						</c:if>
-					</div>
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<div id="feature-block-4" class="feature-block feature-block-3">
-			<div class="row">
-				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${ufo.location_title}</h3>
-					<div class="feature-desc">
-						<p>${ufo.info_location_text }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
-					<div class="figure-holder">
-						<c:if test="${ufo.info_location_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_location_pic}"
-							alt="">
-						</c:if>
-						<c:if test="${ufo.info_location_pic eq null}">
-							<img class="img-responsive"
-							src="https://www.ufo79.com/image/white.png"
 							alt="">
 						</c:if>
 					</div>
@@ -323,8 +310,42 @@
 		</div>
 		<!--//feature-block-3-->
 	</div>
+</section>	
+<!-- 	<div class="stories container"> -->
+		<div id="story-block-1" class="story-block story-block-1">
+			<div class="story-item">
+				<div class="row">
+					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
+						<div class="inner">
+						<c:if test="${ufo.info_location_pic ne null}">
+						<img class="img-responsive"
+							src="https://www.ufo79.com/image/${ufo.info_location_pic}"
+							alt="">
+						</c:if>
+							<div class="figure-mask"></div>
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//figure-holder-->
+					<div class="content col-sm-12 col-sm-6 col-md-5">
+						<div class="inner">
+							<h3 class="question">${ufo.location_title }</h3>
+								<div class="answer">${ufo.info_location_text }</div>
+								<div class="answer">${ufo.info_contact_text }</div>
+							<!--//desc-->
+						</div>
+						<!--//inner-->
+					</div>
+					<!--//content-->
+				</div>
+				<!--//row-->
+			</div>
+			<!--//story-item-->
+		</div>
+		<!--//story-block-->
+<!-- 	</div> -->
 <!-- 	<section id="features-section" class="features-section section"> -->
-</section>
+
 </c:if>
 <c:if test="${fn:contains(sessionScope.eventMenu, 'newsletter')}">
 	<section id="app-section" class="apps-section section text-center">
@@ -344,94 +365,7 @@
 	</section>
 	<!--//apps-section-->
 </c:if>
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
-<!-- 수정이 필요하다 -->
-<section id="survey-section"
-		class="support-section section text-center">
-<h2 class="section-title">${ufo.title } 서베이</h2>
-<div class="stories container">
-<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
-		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
 
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-<!-- 						우선 단오제용 -->
-<!-- 							<img class="img-responsive" -->
-								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png"
-<!-- 								alt=""> -->
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb0${statusEle.count }.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 ${statusEle.count }.</span>${ele.question }</h3>
-							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">${var.percent }%</span></div>
-							</c:forEach>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">${ele.questionOptions[0].percent }%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위) ${ele.questionOptions[0].q_option }</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">${ele.questionOptions[1].percent }%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위) ${ele.questionOptions[1].q_option }</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
-		</div>
-		<!--//story-block-->
-</c:forEach>
-</div>
-</section>
-</c:if>
 <c:if test="${fn:contains(sessionScope.eventMenu, 'app')}">
 <section id="app-section" class="apps-section section text-center">
 		<h2 class="section-title">${ufo.title } 앱 다운로드</h2>

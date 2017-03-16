@@ -200,6 +200,13 @@ public class PixController {
 		vo.setPara(para);
 		return dao.selectUfoGoRecordByParaAndUid(vo);
 	}
+	@RequestMapping(value = "/ufogo/get/survey/{para}/{uid}", method = {RequestMethod.POST, RequestMethod.GET})
+	public @ResponseBody List<UfoGoRecord> getUfoSurvey(@PathVariable("uid")String uid, @PathVariable("para")String para){
+		UfoGoRecord vo = new UfoGoRecord();
+		vo.setUser_uid(uid);
+		vo.setPara(para);
+		return dao.selectUfoGoRecordByParaAndUid(vo);
+	}
 	
 	@RequestMapping(value = "/ufogo/qr/get/{para}", method = {RequestMethod.POST, RequestMethod.GET})
 	public @ResponseBody List<UfoGoVO> getUfogoAll(@PathVariable("para")String para){

@@ -18,7 +18,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#modal2">이용약관</a>
+						<a href="#">이용약관</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a onClick="fbPost()" href="#">쿠키정책</a>
+						<a href="#">쿠키정책</a>
 					</div>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 			</ul>
 
 			<small class="copyright"><a href="https://www.ufo79.com/"
-				target="_blank">© UFO79 Corp.</a> ${ufo.info_contact_text }</small>
+				target="_blank">© UFO79 Corp.</a></small>
 		</div>
 	</div>
 	<!--//container-->
@@ -144,7 +144,7 @@
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
 
 <c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
-<form id="surveyForm" action="surveySubmit" method="post" enctype="multipart/form-data">
+<form id="surveyForm" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 <div class="modal fade" id="remodal_q${statusEle.count }" role="dialog">
 	<div class="modal-dialog">
@@ -241,6 +241,36 @@
 <input type="hidden" id="sns_return" name="sns_return">
 <input type="hidden" id="sns_gid" name="sns_gid">
 </form>
+
+<div class="modal" id="surveyResult" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>서베이 결과</h4>
+	   </div>
+	   <div class="modal-body">
+	 	 	<div class="progress">
+		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+		  	</div>
+		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	</div>
+			</div>
+			1. 답변<br>
+		  	2. 답변<br>
+		  	3. 답변<br>
+		  	4. 답변<br>
+		  	5. 답변<br>
+		  	6. 답변<br>
+		  	7. 답변<br> 
+<!-- 			  	<input type="file" id="q7_a" name="file" class="form-control"> -->
+		</div>
+		<div class="modal-footer">
+<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal">확인</button> -->
+	  	</div>
+	</div>
+	</div>
+</div>
 </c:if>
 
 
@@ -393,6 +423,18 @@
 </c:forEach>
 </c:if>
 
+<form id="sns_form" method="post">
+<input type="hidden" id="uid_sns" name="uid_a">
+<input type="hidden" id="first_name_sns" name="first_name_a">
+<input type="hidden" id="last_name_sns" name="last_name_a">
+<input type="hidden" id="email_sns" name="email_a">
+<input type="hidden" id="sns_type_sns" name="sns_type_a">
+<input type="hidden" id="access_token_sns" name="access_token_a">
+<input type="hidden" id="sns_msg_sns" name="sns_msg">
+<input type="hidden" id="sns_return_sns" name="sns_return">
+<input type="hidden" id="sns_gid_sns" name="sns_gid">
+</form>
+
 <!-- Javascript -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -489,6 +531,8 @@ function fbLogin(para){
     	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid');
        }else if(para == 'qr_list'){
     	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/catch/qr/${gid}";
+       }else if(para =="survey"){
+    	   surveyInit();
        }else{
     	   top.location.href="index";
        }       
@@ -501,55 +545,7 @@ function fbLogin(para){
   }
   
 /**
- * 
- */
-function surveyPostByFb(){
-  var fn = window.sessionStorage.getItem('last_name')
-	FB.login(function(response) {
-   	if (response.authResponse) {
-    FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
-   	// Save data to sessionStorage
-   	var fn = response.first_name;
-   	var ln = response.last_name;
-   	var uid = response.id;
-   	var email = response.email;
-   	
-      window.sessionStorage.setItem('userName', fn);
-      window.sessionStorage.setItem('uid', uid);
-      window.sessionStorage.setItem('email', email);
-      window.sessionStorage.setItem('first_name', fn);
-      window.sessionStorage.setItem('last_name', ln);
-      
-   		
-      $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
-      .done(function( data ) {
-       //alert( "Data Loaded: " + data );
-      });
-	//location.reload();
-    });
-   } else {
-    console.log('User cancelled login or did not fully authorize.');
-    location.reload();
-   }
-}, {scope: 'email,user_likes,publish_actions', return_scope: true});
-  
-  FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-	  $('#modalTrigger').click();
-		 
-	  } else if (response.status === 'not_authorized') {
-		  fbLogin('index');
-		  surveyPostByFb();
-	  } else {
-		  fbLogin('index');
-			  surveyPostByFb();
-
-		  }
-	  }, true);
-  }
-  
-/**
- * 
+ * 로그인 체크
 */
 function checkLogin(){
 	if(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null){
@@ -560,26 +556,7 @@ function checkLogin(){
 }
 
 /**
- * 
- */
-function surveyPostSubmit(){
-	var q1 = $('input[name=q1_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
-	var q2 = $('input[name=q2_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
-	var q3 = $('input[name=q3_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
-	var q4 = $('input[name=q4_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
-	var q5 = $('input[name=q5_a]:checked', '#surveyForm').attr("answer").replace(/\s/g,'');
-	var q6 = $('input[name=q6_a]', '#surveyForm').val();
-	
-	var fl = window.sessionStorage.getItem('first_name');
-	var ln = window.sessionStorage.getItem('last_name');
-	
-	var msg = q6+" https://www.ufo79.com/PIX/ufo/post/"+fl+"_"+ln+" #"+q1+" #"+q2+" #"+q3+" #"+q4+" #"+q5;
-	
-	fbPost(msg, "fb_survey", "survey");
-}
-  
-/**
- * 
+ *페북 로그아웃
  */
 function fbLogout(){
 	 FB.logout(function(response) {
@@ -593,7 +570,7 @@ function fbLogout(){
 }
   
 /**
- * 
+ * 페북 포스트
  */
 function fbPost(msg, type, gid){
   	FB.getLoginStatus(function(response) {
@@ -607,20 +584,23 @@ function fbPost(msg, type, gid){
 	     showDone("완료되었습니다.", type);
 	    } else {
 	      //alert('Post ID: ' + response.id);
-	      $( "#sns_return" ).val(response.id);
-	      $( "#first_name_a" ).val(window.sessionStorage.getItem('first_name'));
-		  $( "#last_name_a" ).val(window.sessionStorage.getItem('last_name'));
-		  $( "#uid_a" ).val(window.sessionStorage.getItem('uid'));
-		  $( "#access_token_a" ).val(window.sessionStorage.getItem('accessToken'));
-		  $( "#sns_type_a" ).val(type);
-		  $( "#sns_msg" ).val(msg);
-		  $( "#sns_gid" ).val(gid);
+	      $( "#sns_return_sns" ).val(response.id);
+	      $( "#first_name_sns" ).val(window.sessionStorage.getItem('first_name'));
+		  $( "#last_name_sns" ).val(window.sessionStorage.getItem('last_name'));
+		  $( "#uid_sns" ).val(window.sessionStorage.getItem('uid'));
+		  $( "#access_token_sns" ).val(window.sessionStorage.getItem('accessToken'));
+		  $( "#sns_type_sns" ).val(type);
+		  $( "#sns_msg_sns" ).val(msg);
+		  $( "#sns_gid_sns" ).val(gid);
 
-	      var form = new FormData($("#surveyForm")[0]);
+	      var form = new FormData($("#sns_form")[0]);
   	    	  $.ajax({
-  	              data: form,
-  	              processData: false,
-  	              contentType: false,
+  	              url: "surveySubmitLog",
+  	              method: "POST",
+	              dataType: 'json',
+	              data: form,
+	              processData: false,
+	              contentType: false,
   	              success: function(result){
   	            	  console.log("처리되었습니다. : "+result);
   	              },
@@ -657,47 +637,55 @@ function sendNewsLetterEmail(){
   }
 
 /**
- * 
+ * 결과물 모달 띄우기
 */
 function getUfo(param){
 	if(checkLogin()){
 	var uid = window.sessionStorage.getItem('uid');
 	var para = '${sessionScope.eventPara}';
-	$.post( "/PIX/ufogo/get/"+para+"/"+uid)
-       .done(function( data ) {
-        //alert( "Data Loaded: " + JSON.parse(JSON.stringify(data))[0].last_name );
-        
-        var go = JSON.parse(JSON.stringify(data));
-        
-        //$("#qrList").empty();
-        
-        for(var i = 0; i < go.length; i++){
-        	if(go[i].ufo_go_type == 'qr'){
-        	  	//중복을 막는 코드가 필요함 
-        		$('#qr_yes_'+go[i].ufo_gid).show();
-        	}else if(go[i].ufo_go_type == 'go'){
-        		$('#stamp_yes_'+go[i].ufo_gid).show();
-        	}
-        }
-        
-        if(param == 'qr' && $("#qrNumber").val() != ''){
- 				//보여줘 모달을 큐알 넘버로
- 				var para = $("#qrNumber").val();
- 				para = $.trim(para);
- 				para = "#stamp_"+para+"_modal";
- 				console.log(para);
- 				if($(para).length > 0){
- 					$(para).modal('show');
- 				}else{
- 					alert("잘못된 큐알 코드 입니다.");
- 				}
-        }else if(param == 'go'){
-        	$('#stampRally').modal('show');
-        }else if(param == 'qr'){
-        	$('#qrRallyList').modal('show');
-        }
-        
-       });
+	if(param == "ve"){
+		$.post( "/PIX/ufogo/get/survey/"+para+"/"+uid).done(function( data ) {
+			var result = JSON.parse(JSON.stringify(data));
+			$('#surveyResult').modal('show');
+		});
+	}else{
+		$.post( "/PIX/ufogo/get/"+para+"/"+uid)
+	       .done(function( data ) {
+	        //alert( "Data Loaded: " + JSON.parse(JSON.stringify(data))[0].last_name );
+	        
+	        var go = JSON.parse(JSON.stringify(data));
+	        
+	        //$("#qrList").empty();
+	        
+	        for(var i = 0; i < go.length; i++){
+	        	if(go[i].ufo_go_type == 'qr'){
+	        	  	//중복을 막는 코드가 필요함 
+	        		$('#qr_yes_'+go[i].ufo_gid).show();
+	        	}else if(go[i].ufo_go_type == 'go'){
+	        		$('#stamp_yes_'+go[i].ufo_gid).show();
+	        	}
+	        }
+	        
+	        if(param == 'qr' && $("#qrNumber").val() != ''){
+	 				//보여줘 모달을 큐알 넘버로
+	 				var para = $("#qrNumber").val();
+	 				para = $.trim(para);
+	 				para = "#stamp_"+para+"_modal";
+	 				console.log(para);
+	 				if($(para).length > 0){
+	 					$(para).modal('show');
+	 				}else{
+	 					alert("잘못된 큐알 코드 입니다.");
+	 				}
+	        }else if(param == 'go'){
+	        	$('#stampRally').modal('show');
+	        }else if(param == 'qr'){
+	        	$('#qrRallyList').modal('show');
+	        }
+	        
+	       });
+	}
+	
 	
 	}else{
 		fbLogin(param);
@@ -997,7 +985,6 @@ function stampPostSubmit(para){
 	}else{
 		fbLogin('qr');
 	}
-	
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
@@ -1041,6 +1028,48 @@ function qrRallyPost(para){
            error: function(er){}
 			});
 }
+</script>
+</c:if>
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+<script>
+	function surveyInit(){
+		if(checkLogin()){
+			$("#remodal_q1").modal("show");
+		}else{
+			fbLogin('survey');
+		}
+	}
+	/**
+	 * 
+	 */
+
+	function surveyPostSubmit(){
+		if(checkLogin()){
+			showPleaseWait();
+			  $( "#first_name_a").val(window.sessionStorage.getItem('first_name'));
+			  $( "#last_name_a").val(window.sessionStorage.getItem('last_name'));
+			  $( "#uid_a").val(window.sessionStorage.getItem('uid'));
+			  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
+			  $( "#sns_type_a").val('ufo_survey');		  
+			  var form = new FormData($("#surveyForm")[0]);
+		      $.ajax({
+		              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
+		              method: "POST",
+		              dataType: 'json',
+		              data: form,
+		              processData: false,
+		              contentType: false,
+		              success: function(result){
+		            	  console.log("처리되었습니다. : "+result);
+		            	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/survey/"+window.sessionStorage.getItem('uid')+" 서베이에 참여하였습니다! ${ufo.ufo_tag}"  ;
+	   	            	  fbPost(msg, "survey", "survey");
+		              },
+		              error: function(er){}
+		      });
+		}else{
+			fbLogin('survey');
+		}
+	}
 </script>
 </c:if>
    

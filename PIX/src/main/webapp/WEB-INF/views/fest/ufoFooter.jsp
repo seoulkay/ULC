@@ -6,10 +6,10 @@
                     <div class="col-sm-4 margin-btm-30">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                               픽스란?
+                               UFO79?
                             </h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text
+                            UFO는 스탬프랠리와 설문조사를 솔루션을 통해 축제 방문객의 참여를 유도하고 피드백을 받을 수 있는 통합형 축제관리 서비스를 제공합니다.
                             </p>
                         </div><!--footer-col-->
 
@@ -27,18 +27,19 @@
                     <div class="col-sm-4 margin-btm-30">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                                최신 정보
+                                웹과 모바일 지원
                             </h3>
+                            <p>UFO는 웹사이트와 모바일사이트를 통합형으로 구축하여 사이트 관리에 최적화되어 있습니다. UFO는 모바일 앱을 다운로드 하는 번거로움이 없습니다.</p>
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                                뉴스레터를 받아 보세요.
+                                바이럴 마케팅 솔루션
                             </h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                            	이벤트 내용을 자동으로 SNS에 업데이트 해주는 바이럴마케팅 지원
                             </p>
                             <form role="form" class="subscribe-form">
                                 <div class="input-group">
@@ -63,7 +64,7 @@
                 <li><a href="#">Sign In</a></li>
             </ul>
             <div class="copyright text-center">
-                Copyright &copy; 2016 Gangneung Digital Complex
+                Copyright &copy; 2017 UFO79
             </div>
         </div><!--footer-btm-->
         <!--back to top-->
