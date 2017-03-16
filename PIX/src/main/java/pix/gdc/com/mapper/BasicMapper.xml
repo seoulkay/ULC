@@ -334,6 +334,126 @@
 		WHERE 
 			idfest_ufo_notice=#{fest_id};
 	</update>
+	<update id="UpdateFestUfoByKey" parameterType="FestUfo">
+	UPDATE
+		pix.fest_ufo
+	SET
+		ufo_time_stamp = now()
+		<if test="title != null and title != ''">
+			,title = #{title}
+		</if>
+		<if test="logo != null and logo != ''">
+			,logo = #{logo}
+		</if>
+		<if test="main_image != null and main_image != ''">
+			,main_image = #{main_image}
+		</if>
+		<if test="event_date != null and event_date != ''">
+			,event_date = #{event_date}
+		</if>
+		<if test="event_long_description != null and event_long_description != ''">
+			,event_long_description = #{event_long_description}
+		</if>
+		<if test="event_short_description != null and event_short_description != ''">
+			,event_short_description = #{event_short_description}
+		</if>
+		<if test="info_info_text != null and info_info_text != ''">
+			,info_info_text = #{info_info_text}
+		</if>
+		<if test="info_hist_pic != null and info_hist_pic != ''">
+			,info_hist_pic = #{info_hist_pic}
+		</if>
+		<if test="info_hist_text != null and info_hist_text != ''">
+			,info_hist_text = #{info_hist_text}
+		</if>
+		<if test="q_coupon_img != null and q_coupon_img != ''">
+			,q_coupon_img = #{q_coupon_img}
+		</if>
+		<if test="info_program_pic != null and info_program_pic != ''">
+			,info_program_pic = #{info_program_pic}
+		</if>
+		<if test="info_program_text != null and info_program_text != ''">
+			,info_program_text = #{info_program_text}
+		</if>
+		<if test="info_location_pic != null and info_location_pic != ''">
+			,info_location_pic = #{info_location_pic}
+		</if>
+		<if test="info_location_text != null and info_location_text != ''">
+			,info_location_text = #{info_location_text}
+		</if>
+		<if test="info_contact_pic != null and info_contact_pic != ''">
+			,info_contact_pic = #{info_contact_pic}
+		</if>
+		<if test="info_contact_text != null and info_contact_text != ''">
+			,info_contact_text = #{info_contact_text}
+		</if>
+		<if test="q1_img != null and q1_img != ''">
+			,q1_img = #{q1_img}
+		</if>
+		<if test="q2_img != null and q2_img != ''">
+			,q2_img = #{q2_img}
+		</if>
+		<if test="q3_img != null and q3_img != ''">
+			,q3_img = #{q3_img}
+		</if>
+		<if test="q4_img != null and q4_img != ''">
+			,q4_img = #{q4_img}
+		</if>
+		<if test="q5_img != null and q5_img != ''">
+			,q5_img = #{q5_img}
+		</if>
+		<if test="q6_img != null and q6_img != ''">
+			,q6_img = #{q6_img}
+		</if>
+		<if test="q7_img != null and q7_img != ''">
+			,q7_img = #{q7_img}
+		</if>
+		<if test="q_coupon_txt != null and q_coupon_txt != ''">
+			,q_coupon_txt = #{q_coupon_txt}
+		</if>
+		<if test="q_coupon_txt2 != null and q_coupon_txt2 != ''">
+			,q_coupon_txt2 = #{q_coupon_txt2}
+		</if>
+		<if test="q_coupon_txt3 != null and q_coupon_txt3 != ''">
+			,q_coupon_txt3 = #{q_coupon_txt3}
+		</if>
+		<if test="q_graphic != null and q_graphic != ''">
+			,q_graphic = #{q_graphic}
+		</if>
+		<if test="para != null and para != ''">
+			,para = #{para}
+		</if>
+		<if test="menu != null and menu != ''">
+			,menu = #{menu}
+		</if>
+		<if test="location_title != null and location_title != ''">
+			,location_title = #{location_title}
+		</if>
+		<if test="info_title != null and info_title != ''">
+			,info_title = #{info_title}
+		</if>
+		<if test="program_title != null and program_title != ''">
+			,program_title = #{program_title}
+		</if>
+		<if test="history_title != null and history_title != ''">
+			,history_title = #{history_title}
+		</if>
+		<if test="apk_name != null and apk_name != ''">
+			,apk_name = #{apk_name}
+		</if>
+		<if test="go_rad != null and go_rad != ''">
+			,go_rad = #{go_rad}
+		</if>
+		<if test="ufo_tag != null and ufo_tag != ''">
+			,ufo_tag = #{ufo_tag}
+		</if>
+		<if test="ufo_go_desc != null and ufo_go_desc != ''">
+			,ufo_go_desc = #{ufo_go_desc}
+		</if>
+	WHERE
+		idfest_ufo = #{idfest_ufo}
+	</update>
+	
 	<insert id="InsertNoticeByModel" parameterType="FestUfoNotice">
 			INSERT INTO `pix`.`fest_ufo_notice`
 		(`para`,

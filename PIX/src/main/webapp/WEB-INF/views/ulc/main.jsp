@@ -85,12 +85,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="menu-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                    	<li class="active"><a href="#header" class="smooth-scroll">Home</a></li>
-                        <li><a href="#features" class="smooth-scroll">Features</a></li>
-                        <li><a href="#counter" class="smooth-scroll">Counter</a></li>
-                        <li><a href="#testimonials" class="smooth-scroll">Reviews</a></li>
-                        <li><a href="#screenshots" class="smooth-scroll">Screenshots</a></li>
-                        <li><a href="page">Page</a></li>
+                    	<li class="active"><a href="#header" class="smooth-scroll">홈</a></li>
+                        <li><a href="#features2" class="smooth-scroll">서비스</a></li>
+<!--                         <li><a href="#counter" class="smooth-scroll">Counter</a></li> -->
+                        <li><a href="#features" class="smooth-scroll">특징</a></li>
+<!--                         <li><a href="#screenshots" class="smooth-scroll">Screenshots</a></li> -->
+<!--                         <li><a href="page">Page</a></li> -->
                     </ul>
                 </div>
                 
@@ -115,10 +115,10 @@
                     </div>
                     
                     <div class="header-btn">
-                    	<a href="https://www.ufo79.com/PIX/ufo/dano/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 단오제 마이크로 사이트</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제 마이크로 사이트</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제 마이크로 사이트(영어)</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 커피 축제 마이크로 사이트</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/dano/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 단오제</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>감천 문화 마을 축제</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Gamcheon culture village</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>강릉 커피 축제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/tanger/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>삼척맹방유채꽃축제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/squid/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>주문진오징어축제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/art/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>춘천아트페어</a>
@@ -152,180 +152,6 @@
         
     </header>
     <!-- #header end -->
-    
-    <!-- #features -->
-    <div id="features" class="container-padding10050">
-        
-        <!-- .container -->
-        <div class="container">
-            
-            <!-- .row -->
-            <div class="row">
-                
-                <div class="col-sm-4"> <!-- 1 -->
-                	<div class="affa-feature-icon">
-                    	<div class="feature-icon-heading">
-                        	<i class="ion ion-ios-world-outline"></i>
-                            <p>UFO The platform</p>
-                            <h4>축제 관리를 위해 최적화된 플랫폼</h4>
-                        </div>
-                        <p>UFO는 축제 정보와 콘텐츠를 쉽게 관리하고 제작할 수 있도록 도와줍니다.</p>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4"> <!-- 2 -->
-                	<div class="affa-feature-icon">
-                    	<div class="feature-icon-heading">
-                        	<i class="ion ion-android-laptop"></i>
-                            <p>UFO Hybrid solution</p>
-                            <h4>모바일 앱과 웹 사이트 동시 제작</h4>
-                        </div>
-                        <p>UFO는 축제용 웹 사이트와 모바일 앱을 동시에 제작하는 솔루션으로 구축 비용 및 시간을 절감시킵니다.</p>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4"> <!-- 3 -->
-                	<div class="affa-feature-icon">
-                    	<div class="feature-icon-heading">
-                        	<i class="ion ion-android-contacts"></i>
-                            <p>UFO Analytics</p>
-                            <h4>축제 참여자 피드백 분석 서비스</h4>
-                        </div>
-                        <p>UFO는 방문자의 축제 참여 활동, 축제 전반에 대한 피드백 자료를 분석하여 제공합니다.</p>
-                    </div>
-                </div>
-                
-            </div>
-            <!-- .row -->
-            
-		</div>
-        <!-- .container end -->
-        
-    </div>
-    <!-- #features end -->
-    
-    <!-- #counter -->
-    <div id="counter" class="bg-grey section-wrap padding-top100 padding-bottom100-xs">
-        
-        <!-- .container -->
-        <div class="container">
-            
-            <!-- .row -->
-            <div class="row">
-                
-                <div class="col-sm-6 col-md-5 col-lg-4 col-md-offset-0 col-lg-offset-1 img-padding-xs">
-                	<figure class="margin-bottom35-min margin-bottom60-xs animation" data-animation="animation-slide-in-left">
-                    	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/counter-1.png" alt="Image">
-                    </figure>
-                </div>
-                
-                <div class="col-sm-6 col-lg-5 col-sm-offset-0 col-md-offset-1">
-                	<div class="padding-top120 padding-top100-sm padding-top0-xs text-center-xs">
-                    	<p class="text-lg margin-bottom40">Morbi sed faucibus urna mi aenean erat turpis, iaculis at ultricis eget, malesuada sed sociosqu class aptent taciti turpis litora.</p>
-                        
-                        <div class="row">
-                        	<div class="col-sm-6"> <!-- 1 -->
-                            	<div class="affa-counter">
-                                	<h4><span>128</span>k</h4>
-                                    <p><i class="ion ion-ios-world"></i>Downloads</p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-6"> <!-- 2 -->
-                            	<div class="affa-counter">
-                                	<h4><span>75</span>k</h4>
-                                    <p><i class="ion ion-happy-outline"></i>Members</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                        	<div class="col-sm-6"> <!-- 3 -->
-                            	<div class="affa-counter">
-                                	<h4><span>2560</span></h4>
-                                    <p><i class="ion ion-ios-box"></i>Reviews</p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-6"> <!-- 4 -->
-                            	<div class="affa-counter">
-                                	<h4><span>44</span>m</h4>
-                                    <p><i class="ion ion-ios-people"></i>Visitors</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <!-- .row end -->
-            
-		</div>
-        <!-- .container end -->
-        
-    </div>
-    <!-- #counter end -->
-    
-    <!-- #testimonials -->
-    <div id="testimonials" class="bg-img" style="background-image:url(${pageContext.request.contextPath}/resources/ulc/images/content/bg/2.jpg);">
-        
-        <!-- .bg-overlay -->
-        <div class="bg-overlay bg-overlay90 container-padding140">
-            
-            <!-- .container -->
-            <div class="container">
-                
-                <!-- .carousel-slider -->
-                <div class="carousel-slider testimonials-slider">
-                    
-                    <div class="slick-slide"> <!-- 1 -->
-                        <div class="affa-testimonial">
-                            <div class="testimonial-txt">
-                                <p>"좋네요(80년대 스타일 따봉 엄지척)"</p>
-                            </div>
-                            <div class="testimonial-name">
-                                <h4>김서현</h4>
-                                <p>부산 사하구청 주무관</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slick-slide"> <!-- 2 -->
-                        <div class="affa-testimonial">
-                            <div class="testimonial-txt">
-                                <p>"정보 콘텐츠 + 게임 콘텐츠 + 피드백 콘텐츠가 조화를 잘 이루고 있고, 모바일 앱을 통해 스탬프 랠리를 구현한 점은 독특하면서도 아날로그 감성을 자극하네요."</p>
-                            </div>
-                            <div class="testimonial-name">
-                                <h4>정수용</h4>
-                                <p>아토스 서비스데스크 듀티매니저</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slick-slide"> <!-- 3 -->
-                        <div class="affa-testimonial">
-                            <div class="testimonial-txt">
-                                <p>"Best app ever!"</p>
-                            </div>
-                            <div class="testimonial-name">
-                                <h4>Bebbh Duduls</h4>
-                                <p>Designer Of Minima</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- .carousel-slider end -->
-                
-            </div>
-            <!-- .container end -->
-            
-        </div>
-        <!-- .bg-overlay -->
-        
-    </div>
-    <!-- #testimonials end -->
-    
     <!-- #features2 -->
     <div id="features2" class="bg-grey container-padding100">
         
@@ -397,58 +223,234 @@
     </div>
     <!-- #features2 end -->
     
-    <!-- #screenshots -->
-    <div id="screenshots" class="container-padding100">
+    
+    <!-- #counter -->
+<!--     <div id="counter" class="bg-grey section-wrap padding-top100 padding-bottom100-xs"> -->
+        
+<!--         .container -->
+<!--         <div class="container"> -->
+            
+<!--             .row -->
+<!--             <div class="row"> -->
+                
+<!--                 <div class="col-sm-6 col-md-5 col-lg-4 col-md-offset-0 col-lg-offset-1 img-padding-xs"> -->
+<!--                 	<figure class="margin-bottom35-min margin-bottom60-xs animation" data-animation="animation-slide-in-left"> -->
+<%--                     	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/counter-1.png" alt="Image"> --%>
+<!--                     </figure> -->
+<!--                 </div> -->
+                
+<!--                 <div class="col-sm-6 col-lg-5 col-sm-offset-0 col-md-offset-1"> -->
+<!--                 	<div class="padding-top120 padding-top100-sm padding-top0-xs text-center-xs"> -->
+<!--                     	<p class="text-lg margin-bottom40">Morbi sed faucibus urna mi aenean erat turpis, iaculis at ultricis eget, malesuada sed sociosqu class aptent taciti turpis litora.</p> -->
+                        
+<!--                         <div class="row"> -->
+<!--                         	<div class="col-sm-6"> 1 -->
+<!--                             	<div class="affa-counter"> -->
+<!--                                 	<h4><span>128</span>k</h4> -->
+<!--                                     <p><i class="ion ion-ios-world"></i>Downloads</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            
+<!--                             <div class="col-sm-6"> 2 -->
+<!--                             	<div class="affa-counter"> -->
+<!--                                 	<h4><span>75</span>k</h4> -->
+<!--                                     <p><i class="ion ion-happy-outline"></i>Members</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+                        
+<!--                         <div class="row"> -->
+<!--                         	<div class="col-sm-6"> 3 -->
+<!--                             	<div class="affa-counter"> -->
+<!--                                 	<h4><span>2560</span></h4> -->
+<!--                                     <p><i class="ion ion-ios-box"></i>Reviews</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+                            
+<!--                             <div class="col-sm-6"> 4 -->
+<!--                             	<div class="affa-counter"> -->
+<!--                                 	<h4><span>44</span>m</h4> -->
+<!--                                     <p><i class="ion ion-ios-people"></i>Visitors</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+                
+<!--             </div> -->
+<!--             .row end -->
+            
+<!-- 		</div> -->
+<!--         .container end -->
+        
+<!--     </div> -->
+    <!-- #counter end -->
+    
+    <!-- #testimonials -->
+    <div id="testimonials" class="bg-img" style="background-image:url(${pageContext.request.contextPath}/resources/ulc/images/content/bg/2.jpg);">
+        
+        <!-- .bg-overlay -->
+        <div class="bg-overlay bg-overlay90 container-padding140">
+            
+            <!-- .container -->
+            <div class="container">
+                
+                <!-- .carousel-slider -->
+                <div class="carousel-slider testimonials-slider">
+                    
+                    
+                    
+                    <div class="slick-slide"> <!-- 2 -->
+                        <div class="affa-testimonial">
+                            <div class="testimonial-txt">
+                                <p>"정보 콘텐츠 + 게임 콘텐츠 + 피드백 콘텐츠가 조화를 잘 이루고 있고, 모바일 앱을 통해 스탬프 랠리를 구현한 점은 독특하면서도 아날로그 감성을 자극하네요."</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h4>정수용</h4>
+                                <p>아토스 서비스데스크 듀티매니저</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slick-slide"> <!-- 3 -->
+                        <div class="affa-testimonial">
+                            <div class="testimonial-txt">
+                                <p>"Shoot, shoot, reward!"</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h4>User</h4>
+                                <p>of stamp rally challenge</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slick-slide"> <!-- 1 -->
+                        <div class="affa-testimonial">
+                            <div class="testimonial-txt">
+                                <p>"좋네요(80년대 스타일 따봉 엄지척)"</p>
+                            </div>
+                            <div class="testimonial-name">
+                                <h4>김서현</h4>
+                                <p>부산 사하구청 주무관</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- .carousel-slider end -->
+                
+            </div>
+            <!-- .container end -->
+            
+        </div>
+        <!-- .bg-overlay -->
+        
+    </div>
+    <!-- #testimonials end -->
+    
+    
+    <!-- #features -->
+    <div id="features" class="container-padding10050">
         
         <!-- .container -->
         <div class="container">
             
-            <div class="post-heading-center margin-bottom80">
-            	<p>Screenshots</p>
-                <h2>Look app in action</h2>
-                <h5>Aenean erat turpis, iaculis at ultricies eget, malesuada sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos bibendum lacinia tunc himenaeos.</h5>
+            <!-- .row -->
+            <div class="row">
+                
+                <div class="col-sm-4"> <!-- 1 -->
+                	<div class="affa-feature-icon">
+                    	<div class="feature-icon-heading">
+                        	<i class="ion ion-ios-world-outline"></i>
+                            <p>UFO The platform</p>
+                            <h4>축제 관리를 위해 최적화된 플랫폼</h4>
+                        </div>
+                        <p>UFO는 축제 정보와 콘텐츠를 쉽게 관리하고 제작할 수 있도록 도와줍니다.</p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4"> <!-- 2 -->
+                	<div class="affa-feature-icon">
+                    	<div class="feature-icon-heading">
+                        	<i class="ion ion-android-laptop"></i>
+                            <p>UFO Hybrid solution</p>
+                            <h4>모바일 앱과 웹 사이트 동시 제작</h4>
+                        </div>
+                        <p>UFO는 축제용 웹 사이트와 모바일 앱을 동시에 제작하는 솔루션으로 구축 비용 및 시간을 절감시킵니다.</p>
+                    </div>
+                </div>
+                
+                <div class="col-sm-4"> <!-- 3 -->
+                	<div class="affa-feature-icon">
+                    	<div class="feature-icon-heading">
+                        	<i class="ion ion-android-contacts"></i>
+                            <p>UFO Analytics</p>
+                            <h4>축제 참여자 피드백 분석 서비스</h4>
+                        </div>
+                        <p>UFO는 방문자의 축제 참여 활동, 축제 전반에 대한 피드백 자료를 분석하여 제공합니다.</p>
+                    </div>
+                </div>
+                
             </div>
+            <!-- .row -->
             
 		</div>
         <!-- .container end -->
         
-        <!-- .carousel-slider -->
-        <div class="carousel-slider screenshots-slider">
-            
-            <div class="slick-slide"> <!-- 1 -->
-            	<div class="container">
-                	<div class="row">
-                    	<div class="col-lg-10 col-lg-offset-1">
-                        	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/1.png" alt="Image"></figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slick-slide"> <!-- 2 -->
-            	<div class="container">
-                	<div class="row">
-                    	<div class="col-lg-10 col-lg-offset-1">
-                        	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/2.png" alt="Image"></figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slick-slide"> <!-- 3 -->
-            	<div class="container">
-                	<div class="row">
-                    	<div class="col-lg-10 col-lg-offset-1">
-                        	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/3.png" alt="Image"></figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        <!-- .carousel-slider end -->
-        
     </div>
+    <!-- #features end -->
+    <!-- #screenshots -->
+<!--     <div id="screenshots" class="container-padding100"> -->
+        
+<!--         .container -->
+<!--         <div class="container"> -->
+            
+<!--             <div class="post-heading-center margin-bottom80"> -->
+<!--             	<p>Screenshots</p> -->
+<!--                 <h2>Look app in action</h2> -->
+<!--                 <h5>Aenean erat turpis, iaculis at ultricies eget, malesuada sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos bibendum lacinia tunc himenaeos.</h5> -->
+<!--             </div> -->
+            
+<!-- 		</div> -->
+<!--         .container end -->
+        
+<!--         .carousel-slider -->
+<!--         <div class="carousel-slider screenshots-slider"> -->
+            
+<!--             <div class="slick-slide"> 1 -->
+<!--             	<div class="container"> -->
+<!--                 	<div class="row"> -->
+<!--                     	<div class="col-lg-10 col-lg-offset-1"> -->
+<%--                         	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/1.png" alt="Image"></figure> --%>
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--             <div class="slick-slide"> 2 -->
+<!--             	<div class="container"> -->
+<!--                 	<div class="row"> -->
+<!--                     	<div class="col-lg-10 col-lg-offset-1"> -->
+<%--                         	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/2.png" alt="Image"></figure> --%>
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--             <div class="slick-slide"> 3 -->
+<!--             	<div class="container"> -->
+<!--                 	<div class="row"> -->
+<!--                     	<div class="col-lg-10 col-lg-offset-1"> -->
+<%--                         	<figure><img src="${pageContext.request.contextPath}/resources/ulc/images/content/screenshots/3.png" alt="Image"></figure> --%>
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--         </div> -->
+<!--         .carousel-slider end -->
+        
+<!--     </div> -->
     <!-- #screenshots end -->
     
     <!-- #download -->
@@ -461,15 +463,15 @@
             <div class="container text-center">
                 
                 <div class="post-heading-center">
-                	<h2>웹과 모바일 지워</h2>
+                	<h2>웹과 모바일 지원</h2>
                 </div>
                 
                 <p class="text-left text-lg text-padding margin-bottom50">UFO는 웹사이트와 모바일사이트를 통합형으로 구축하여 사이트 관리에 최적화되어 있습니다. UFO는 모바일 앱을 다운로드 하는 번거로움이 없습니다.</p>
                 
-                <div class="post-btn">
-                	<a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Play Store</a>
-                    <a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>App Store</a>
-                </div>
+<!--                 <div class="post-btn"> -->
+<!--                 	<a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-social-android"></i>Play Store</a> -->
+<!--                     <a href="#" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on App Store"><i class="ion ion-social-apple"></i>App Store</a> -->
+<!--                 </div> -->
                 
             </div>
             <!-- .container end -->
@@ -491,8 +493,8 @@
             	
                 <div class="pull-left">
                 	<div class="pull-left post-heading-left padding-top10-lg padding-top10-md">
-                        <h2>UFO의 소식을 받아보세요</h2>
-                        <h5>Be the first to know when we start!</h5>
+                        <h2>UFO79의 소식을 받아보세요</h2>
+                        <h5>Subscribe and keep yourself updated</h5>
                     </div>
                 </div>
                 
@@ -519,11 +521,11 @@
         <div class="container">
             
             <div class="footer-links">
-            	<a href="#" class="link-icon" title="Facebook"><i class="ion ion-social-facebook"></i></a>
-                <a href="#" class="link-icon" title="Twitter"><i class="ion ion-social-twitter"></i></a>
-                <a href="#" class="link-icon" title="Google Plus"><i class="ion ion-social-googleplus"></i></a>
-                <a href="#" class="link-icon" title="Dribbble"><i class="ion ion-social-dribbble"></i></a>
-                <a href="#" class="link-icon" title="Instagram"><i class="ion ion-social-instagram"></i></a>
+            	<a href="https://www.facebook.com/sharer.php?u=www.ufo79.com/PIX/ULC/" class="link-icon" title="Facebook"><i class="ion ion-social-facebook"></i></a>
+                <a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/ULC/" class="link-icon" title="Twitter"><i class="ion ion-social-twitter"></i></a>
+                <a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ULC/" class="link-icon" title="Google Plus"><i class="ion ion-social-googleplus"></i></a>
+<!--                 <a href="#" class="link-icon" title="Dribbble"><i class="ion ion-social-dribbble"></i></a> -->
+<!--                 <a href="#" class="link-icon" title="Instagram"><i class="ion ion-social-instagram"></i></a> -->
                 <a href="#" class="scrollup">Back to Top<i class="ion ion-ios-arrow-up"></i></a>
             </div>
             

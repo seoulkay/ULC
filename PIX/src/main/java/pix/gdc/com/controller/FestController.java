@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import pix.gdc.com.dao.BasicDAO;
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
 import pix.gdc.com.vo.FestEvent;
@@ -48,6 +49,9 @@ public class FestController {
 	
 	@Autowired
 	FestDAO dao;
+
+	@Autowired
+	BasicDAO basicDao;
 	
 	
 	@RequestMapping(value = "FEV/", method = RequestMethod.GET)
@@ -95,7 +99,7 @@ public class FestController {
 				session.setAttribute("UserName", vo.getOfficial_name());
 				session.setAttribute("currentEvent", Integer.parseInt(eventNumbers.get(eventNumbers.size()-1)));
 				
-				result = "redirect:festNotice?idx="+vo.getFest_event_number();
+				result = "redirect:festInfo?idx="+vo.getFest_event_number();
 			
 		}catch(Exception e){
 			//로그인 실퍠 
@@ -114,7 +118,7 @@ public class FestController {
 		
 		
 		session.setAttribute("currentEvent", idx);
-		return "redirect:festNotice?idx="+idx;
+		return "redirect:festInfo?idx="+idx;
 	}
 	
 	@RequestMapping(value = "FEV/festQuestion", method = RequestMethod.GET)
@@ -359,7 +363,7 @@ public class FestController {
         }
 		
 		
-		return "redirect:festNotice";
+		return "redirect:festInfo";
 	}
 	
 	
@@ -393,7 +397,7 @@ public class FestController {
         }
 
 		
-		return "redirect:festNotice";
+		return "redirect:festInfo";
 	}
 	
 	@RequestMapping(value = "FEV/signOut", method = RequestMethod.GET)
@@ -454,6 +458,123 @@ public class FestController {
 		
 		return "redirect:festInfo";
 	}
+	@RequestMapping(value = "FEV/updateUfo", method = RequestMethod.POST)
+	public String updateInfo(@ModelAttribute("") FestUfo vo 
+			,@RequestParam("logo_file") MultipartFile logo_file
+			,@RequestParam("main_image_file") MultipartFile main_image_file
+			,@RequestParam("info_info_pic_file") MultipartFile info_info_pic_file
+			,@RequestParam("info_hist_pic_file") MultipartFile info_hist_pic_file
+			,@RequestParam("q_coupon_img_file") MultipartFile q_coupon_img_file
+			,@RequestParam("info_program_pic_file") MultipartFile info_program_pic_file
+			,@RequestParam("info_location_pic_file") MultipartFile info_location_pic_file
+			,@RequestParam("info_contact_pic_file") MultipartFile info_contact_pic_file
+			,@RequestParam("q1_img_file") MultipartFile q1_img_file
+			,@RequestParam("q2_img_file") MultipartFile q2_img_file
+			,@RequestParam("q3_img_file") MultipartFile q3_img_file
+			,@RequestParam("q4_img_file") MultipartFile q4_img_file
+			,@RequestParam("q5_img_file") MultipartFile q5_img_file
+			,@RequestParam("q6_img_file") MultipartFile q6_img_file
+			,@RequestParam("q7_img_file") MultipartFile q7_img_file
+			,@RequestParam("q_graphic_file") MultipartFile q_graphic_file
+			){
+		
+		if(!logo_file.isEmpty()){
+			vo = updateFileFestUfo(logo_file, "logo_file", vo);
+		}
+		if(!main_image_file.isEmpty()){
+			vo = updateFileFestUfo(main_image_file, "main_image_file", vo);
+		}
+		if(!info_info_pic_file.isEmpty()){
+			vo = updateFileFestUfo(info_info_pic_file, "info_info_pic_file", vo);
+		}
+		if(!q_coupon_img_file.isEmpty()){
+			vo = updateFileFestUfo(q_coupon_img_file, "q_coupon_img_file", vo);
+		}
+		if(!info_program_pic_file.isEmpty()){
+			vo = updateFileFestUfo(info_program_pic_file, "info_program_pic_file", vo);
+		}
+		if(!info_location_pic_file.isEmpty()){
+			vo = updateFileFestUfo(info_location_pic_file, "info_location_pic_file", vo);
+		}
+		if(!info_contact_pic_file.isEmpty()){
+			vo = updateFileFestUfo(info_contact_pic_file, "info_contact_pic_file", vo);
+		}
+		if(!q1_img_file.isEmpty()){
+			vo = updateFileFestUfo(q1_img_file, "q1_img_file", vo);
+		}
+		if(!q2_img_file.isEmpty()){
+			vo = updateFileFestUfo(q2_img_file, "q2_img_file", vo);
+		}
+		if(!q3_img_file.isEmpty()){
+			vo = updateFileFestUfo(q3_img_file, "q3_img_file", vo);
+		}
+		if(!q4_img_file.isEmpty()){
+			vo = updateFileFestUfo(q4_img_file, "q4_img_file", vo);
+		}
+		if(!q5_img_file.isEmpty()){
+			vo = updateFileFestUfo(q5_img_file, "q5_img_file", vo);
+		}
+		if(!q6_img_file.isEmpty()){
+			vo = updateFileFestUfo(q6_img_file, "q6_img_file", vo);
+		}
+		if(!q7_img_file.isEmpty()){
+			vo = updateFileFestUfo(q7_img_file, "q7_img_file", vo);
+		}
+		if(!q_graphic_file.isEmpty()){
+			vo = updateFileFestUfo(q_graphic_file, "q_graphic_file", vo);
+		}
+		basicDao.updateFestUfoByKey(vo);
+		return "redirect:festInfo";
+	}
 	
+	
+	//축제정보 사진올리는 곳
+	public FestUfo updateFileFestUfo(MultipartFile file, String param, FestUfo vo){
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+                if(param.equals("logo_file")){
+                	vo.setLogo(fileInfo[0]);
+                }else if(param.equals("main_image_file")){
+                	vo.setMain_image(fileInfo[0]);
+                }else if(param.equals("info_info_pic_file")){
+                	vo.setInfo_info_pic(fileInfo[0]);
+                }else if(param.equals("info_hist_pic_file")){
+                	vo.setInfo_hist_pic(fileInfo[0]);
+                }else if(param.equals("q_coupon_img_file")){
+                	vo.setQ_coupon_img(fileInfo[0]);
+                }else if(param.equals("info_program_pic_file")){
+                	vo.setInfo_program_pic(fileInfo[0]);
+                }else if(param.equals("info_location_pic_file")){
+                	vo.setInfo_location_pic(fileInfo[0]);
+                }else if(param.equals("info_contact_pic_file")){
+                	vo.setInfo_contact_pic(fileInfo[0]);
+                }else if(param.equals("q1_img_file")){
+                	vo.setQ1_img(fileInfo[0]);
+                }else if(param.equals("q2_img_file")){
+                	vo.setQ2_img(fileInfo[0]);
+                }else if(param.equals("q3_img_file")){
+                	vo.setQ3_img(fileInfo[0]);
+                }else if(param.equals("q4_img_file")){
+                	vo.setQ4_img(fileInfo[0]);
+                }else if(param.equals("q5_img_file")){
+                	vo.setQ5_img(fileInfo[0]);
+                }else if(param.equals("q6_img_file")){
+                	vo.setQ6_img(fileInfo[0]);
+                }else if(param.equals("q7_img_file")){
+                	vo.setQ7_img(fileInfo[0]);
+                }else if(param.equals("q_graphic_file")){
+                	vo.setQ_graphic(fileInfo[0]);
+                }
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
+                
+            } catch (Exception e) {
+            	System.out.println("You failed to upload => " + e.getMessage() + "at createNotice");
+            }
+        } else {
+        	System.out.println("You failed to upload because the file was empty. at createNotice");
+        }
+		return vo;
+	}
 	
 }

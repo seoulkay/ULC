@@ -1,11 +1,11 @@
 package pix.gdc.com.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.PixArticle;
 import pix.gdc.com.vo.PixComment;
 import pix.gdc.com.vo.PixLike;
@@ -39,5 +39,8 @@ public class BasicDAO extends SqlSessionDaoSupport{
 	}
 	public List<PixComment> getPixCommentByIdx(int idx){
 		return getSqlSession().selectList("BasicMapper.getPixCommentByIdx", idx);
+	}
+	public int updateFestUfoByKey(FestUfo vo){
+		return getSqlSession().update("BasicMapper.UpdateFestUfoByKey", vo);
 	}
 }

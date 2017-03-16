@@ -66,8 +66,8 @@
 						class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-				<li><a href="https://story.kakao.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
-						class="fa fa-instagram" aria-hidden="true"></i></a></li>
+<%-- 				<li><a href="https://story.kakao.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i --%>
+<!-- 						class="fa fa-instagram" aria-hidden="true"></i></a></li> -->
 			</ul>
 
 			<small class="copyright"><a href="https://www.ufo79.com/"
@@ -462,7 +462,6 @@ function fbLogin(para){
   FB.login(function(response) {
 	    if (response.authResponse) {
 	     FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
-    	// Save data to sessionStorage
     	
     	var fn = response.first_name;
     	var ln = response.last_name;
@@ -478,9 +477,8 @@ function fbLogin(para){
     		
        $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
        .done(function( data ) {
-         	//alert( "Data Loaded: " + data );
        });
-       		//location.reload();
+
        if(para == 'go'){
     	   stampRally();
        }else if(para == 'qr'){
