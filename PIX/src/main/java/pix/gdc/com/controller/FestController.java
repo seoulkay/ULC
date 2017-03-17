@@ -2,7 +2,10 @@ package pix.gdc.com.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,6 +27,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import pix.gdc.com.dao.BasicDAO;
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
+import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestEvent;
 import pix.gdc.com.vo.FestEventInfo;
 import pix.gdc.com.vo.FestEventNotice;
@@ -39,6 +43,8 @@ import pix.gdc.com.vo.FestQ7;
 import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
+import pix.gdc.com.vo.UfoGoRecord;
+import pix.gdc.com.vo.UfoGoVO;
 
 @Controller
 @Scope("session")
@@ -127,52 +133,26 @@ public class FestController {
 			return "redirect:festLoginForm";
 		}
 		
-		FestUfo ufo = dao.SelectUfoByNumber(idx);
-		model.addAttribute("ufo", ufo);
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
+		List<UfoGoVO> goList = dao.selectUfoGoByPara(para) ;
+		List<UfoGoVO> qrList = dao.selectUfoQrByPara(para) ;
+		List<FestQuesListVO> surveyList = dao.selectUfoQuestionsNew(para);
+		List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
 		
-		String para  = dao.SelectUfoParaByNumber((Integer)session.getAttribute("currentEvent"));
-		List<String> questionList = dao.SelectUfoQuestionByPara(para);
-		List<FestOption> q1o = dao.SelectUfoOptionQ1ByPara(para);
-		List<FestOption> q2o = dao.SelectUfoOptionQ2ByPara(para);
-		List<FestOption> q3o = dao.SelectUfoOptionQ3ByPara(para);
-		List<FestOption> q4o = dao.SelectUfoOptionQ4ByPara(para);
-		List<FestOption> q5o = dao.SelectUfoOptionQ5ByPara(para);
-		
-		List<FestQuesListVO> quesVO = new ArrayList<FestQuesListVO>();
-		List<List<FestOption>> qoList = new ArrayList<List<FestOption>>();
-		qoList.add(q1o);
-		qoList.add(q2o);
-		qoList.add(q3o);
-		qoList.add(q4o);
-		qoList.add(q5o);
-		
-		String[] img_tag = {
-				ufo.getQ1_img(), 
-				ufo.getQ2_img(), 
-				ufo.getQ3_img(), 
-				ufo.getQ4_img(), 
-				ufo.getQ5_img(), 
-				ufo.getQ6_img(), 
-				ufo.getQ7_img(), 
-				};
-		
-		
-		for (int i = 0 ; i < 7 ; i++){
-			FestQuesListVO temp = new FestQuesListVO();
-			
-			temp.setFest_question(questionList.get(i));
-			temp.setIdx(i);
-			temp.setTitle_img(img_tag[i]);
-			try{
-			temp.setQuestionOptions(qoList.get(i));
-			}catch(Exception e){
-				//6,7번은 객관식이 없다.
+		for(FestQuesListVO ele : surveyList){
+			for(FestOption el : optionList){
+				if(el.getQ_number() == ele.getOrderq()){
+					ele.getQuestionOptions().add(el);
+				}
 			}
-			quesVO.add(temp);
 		}
-				
-		model.addAttribute("quesVO", quesVO);
 		
+		model.addAttribute("goList", goList);
+		model.addAttribute("qrList", qrList);
+		model.addAttribute("surveyList", surveyList);
+		model.addAttribute("ufo", ufo);
 		return "fest/festQuestion";
 	}
 	
@@ -184,72 +164,9 @@ public class FestController {
 		
 		//session.setAttribute("currentEvent", idx);
 		int idx = (Integer) session.getAttribute("currentEvent");
-		
-		
-		List<FestEventInfo> infor = new ArrayList<FestEventInfo>();
-		infor = dao.SelectInfo(idx);
-		
-		
 		FestUfo ufo = dao.SelectUfoByNumber(idx);
 		
-		List<FestUfoNotice> noticeList = new ArrayList<FestUfoNotice>();
-		
-		//ufo를 notice list로 바꿔 보자!
-		FestUfoNotice info = new FestUfoNotice();
-		FestUfoNotice hist = new FestUfoNotice();
-		FestUfoNotice prog = new FestUfoNotice();
-		FestUfoNotice loca = new FestUfoNotice();
-		FestUfoNotice cont = new FestUfoNotice();
-		FestUfoNotice desc = new FestUfoNotice();
-		
-		
-		info.setVoType("info");
-		info.setTitle("정보");
-		info.setContent(ufo.getInfo_info_text());
-		info.setPhoto_file(ufo.getInfo_info_pic());
-		
-		
-		hist.setVoType("hist");
-		hist.setTitle("역사");
-		hist.setContent(ufo.getInfo_hist_text());
-		hist.setPhoto_file(ufo.getInfo_hist_pic());
-		
-		
-		prog.setVoType("prog");
-		prog.setTitle("프로그램");
-		prog.setContent(ufo.getInfo_program_text());
-		prog.setPhoto_file(ufo.getInfo_program_pic());
-		
-		
-		loca.setVoType("loca");
-		loca.setTitle("위치");
-		loca.setContent(ufo.getInfo_location_text());
-		loca.setPhoto_file(ufo.getInfo_location_pic());
-		
-		
-		cont.setVoType("cont");
-		cont.setTitle("연락처");
-		cont.setContent(ufo.getInfo_contact_text());
-		cont.setPhoto_file(ufo.getInfo_contact_pic());
-		
-		desc.setVoType("desc");
-		desc.setTitle(ufo.getEvent_short_description());
-		desc.setContent(ufo.getEvent_long_description());
-		desc.setPhoto_file(ufo.getMain_image());
-		
-		noticeList.add(desc);
-		noticeList.add(info);
-		noticeList.add(hist);
-		noticeList.add(prog);
-		noticeList.add(loca);
-		noticeList.add(cont);
-		
-		
-		
-		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("ufo", ufo);
-		model.addAttribute("info", infor);
-		
 		return "fest/festInfo";
 	}
 	
@@ -317,7 +234,17 @@ public class FestController {
 		
 		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
 		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
+		List<UfoGoRecord> resultList = dao.selectUfoGoRecordByPara(para);
+		List<FestAnswerVO> answerVOs = dao.selectUfoAnserByPara(para);
+		
+		Collections.reverse(resultList);
+		Collections.reverse(answerVOs);
+		
+		model.addAttribute("resultList", resultList);
+		model.addAttribute("answerVOs", answerVOs);
 		model.addAttribute("ufo", ufo);
+
 		return "fest/festStat";
 	}
 	

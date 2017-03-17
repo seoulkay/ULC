@@ -61,24 +61,14 @@ button.close {
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/result/${type}/${uid }';">&times;</button>
-		<c:choose>
-			<c:when test="${userSize eq ufoSize }">
-				<h3 style="color : #d7579f; font-family:football;">${rallyType}를 완성하였습니다! ${userSize }/${ufoSize }</h3>
-			</c:when>
-			<c:otherwise>
-				<h3 style="color : #d7579f; font-family:football;">${rallyType}를 진행중입니다. ${userSize }/${ufoSize }</h3>
-			</c:otherwise>
-		</c:choose>
 	   </div>
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-12" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
-	   				<div style="padding-top:12px; padding-bottom:3px">
 	   					<c:if test="${pick eq ele.ufo_gid}">
 		   				<div style="border: 2px solid #FFF;"><img alt="" src="https://www.ufo79.com/image/${ele.go_image}" style="width:100%" class="img-responsive"></div>
 		   				</c:if>
-	   				</div>
 	   			</div>
 	   			</c:forEach>
 	   		</div>

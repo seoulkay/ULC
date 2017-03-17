@@ -228,7 +228,7 @@ public class FestDAO extends SqlSessionDaoSupport{
 	}
 	
 	//질문 다가지고 오기
-	public List<String> SelectUfoQuestionByPara(String param){
+	public List<FestQuesListVO> SelectUfoQuestionByPara(String param){
 		return getSqlSession().selectList("BasicMapper.SelectUfoQuestionByPara", param);
 	}
 	

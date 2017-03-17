@@ -16,9 +16,9 @@
              <div class="navbar-collapse collapse">	
                  <ul class="nav navbar-nav navbar-right scrollto">
                  	 <li><a href="festInfo?idx=${sessionScope.currentEvent }">축제정보</a></li>                          
-                 	 <li><a href="festNotice?idx=${sessionScope.currentEvent }">공지사항</a></li>                          
-                     <li><a href="festQuestion?idx=${sessionScope.currentEvent }">설문작성</a></li>
+                     <li><a href="festQuestion?idx=${sessionScope.currentEvent }">축제모듈</a></li>
                      <li><a href="festStat?idx=${sessionScope.currentEvent }">통계</a></li>
+                 	 <li><a href="festNotice?idx=${sessionScope.currentEvent }">공지사항</a></li>                          
                      <li><a href="#"><span class="glyphicon glyphicon-user" ></span> ${sessionScope.UserName }</a></li>
                      <li><a href="signOut"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>   
                      <li><div style="padding-top: 10px; padding-left: 10px">

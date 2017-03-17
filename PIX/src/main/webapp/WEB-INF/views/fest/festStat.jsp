@@ -5,129 +5,38 @@
 <jsp:include page="ufoHeaderHtml.jsp" flush="false">
 <jsp:param name="param" value="value1"/>
 </jsp:include>
-    <body data-spy="scroll" data-offset="80">
-
-       <jsp:include page="ufoHeader.jsp" flush="true">
-        	<jsp:param name="param" value="value1"/>
-        </jsp:include>
-        <div class="divided-50"></div>
-        <section id="blog-wrapper" class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                    					
-                    					
-                      	<div class="blog-post-wrap">
-                            <div class="row">
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            통계 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            통계 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            통계 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            통계 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                
-                            </div>
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center;">
-                            통계 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                            	box 1<br>
-                
-                            </div>
-                            
-                            <div class="col-sm-3" style="background-color: orange; margin: 10px; height:200px; vertical-align: middle; text-align: center; line-height: 200px; font-size: 100px; ">
-                            	+      	
-                            </div>
-                            </div>
-                        </div>
-                                        
-                    	<c:forEach var="var" items="${info}" varStatus="status">
-                    	<div class="blog-post-wrap">
-                            <div class="row">
-                                <div class="col-sm-2 margin-btm-30 hidden-xs">
-                                    <div class="post-date   text-right">
-                                        <h2>${var.idx }</h2>
-                                        <span>만든 날짜 ${var.fest_event_info_created_on }</span>
-                                    </div>
-                                    <div class="post-left-info">
-                                        <p><i class="fa fa-user"></i> <a href="#">만든사람</a></p>
-                                        <p><i class="fa fa-tag"></i> <a href="#">태그</a></p>
-                                        <p><i class="fa fa-comment"></i> <a href="#">3 Comments</a></p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="blog-post-info">
-                                    	<div class="col-sm-6">
-                                        <a href="#">
-                                            <img src="${pageContext.request.contextPath}/resources/pix/img/blog-1.jpg" class="img-responsive" alt="">
-                                        </a>
-                                        </div>
-                                        <div class="col-sm-6">
-                                        <h3><a href="#">${var.fest_event_info_title }</a></h3>
-                                        <ul class="list-inline xs-post-info visible-xs">
-                                            <li><i class="fa fa-user"></i> <a href="#">만든사람 ${var.fest_event_info_type }</a></li>
-                                            <li><i class="fa fa-tag"></i> <a href="#">태그 ${var.fest_event_info_type }</a></li>
-                                            <li><i class="fa fa-comment"></i> <a href="#">3 Comments</a></li>
-                                        </ul>
-                                        <p>
-                                        	 ${var.fest_event_info_content }
-                                        </p>
-                                        <p class="text-right">
-                                            <a href="blog-post.html" class="btn btn-dark btn-sm">
-                                                더보기
-                                            </a>
-                                        </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--blog post wrap-->
-                      	</c:forEach>
-                      	
-                      	
-                        <ul class="pager">
-                            <li><a href="#">Previous Page</a></li>
-                            <li><a href="#">Next Page</a></li>
-                        </ul>
-                    </div><!--blog-post col-->
-                    <jsp:include page="sideBar.jsp" flush="false">
-			        	<jsp:param name="param" value="value1"/>
-			        </jsp:include>
-                </div>
-            </div>
-        </section><!--blog wrapper-->
-        <jsp:include page="ufoFooter.jsp" flush="false">
-        	<jsp:param name="param" value="value1"/>
-        </jsp:include>
-    </body>
+<body>
+<jsp:include page="ufoHeader.jsp" flush="true">
+	<jsp:param name="param" value="value1"/>
+</jsp:include>
+<div class="container">
+	<div style="height:2em"></div>
+	<div class="row">
+	<h3>스탬, 큐알 랠리</h3>
+		<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>ufo_date</td><td>ufo_image</td><td>first_name</td><td>last_name</td><td>ufo_go_type</td><td>ufo_gid</td>
+			</tr>
+				<c:forEach items="${resultList}" var="ele" begin="0" end="10">
+				<tr><td>${ele.ufo_date}</td><td><c:if test="${ele.ufo_image ne null}"><img src="https://www.ufo79.com/image/${ele.ufo_image}" class="img-responsive" alt="" style="height:100px"></c:if></td><td>${ele.first_name }</td><td>${ele.last_name}</td><td>${ele.ufo_go_type}</td><td>${ele.ufo_gid}</td></tr>
+				</c:forEach>
+		</table>
+	</div>
+	<div style="height:2em"></div>
+	<div class="row">
+	<h3>서베이, SNS 포스트</h3>
+		<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>time_log</td><td>q7_a</td><td>q1-q6</td><td>q6_a</td><td>uid_a</td><td>first_name_a</td><td>last_name_a</td><td>sns_type_a</td><td>sns_return</td>
+			</tr>
+				<c:forEach items="${answerVOs}" var="ele" begin="0" end="10">
+				<tr><td>${ele.time_log}</td><td><c:if test="${ele.q7_a ne null}"><img src="https://www.ufo79.com/image/${ele.q7_a}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.q1_a } ${ele.q2_a } ${ele.q3_a } ${ele.q4_a } ${ele.q5_a }</td><td>${ele.q6_a}</td><td>${ele.uid_a}</td><td>${ele.first_name_a}</td><td>${ele.last_name_a}</td><td>${ele.sns_type_a}</td><td>${ele.sns_return}</td></tr>
+				</c:forEach>
+		</table>
+	</div>
+</div>
+<jsp:include page="ufoFooter.jsp" flush="false">
+	<jsp:param name="param" value="value1"/>
+</jsp:include>
+</body>
 </html>

@@ -311,9 +311,9 @@
 	ORDER BY
 		orderq asc
 	</select>
-	<select id="SelectUfoQuestionByPara" parameterType="String" resultType="String">
+	<select id="SelectUfoQuestionByPara" parameterType="String" resultType="FestQuesListVO">
 	
-	SELECT question 
+	SELECT * 
 	FROM pix.fest_ufo_questions
 	WHERE para = #{param} and is_use = 'Y'
 	ORDER BY orderq asc;

@@ -5,50 +5,53 @@
 <jsp:include page="ufoHeaderHtml.jsp" flush="false">
 <jsp:param name="param" value="value1"/>
 </jsp:include>
-    <body data-spy="scroll" data-offset="80">
-
-        <jsp:include page="ufoHeader.jsp" flush="true">
-        	<jsp:param name="param" value="value1"/>
-        </jsp:include>
-        
-        <div class="divided-50"></div>
-        <section id="blog-wrapper" class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                      		<c:forEach items="${quesVO}" var="ele" varStatus="statusEle">
-                      		<c:if test="${statusEle.count % 3 == 1}">
-							<div class="row">
-<!-- 							로스타트 -->
-							</c:if>
-	                      		<div class="col-sm-3" style="margin: 10px; vertical-align: middle; text-align: center;">
-	                            	<img src="${pageContext.request.contextPath}/resources/pix/img/${ele.title_img}.png" class="img-responsive" alt=""><br>
-	                            	
-									<div class="panel-heading">${statusEle.count }. ${ele.fest_question }</div>	
-									<div>							
-									  <table class="table">
-									  <c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-											<li class="list-group-item">${status.count}. ${var.fest_option_content }</li>
-									  </c:forEach>
-									  </table>
-									</div>
-	                      	
-	                            </div>
-                            <c:if test="${statusEle.count % 3 == 0}">
-<!--                            로엔드 -->
-                            </div>
-                            </c:if>
-                          </c:forEach>
-                       </div>
-                      </div>
-                    <jsp:include page="sideBar.jsp" flush="false">
-			        	<jsp:param name="param" value="value1"/>
-			        </jsp:include>
-                </div>
-            </div>
-        </section><!--blog wrapper-->
-        <jsp:include page="ufoFooter.jsp" flush="false">
-        	<jsp:param name="param" value="value1"/>
-        </jsp:include>
-    </body>
+<body>
+<jsp:include page="ufoHeader.jsp" flush="true">
+	<jsp:param name="param" value="value1"/>
+</jsp:include>
+<div class="container">
+	<div style="height:2em"></div>
+	<div class="row">
+	<h3>스탬프랠리</h3>
+		<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>go_content</td><td>go_desc</td><td>go_image</td><td>ufo_gid</td><td>go_alt</td><td>go_lat</td>
+			</tr>
+				<c:forEach items="${goList}" var="ele">
+				<tr><td>${ele.go_content}</td><td>${ele.go_desc}</td><td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.ufo_gid}</td><td>${ele.go_alt}</td><td>${ele.go_lat}</td></tr>
+				</c:forEach>
+		</table>
+	</div>
+	<div style="height:2em"></div>
+	<div class="row">
+	<h3>큐알랠리</h3>
+		<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>go_content</td><td>go_desc</td><td>go_image</td><td>ufo_gid</td><td>go_alt</td><td>go_lat</td>
+			</tr>
+				<c:forEach items="${qrList}" var="ele">
+				<tr><td>${ele.go_content}</td><td>${ele.go_desc}</td><td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.ufo_gid}</td><td>${ele.go_alt}</td><td>${ele.go_lat}</td></tr>
+				</c:forEach>
+		</table>
+	</div>
+	<div style="height:2em"></div>
+	<div class="row">
+	<h3>서베이</h3>
+		<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>orderq</td><td>question</td><td>ques_time</td><td>ques_img</td>
+			</tr>
+				<c:forEach items="${surveyList}" var="ele">
+				<tr class="info"><td>${ele.orderq}</td><td>${ele.question}</td><td>${ele.ques_time}</td><td><c:if test="${ele.ques_img ne null}"><img src="https://www.ufo79.com/image/${ele.ques_img}" class="img-responsive" alt="" style="width:100px"></c:if></td></tr>
+					<c:forEach items="${ele.questionOptions}" var="el">
+					<tr><td></td><td>${el.q_option }</td><td></td><td></td></tr>
+					</c:forEach>
+				</c:forEach>
+		</table>
+	</div>
+</div>
+<jsp:include page="ufoFooter.jsp" flush="false">
+	<jsp:param name="param" value="value1"/>
+</jsp:include>
+</body>
 </html>
