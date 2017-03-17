@@ -157,7 +157,7 @@
 						<div class="team-figure">
 							<div class="subscribe-form form-inline" novalidate="novalidate">
 				                <div class="form-group">
-					                <img class="img-responsive" src="https://www.ufo79.com/image/qrUfo.png" style="margin-left: 0 auto; margin-right: 0 auto;">
+					                <img class="img-responsive" src="https://www.ufo79.com/image/${ufo.qr_pic }" style="margin-left: 0 auto; margin-right: 0 auto;">
 				                	<br>
 				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid}" name="qrNumber" required="" aria-required="true">
 				                    <button class="btn btn-primary" onClick="qrRally();" style="margin:1em">큐알코드 인증</button>  
@@ -172,10 +172,7 @@
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<!--//blockquote-->
-										<div class="tip">
 										${ufo.ufo_qr_desc }
-										</div>
 										<!--//source-->
 									</div>
 									<!--//inner-->

@@ -48,6 +48,7 @@ public class FestUfo {
 	private String ufo_qr_desc;
 	private String ufo_survey_title;
 	private String ufo_survey_desc;
+	private String qr_pic;
 	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
@@ -318,6 +319,12 @@ public class FestUfo {
 	}
 	public void setUfo_survey_desc(String ufo_survey_desc) {
 		this.ufo_survey_desc = ufo_survey_desc;
+	}
+	public String getQr_pic() {
+		return qr_pic;
+	}
+	public void setQr_pic(String qr_pic) {
+		this.qr_pic = qr_pic;
 	}
 	
 }

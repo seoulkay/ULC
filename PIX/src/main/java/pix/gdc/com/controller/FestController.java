@@ -476,6 +476,7 @@ public class FestController {
 			,@RequestParam("q6_img_file") MultipartFile q6_img_file
 			,@RequestParam("q7_img_file") MultipartFile q7_img_file
 			,@RequestParam("q_graphic_file") MultipartFile q_graphic_file
+			,@RequestParam("qr_pic_file") MultipartFile qr_pic_file
 			){
 		
 		if(!logo_file.isEmpty()){
@@ -526,6 +527,9 @@ public class FestController {
 		if(!q_graphic_file.isEmpty()){
 			vo = updateFileFestUfo(q_graphic_file, "q_graphic_file", vo);
 		}
+		if(!qr_pic_file.isEmpty()){
+			vo = updateFileFestUfo(qr_pic_file, "qr_pic_file", vo);
+		}
 		basicDao.updateFestUfoByKey(vo);
 		return "redirect:festInfo";
 	}
@@ -568,14 +572,16 @@ public class FestController {
                 	vo.setQ7_img(fileInfo[0]);
                 }else if(param.equals("q_graphic_file")){
                 	vo.setQ_graphic(fileInfo[0]);
+                }else if(param.equals("qr_pic_file")){
+                	vo.setQr_pic(fileInfo[0]);
                 }
-                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at update ufo");
                 
             } catch (Exception e) {
-            	System.out.println("You failed to upload => " + e.getMessage() + "at createNotice");
+            	System.out.println("You failed to upload => " + e.getMessage() + "at update ufo");
             }
         } else {
-        	System.out.println("You failed to upload because the file was empty. at createNotice");
+        	System.out.println("You failed to upload because the file was empty. at update ufo");
         }
 		return vo;
 	}
