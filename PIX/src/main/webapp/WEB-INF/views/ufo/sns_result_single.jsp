@@ -79,7 +79,8 @@ button.close {
 			<div class="modal-footer">
 			<br>
 		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="window.print()"><span class="btn-text">인쇄하기</span></span>
-		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a>
+<%-- 		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a> --%>
+		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br><br>
 		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block" class="img-responsive"/></div>
 		    </div>
@@ -88,9 +89,9 @@ button.close {
 </div>
 
 <!-- ******FOOTER****** -->
-<%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
-<%-- 		<jsp:param name="param" value="value1" /> --%>
-<%-- 	</jsp:include><!--//footer--> --%>
+	<jsp:include page="footer.jsp" flush="false">
+		<jsp:param name="param" value="value1" />
+	</jsp:include><!--//footer-->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
 <script>
 var barString = "${shareLink}";
@@ -98,6 +99,16 @@ var n = barString.indexOf("/result/");
 var e = barString.length;
 barString = barString.substring(n+8, e);
 JsBarcode("#barcode", barString);
+
+document.getElementById('shareBtn').onclick = function() {
+	  FB.ui({
+	    method: 'share',
+	    display: 'popup',
+	    href: '${ shareLink}',
+	  }, function(response){
+		  console.log(response.post_id);
+	  });
+	}
 </script>
 </body>
 </html>
