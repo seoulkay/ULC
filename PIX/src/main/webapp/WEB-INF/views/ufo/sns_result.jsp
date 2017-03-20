@@ -12,8 +12,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="${ufo.event_short_description }">
-    <meta name="author" content="">    
+    <!-- 페이스북 메타 -->
+  	<meta property="og:url"                content="${homepage }" />
+	<meta property="og:type"               content="article" />
+	<meta property="og:title"              content="${ufo.title }" />
+	<meta property="og:description"        content="${ufo.event_short_description }" />
+    
     <link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">  
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -71,21 +75,29 @@
 		    </div>
   		</div>
 	</div>
+	<div id="fb-root"></div> 
 </div>
 <!-- ******FOOTER****** -->
 <%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
 <%-- 		<jsp:param name="param" value="value1" /> --%>
 <%-- 	</jsp:include><!--//footer--> --%>
+<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1074619385980281";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 <script>
-
-// var qrcode = new QRCode("qrcode", {
-//     text: "https://www.facebook.com/${vo.sns_return }",
-//     width: 200,
-//     height: 200,
-//     colorDark : "#000000",
-//     colorLight : "#ffffff",
-//     correctLevel : QRCode.CorrectLevel.H
-// });
+document.getElementById('shareBtn').onclick = function() {
+	  FB.ui({
+	    method: 'share',
+	    display: 'popup',
+	    href: '${ shareLink}',
+	  }, function(response){
+		  console.log(response.post_id);
+	  });
+	}
 
 </script>
 </body>

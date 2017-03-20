@@ -17,7 +17,6 @@
 	<meta property="og:type"               content="article" />
 	<meta property="og:title"              content="${ufo.title }" />
 	<meta property="og:description"        content="${ufo.event_short_description }" />
-	<meta property="og:image"              content="https://www.ufo79.com/image/${ele.go_image}" />
   
   
   
@@ -90,19 +89,28 @@ button.close {
 		    </div>
   		</div>
 	</div>
+	<div id="fb-root"></div> 
 </div>
 
 <!-- ******FOOTER****** -->
-	<jsp:include page="footer.jsp" flush="false">
-		<jsp:param name="param" value="value1" />
-	</jsp:include><!--//footer-->
+<%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
+<%-- 		<jsp:param name="param" value="value1" /> --%>
+<%-- 	</jsp:include><!--//footer--> --%>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
+<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1074619385980281";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 <script>
 var barString = "${shareLink}";
 var n = barString.indexOf("/result/");
 var e = barString.length;
 barString = barString.substring(n+8, e);
 JsBarcode("#barcode", barString);
+
 
 document.getElementById('shareBtn').onclick = function() {
 	  FB.ui({

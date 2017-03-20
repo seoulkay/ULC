@@ -490,18 +490,21 @@
             	
                 <div class="pull-left">
                 	<div class="pull-left post-heading-left padding-top10-lg padding-top10-md">
-                        <h2>UFO79의 소식을 받아보세요</h2>
-                        <h5>Subscribe and keep yourself updated</h5>
+                        <h2>UFO79 문의</h2>
+                        <h5><a href="mailto:ufo79service@gmail.com?Subject=Hello%20UFO79" target="_top">ufo79service@gmail.com</a></h5>
                     </div>
                 </div>
                 
                 <div class="pull-right">
-                    <form method="post" action="#" class="pull-right affa-form-subscribe">
-                        <input type="text" name="email" placeholder="이메일 주소">
-                        <input type="submit" name="submit" value="Subscribe Now">
-                    </form>
+<!--                     <div class="pull-right affa-form-subscribe"> -->
+                    <div class="fb-comments" data-href="https://www.ufo79.com/PIX/ULC/" data-width="600px" data-numposts="2"></div>
+<!--                     </div> -->
                 </div>
                 
+            </div>
+            
+            <div class="row">
+            
             </div>
             <!-- .affa-form-wrap end -->
             
@@ -518,7 +521,7 @@
         <div class="container">
             
             <div class="footer-links">
-            	<a href="https://www.facebook.com/sharer.php?u=www.ufo79.com/PIX/ULC/" class="link-icon" title="Facebook"><i class="ion ion-social-facebook"></i></a>
+            	<a href="https://www.facebook.com/UFO79-727262880784383/" class="link-icon" title="Facebook"><i class="ion ion-social-facebook"></i></a>
                 <a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/ULC/" class="link-icon" title="Twitter"><i class="ion ion-social-twitter"></i></a>
                 <a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ULC/" class="link-icon" title="Google Plus"><i class="ion ion-social-googleplus"></i></a>
 <!--                 <a href="#" class="link-icon" title="Dribbble"><i class="ion ion-social-dribbble"></i></a> -->
@@ -563,6 +566,14 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.counterup.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/script.js"></script>
-    
+   <div id="fb-root"></div> 
 </body>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1074619385980281";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>

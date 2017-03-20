@@ -116,9 +116,7 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-social btn-facebook" onClick="getUfo('go')"><i
-									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">스탬프 찍기</span></button></li>
+							<li><button class="btn btn-warning" onClick="redirectGallery('go')"><span class="btn-text">갤러리로 가기</span></button> <button class="btn btn-social btn-facebook" onClick="getUfo('go')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button> <button class="btn btn-warning" onClick="qrInfoShow()"><span class="btn-text">큐알 코드 안내문</span></button></li>
 <!-- 							<li> -->
 <!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 							</li> -->
