@@ -72,8 +72,8 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">홈</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프</a></li></c:if>
+					<li><a class="scrollto" href="#support-section">공지사항</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}"><li><a class="scrollto" href="#qr-section">큐알</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="#survey-section">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}"><li><a class="scrollto" href="#info-section">안내</a></li></c:if>
