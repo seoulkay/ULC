@@ -313,15 +313,17 @@
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
 	   </div>
-	   <div class="modal-body" style="font-family:NanumBarunGothic">
-   		${statusEle.count }번 사진 : ${ele.go_content }<br>
+	   <div class="modal-body">
+   			<div style="padding:10px; font-family:NanumBarunGothic;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
+   			</div>
+   		<%-- ${statusEle.count }번 사진 : ${ele.go_content }<br>
 	 	 	<div class="progress">
 			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
 			  	</div>
 			  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
 			  	</div>
-			</div>
-			<!-- 스탬프 미션 사진, 내용 -->
+			</div> --%>
+			<!-- 스탬프 미션 사진, 내용 -->			
 			<div>
    				<img class="img-responsive" style="padding:10px" src="https://www.ufo79.com/image/${ele.go_image }">
    			</div>
