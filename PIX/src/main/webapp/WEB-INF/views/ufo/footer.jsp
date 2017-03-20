@@ -450,7 +450,7 @@ function clearLogLi(){
 } 
 function addLogined(){
     $("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" id="UserInfo" onclick="fbLogout();">'+window.sessionStorage.getItem('userName')+'</a></li>');
-    $("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="https://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
+    $("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img onclick="fbLogout();" id="userPic" class="img-responsive" style="height:30px" src="https://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
 }
 function addLogin(){
 	  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
@@ -466,7 +466,17 @@ function setLoginParam(response){
    window.sessionStorage.setItem('email', email);
    window.sessionStorage.setItem('first_name', fn);
    window.sessionStorage.setItem('last_name', ln);
-   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
+   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb", sns_return: "${sessionScope.eventPara}"})
+   .done(function( data ) {
+   });
+}
+function setLoginParam(){
+	var fn = window.sessionStorage.getItem('userName');
+	var ln = window.sessionStorage.getItem('last_name');
+	var uid = window.sessionStorage.getItem('uid');
+	var email = window.sessionStorage.getItem('email');
+	
+   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb", sns_return: "${sessionScope.eventPara}"})
    .done(function( data ) {
    });
 }
@@ -484,13 +494,13 @@ window.fbAsyncInit = function() {
     
 //추가의 이닛 옵션들은 여기서 
 FB.getLoginStatus(function(response) {
-	if (response.status === 'connected' && checkLogin()) {
+	if (response.status === 'connected') {
 		//일단 uid는 챙겨 놓는다.
 		var uid = response.authResponse.userID;
 		window.sessionStorage.setItem('uid', uid);
-		setLoginParam(response);
 	    clearLogLi();
-	    addLogined();  
+	    addLogined(); 
+	    setLoginParam();
 	  } else if (response.status === 'not_authorized') {
 		  clearLogLi();
 		  addLogin()
@@ -542,17 +552,17 @@ function fbLogin(para){
      });
     } else {
      console.log('User cancelled login or did not fully authorize.');
-     location.reload();
+     //location.reload();
     }
 	}, {scope: 'email', return_scope: true});
 }
   
   
 /**
- * 로그인 체크
+ * UFO 로그인 체크
 */
 function checkLogin(){
-	if(window.sessionStorage.getItem('userName') === null || window.sessionStorage.getItem('uid') === null || window.sessionStorage.getItem('userName') === 'undefined' || window.sessionStorage ){
+	if(window.sessionStorage.getItem('userName') === null || window.sessionStorage.getItem('uid') === null || window.sessionStorage.getItem('userName') === 'undefined' || window.sessionStorage.getItem('uid') === 'undefined'){
 		return false;
 	}else{
 		return true;

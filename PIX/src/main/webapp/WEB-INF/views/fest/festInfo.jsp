@@ -59,7 +59,9 @@
                    		<tr><td class="success">ufo_go_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_desc" maxlength="1000">${ufo.ufo_go_desc }</textarea></td></tr>
                    		<tr><td class="success">ufo_qr_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_title" maxlength="1000">${ufo.ufo_qr_title }</textarea></td></tr>
                    		<tr><td class="success">ufo_qr_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_desc" maxlength="1000">${ufo.ufo_qr_desc }</textarea></td></tr>
-                    	<tr><td class="success">qr_pic <c:if test="${ufo.qr_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.qr_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="qr_pic_file"></td></tr>
+                   		<tr><td class="success">qr_info_title</td><td><input type="text" form="ufoForm" class="form-control" name="qr_info_title" maxlength="45">${ufo.qr_info_title }</td></tr>
+                   		<tr><td class="success">qr_info</td><td><textarea form="ufoForm" class="form-control" name="qr_info" maxlength="1000">${ufo.qr_info }</textarea></td></tr>
+                   		<tr><td class="success">qr_pic <c:if test="${ufo.qr_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.qr_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="qr_pic_file"></td></tr>
                     	<tr><td class="success">ufo_survey_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_title" maxlength="500">${ufo.ufo_survey_title }</textarea></td></tr>
                    		<tr><td class="success">ufo_survey_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_desc" maxlength="500">${ufo.ufo_survey_desc }</textarea></td></tr>
                     </table>
