@@ -470,12 +470,15 @@ window.fbAsyncInit = function() {
     
 //추가의 이닛 옵션들은 여기서 
 FB.getLoginStatus(function(response) {
+	if ($("#stampRally").length > 0){
+	    makeGo();
+	}
+	
 	if (response.status === 'connected' && checkLogin()) {
 		var fn = window.sessionStorage.getItem('userName');
 		var ln = window.sessionStorage.getItem('last_name');
 		var uid = window.sessionStorage.getItem('uid');
 		var email = window.sessionStorage.getItem('email');
-		makeGo();
 	   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb", sns_return: "${sessionScope.eventPara}"})
 	   .done(function( data ) {
 	   });
@@ -484,11 +487,9 @@ FB.getLoginStatus(function(response) {
 	  } else if (response.status === 'not_authorized') {
 		  clearLogLi();
 		  addLogin();
-		  makeGo();
 	 } else {
 		  clearLogLi();
 		  addLogin();
-	      makeGo();
 	  }
 }, true);   
 
@@ -524,7 +525,9 @@ function fbLogin(para){
 		   });
     	 	clearLogLi();
  	   		addLogined();
- 	   		makeGo();
+	 	   	if ($("#stampRally").length > 0){
+	 		    makeGo();
+	 		}
        if(para == 'go'){
     	   stampRally();
        }else if(para == 'qr'){
