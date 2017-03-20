@@ -299,6 +299,7 @@ public class UfoController {
 		}
 		
 		String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid+"/"+gid;
+		String homepage = "https://www.ufo79.com/PIX/ufo/"+para+"/index";
 		
 		model.addAttribute("ufoResult", ufoResult);
 		model.addAttribute("ufo", ufo);
@@ -306,6 +307,7 @@ public class UfoController {
 		model.addAttribute("userSize", userSize);
 		model.addAttribute("rallyType", typeString);
 		model.addAttribute("shareLink", link);
+		model.addAttribute("homepage", homepage);
 		model.addAttribute("pick", gid);
 		model.addAttribute("type", type);
 		model.addAttribute("uid", uid);

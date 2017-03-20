@@ -12,21 +12,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="${ufo.event_short_description }">
-    <meta name="author" content="">    
+  	<!-- 페이스북 메타 -->
+  	<meta property="og:url"                content="${homepage }" />
+	<meta property="og:type"               content="article" />
+	<meta property="og:title"              content="${ufo.title }" />
+	<meta property="og:description"        content="${ufo.event_short_description }" />
+	<meta property="og:image"              content="https://www.ufo79.com/image/${ele.go_image}" />
+  
+  
+  
     <link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">  
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css' media="all">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css' media="all">
     <!-- Global CSS -->
-    <link rel="stylesheet" href=
-"${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css" media="all">   
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css" media="all">   
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href=
-"${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="all">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href=
-"${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css" media="all">
+    <link id="theme-style" rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css" media="all">
 <style>
 button.close {
     font-size: 24px;
