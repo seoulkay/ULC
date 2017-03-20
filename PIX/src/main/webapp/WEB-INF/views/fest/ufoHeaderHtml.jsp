@@ -80,19 +80,6 @@
 		    console.log('cancellation');
 		  });
 		
-		//  Usage:
-		//  $(function() {
-		//
-		//    // In this case the initialization function returns the already created instance
-		//    var inst = $('[data-remodal-id=modal]').remodal();
-		//
-		//    inst.open();
-		//    inst.close();
-		//    inst.getState();
-		//    inst.destroy();
-		//  });
-		
-		  //  The second way to initialize:
 		  $('[data-remodal-id=modal2]').remodal({
 		    modifier: 'with-red-theme'
 		  });

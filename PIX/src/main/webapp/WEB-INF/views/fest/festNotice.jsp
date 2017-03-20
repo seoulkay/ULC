@@ -7,24 +7,21 @@
 <jsp:param name="param" value="value1"/>
 </jsp:include>
 
-    <body data-spy="scroll" data-offset="80">
+<body data-spy="scroll" data-offset="80">
 
         <jsp:include page="ufoHeader.jsp" flush="true">
         	<jsp:param name="param" value="value1"/>
         </jsp:include>
-        
-        
-<!--         <div class="divided-50"></div> -->
 <div class="remodal-bg">
         <section id="blog-wrapper" class="section-padding">
             <div class="container">
+                <div style="height:2em"></div>
+						<h3>공지사항</h3>
+				<div style="height:2em"></div>
                 <div class="row">
                     <div class="col-sm-9">
                     	<div>
-                    	
-                    	<button onClick="layer_open('layer2New','New');return false;" class="btn btn-dark btn-sm">
-                                                새글쓰기
-                            </button>
+                    	<button onClick="layer_open('layer2New','New');return false;" class="btn btn-dark btn-sm">새글쓰기</button>
                             <div class="layer" id="layerNew">
 				                <div class="bg" id="bg"></div>
 				                    <div id="layer2New" class="pop-layer">

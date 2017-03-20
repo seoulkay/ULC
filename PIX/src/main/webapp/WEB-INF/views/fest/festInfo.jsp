@@ -14,6 +14,7 @@
             <div style="height:2em"></div>
             <div class="row">
             <h3>축제정보</h3>
+            <div style="height:2em"></div>
             	<form id="ufoForm" action="updateUfo" enctype="multipart/form-data" method="post">
                     <table class="table table_striped">
                     	<tr><td class="success">idfest_ufo</td><td><input class="form-control" type="text" name="idfest_ufo" value="${ufo.idfest_ufo }" readonly></td></tr>

@@ -823,7 +823,8 @@ var icons = {
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 18,
-	    center: {lat: 37.75, lng: 128.87}
+	    center: {lat: 35.097, lng: 129.008}
+	
 	  });
 	
 	 // Create the DIV to hold the control and call the CenterControl()
@@ -918,8 +919,8 @@ function makeGo(){
 	         
 	         for(var i = 0; i < go.length; i++){
 	        	 var target = {};
-	        	 target.lat = parseFloat((Number(go[i].go_lat)).toFixed(4));
-	        	 target.lng = parseFloat((Number(go[i].go_alt)).toFixed(4));
+	        	 target.lat = parseFloat((Number(go[i].go_lat)));
+	        	 target.lng = parseFloat((Number(go[i].go_alt)));
 	        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
 	        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
 	        		 target.type = "ufoOn";

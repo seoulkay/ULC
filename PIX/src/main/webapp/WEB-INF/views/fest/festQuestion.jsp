@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <jsp:include page="ufoHeaderHtml.jsp" flush="false">
 <jsp:param name="param" value="value1"/>
 </jsp:include>
@@ -10,6 +11,8 @@
 	<jsp:param name="param" value="value1"/>
 </jsp:include>
 <div class="container">
+	<div style="height:2em"></div>
+	<h3>축제모듈</h3>
 	<div style="height:2em"></div>
 	<div class="row">
 	<h3>스탬프랠리</h3>
@@ -53,5 +56,18 @@
 <jsp:include page="ufoFooter.jsp" flush="false">
 	<jsp:param name="param" value="value1"/>
 </jsp:include>
+<script>
+// $("tr").click(function(){
+// 	$(this).slideUp();
+// });
+// function handler(event){
+// 	var target = $(event.target);
+// 	if(target.is("td")){
+// 		target.children().append("<p>!</p>");
+// 	}
+// }
+// $("tr").click(handler).find("td").show();
+
+</script>
 </body>
 </html>

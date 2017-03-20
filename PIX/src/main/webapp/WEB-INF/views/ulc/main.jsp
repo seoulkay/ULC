@@ -51,11 +51,7 @@
     <noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/no-js.css"></noscript>
     
     <!-- Favicons -->
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/ulc/images/https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">
-	<link rel="apple-touch-icon" href="${pageContext.request.contextPath}/resources/ulc/images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/ulc/images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/ulc/images/apple-touch-icon-114x114.png">
-    
+	<link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
 </head>
 <body>
     

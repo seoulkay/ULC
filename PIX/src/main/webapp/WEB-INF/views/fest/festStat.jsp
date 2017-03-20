@@ -11,6 +11,8 @@
 </jsp:include>
 <div class="container">
 	<div style="height:2em"></div>
+	<h3>통계</h3>
+	<div style="height:2em"></div>
 	<div class="row">
 	<h3>스탬, 큐알 랠리</h3>
 		<table class="table table-bordered table-hover table-condensed">
