@@ -66,44 +66,15 @@
 						class="fa fa-facebook" aria-hidden="true"></i></a></li>
 				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-<%-- 				<li><a href="https://story.kakao.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i --%>
-<!-- 						class="fa fa-instagram" aria-hidden="true"></i></a></li> -->
 			</ul>
 
-			<small class="copyright"><a href="https://www.ufo79.com/"
-				target="_blank">© UFO79 Corp.</a></small>
+			<small class="copyright"><a href="https://www.ufo79.com/" target="_blank">© UFO79 Corp.</a></small>
 		</div>
 	</div>
 	<!--//container-->
 </footer>
 <!--//footer-->
 
-<!-- Video Modal -->
-<div class="modal modal-video" id="modal-video" tabindex="-1"
-	role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">&times;</button>
-				<h4 id="videoModalLabel" class="modal-title sr-only">Video Tour</h4>
-			</div>
-			<div class="modal-body">
-				<div class="video-container embed-responsive embed-responsive-16by9">
-					<iframe id="vimeo-video"
-						src="//player.vimeo.com/video/140875675?color=ffffff&amp;wmode=transparent"
-						width="720" height="405" frameborder="0" webkitallowfullscreen
-						mozallowfullscreen allowfullscreen></iframe>
-				</div>
-				<!--//video-container-->
-			</div>
-			<!--//modal-body-->
-		</div>
-		<!--//modal-content-->
-	</div>
-	<!--//modal-dialog-->
-</div>
-<!--//modal-->
 
 <!-- Login Modal -->
 <div class="modal modal-auth modal-login" id="login-modal" tabindex="-1"
@@ -348,6 +319,22 @@
 	</div>
 </div>
 </c:forEach>
+<div class="modal" id="qr_info" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h3 style="font-family:football;">큐알 코드 안내문</h3>
+	   </div>
+	   <div class="modal-body" style="font-family:NanumBarunGothic">
+   			<div style="padding:10px">안내문 입니다요<br>
+   			</div>
+		</div>
+		<div class="modal-footer">
+	  	</div>
+	</div>
+	</div>
+</div>
 </c:if>
 
 
@@ -455,41 +442,58 @@
 <script>
 /**
  * 페이스북 관련
- */
+ */ 
+function clearLogLi(){
+	 	$("#snsLogin").remove();
+	    $("#snsName").remove();
+	    $("#snsPic").remove();
+} 
+function addLogined(){
+    $("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" id="UserInfo" onclick="fbLogout();">'+window.sessionStorage.getItem('userName')+'</a></li>');
+    $("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img onclick="fbLogout();" id="userPic" class="img-responsive" style="height:30px" src="https://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
+}
+function addLogin(){
+	  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+}
 
+/**
+ *페이스북 API
+ */
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1074619385980281',
- 		version    : 'v2.8',
- 
-  status: true, // check login status
+     appId      : '1074619385980281',
+     version    : 'v2.8',
+ 	 status: true, // check login status
      cookie: true, // enable cookies to allow the server to access thesession
      xfbml: true  // parseXFBML
 });
+    
 //추가의 이닛 옵션들은 여기서 
 FB.getLoginStatus(function(response) {
-var fn = window.sessionStorage.getItem('first_name');
-	if (response.status === 'connected' && fn != null) {
-	    // the user is logged in and has authenticated your
-	    // app, and response.authResponse supplies
-	    // the user's ID, a valid access token, a signed
-	    // request, and the time the access token 
-	    // and signed request each expire
-		$("#navbar-collapse ul").append('<li id="snsName" class="nav-item"><a href="#" id="UserInfo" onclick="fbLogout();">'+window.sessionStorage.getItem('userName')+'</a></li>');
-		$("#navbar-collapse ul").append('<li id="snsPic" class="nav-item" style="padding-top: 3em;"><img id="userPic" class="img-responsive" style="height:20px" src="https://graph.facebook.com/v2.8/'+window.sessionStorage.getItem('uid')+'/picture?type=small"></img></li>');
-	    var uid = response.authResponse.userID;
-	    var accessToken = response.authResponse.accessToken;
-	    window.sessionStorage.setItem("accessToken", accessToken);
-	    //alert(accessToken);
+	if ($("#stampRally").length > 0){
+	    makeGo();
+	}
+	
+	if (response.status === 'connected' && checkLogin()) {
+		var fn = window.sessionStorage.getItem('userName');
+		var ln = window.sessionStorage.getItem('last_name');
+		var uid = window.sessionStorage.getItem('uid');
+		var email = window.sessionStorage.getItem('email');
+	   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb", sns_return: "${sessionScope.eventPara}"})
+	   .done(function( data ) {
+	   });
+	    clearLogLi();
+	    addLogined(); 
 	  } else if (response.status === 'not_authorized') {
-	    // the user is logged in to Facebook, 
-	    // but has not authenticated your app
-		  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
-	  } else {
-	    // the user isn't logged in to Facebook.
-		  $("#navbar-collapse ul").append('<li id="snsLogin" class="nav-item"><a href="#" class="login-trigger" id="LoginBtn" data-toggle="modal" data-target="#login-modal">Log in</a></li>');
+		  clearLogLi();
+		  addLogin();
+	 } else {
+		  clearLogLi();
+		  addLogin();
 	  }
-}, true);   };
+}, true);   
+
+};
 
  (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -499,30 +503,31 @@ var fn = window.sessionStorage.getItem('first_name');
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  /**
-   * 
-   */
+/**
+ * 
+ */
 function fbLogin(para){
   FB.login(function(response) {
 	    if (response.authResponse) {
 	     FB.api('/me', {fields: 'id, first_name, last_name, email'}, function(response) {
-    	
-    	var fn = response.first_name;
-    	var ln = response.last_name;
-    	var uid = response.id;
-    	var email = response.email;
-    	
-       window.sessionStorage.setItem('userName', fn);
-       window.sessionStorage.setItem('uid', uid);
-       window.sessionStorage.setItem('email', email);
-       window.sessionStorage.setItem('first_name', fn);
-       window.sessionStorage.setItem('last_name', ln);
-       
-    		
-       $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb"})
-       .done(function( data ) {
-       });
-
+	   		var fn = response.first_name;
+			var ln = response.last_name;
+			var uid = response.id;
+			var email = response.email;
+			
+		   window.sessionStorage.setItem('userName', fn);
+		   window.sessionStorage.setItem('uid', uid);
+		   window.sessionStorage.setItem('email', email);
+		   window.sessionStorage.setItem('first_name', fn);
+		   window.sessionStorage.setItem('last_name', ln);
+		   $.post( "snsLog/fb", { first_name: fn, last_name: ln ,uid: uid, email: email, sns_type:"fb", sns_return: "${sessionScope.eventPara}"})
+		   .done(function( data ) {
+		   });
+    	 	clearLogLi();
+ 	   		addLogined();
+	 	   	if ($("#stampRally").length > 0){
+	 		    makeGo();
+	 		}
        if(para == 'go'){
     	   stampRally();
        }else if(para == 'qr'){
@@ -536,24 +541,26 @@ function fbLogin(para){
        }else if(para =="survey"){
     	   surveyInit();
        }else{
-    	   top.location.href="index";
+    	   //페북으로 로그인 하기로 온다.
+    	   $("#login-modal").modal('hide');
        }       
      });
     } else {
      console.log('User cancelled login or did not fully authorize.');
-     location.reload();
+     //location.reload();
     }
-}, {scope: 'email,user_likes,publish_actions', return_scope: true});
-  }
+	}, {scope: 'email', return_scope: true});
+}
+  
   
 /**
- * 로그인 체크
+ * UFO 로그인 체크
 */
 function checkLogin(){
-	if(window.sessionStorage.getItem('first_name') == null || window.sessionStorage.getItem('last_name') == null){
+	if(window.sessionStorage.getItem('userName') === null || window.sessionStorage.getItem('uid') === null || window.sessionStorage.getItem('userName') === 'undefined' || window.sessionStorage.getItem('uid') === 'undefined'){
 		return false;
 	}else{
-		return true;	
+		return true;
 	}
 }
 
@@ -563,80 +570,24 @@ function checkLogin(){
 function fbLogout(){
 	 FB.logout(function(response) {
 	   // Person is now logged out
-	  console.log(response);
 	  $("#snsName").remove();
 	  $("#snsPic").remove();
-	window.sessionStorage.clear();
-	location.reload();
+	  window.sessionStorage.clear();
+	  location.reload();
 	});
 }
-  
-/**
- * 페북 포스트
- */
-function fbPost(msg, type, gid){
-  	FB.getLoginStatus(function(response) {
-   	 
-   	if (response.status === 'connected') {
-  		var body = msg;
-	  FB.api('/me/feed', 'post', { message: body }, function(response) {
-	    if (!response || response.error) {
-	     console.log('Did not connected to facebook server : ufo');
-	     hidePleaseWait();
-	     showDone("완료되었습니다.", type);
-	    } else {
-	      //alert('Post ID: ' + response.id);
-	      $( "#sns_return_sns" ).val(response.id);
-	      $( "#first_name_sns" ).val(window.sessionStorage.getItem('first_name'));
-		  $( "#last_name_sns" ).val(window.sessionStorage.getItem('last_name'));
-		  $( "#uid_sns" ).val(window.sessionStorage.getItem('uid'));
-		  $( "#access_token_sns" ).val(window.sessionStorage.getItem('accessToken'));
-		  $( "#sns_type_sns" ).val(type);
-		  $( "#sns_msg_sns" ).val(msg);
-		  $( "#sns_gid_sns" ).val(gid);
-
-	      var form = new FormData($("#sns_form")[0]);
-  	    	  $.ajax({
-  	              url: "surveySubmitLog",
-  	              method: "POST",
-	              dataType: 'json',
-	              data: form,
-	              processData: false,
-	              contentType: false,
-  	              success: function(result){
-  	            	  console.log("처리되었습니다. : "+result);
-  	              },
-  	              error: function(er){}
-     				});
-  	    	 hidePleaseWait();
-  	    	 showDone("성공하였습니다.", type);
-	    }
-	  });    		
-  	} else if (response.status === 'not_authorized') {
-  		console.log('페이스북 로그인 되어 있지 않습니다.');
-  		hidePleaseWait();
-  		showDone("완료되었습니다.", type);
-  	} else {
-  		console.log('연결에 문제가 있습니다.');
-  		hidePleaseWait();
-     showDone("완료되었습니다.", type);
-   		}
-   	}, true); 
-}
 
 /**
-   * 
+   * 뉴스레터 보내기
  */
 function sendNewsLetterEmail(){
 	  var email = $("#semail").val();
   var para = '${sessionScope.eventPara}';
   $.post( "newsletter", { news_letter_email: email, para:para})
    .done(function( data ) {
-	  //아래코드 잘 작동이 된다 성공하면 1 옴
- //alert( "Data Loaded: " + data );
    });
   alert("구독해주셔서 감사합니다.");
-  }
+}
 
 /**
  * 결과물 모달 띄우기
@@ -653,12 +604,7 @@ function getUfo(param){
 	}else{
 		$.post( "/PIX/ufogo/get/"+para+"/"+uid)
 	       .done(function( data ) {
-	        //alert( "Data Loaded: " + JSON.parse(JSON.stringify(data))[0].last_name );
-	        
 	        var go = JSON.parse(JSON.stringify(data));
-	        
-	        //$("#qrList").empty();
-	        
 	        for(var i = 0; i < go.length; i++){
 	        	if(go[i].ufo_go_type == 'qr'){
 	        	  	//중복을 막는 코드가 필요함 
@@ -683,20 +629,22 @@ function getUfo(param){
 	        	$('#stampRally').modal('show');
 	        }else if(param == 'qr'){
 	        	$('#qrRallyList').modal('show');
+	        }else{
+				
 	        }
 	        
 	       });
 	}
 	
-	
 	}else{
 		fbLogin(param);
-		//alert("로그인을 해주세요.");
 	}
 }
 
+
+
 /**
- * Displays overlay with "Please wait" text. Based on bootstrap modal. Contains animated progress bar.
+ * 플리즈 웨이트 하이드
  */
 function showPleaseWait() {
     var modalLoading = '<div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false role="dialog">\
@@ -720,18 +668,19 @@ $("#pleaseWaitDialog").modal("show");
 }
 
 /**
- * Hides "Please wait" overlay. See function showPleaseWait().
+ * 플리즈 웨이트 쇼 
  */
 function hidePleaseWait() {
     $("#pleaseWaitDialog").modal("hide");
 }
 
-/**<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 완료되었습니다.
- * Displays overlay with "Please wait" text. Based on bootstrap modal. Contains animated progress bar.
+/**
+ * 완료 모달
  */
 function showDone(para, type) {
-	var tt = type.substring(3, 5).toString();
-    var modalLoading = '<div class="modal" id="showDone" data-backdrop="static" data-keyboard="false role="dialog">\
+	hidePleaseWait();
+    var tt = type;
+	var modalLoading = '<div class="modal" id="showDone" data-backdrop="static" data-keyboard="false role="dialog">\
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
@@ -745,7 +694,7 @@ function showDone(para, type) {
                 </div>\
             </div>\
             <div class="modal-footer">\
-    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo(\''+tt+'\')">나의 기록보기</button>\
+    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="redirectGallery(\''+tt+'\')">갤러리</button>\
     		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal">확인</button>\
     	  	</div>\
         </div>\
@@ -755,10 +704,18 @@ $(document.body).append(modalLoading);
 $("#showDone").modal("show");
 }
 
-
-function showModal(){
-	$("#qrRallyResult").modal("show");
+/**
+ * 갤러리로 리다렉
+ */
+function redirectGallery(tt){
+	if(window.sessionStorage.getItem('uid') == 'undefined' || window.sessionStorage.getItem('uid') == null){
+			alert("로그인을 해주세요!");
+	}else{
+		   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/"+tt+"/"+window.sessionStorage.getItem('uid');
+		
+	}
 }
+
 </script>
 
 <c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
@@ -766,28 +723,30 @@ function showModal(){
 
 var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
 var icons = {
-  me:{//아이콘 svg로 me_icon01.png --> icon_me_30px-01.svg
+  me:{
 	  icon: iconBase + 'icon_me_30px-01.svg'
   },
-  ufoOn:{//아이콘 svg로 UFO_ON.png --> icon_pin_20px.svg
+  ufoOn:{
 	  icon: iconBase + 'icon_pin_20px.svg'
   },
-  ufoOff:{//아이콘 svg로 UFO_OFF.png --> icon_pin_15px_off.svg
+  ufoOff:{
 	  icon: iconBase +'icon_pin_15px_off.svg'
   }
 };
         
-	var neighborhoods = [];
-    var markers = [];
-	var map;
+        
+var neighborhoods = [];
+var markers = [];
+var map;
 
-	/**
-     * The CenterControl adds a control to the map that recenters the map on
-     * Chicago.
-     * This constructor takes the control DIV as an argument.
-     * @constructor
-     */
-    function CenterControl(controlDiv, map) {
+function qrInfoShow(){
+	$("#qr_info").modal('show');
+}
+
+/**
+*
+    */
+function CenterControl(controlDiv) {
 
       // Set CSS for the control border.
       var controlUI = document.createElement('div');
@@ -813,12 +772,25 @@ var icons = {
       controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;">';
       controlUI.appendChild(controlText);
 
-      // Setup the click event listeners: simply set the map to Chicago.
+      // 센터 잡기
       controlUI.addEventListener('click', function() {
-        makeGo();
+          $( controlUI ).fadeOut( "slow", function() {
+        	  });
+    	  makeGo();
       });
-
     }
+/**
+ * 리프레쉬 버튼 
+ */
+function refreshBtn(){
+	$("#refreshBtn").remove();
+	var centerControlDiv = document.createElement('div');
+    centerControlDiv.setAttribute("id", "refreshBtn");
+    var centerControl = new CenterControl(centerControlDiv);
+    
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+}
  /**
    * 
  */
@@ -826,21 +798,9 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 18,
 	    center: {lat: 35.097, lng: 129.008}
-	
 	  });
-	
-	 // Create the DIV to hold the control and call the CenterControl()
-    // constructor passing in this DIV.
-    var centerControlDiv = document.createElement('div');
-    var centerControl = new CenterControl(centerControlDiv, map);
-    
-    centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-	makeGo();
 }
 
-	
 /**
  * 
 */	
@@ -856,10 +816,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
  * 
 */	
 function drop() {
-  clearMarkers();
   for (var i = 0; i < neighborhoods.length; i++) {
-    addMarkerWithTimeout(neighborhoods[i], i * 200);
+    addMarkerWithTimeout(neighborhoods[i], i * 50);
   }
+  window.setTimeout(function() {refreshBtn();}, (neighborhoods.length+1)*50);
 }
 /**
  * 
@@ -897,8 +857,9 @@ function addMarkerWithTimeout(position, timeout) {
 function clearMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
-  }
+  };
   markers = [];
+  neighborhoods = [];
 }
 	
 /**
@@ -907,47 +868,78 @@ function clearMarkers() {
 function makeGo(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-    	neighborhoods = [];
+    	clearMarkers();
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
           type: "me",
           content:'<h1 id="firstHeading" style="font-family:football">나</h1>'
         };
+        if(checkLogin()){
+        	var uid = window.sessionStorage.getItem('uid');
+        	var para = '${sessionScope.eventPara}';
+        	$.post( "/PIX/ufogo/get/"+para+"/"+uid)
+ 	       .done(function( data ) {
+ 	        var go = JSON.parse(JSON.stringify(data));
+ 	        for(var i = 0; i < go.length; i++){
+ 	        	if(go[i].ufo_go_type == 'qr'){
+ 	        	  	//중복을 막는 코드가 필요함 
+ 	        		$('#qr_yes_'+go[i].ufo_gid).show();
+ 	        	}else if(go[i].ufo_go_type == 'go'){
+ 	        		$('#stamp_yes_'+go[i].ufo_gid).show();
+ 	        	}
+ 	        }
+ 	       markerSet(pos);
+ 	       });
+        }else{
+        	markerSet(pos);
+        }
         
-        $.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
-	       .done(function( data ) {
-	         var go = JSON.parse(JSON.stringify(data));		         
-	         
-	         for(var i = 0; i < go.length; i++){
-	        	 var target = {};
-	        	 target.lat = parseFloat((Number(go[i].go_lat)));
-	        	 target.lng = parseFloat((Number(go[i].go_alt)));
-	        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
-	        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
-	        		 target.type = "ufoOn";
-	        		 $("#stamp_back_"+go[i].ufo_gid).hide();
-	        		 $("#stamp_"+go[i].ufo_gid).show();
-	        	 }else{
-	        		 target.type = "ufoOff";
-	        	 }
-		         neighborhoods.push(target);
-	         }
-	         neighborhoods.push(pos);
-	         map.setCenter(pos);
-	         drop();
-	    });
       }, function() {
     	var infoWindow = new google.maps.InfoWindow({map: map});
         handleLocationError(true, infoWindow, map.getCenter());
       });
     } else {
-    	var infoWindow = new google.maps.InfoWindow({map: map});
-      // Browser doesn't support Geolocation
+      var infoWindow = new google.maps.InfoWindow({map: map});
       handleLocationError(false, infoWindow, map.getCenter());
 	}
+
 }
+/**
+ * 마커 세팅
+ */
 		
+function markerSet(pos){
+	$.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
+       .done(function( data ) {
+         var go = JSON.parse(JSON.stringify(data));		         
+         for(var i = 0; i < go.length; i++){
+        	 var target = {};
+        	 target.lat = parseFloat((Number(go[i].go_lat)));
+        	 target.lng = parseFloat((Number(go[i].go_alt)));
+        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
+        	 
+        	 
+        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
+        		 target.type = "ufoOn";
+        		 $("#stamp_back_"+go[i].ufo_gid).hide();
+        		 $("#stamp_"+go[i].ufo_gid).show();
+        	 }else{
+        		 target.type = "ufoOff";
+        		 $("#stamp_back_"+go[i].ufo_gid).show();
+        		 $("#stamp_"+go[i].ufo_gid).hide();
+        	 }
+        	 
+        	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
+        		 target.type = "me";
+        	 }	 
+	         neighborhoods.push(target);
+         }
+         neighborhoods.push(pos);
+         map.setCenter(pos);
+         drop();
+    });
+}
 /**
  * 
 */			
@@ -980,8 +972,7 @@ function stampPostSubmit(para){
 	              contentType: false,
 	              success: function(result){
 	            	  console.log("처리되었습니다. : "+result);
-	            	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/go/"+window.sessionStorage.getItem('uid')+" 스탬프랠리를 참여하였습니다! ${ufo.ufo_tag}"  ;
-   	            	  fbPost(msg, "fb_go", para);
+	            	  showDone("성공하였습니다.", "go");
 	              },
 	              error: function(er){}
 	      });
@@ -1023,10 +1014,8 @@ function qrRallyPost(para){
            contentType: false,
            success: function(result){
          	  console.log("처리되었습니다. : "+result);
-         	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/qr/"+window.sessionStorage.getItem('uid')+" 큐알코드랠리에 참여했네요! ${ufo.ufo_tag}"  ;
          	  $("#qrNumber").val('');
-         	  fbPost(msg, "fb_qr", $.trim($("#qrNumber").val()));
-         	  //location.reload();
+        	  showDone("성공하였습니다.", "qr");
            },
            error: function(er){}
 			});
@@ -1042,37 +1031,37 @@ function qrRallyPost(para){
 			fbLogin('survey');
 		}
 	}
-	/**
-	 * 
-	 */
 
-	function surveyPostSubmit(){
-		if(checkLogin()){
-			showPleaseWait();
-			  $( "#first_name_a").val(window.sessionStorage.getItem('first_name'));
-			  $( "#last_name_a").val(window.sessionStorage.getItem('last_name'));
-			  $( "#uid_a").val(window.sessionStorage.getItem('uid'));
-			  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
-			  $( "#sns_type_a").val('ufo_survey');		  
-			  var form = new FormData($("#surveyForm")[0]);
-		      $.ajax({
-		              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
-		              method: "POST",
-		              dataType: 'json',
-		              data: form,
-		              processData: false,
-		              contentType: false,
-		              success: function(result){
-		            	  console.log("처리되었습니다. : "+result);
-		            	  var msg = "https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/survey/"+window.sessionStorage.getItem('uid')+" 서베이에 참여하였습니다! ${ufo.ufo_tag}"  ;
-	   	            	  fbPost(msg, "survey", "survey");
-		              },
-		              error: function(er){}
-		      });
-		}else{
-			fbLogin('survey');
-		}
+/**
+ * 
+ */
+
+function surveyPostSubmit(){
+	if(checkLogin()){
+		showPleaseWait();
+		  $( "#first_name_a").val(window.sessionStorage.getItem('first_name'));
+		  $( "#last_name_a").val(window.sessionStorage.getItem('last_name'));
+		  $( "#uid_a").val(window.sessionStorage.getItem('uid'));
+		  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
+		  $( "#sns_type_a").val('ufo_survey');		  
+		  var form = new FormData($("#surveyForm")[0]);
+	      $.ajax({
+	              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
+	              method: "POST",
+	              dataType: 'json',
+	              data: form,
+	              processData: false,
+	              contentType: false,
+	              success: function(result){
+	            	  console.log("처리되었습니다. : "+result);
+	            	  showDone("성공하였습니다.", "ve");
+	              },
+	              error: function(er){}
+	      });
+	}else{
+		fbLogin('survey');
 	}
+}
 </script>
 </c:if>
    

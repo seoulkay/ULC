@@ -471,6 +471,12 @@
 		<if test="qr_pic != null and qr_pic != ''">
 			,qr_pic = #{qr_pic}
 		</if>
+		<if test="qr_info != null and qr_info != ''">
+			,qr_info = #{qr_info}
+		</if>
+		<if test="qr_info_title != null and qr_info_title != ''">
+			,qr_info_title = #{qr_info_title}
+		</if>
 	WHERE
 		idfest_ufo = #{idfest_ufo}
 	</update>
