@@ -324,10 +324,10 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h3 style="font-family:football;">큐알 코드 안내문</h3>
+	  		<h3 style="font-family:football;">${ufo.qr_info_title }</h3>
 	   </div>
 	   <div class="modal-body" style="font-family:NanumBarunGothic">
-   			<div style="padding:10px">안내문 입니다요<br>
+   			<div style="padding:10px">${ufo.qr_info }<br>
    			</div>
 		</div>
 		<div class="modal-footer">
@@ -718,7 +718,7 @@ function redirectGallery(tt){
 
 </script>
 
-<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+<!-- 핵심 로직 -->
 <script>
 
 var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
@@ -731,6 +731,9 @@ var icons = {
   },
   ufoOff:{
 	  icon: iconBase +'icon_pin_15px_off.svg'
+  },
+  ufoDone:{
+	  icon: iconBase +'icon_pin_15px_fn_02.svg'
   }
 };
         
@@ -903,7 +906,6 @@ function makeGo(){
       var infoWindow = new google.maps.InfoWindow({map: map});
       handleLocationError(false, infoWindow, map.getCenter());
 	}
-
 }
 /**
  * 마커 세팅
@@ -931,7 +933,7 @@ function markerSet(pos){
         	 }
         	 
         	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
-        		 target.type = "me";
+        		 target.type = "ufoDone";
         	 }	 
 	         neighborhoods.push(target);
          }
@@ -982,7 +984,6 @@ function stampPostSubmit(para){
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
-</c:if>	
 
 <c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
 <script>
