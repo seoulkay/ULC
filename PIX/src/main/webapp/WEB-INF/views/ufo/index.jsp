@@ -60,6 +60,7 @@
 		<div class="container heading-content">
 			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
 			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+			
 			<div class="actions">
                  <a class="scrollto-no-offset" href="#support-section"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
@@ -87,12 +88,27 @@
 	</div>
 	<!--//page-nav-space-holder-->
 
-<section id="support-section" class="support-section section text-center">
-		<div class="team-figure">
-		<div class="section-title">${ufo.event_short_description }</div><br>
-		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }</div><br>
+<section id="support-section" class="support-section section text-center" style="padding:1em;">
+		<div class="team-figure" >
+					
+		<div class="row">
+			<div class="col-sm-1" >
+				<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/ic_volume_up_white_24px.svg"style="padding-top: 0.5em">
+			</div>
+			<div class="col-sm-11 ">
+				<marquee><h4> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee>
+			</div>
 		</div>
-		<br><br>
+		<c:if test="${not empty ufo.fb_live }">
+		<div class="row">
+			<div class="fb-video" data-href="${ufo.fb_live }" data-width="500" data-show-text="false"></div>
+		</div>
+		</c:if>
+		<div class="section-title">${ufo.event_short_description }</div><br>
+		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }
+		</div>
+		
+		</div>
 		<!--//feature-list-->
 		<!--//team-figure-->
 </section>
@@ -144,7 +160,40 @@
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
-				</c:if>
+				<div style="height:2em"></div>
+				<h2 class="counter-desc">투표하기</h2>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="500" data-show-text="true"></div>
+    </div>
+
+    <div class="item">
+      <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1288565161190526" data-width="500" data-show-text="true"></div>
+    </div>
+
+    <div class="item">
+      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="500" data-show-text="true"></div>
+    </div>
+
+    <div class="item">
+     <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1283247045055671" data-width="500" data-show-text="true"></div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background-image: none;">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background-image: none;">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>	
+		</c:if>
 				
 <c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
 	<div id="qr-section" style="height:5em"></div>

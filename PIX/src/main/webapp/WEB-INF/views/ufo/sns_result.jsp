@@ -56,7 +56,7 @@
 		   				<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
 		   				</c:if>
 		   				<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
-	   						<div style="border: 2px solid #FFF; height:10em; overflow:hidden;background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+	   						<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
 		   				</a>
 	   				</div>
 	   			</div>
@@ -78,17 +78,15 @@
 	<div id="fb-root"></div> 
 </div>
 <!-- ******FOOTER****** -->
-<%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
-<%-- 		<jsp:param name="param" value="value1" /> --%>
-<%-- 	</jsp:include><!--//footer--> --%>
-<script>(function(d, s, id) {
+<script>
+(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1074619385980281";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-<script>
+	}(document, 'script', 'facebook-jssdk'));
+	
 document.getElementById('shareBtn').onclick = function() {
 	  FB.ui({
 	    method: 'share',
@@ -97,7 +95,7 @@ document.getElementById('shareBtn').onclick = function() {
 	  }, function(response){
 		  console.log(response.post_id);
 	  });
-	}
+}
 
 </script>
 </body>

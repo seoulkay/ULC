@@ -164,8 +164,10 @@ public class UfoController {
 			List<FestQuesListVO> ql = getQuestionModel(para);
 			model.addAttribute("quesVO", ql);
 		}
-	
-
+		
+		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		model.addAttribute("noticeList", noticeList);
+		
 		model.addAttribute("ufoqr", ufoqr);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
@@ -499,6 +501,9 @@ public class UfoController {
 			List<FestQuesListVO> ql = getQuestionModel(para);
 			model.addAttribute("quesVO", ql);
 		}
+		
+		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		model.addAttribute("noticeList", noticeList);
 		
 		model.addAttribute("ufoqr", ufoqr);
 		model.addAttribute("ufo", ufo);

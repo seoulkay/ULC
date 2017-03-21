@@ -51,6 +51,7 @@ public class FestUfo {
 	private String qr_pic;
 	private String qr_info;
 	private String qr_info_title;
+	private String fb_live;
 	
 	
 	public Integer getIdfest_ufo() {
@@ -340,6 +341,12 @@ public class FestUfo {
 	}
 	public void setQr_info_title(String qr_info_title) {
 		this.qr_info_title = qr_info_title;
+	}
+	public String getFb_live() {
+		return fb_live;
+	}
+	public void setFb_live(String fb_live) {
+		this.fb_live = fb_live;
 	}
 	
 }

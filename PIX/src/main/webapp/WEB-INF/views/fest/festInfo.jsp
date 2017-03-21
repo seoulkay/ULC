@@ -14,8 +14,17 @@
             <div style="height:2em"></div>
             <div class="row">
             <h3>축제정보</h3>
+             
             <div style="height:2em"></div>
-            	<form id="ufoForm" action="updateUfo" enctype="multipart/form-data" method="post">
+            <h3>페이스북 라이브 피드</h3>
+            <form id="ufoForm" action="updateUfo" enctype="multipart/form-data" method="post">
+            <input type="submit" class="form-control btn btn-warning" style="background-color: #DCEDC8; " value="업데이트!">
+            <div style="height:0.5em"></div>
+                    <table class="table table_striped">
+                    	<tr><td class="success">라이브 피드의 주소를 넣어주세요.</td><td><input class="form-control" type="text" name="fb_live" value="${ufo.fb_live }"></td></tr>
+                    </table>
+             
+            <div style="height:2em"></div>
                     <table class="table table_striped">
                     	<tr><td class="success">idfest_ufo</td><td><input class="form-control" type="text" name="idfest_ufo" value="${ufo.idfest_ufo }" readonly></td></tr>
                     	<tr><td class="success">logo <c:if test="${ufo.logo ne null}"><img src="https://www.ufo79.com/image/${ufo.logo}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="logo_file"></td></tr>
@@ -65,7 +74,6 @@
                     	<tr><td class="success">ufo_survey_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_title" maxlength="500">${ufo.ufo_survey_title }</textarea></td></tr>
                    		<tr><td class="success">ufo_survey_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_desc" maxlength="500">${ufo.ufo_survey_desc }</textarea></td></tr>
                     </table>
-                    <input type="submit" class="form-control btn-warning" style="background-color: PINK" value="나의 홈페이지를 업데이트!">
                 </form>
             </div>
         <div style="height:2em"></div>
