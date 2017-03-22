@@ -17,7 +17,7 @@
 	<meta property="og:type"               content="article" />
 	<meta property="og:title"              content="${ufo.title }" />
 	<meta property="og:description"        content="${ufo.event_short_description }" />
-  
+	<meta property="og:image"         content="https://www.ufo79.com/image/${go_image}" />
   
   
     <link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">  
@@ -93,10 +93,10 @@ button.close {
 </div>
 
 <!-- ******FOOTER****** -->
-<%-- 	<jsp:include page="footer.jsp" flush="false"> --%>
-<%-- 		<jsp:param name="param" value="value1" /> --%>
-<%-- 	</jsp:include><!--//footer--> --%>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
+
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
@@ -118,9 +118,22 @@ document.getElementById('shareBtn').onclick = function() {
 	    display: 'popup',
 	    href: '${ shareLink}',
 	  }, function(response){
-		  console.log(response.post_id);
+		  var share_return = response.post_id;
+		  var para = '${ufo.para}';
+		  var uid = '${uid}';
+		  var result_type = '${type}_single';
+
+		  /**
+		   * 쉐어 서밋
+		   */
+		   $.post( "/PIX/ufo/${ufo.para}/shareSubmit", {para:para, uid:uid, share_return:share_return, result_type:result_type})
+		   .done(function( data ) {
+		  	 console.log("submitted");
+		   });
 	  });
 	}
+	
+
 </script>
 </body>
 </html>

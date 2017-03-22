@@ -818,4 +818,63 @@
 		#{ufo_gid}
 	)
 	</insert>
+	<insert id="insertUfoShare" parameterType="UfoShare">
+	INSERT INTO
+	pix.ufo_share
+	(
+		idufo_share,
+		para,
+		uid,
+		share_return,
+		result_type,
+		share_time
+	)
+	VALUES
+	(
+		#{idufo_share},
+		#{para},
+		#{uid},
+		#{share_return},
+		#{result_type},
+		now()
+	)
+	</insert>
+	<select id="selectShare_timeByVo" parameterType="UfoShare" resultType="UfoShare">
+		SELECT * 
+		FROM pix.ufo_share
+		WHERE
+		1=1
+		<if test="para != null and para != ''">
+		and para=#{para}
+		</if>
+		<if test="uid != null and uid != ''">
+		and uid=#{uid}
+		</if>
+		<if test="share_return != null and share_return != ''">
+		and share_return=#{share_return}
+		</if>
+		<if test="result_type != null and result_type != ''">
+		and result_type=#{result_type}
+		</if>
+	</select>
+	<select id="select4RandomShare_timeByVo" parameterType="UfoShare" resultType="UfoShare">
+		SELECT * 
+		FROM pix.ufo_share
+		WHERE
+		1=1
+		<if test="para != null and para != ''">
+		and para=#{para}
+		</if>
+		<if test="uid != null and uid != ''">
+		and uid=#{uid}
+		</if>
+		<if test="share_return != null and share_return != ''">
+		and share_return=#{share_return}
+		</if>
+		<if test="result_type != null and result_type != ''">
+		and result_type=#{result_type}
+		</if>
+		ORDER BY RAND()
+		LIMIT 4
+	</select>
 </mapper>

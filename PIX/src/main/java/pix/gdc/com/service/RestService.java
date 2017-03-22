@@ -1,19 +1,12 @@
 package pix.gdc.com.service;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.drew.imaging.ImageProcessingException;
-
 import pix.gdc.com.util.FileUtil;
 import pix.gdc.com.util.MetaDataUtil;
 import pix.gdc.com.vo.Geodata;

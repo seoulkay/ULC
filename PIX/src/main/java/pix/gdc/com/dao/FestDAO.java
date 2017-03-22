@@ -30,6 +30,7 @@ import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.Notice_VO;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoShare;
 
 
 @Repository
@@ -418,4 +419,20 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public List<UfoGoRecord> selectUfoGoRecordByParaAndUid(UfoGoRecord vo){
 		return getSqlSession().selectList("BasicMapper.selectUfoGoRecordByParaAndUid", vo);
 	}
+	
+	//쉐어4개 랜덤픽
+	public List<UfoShare> select4RandomShare_timeByVo(UfoShare vo){
+		return getSqlSession().selectList("BasicMapper.select4RandomShare_timeByVo", vo);
+	}
+	
+	//쉐어싹가지고 오기
+	public List<UfoShare> selectShare_timeByVo(UfoShare vo){
+		return getSqlSession().selectList("BasicMapper.selectShare_timeByVo", vo);
+	}
+	
+	//쉐어넣기
+	public int insertUfoShare(UfoShare vo){
+		return getSqlSession().insert("BasicMapper.insertUfoShare", vo);
+	}
+	
 }

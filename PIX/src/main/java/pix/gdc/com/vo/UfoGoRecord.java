@@ -2,6 +2,8 @@ package pix.gdc.com.vo;
 
 import java.sql.Date;
 
+import com.mysql.jdbc.Blob;
+
 public class UfoGoRecord {
 	private int id;
 	private String first_name;
@@ -18,7 +20,7 @@ public class UfoGoRecord {
 	private String ufo_gid;
 	private String go_content;
 	private boolean submit = false;
-	
+	private Blob image_blob;
 	public int getId() {
 		return id;
 	}
@@ -109,5 +111,12 @@ public class UfoGoRecord {
 	public void setSubmit(boolean submit) {
 		this.submit = submit;
 	}
+	public Blob getImage_blob() {
+		return image_blob;
+	}
+	public void setImage_blob(Blob image_blob) {
+		this.image_blob = image_blob;
+	}
+	
 
 }
