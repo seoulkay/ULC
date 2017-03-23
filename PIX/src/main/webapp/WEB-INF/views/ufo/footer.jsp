@@ -265,14 +265,14 @@
 		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
 		   				</a>
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
-	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:NanumBarunGothic">${ele.go_content }</p>
+	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px;">${ele.go_content }</p>
 		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
 	   			</c:forEach>
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" style="font-family:NanumBarunGothic; color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
 	  	</div>
 	</div>
 	</div>
@@ -286,7 +286,7 @@
 	  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
 	   </div>
 	   <div class="modal-body">
-   			<div style="padding:10px; font-family:NanumBarunGothic;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
+   			<div style="padding:10px;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
    			</div>
    		<%-- ${statusEle.count }번 사진 : ${ele.go_content }<br>
 	 	 	<div class="progress">
@@ -314,8 +314,8 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-		<button type="button" style="font-family:NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-	    <button type="button" style="font-family:NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -329,7 +329,7 @@
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  		<h3 style="font-family:football;">${ufo.qr_info_title }</h3>
 	   </div>
-	   <div class="modal-body" style="font-family:NanumBarunGothic">
+	   <div class="modal-body">
    			<div style="padding:10px">${ufo.qr_info }<br>
    			</div>
 		</div>
@@ -358,7 +358,7 @@
 		   			<img id="qr_yes_${ele.ufo_gid }" style="position:absolute; top:15%; left:15%; width:70%; display:none; opacity : 1;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 <%-- 	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
 	   				<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_image}">
-	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:NanumBarunGothic">${ele.go_content }</p>
+	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px;">${ele.go_content }</p>
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -378,7 +378,7 @@
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  		<h3 style="font-family:football;">큐알 코드 미션</h3>
 	   </div>
-	   <div class="modal-body" style="font-family:NanumBarunGothic">
+	   <div class="modal-body">
    			<p>${ele.go_content }<br></p>
 	 	 	<div class="progress">
 			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
@@ -404,8 +404,8 @@
 			</form>
 		</div>
 		<div class="modal-footer">
-		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="getUfo('qr')">뒤로</button>
-	    <button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="qrRallyPost('${ele.ufo_gid }')">제출</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('qr')">뒤로</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="qrRallyPost('${ele.ufo_gid }')">제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -449,10 +449,11 @@ input {
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
-<link href='http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
+<!-- 크로스 오진 나온다. 수정 요구 -->
+<link href='https://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
 
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script> --%>
@@ -937,8 +938,8 @@ function showDone(para, type) {
                 </div>\
             </div>\
             <div class="modal-footer">\
-    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal" onClick="redirectGallery(\''+tt+'\')">갤러리</button>\
-    		<button type="button" style="font-family: NanumBarunGothic;" class="btn btn-default" data-dismiss="modal">확인</button>\
+    		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="redirectGallery(\''+tt+'\')">갤러리</button>\
+    		<button type="button" class="btn btn-default" data-dismiss="modal">확인</button>\
     	  	</div>\
         </div>\
     </div>\
@@ -1208,7 +1209,7 @@ function markerSet(pos){
         	 var target = {};
         	 target.lat = parseFloat((Number(go[i].go_lat)));
         	 target.lng = parseFloat((Number(go[i].go_alt)));
-        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;"><img id="stamp_back_${ele.ufo_gid }" style="opacity : 1; width:30px; padding-right:3px; float:left;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/back_stamp_01.svg">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
+        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
         	 
         	 
         	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
