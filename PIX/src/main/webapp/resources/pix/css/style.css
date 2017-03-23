@@ -17,9 +17,6 @@ body {
     font-size: 14px;
     line-height: 24px;
     background-color: #fff;
-
-
-
 }
 
 /*
@@ -1234,3 +1231,11 @@ a.sbtn {display:inline-block; height:25px; padding:0 14px 0; border:1px solid #3
 a.sbtn:hover {border: 1px solid #091940; background-color:#1f326a; color:#fff;}
 
 /*레이어드 팝업 끝*/
+
+.hk{
+	width: 25%;
+	background-color:#4FCDB9; 
+	color: #ffffff;
+	vertical-align: middle !important; 
+	font-weight: bold;
+}

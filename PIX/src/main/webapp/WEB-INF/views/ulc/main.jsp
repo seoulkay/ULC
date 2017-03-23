@@ -162,7 +162,7 @@
                 	<div class="padding-top140 padding-top80-sm padding-top0-xs text-center-xs">
                     	<div class="post-heading-left">
                         	<p>UFO 통합형 축제관리 서비스</p>
-                            <h2>축제 방문객의 참여와 피드백을 이끌어내는 간편한 매개체</h2>
+                            <h2>축제 참여와 피드백을 이끌어내는 간편한 매개체</h2>
                             <h5>UFO는 스탬프랠리와 설문조사를 솔루션을 통해 축제 방문객의 참여를 유도하고 피드백을 받을 수 있는 통합형 축제관리 서비스를 제공합니다. </h5>
                         </div>
                         
