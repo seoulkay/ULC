@@ -32,6 +32,7 @@ import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoShare;
 
 @Controller
 public class UfoController {
@@ -174,6 +175,29 @@ public class UfoController {
 		return "ufo/index";
 	}
 	
+	@RequestMapping(value = "ufo/{para}/stamp", method = RequestMethod.GET)
+	public String stamp(Model model, @PathVariable("para")String para, HttpSession session){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		List<UfoGoVO> ufoGo = dao.selectUfoGoByPara(para);
+		List<UfoGoVO> ufoqr = dao.selectUfoQrByPara(para);
+		
+		
+		if(ufo.getMenu().contains("stories")){
+			List<FestQuesListVO> ql = getQuestionModel(para);
+			model.addAttribute("quesVO", ql);
+		}
+		
+		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		model.addAttribute("noticeList", noticeList);
+		
+		model.addAttribute("ufoqr", ufoqr);
+		model.addAttribute("ufo", ufo);
+		model.addAttribute("ufoGo", ufoGo);
+		return "ufo/stamp";
+	}
+	
 	public List<FestQuesListVO> getQuestionModel(String para){
 		
 		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
@@ -292,6 +316,7 @@ public class UfoController {
 			typeString = "큐알랠리";
 		}
 		
+		String go_image = "";
 		for(UfoGoRecord ele: userResult){
 			for(UfoGoVO ele2 : ufoResult){
 				if(ele.getUfo_gid().equals(ele2.getUfo_gid())){
@@ -299,12 +324,17 @@ public class UfoController {
 					ele2.setSubmit(true);
 					userSize++;
 				}
+				if(ele.getUfo_gid().equals(gid)){
+					go_image = ele.getUfo_image();
+				}
 			}
 		}
 		
 		String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid+"/"+gid;
 		String homepage = "https://www.ufo79.com/PIX/ufo/"+para+"/index";
 		
+		
+		model.addAttribute("go_image", go_image);
 		model.addAttribute("ufoResult", ufoResult);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoSize", ufoResult.size());
@@ -459,6 +489,17 @@ public class UfoController {
 			e.getStackTrace();
 		}
 		return dao.insertUfoAnswer(vo);
+	}
+	@RequestMapping(value = "ufo/{para}/shareSubmit", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody int shareSubmit(@ModelAttribute("")UfoShare vo, HttpServletRequest request, @PathVariable("para")String para){
+		vo.setPara(para);
+		return dao.insertUfoShare(vo);
+	}
+	
+	@RequestMapping(value = "ufo/{para}/shareRand4", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody List<UfoShare> shareRand4(@ModelAttribute("")UfoShare vo, HttpServletRequest request, @PathVariable("para")String para){
+		vo.setPara(para);
+		return dao.select4RandomShare_timeByVo(vo);
 	}
 	
 	

@@ -163,11 +163,13 @@ public class PixController {
 	
 	@RequestMapping(value = "/ufogo/insert", method = {RequestMethod.POST})
 	public @ResponseBody int insertUfogo(@ModelAttribute("vo")UfoGoRecord vo, @RequestParam("file") MultipartFile file){
-		
+		System.out.println(file.getName());
+		System.out.println(file.getContentType());
+		System.out.println(file.getSize());
+		System.out.println(file.getOriginalFilename());
 		if (!file.isEmpty()) {
             try {
                 String[] fileInfo = restService.writeFileToServer(file);
-                
                 vo.setUfo_image(fileInfo[0]);
                 vo.setImage_lat(fileInfo[1]);
                 vo.setImage_alt(fileInfo[2]);
@@ -179,7 +181,7 @@ public class PixController {
             	}
             	return  result; 
             } catch (Exception e) {
-                System.out.println("You failed to upload => " + e.getMessage());
+                System.out.println("You failed to upload => " + e.getMessage() +e.getStackTrace());
                 return 0;
             }
         } else {

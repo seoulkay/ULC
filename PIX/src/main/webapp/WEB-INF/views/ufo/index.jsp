@@ -17,12 +17,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic'
-	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <!-- Global CSS -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -96,7 +92,7 @@
 				<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/ic_volume_up_white_24px.svg"style="padding-top: 0.5em">
 			</div>
 			<div class="col-sm-11 ">
-				<marquee><h4> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee>
+				<marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee>
 			</div>
 		</div>
 		<c:if test="${not empty ufo.fb_live }">
@@ -132,7 +128,7 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-warning" onClick="redirectGallery('go')"><span class="btn-text">갤러리로 가기</span></button> <button class="btn btn-social btn-facebook" onClick="getUfo('go')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button> <button class="btn btn-warning" onClick="qrInfoShow()"><span class="btn-text">GPS가 잘 안잡힐 경우</span></button></li>
+							<li><button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:3px"><span class="btn-text">갤러리로 가기</span></button> <button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button></li>
 <!-- 							<li> -->
 <!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 							</li> -->
@@ -161,25 +157,31 @@
 				</div>
 				<!--//form-wrapper-->
 				<div style="height:2em"></div>
+				
+				<div class="section-inner">
+			<div class="container text-center">
+			<div class="form-wrapper">
 				<h2 class="counter-desc">투표하기</h2>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div class="form-wrapper">
+					<div class="form-box">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="500" data-show-text="true"></div>
+    <div class="item active" id="caro1">
+      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="350" data-show-text="true"></div>
     </div>
 
-    <div class="item">
-      <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1288565161190526" data-width="500" data-show-text="true"></div>
+    <div class="item" id="caro2">
+      <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1288565161190526" data-width="350" data-show-text="true"></div>
     </div>
 
-    <div class="item">
-      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="500" data-show-text="true"></div>
+    <div class="item" id="caro3">
+      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="350" data-show-text="true"></div>
     </div>
 
-    <div class="item">
-     <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1283247045055671" data-width="500" data-show-text="true"></div>
+    <div class="item" id="caro4">
+     <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1283247045055671" data-width="350" data-show-text="true"></div>
     </div>
   </div>
 
@@ -193,6 +195,11 @@
     <span class="sr-only">Next</span>
   </a>
 </div>	
+</div>
+</div>
+</div>
+</div>
+</div>
 		</c:if>
 				
 <c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">

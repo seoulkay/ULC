@@ -246,6 +246,7 @@
 
 
 
+
 <!-- 스템프  -->
 <c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stampRally" data-dismiss="modal" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
@@ -263,7 +264,7 @@
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
 		   				</a>
-		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
+		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
 	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:NanumBarunGothic">${ele.go_content }</p>
 		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
@@ -301,6 +302,7 @@
    			<div style="padding:10px">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+   			
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="file" class="form-control">
 				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
 				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
@@ -319,6 +321,7 @@
 	</div>
 </div>
 </c:forEach>
+
 <div class="modal" id="qr_info" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -336,7 +339,6 @@
 	</div>
 </div>
 </c:if>
-
 
 
 <!-- 큐알 모달 -->
@@ -357,7 +359,6 @@
 <%-- 	   				<img id="qr_back_${ele.ufo_gid }" style="opacity : 0.5;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg"> --%>
 	   				<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px;" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_image}">
 	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px; font-family:NanumBarunGothic">${ele.go_content }</p>
-	   				
 	   			</div>
 	   			</c:forEach>
 	   		</div>
@@ -424,6 +425,26 @@
 <input type="hidden" id="sns_gid_sns" name="sns_gid">
 </form>
 
+<style>
+html,
+input {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+.img-export {
+    display: block;
+}
+</style>
+
 <!-- Javascript -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -431,15 +452,237 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script>
+<link href='http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
+
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script> --%>
 
 <!--//Page Specific JS -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/home.js"></script>
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/js/printThis.js"></script>	
+
 	
-	
+<form id="form">
+  <h1>Client-side image-editor and uploader</h1>
+  <h2>Image file select</h2>
+  <input id="file" type="file" />
+  <h2>Image cropper (Jcrop)</h2>
+  				<input type="hidden" id="first_name_go" name="first_name" value="test">
+				<input type="hidden" id="last_name_go" name="last_name" value="testlast">
+				<input type="hidden" id="uid_go" name="user_uid" value="uid">
+				<input type="hidden" id="email_go" name="email">
+				<input type="hidden" id="type_go" name="ufo_go_type" value="qr">
+				<input type="hidden" id="gid_go" name="ufo_gid" value="2001">
+				<input type="hidden" id="para" name="para" value="gc">
+  <button id="cropbutton" type="button">Crop</button>
+  <button id="scalebutton" type="button">Scale</button>
+  <button id="rotatebutton" type="button">Rotate</button>
+  <button id="hflipbutton" type="button">H-flip</button>
+  <button id="vflipbutton" type="button">V-flip</button>
+  <br>
+  <div id="views"></div>
+  <h2>Submit form</h2>
+  <input type="submit" value="Upload form data and image" />
+</form>	
+<script type="text/javascript">
+var crop_max_width = 400;
+var crop_max_height = 400;
+var jcrop_api;
+var canvas;
+var context;
+var image;
+
+var prefsize;
+
+$("#file").change(function() {
+  loadImage(this);
+});
+
+function loadImage(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    canvas = null;
+    reader.onload = function(e) {
+      image = new Image();
+      image.onload = validateImage;
+      image.src = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function dataURLtoBlob(dataURL) {
+  var BASE64_MARKER = ';base64,';
+  if (dataURL.indexOf(BASE64_MARKER) == -1) {
+    var parts = dataURL.split(',');
+    var contentType = parts[0].split(':')[1];
+    var raw = decodeURIComponent(parts[1]);
+
+    return new Blob([raw], {
+      type: contentType
+    });
+  }
+  var parts = dataURL.split(BASE64_MARKER);
+  var contentType = parts[0].split(':')[1];
+  var raw = window.atob(parts[1]);
+  var rawLength = raw.length;
+  var uInt8Array = new Uint8Array(rawLength);
+  for (var i = 0; i < rawLength; ++i) {
+    uInt8Array[i] = raw.charCodeAt(i);
+  }
+
+  return new Blob([uInt8Array], {
+    type: contentType
+  });
+}
+
+function validateImage() {
+  if (canvas != null) {
+    image = new Image();
+    image.onload = restartJcrop;
+    image.src = canvas.toDataURL('image/png');
+  } else restartJcrop();
+}
+
+function restartJcrop() {
+  if (jcrop_api != null) {
+    jcrop_api.destroy();
+  }
+  $("#views").empty();
+  $("#views").append("<canvas id=\"canvas\">");
+  canvas = $("#canvas")[0];
+  context = canvas.getContext("2d");
+  canvas.width = image.width;
+  canvas.height = image.height;
+  context.drawImage(image, 0, 0);
+  $("#canvas").Jcrop({
+    onSelect: selectcanvas,
+    onRelease: clearcanvas,
+    boxWidth: crop_max_width,
+    boxHeight: crop_max_height
+  }, function() {
+    jcrop_api = this;
+  });
+  clearcanvas();
+}
+
+function clearcanvas() {
+  prefsize = {
+    x: 0,
+    y: 0,
+    w: canvas.width,
+    h: canvas.height,
+  };
+}
+
+function selectcanvas(coords) {
+  prefsize = {
+    x: Math.round(coords.x),
+    y: Math.round(coords.y),
+    w: Math.round(coords.w),
+    h: Math.round(coords.h)
+  };
+}
+
+function applyCrop() {
+  canvas.width = prefsize.w;
+  canvas.height = prefsize.h;
+  context.drawImage(image, prefsize.x, prefsize.y, prefsize.w, prefsize.h, 0, 0, canvas.width, canvas.height);
+  validateImage();
+}
+
+function applyScale(scale) {
+  if (scale == 1) return;
+  canvas.width = canvas.width * scale;
+  canvas.height = canvas.height * scale;
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  validateImage();
+}
+
+function applyRotate() {
+  canvas.width = image.height;
+  canvas.height = image.width;
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.translate(image.height / 2, image.width / 2);
+  context.rotate(Math.PI / 2);
+  context.drawImage(image, -image.width / 2, -image.height / 2);
+  validateImage();
+}
+
+function applyHflip() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.translate(image.width, 0);
+  context.scale(-1, 1);
+  context.drawImage(image, 0, 0);
+  validateImage();
+}
+
+function applyVflip() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.translate(0, image.height);
+  context.scale(1, -1);
+  context.drawImage(image, 0, 0);
+  validateImage();
+}
+
+$("#cropbutton").click(function(e) {
+  applyCrop();
+});
+$("#scalebutton").click(function(e) {
+  var scale = prompt("Scale Factor:", "1");
+  applyScale(scale);
+});
+$("#rotatebutton").click(function(e) {
+  applyRotate();
+});
+$("#hflipbutton").click(function(e) {
+  applyHflip();
+});
+$("#vflipbutton").click(function(e) {
+  applyVflip();
+});
+
+$("#form").submit(function(e) {
+  e.preventDefault();
+  formData = new FormData($(this)[0]);
+  var blob = dataURLtoBlob(canvas.toDataURL('image/png'));
+  //---Add file blob to the form data
+  formData.append("file", blob, "upload.png");
+  $.ajax({
+    url: "/PIX/ufogo/insert",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(data) {
+      alert("Success");
+    },
+    error: function(data) {
+      alert("Error");
+    },
+    complete: function(data) {}
+  });
+});
+
+</script>
 <script>
+
+/**
+ * 서베이이닛
+ */
+//  $.post( "/PIX/ufo/${sessionScope.eventPara}/shareRand4")
+//  .done(function( data ) {
+// 	 var rand4 = JSON.parse(JSON.stringify(data));
+// 	 for(i = 0 ; i < rand4.length ; i++){
+// 		 var msg =  '<div class="fb-post" data-href="https://www.facebook.com/'+rand4[i].uid+'/posts/'+rand4[i].share_return+'" data-width="350" data-show-text="true"></div>';
+// 		 console.log(msg);
+// 		 $("#caro"+i).children().remove();
+// 		 $("#caro"+i).append( msg );
+// 	 }
+//  });
+
 /**
  * 페이스북 관련
  */ 
@@ -709,7 +952,7 @@ $("#showDone").modal("show");
  */
 function redirectGallery(tt){
 	if(window.sessionStorage.getItem('uid') == 'undefined' || window.sessionStorage.getItem('uid') == null){
-			alert("로그인을 해주세요!");
+			fbLogin('go_re');
 	}else{
 		   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/"+tt+"/"+window.sessionStorage.getItem('uid');
 		
@@ -760,7 +1003,7 @@ function CenterControl(controlDiv) {
       controlUI.style.cursor = 'pointer';
       controlUI.style.marginBottom = '22px';
       controlUI.style.textAlign = 'center';
-      controlUI.style.marginTop = '5px';
+      controlUI.style.margin = '5px';
       controlUI.title = 'Click to recenter the map';
       controlDiv.appendChild(controlUI);
 
@@ -772,7 +1015,7 @@ function CenterControl(controlDiv) {
       controlText.style.lineHeight = '38px';
       controlText.style.paddingLeft = '5px';
       controlText.style.paddingRight = '5px';
-      controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;">';
+      controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/map_refresh.svg" style="width: 35px; height: 35px;">';
       controlUI.appendChild(controlText);
 
       // 센터 잡기
@@ -782,17 +1025,57 @@ function CenterControl(controlDiv) {
     	  makeGo();
       });
     }
+function CenterControl2(controlDiv) {
+
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginBottom = '22px';
+    controlUI.style.textAlign = 'center';
+    controlUI.style.margin = '5px';
+    controlUI.title = 'Click to recenter the map';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.color = 'rgb(25,25,25)';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '16px';
+    controlText.style.lineHeight = '38px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/map_info.svg" style="width: 35px; height: 35px;">';
+    controlUI.appendChild(controlText);
+
+    // 센터 잡기
+    controlUI.addEventListener('click', function() {
+    	qrInfoShow()
+    });
+  }
 /**
  * 리프레쉬 버튼 
  */
 function refreshBtn(){
 	$("#refreshBtn").remove();
+	$("#mapInfoBtn").remove();
 	var centerControlDiv = document.createElement('div');
     centerControlDiv.setAttribute("id", "refreshBtn");
     var centerControl = new CenterControl(centerControlDiv);
     
+    var centerControlDiv2 = document.createElement('div');
+    centerControlDiv2.setAttribute("id", "mapInfoBtn");
+    var centerControl2 = new CenterControl2(centerControlDiv2);
+    
+    
     centerControlDiv.index = 1;
+    centerControlDiv2.index = 1;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
+    
 }
  /**
    * 
@@ -800,7 +1083,13 @@ function refreshBtn(){
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 18,
-	    center: {lat: 35.097, lng: 129.008}
+	    center: {lat: 35.097, lng: 129.008},
+	    zoomControl: true,
+	    mapTypeControl: false,
+	    scaleControl: true,
+	    streetViewControl: false,
+	    rotateControl: false,
+	    fullscreenControl: true
 	  });
 }
 

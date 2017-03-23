@@ -52,12 +52,17 @@
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-4" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
 	   				<div style="padding-top:3px; padding-bottom:3px">
-	   					<c:if test="${not ele.submit}">
-		   				<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
-		   				</c:if>
-		   				<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
-	   						<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
-		   				</a>
+	   				<c:choose>
+	   					<c:when test="${not ele.submit}">
+	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
+			   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+	   					</c:when>
+	   					<c:otherwise>
+	   					<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
+	   							<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+	   					</a>
+	   					</c:otherwise>
+	   				</c:choose>
 	   				</div>
 	   			</div>
 	   			</c:forEach>
@@ -70,7 +75,7 @@
 			<div class="modal-footer">
 			<br>
 		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/index'"><span class="btn-text">확인</span></span>
-		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a>
+		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br>
 		    </div>
   		</div>
@@ -78,6 +83,8 @@
 	<div id="fb-root"></div> 
 </div>
 <!-- ******FOOTER****** -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
+
 <script>
 (function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -93,10 +100,28 @@ document.getElementById('shareBtn').onclick = function() {
 	    display: 'popup',
 	    href: '${ shareLink}',
 	  }, function(response){
-		  console.log(response.post_id);
+		  var share_return = response.post_id;
+		  var para = '${ufo.para}';
+		  var uid = '${uid}';
+		  var result_type = '${type}_result';
+		  $.post( "/PIX/ufo/${ufo.para}/shareSubmit", {para:para, uid:uid, share_return:share_return, result_type:result_type})
+		  .done(function( data ) {
+			  console.log("submitted");
+		  });
 	  });
 }
+// 
+// 
+// 
+// 
 
+// /**
+//  * 쉐어 서밋
+//  */
+//  
+//  
+// 	 
+//  
 </script>
 </body>
 </html>
