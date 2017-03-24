@@ -339,7 +339,7 @@
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-1">
 			<div class="row">
-				<div class="feature-content col-md-4 col-sm-6 col-xs-12">
+				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
 					<h3 class="feature-title">${ufo.history_title }</h3>
 					<div class="feature-desc">
 						<p>${ufo.info_hist_text }</p>
@@ -347,8 +347,8 @@
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-				<div class="feature-figure col-md-8 col-sm-6 col-xs-12">
-					<div class="figure-holder">
+				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+					<div class="figure-holder" align="center">
 						<c:if test="${ufo.info_hist_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_hist_pic}"
