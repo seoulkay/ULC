@@ -443,19 +443,45 @@ input {
 .img-export {
     display: block;
 }
+
+#cameraButtonContainer
+{
+    position: relative;
+    overflow: hidden;
+    direction: ltr;
+    display: none;
+}
+
+#cameraButtonContainer .ios
+{
+    display: block;
+}
+
+#cameraButton
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-family: Arial;
+    font-size: 118px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    opacity: 0;
+}
 </style>
 
 <!-- Javascript -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script> --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <!-- 크로스 오진 나온다. 수정 요구 -->
-<link href='https://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
-
+<!-- <link href='https://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'> -->
+<link href='${pageContext.request.contextPath}/resources/ufo/assets/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/jquery.Jcrop.min.js"></script>
+<!-- <script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script> -->
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script> --%>
 
 <!--//Page Specific JS -->
@@ -486,7 +512,41 @@ input {
   <h2>Submit form</h2>
   <input type="submit" value="Upload form data and image" />
 </form>	
+  <!-- Fine Uploader DOM Element
+    ====================================================================== -->
+    <div id="fine-uploader-validation"></div>
+ <div id="cameraButtonContainer" class="qq-upload-button">
+  <div>Camera</div>
+  <input id="cameraButton" type="file" name="camera" accept="image/*;capture=camera">
+</div>
+<div id="myFineUploader"></div>
+
+    <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
+    ====================================================================== -->
+   <script>
+        $('#fine-uploader-validation').fineUploader({
+            template: 'qq-template-validation',
+            request: {
+                endpoint: '/server/uploads'
+            },
+            thumbnails: {
+                placeholders: {
+                    waitingPath: '/source/placeholders/waiting-generic.png',
+                    notAvailablePath: '/source/placeholders/not_available-generic.png'
+                }
+            },
+            validation: {
+                allowedExtensions: ['jpeg', 'jpg', 'txt'],
+                itemLimit: 3,
+                sizeLimit: 5120000 // 50 kB = 50 * 1024 bytes
+            }
+        });
+ 
+
+    </script>
 <script type="text/javascript">
+
+
 var crop_max_width = 400;
 var crop_max_height = 400;
 var jcrop_api;
@@ -551,7 +611,7 @@ function restartJcrop() {
     jcrop_api.destroy();
   }
   $("#views").empty();
-  $("#views").append("<canvas id=\"canvas\">");
+  $("#views").append("<canvas id=\"canvas\" class='img-responsive'>");
   canvas = $("#canvas")[0];
   context = canvas.getContext("2d");
   canvas.width = image.width;
@@ -561,9 +621,17 @@ function restartJcrop() {
     onSelect: selectcanvas,
     onRelease: clearcanvas,
     boxWidth: crop_max_width,
-    boxHeight: crop_max_height
+    boxHeight: crop_max_height,
+	aspectRatio : 1
   }, function() {
     jcrop_api = this;
+    
+    //jcrop_api.animateTo([100,100,400,300]);
+	//jcrop_api.setSelect([100,100,400,300]);
+    // Setup and dipslay the interface for "enabled"
+    //$('#can_click,#can_move,#can_size').attr('checked','checked');
+    //$('#ar_lock,#size_lock,#bg_swap').attr('checked',false);
+    //$('.requiresjcrop').show();
   });
   clearcanvas();
 }
