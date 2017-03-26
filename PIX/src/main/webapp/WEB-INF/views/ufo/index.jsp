@@ -107,7 +107,7 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal_index')}">
 				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
@@ -195,7 +195,7 @@
 </div>
 		</c:if>
 				
-<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
+<c:if test="${fn:contains(sessionScope.eventMenu, 'qr_index')}">
 	<div id="qr-section" style="height:5em"></div>
 				<h2 class="counter-desc">큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
@@ -236,7 +236,7 @@
 				</div>
 				<!--//form-wrapper-->
 </c:if>
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories_index')}">
 			<div id="survey-section" style="height:5em"></div>
 			<h2 class="counter-desc">서베이 참여하기</h2>
 				<div class="form-wrapper">

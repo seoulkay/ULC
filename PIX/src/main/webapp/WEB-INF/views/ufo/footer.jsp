@@ -277,6 +277,9 @@
 	</div>
 	</div>
 </div>
+
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/load-image.all.min.js"></script>	
+
 <c:forEach var="ele" varStatus="statusEle" items="${ufoGo }">
 <div class="modal" id="stamp_${ele.ufo_gid }_modal" role="dialog">
 	<div class="modal-dialog">
@@ -299,11 +302,11 @@
 			<div>
    				<img class="img-responsive" style="padding:10px" src="https://www.ufo79.com/image/${ele.go_image }">
    			</div>
-   			<div style="padding:10px">${ele.go_desc}<br>
+   			<div style="padding:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
    			
-			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="file" class="form-control">
+			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">
 				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
 				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
 				<input type="hidden" id="uid_go${ele.ufo_gid }" name="user_uid">
@@ -320,6 +323,26 @@
 	</div>
 	</div>
 </div>
+<script>
+document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
+    loadImage(
+        e.target.files[0],
+        function (img) {
+        	var node = document.getElementById('desc'+'${ele.ufo_gid }');
+        	while(node.firstChild){
+        		node.removeChild(node.firstChild);
+        	}
+        	img.toDataURL('image/jpeg');
+        	img.id = 'img'+'${ele.ufo_gid }';
+        	node.appendChild(img);
+        	//$('#stamp_go${ele.ufo_gid }').remove();
+        	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
+			
+        },
+        {maxWidth: 100, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+    );
+};
+</script>
 </c:forEach>
 
 <div class="modal" id="qr_info" role="dialog">
@@ -424,13 +447,6 @@
 <input type="hidden" id="sns_return_sns" name="sns_return">
 <input type="hidden" id="sns_gid_sns" name="sns_gid">
 </form>
-
-<form action="/file-upload"
-      class="dropzone"
-      id="my-awesome-dropzone">
-<input type="file" name="file" />      
-</form>
-
 <!-- Javascript -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -446,32 +462,10 @@
 <!--//Page Specific JS -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/home.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/dropzone.js"></script>
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/js/printThis.js"></script>	
 
 
-<script type="text/javascript">
-
-//"myAwesomeDropzone" is the camelized version of the HTML element's ID
-Dropzone.options.myAwesomeDropzone = {
-  paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 2, // MB
-  accept: function(file, done) {
-    if (file.name == "justinbieber.jpg") {
-      done("Naha, you don't.");
-    }
-    else { done(); }
-  }
-};
-//Prevent Dropzone from auto discovering this element:
-Dropzone.options.myAwesomeDropzone = false;
-// This is useful when you want to create the
-// Dropzone programmatically later
-
-// Disable auto discover for all elements:
-Dropzone.autoDiscover = false;
-</script>
 <script>
 
 /**
@@ -1059,6 +1053,13 @@ function stampPostSubmit(para){
 		  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
 		  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
 		  var form = new FormData($("#stampForm"+para)[0]);
+		  
+		  //var fileLoader = new FileReader();
+		  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
+		  var blob = dataURItoBlob(fileCanvas);
+		  
+		  
+		  form.append('file', blob, "fileName.png");
 	      $.ajax({
 	              url: '/PIX/ufogo/insert',
 	              method: "POST",
@@ -1076,6 +1077,26 @@ function stampPostSubmit(para){
 		fbLogin('qr');
 	}
 }
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
 
