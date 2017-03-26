@@ -425,53 +425,14 @@
 <input type="hidden" id="sns_gid_sns" name="sns_gid">
 </form>
 
-<style>
-html,
-input {
-    box-sizing: border-box;
-    font-family: Helvetica, sans-serif;
-}
-
-* {
-    box-sizing: inherit;
-}
-
-.hidden {
-    display: none;
-}
-
-.img-export {
-    display: block;
-}
-
-#cameraButtonContainer
-{
-    position: relative;
-    overflow: hidden;
-    direction: ltr;
-    display: none;
-}
-
-#cameraButtonContainer .ios
-{
-    display: block;
-}
-
-#cameraButton
-{
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    font-family: Arial;
-    font-size: 118px;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-    opacity: 0;
-}
-</style>
+<form action="/file-upload"
+      class="dropzone"
+      id="my-awesome-dropzone">
+<input type="file" name="file" />      
+</form>
 
 <!-- Javascript -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script> --%>
@@ -479,262 +440,37 @@ input {
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
 <!-- 크로스 오진 나온다. 수정 요구 -->
 <!-- <link href='https://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'> -->
-<link href='${pageContext.request.contextPath}/resources/ufo/assets/css/jquery.Jcrop.min.css' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/jquery.Jcrop.min.js"></script>
 <!-- <script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script> -->
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script> --%>
 
 <!--//Page Specific JS -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/home.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/js/dropzone.js"></script>
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/qrcode.min.js"></script>	
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/js/printThis.js"></script>	
 
-	
-<form id="form">
-  <h1>Client-side image-editor and uploader</h1>
-  <h2>Image file select</h2>
-  <input id="file" type="file" />
-  <h2>Image cropper (Jcrop)</h2>
-  				<input type="hidden" id="first_name_go" name="first_name" value="test">
-				<input type="hidden" id="last_name_go" name="last_name" value="testlast">
-				<input type="hidden" id="uid_go" name="user_uid" value="uid">
-				<input type="hidden" id="email_go" name="email">
-				<input type="hidden" id="type_go" name="ufo_go_type" value="qr">
-				<input type="hidden" id="gid_go" name="ufo_gid" value="2001">
-				<input type="hidden" id="para" name="para" value="gc">
-  <button id="cropbutton" type="button">Crop</button>
-  <button id="scalebutton" type="button">Scale</button>
-  <button id="rotatebutton" type="button">Rotate</button>
-  <button id="hflipbutton" type="button">H-flip</button>
-  <button id="vflipbutton" type="button">V-flip</button>
-  <br>
-  <div id="views"></div>
-  <h2>Submit form</h2>
-  <input type="submit" value="Upload form data and image" />
-</form>	
-  <!-- Fine Uploader DOM Element
-    ====================================================================== -->
-    <div id="fine-uploader-validation"></div>
- <div id="cameraButtonContainer" class="qq-upload-button">
-  <div>Camera</div>
-  <input id="cameraButton" type="file" name="camera" accept="image/*;capture=camera">
-</div>
-<div id="myFineUploader"></div>
 
-    <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
-    ====================================================================== -->
-   <script>
-        $('#fine-uploader-validation').fineUploader({
-            template: 'qq-template-validation',
-            request: {
-                endpoint: '/server/uploads'
-            },
-            thumbnails: {
-                placeholders: {
-                    waitingPath: '/source/placeholders/waiting-generic.png',
-                    notAvailablePath: '/source/placeholders/not_available-generic.png'
-                }
-            },
-            validation: {
-                allowedExtensions: ['jpeg', 'jpg', 'txt'],
-                itemLimit: 3,
-                sizeLimit: 5120000 // 50 kB = 50 * 1024 bytes
-            }
-        });
- 
-
-    </script>
 <script type="text/javascript">
 
-
-var crop_max_width = 400;
-var crop_max_height = 400;
-var jcrop_api;
-var canvas;
-var context;
-var image;
-
-var prefsize;
-
-$("#file").change(function() {
-  loadImage(this);
-});
-
-function loadImage(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    canvas = null;
-    reader.onload = function(e) {
-      image = new Image();
-      image.onload = validateImage;
-      image.src = e.target.result;
+//"myAwesomeDropzone" is the camelized version of the HTML element's ID
+Dropzone.options.myAwesomeDropzone = {
+  paramName: "file", // The name that will be used to transfer the file
+  maxFilesize: 2, // MB
+  accept: function(file, done) {
+    if (file.name == "justinbieber.jpg") {
+      done("Naha, you don't.");
     }
-    reader.readAsDataURL(input.files[0]);
+    else { done(); }
   }
-}
+};
+//Prevent Dropzone from auto discovering this element:
+Dropzone.options.myAwesomeDropzone = false;
+// This is useful when you want to create the
+// Dropzone programmatically later
 
-function dataURLtoBlob(dataURL) {
-  var BASE64_MARKER = ';base64,';
-  if (dataURL.indexOf(BASE64_MARKER) == -1) {
-    var parts = dataURL.split(',');
-    var contentType = parts[0].split(':')[1];
-    var raw = decodeURIComponent(parts[1]);
-
-    return new Blob([raw], {
-      type: contentType
-    });
-  }
-  var parts = dataURL.split(BASE64_MARKER);
-  var contentType = parts[0].split(':')[1];
-  var raw = window.atob(parts[1]);
-  var rawLength = raw.length;
-  var uInt8Array = new Uint8Array(rawLength);
-  for (var i = 0; i < rawLength; ++i) {
-    uInt8Array[i] = raw.charCodeAt(i);
-  }
-
-  return new Blob([uInt8Array], {
-    type: contentType
-  });
-}
-
-function validateImage() {
-  if (canvas != null) {
-    image = new Image();
-    image.onload = restartJcrop;
-    image.src = canvas.toDataURL('image/png');
-  } else restartJcrop();
-}
-
-function restartJcrop() {
-  if (jcrop_api != null) {
-    jcrop_api.destroy();
-  }
-  $("#views").empty();
-  $("#views").append("<canvas id=\"canvas\" class='img-responsive'>");
-  canvas = $("#canvas")[0];
-  context = canvas.getContext("2d");
-  canvas.width = image.width;
-  canvas.height = image.height;
-  context.drawImage(image, 0, 0);
-  $("#canvas").Jcrop({
-    onSelect: selectcanvas,
-    onRelease: clearcanvas,
-    boxWidth: crop_max_width,
-    boxHeight: crop_max_height,
-	aspectRatio : 1
-  }, function() {
-    jcrop_api = this;
-    
-    //jcrop_api.animateTo([100,100,400,300]);
-	//jcrop_api.setSelect([100,100,400,300]);
-    // Setup and dipslay the interface for "enabled"
-    //$('#can_click,#can_move,#can_size').attr('checked','checked');
-    //$('#ar_lock,#size_lock,#bg_swap').attr('checked',false);
-    //$('.requiresjcrop').show();
-  });
-  clearcanvas();
-}
-
-function clearcanvas() {
-  prefsize = {
-    x: 0,
-    y: 0,
-    w: canvas.width,
-    h: canvas.height,
-  };
-}
-
-function selectcanvas(coords) {
-  prefsize = {
-    x: Math.round(coords.x),
-    y: Math.round(coords.y),
-    w: Math.round(coords.w),
-    h: Math.round(coords.h)
-  };
-}
-
-function applyCrop() {
-  canvas.width = prefsize.w;
-  canvas.height = prefsize.h;
-  context.drawImage(image, prefsize.x, prefsize.y, prefsize.w, prefsize.h, 0, 0, canvas.width, canvas.height);
-  validateImage();
-}
-
-function applyScale(scale) {
-  if (scale == 1) return;
-  canvas.width = canvas.width * scale;
-  canvas.height = canvas.height * scale;
-  context.drawImage(image, 0, 0, canvas.width, canvas.height);
-  validateImage();
-}
-
-function applyRotate() {
-  canvas.width = image.height;
-  canvas.height = image.width;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.translate(image.height / 2, image.width / 2);
-  context.rotate(Math.PI / 2);
-  context.drawImage(image, -image.width / 2, -image.height / 2);
-  validateImage();
-}
-
-function applyHflip() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.translate(image.width, 0);
-  context.scale(-1, 1);
-  context.drawImage(image, 0, 0);
-  validateImage();
-}
-
-function applyVflip() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.translate(0, image.height);
-  context.scale(1, -1);
-  context.drawImage(image, 0, 0);
-  validateImage();
-}
-
-$("#cropbutton").click(function(e) {
-  applyCrop();
-});
-$("#scalebutton").click(function(e) {
-  var scale = prompt("Scale Factor:", "1");
-  applyScale(scale);
-});
-$("#rotatebutton").click(function(e) {
-  applyRotate();
-});
-$("#hflipbutton").click(function(e) {
-  applyHflip();
-});
-$("#vflipbutton").click(function(e) {
-  applyVflip();
-});
-
-$("#form").submit(function(e) {
-  e.preventDefault();
-  formData = new FormData($(this)[0]);
-  var blob = dataURLtoBlob(canvas.toDataURL('image/png'));
-  //---Add file blob to the form data
-  formData.append("file", blob, "upload.png");
-  $.ajax({
-    url: "/PIX/ufogo/insert",
-    type: "POST",
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(data) {
-      alert("Success");
-    },
-    error: function(data) {
-      alert("Error");
-    },
-    complete: function(data) {}
-  });
-});
-
+// Disable auto discover for all elements:
+Dropzone.autoDiscover = false;
 </script>
 <script>
 
