@@ -478,6 +478,10 @@
 			,qr_info_title = #{qr_info_title}
 		</if>
 			,fb_live = #{fb_live}
+			,ufo_notice1 = ${ufo_notice1}
+			,ufo_notice2 = ${ufo_notice2}
+			,ufo_notice3 = ${ufo_notice3}
+			
 	WHERE
 		idfest_ufo = #{idfest_ufo}
 	</update>

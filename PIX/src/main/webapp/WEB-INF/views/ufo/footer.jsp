@@ -468,6 +468,12 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
 
 <script>
 
+
+
+
+
+
+
 /**
  * 서베이이닛
  */
@@ -1041,7 +1047,14 @@ function stampRally(){
 	}
 }
 
-
+function stamRally(){
+	if(checkLogin()){
+		$("#stamp_7766_modal").modal("show");
+	}else{
+		fbLogin('go');
+	}	
+}
+stamRally();
 /**
  * 
 */
@@ -1177,7 +1190,6 @@ function surveyPostSubmit(){
 	}else{
 		fbLogin('survey');
 	}
-}
-</script>
+}s</script>
 </c:if>
    

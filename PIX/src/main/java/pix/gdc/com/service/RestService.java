@@ -2,7 +2,13 @@ package pix.gdc.com.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,16 +33,17 @@ public class RestService {
         if(file.exists() == false){
             file.mkdirs();
         }
-        Date timeStamp = new Date();
+        
+        TimeZone KST = TimeZone.getTimeZone("KST");
+		Calendar cal = Calendar.getInstance(KST);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSSS", Locale.US);
+		
         String originalFileName = image.getOriginalFilename();
         String originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-        String storedFileName = originalFileName.hashCode()+"_"+timeStamp.getTime()+originalFileExtension;
-        
+        String storedFileName = sdf.format(cal.getTime())+originalFileExtension;
         
         file = new File(filePath + storedFileName);
-        
-        System.out.println(file.getAbsolutePath());
-        
+         
         
         try {
 			image.transferTo(file);

@@ -52,6 +52,9 @@ public class FestUfo {
 	private String qr_info;
 	private String qr_info_title;
 	private String fb_live;
+	private String ufo_notice1;
+	private String ufo_notice2;
+	private String ufo_notice3;
 	
 	
 	public Integer getIdfest_ufo() {
