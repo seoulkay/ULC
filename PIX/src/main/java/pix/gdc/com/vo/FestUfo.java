@@ -351,5 +351,23 @@ public class FestUfo {
 	public void setFb_live(String fb_live) {
 		this.fb_live = fb_live;
 	}
+	public String getUfo_notice1() {
+		return ufo_notice1;
+	}
+	public void setUfo_notice1(String ufo_notice1) {
+		this.ufo_notice1 = ufo_notice1;
+	}
+	public String getUfo_notice2() {
+		return ufo_notice2;
+	}
+	public void setUfo_notice2(String ufo_notice2) {
+		this.ufo_notice2 = ufo_notice2;
+	}
+	public String getUfo_notice3() {
+		return ufo_notice3;
+	}
+	public void setUfo_notice3(String ufo_notice3) {
+		this.ufo_notice3 = ufo_notice3;
+	}
 	
 }
