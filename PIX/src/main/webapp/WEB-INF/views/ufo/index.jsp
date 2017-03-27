@@ -20,25 +20,18 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <!-- Global CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Plugins CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/flexslider.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/flexslider.css">
 	
 
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
 
-<style>
-      #map {
-        height: 30em;
-      }
-    </style>
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+
 </head>
 
 <body data-spy="scroll" data-target="#page-nav" class="blog-page">
@@ -114,7 +107,7 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal_index')}">
 				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
 				<div class="form-wrapper">
 					<div class="form-box">
@@ -202,7 +195,7 @@
 </div>
 		</c:if>
 				
-<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
+<c:if test="${fn:contains(sessionScope.eventMenu, 'qr_index')}">
 	<div id="qr-section" style="height:5em"></div>
 				<h2 class="counter-desc">큐알코드랠리 참여하기</h2>
 				<div class="form-wrapper">
@@ -243,7 +236,7 @@
 				</div>
 				<!--//form-wrapper-->
 </c:if>
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories_index')}">
 			<div id="survey-section" style="height:5em"></div>
 			<h2 class="counter-desc">서베이 참여하기</h2>
 				<div class="form-wrapper">

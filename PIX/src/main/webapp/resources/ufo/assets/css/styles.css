@@ -3399,3 +3399,7 @@ html, body {
       padding:0 20px;
    } 
 }
+
+#map {
+        height: 30em;
+      }
