@@ -552,7 +552,7 @@ public class UfoController {
 		model.addAttribute("type", type);
 		model.addAttribute("gid", gid);
 		
-		return "ufo/index";
+		return "ufo/stamp";
 	}
 	
 	@RequestMapping(value = "ufo/{para}/reader", method = RequestMethod.GET)

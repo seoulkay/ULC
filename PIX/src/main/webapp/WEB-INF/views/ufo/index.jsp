@@ -25,12 +25,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/flexslider/flexslider.css">
-	
 
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
-
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 
 </head>
 
@@ -51,7 +48,7 @@
 			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
 			
 			<div class="actions">
-                 <a class="scrollto-no-offset" href="#support-section"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+                 <a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -62,12 +59,10 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a class="scrollto" href="#support-section">공지사항</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="#signup-section">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}"><li><a class="scrollto" href="#qr-section">큐알</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="#survey-section">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}"><li><a class="scrollto" href="#info-section">축제정보</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'app')}"><li><a class="scrollto" href="#app-section">앱</a></li></c:if>
+					<li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -77,7 +72,7 @@
 	</div>
 	<!--//page-nav-space-holder-->
 
-<section id="support-section" class="support-section section text-center" style="padding:1em;">
+<section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >
 					
 		<div class="row">
@@ -114,179 +109,6 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal_index')}">
-				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
-				<div class="form-wrapper">
-					<div class="form-box">
-						<div class="form-desc">${ufo.ufo_go_title }</div>
-						<!-- <button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br> -->
-<%-- 							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;"> --%>
-						<div class="team-figure">
-							<div id="map" style="height: 30em;"></div>
-						</div><br><br>
-						<ul class="social-buttons list-unstyled">
-							<!-- <li><a href="#" class="btn btn-social btn-google"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:3px"><span class="btn-text">갤러리로 가기</span></button> <button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button></li>
-<!-- 							<li> -->
-<!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
-<!-- 							</li> -->
-						</ul>
-						<!--//social-buttons-->
-						<div class="divider">
-						</div>
-						<div class="quotes">
-							<div class="row">
-								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										${ufo.ufo_go_desc}
-									</div>
-									<!--//inner-->
-								</div>
-								<!--//quote-item2-->			
-							</div>
-							<!--//row-->
-						</div>
-						<!--//quotes-->			
-						
-						<!--//divider-->
-					</div>
-					<!--//form-box-->
-				</div>
-				<!--//form-wrapper-->
-				<div style="height:2em"></div>
-				
-				<div class="section-inner">
-			<div class="container text-center">
-			<div class="form-wrapper">
-				<h2 class="counter-desc">투표하기</h2>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-<div class="form-wrapper">
-					<div class="form-box">
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active" id="caro1">
-      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="350" data-show-text="true"></div>
-    </div>
-
-    <div class="item" id="caro2">
-      <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1288565161190526" data-width="350" data-show-text="true"></div>
-    </div>
-
-    <div class="item" id="caro3">
-      <div class="fb-post" data-href="https://www.facebook.com/kay.i.lee.12/posts/1288671967846512" data-width="350" data-show-text="true"></div>
-    </div>
-
-    <div class="item" id="caro4">
-     <div class="fb-post" data-href="https://www.facebook.com//kay.i.lee.12/posts/1283247045055671" data-width="350" data-show-text="true"></div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background-image: none;">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background-image: none;">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>	
-</div>
-</div>
-</div>
-</div>
-</div>
-		</c:if>
-				
-<c:if test="${fn:contains(sessionScope.eventMenu, 'qr_index')}">
-	<div id="qr-section" style="height:5em"></div>
-				<h2 class="counter-desc">큐알코드랠리 참여하기</h2>
-				<div class="form-wrapper">
-					<div class="form-box">
-						<div class="form-desc">${ufo.ufo_qr_title }</div>
-						<div class="team-figure">
-							<div class="subscribe-form form-inline" novalidate="novalidate">
-				                <div class="form-group">
-					                <img class="img-responsive" src="https://www.ufo79.com/image/${ufo.qr_pic }" style="margin-left: 0 auto; margin-right: 0 auto;">
-				                	<br>
-				                    <input type="password" id="qrNumber" class="form-control email-field" placeholder="코드를 넣어주세요" value="${gid}" name="qrNumber" required="" aria-required="true">
-				                    <button class="btn btn-primary" onClick="qrRally();" style="margin:1em">큐알코드 인증</button>  
-				                </div>                              
-				            </div>
-						</div>
-						<br><br>
-						<div class="divider">
-						</div>
-						<div class="quotes">
-							<div class="row">
-								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										${ufo.ufo_qr_desc }
-										<!--//source-->
-									</div>
-									<!--//inner-->
-								</div>
-								<!--//quote-item2-->			
-							</div>
-							<!--//row-->
-						</div>
-						<!--//quotes-->			
-						
-						<!--//divider-->
-					</div>
-					<!--//form-box-->
-				</div>
-				<!--//form-wrapper-->
-</c:if>
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories_index')}">
-			<div id="survey-section" style="height:5em"></div>
-			<h2 class="counter-desc">서베이 참여하기</h2>
-				<div class="form-wrapper">
-					<div class="form-box">
-						<div class="form-desc">${ufo.ufo_survey_title }</div>
-						<div class="team-figure">
-							<div class="subscribe-form form-inline" novalidate="novalidate">
-				                <div class="form-group">
-				                    <button class="btn btn-primary" onClick="surveyInit();" style="margin:1em">서베이에 참여!</button>  
-				                    <button class="btn btn-primary" onClick="getUfo('ve');" style="margin:1em">서베이결과</button>  
-				                </div>                              
-				            </div>
-						</div>
-						<br><br>
-						<div class="divider">
-						</div>
-						<div class="quotes">
-							<div class="row">
-								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<!--//blockquote-->
-										<div class="tip">
-										${ufo.ufo_survey_desc }
-										</div>
-										<!--//source-->
-									</div>
-									<!--//inner-->
-								</div>
-								<!--//quote-item2-->			
-							</div>
-							<!--//row-->
-						</div>
-						<!--//quotes-->			
-						
-						<!--//divider-->
-					</div>
-					<!--//form-box-->
-				</div>
-				<!--//form-wrapper-->
-	
-</c:if>
-	
 			</div>
 			<!--//container-->
 		</div>
