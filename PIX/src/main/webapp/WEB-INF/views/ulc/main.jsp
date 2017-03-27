@@ -203,10 +203,10 @@
                 <div class="col-sm-6 col-md-5 col-lg-4 col-md-offset-0 col-lg-offset-1 img-padding-xs">
                 	<figure class="img-layers2 img-layer-left-front">
                     	<div class="img-layer-left animation" data-animation="animation-slide-in-right">
-                        	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/feature-1-left.png" alt="Image Left">
+                        	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/ufo_right.png" alt="Image Left">
                         </div>
                         <div class="img-layer-right animation" data-animation="animation-fade-in-left" data-delay="1000">
-                        	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/feature-1-right.png" alt="Image Right">
+                        	<img src="${pageContext.request.contextPath}/resources/ulc/images/content/landing/ufo_left.png" alt="Image Right">
                         </div>
                     </figure>
                 </div>
