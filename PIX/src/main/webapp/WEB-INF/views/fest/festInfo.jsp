@@ -19,9 +19,13 @@
             <input type="submit" class="form-control btn btn-warning" style="background-color: #FD7A02; color: #ffffff; font-weight: bold;" value="업데이트!">
             <div style="height:2em"></div>
                     <table class="table table_striped">
-                    	<h3>페이스북 라이브 피드</h3>
-                    	<tr><td class="hk">페이스북 라이브 피드 주소</td><td><input class="form-control" type="text" name="fb_live" value="${ufo.fb_live }"></td></tr>
-                    </table>
+                    	<h3>축제 공지사항</h3>
+                    	<tr><td class="hk">한줄 공지1</td><td><textarea form="ufoForm" class="form-control" name="ufo_notice1"  maxlength="150">${ufo.ufo_notice1} </textarea></td></tr>
+                    	<tr><td class="hk">한줄 공지2</td><td><textarea form="ufoForm" class="form-control" name="ufo_notice2"  maxlength="150">${ufo.ufo_notice2} </textarea></td></tr>
+                    	<tr><td class="hk">한줄 공지3</td><td><textarea form="ufoForm" class="form-control" name="ufo_notice3"  maxlength="150">${ufo.ufo_notice3} </textarea></td></tr>
+                    	<tr><td class="hk">페이스북 라이브 피드 주소</td><td><input class="form-control" type="text" name="fb_live" value="${ufo.fb_live }"></td></tr>                   		
+                   		<tr><td class="hk">페이스북 문의댓글창</td><td><textarea form="ufoForm" class="form-control" name="event_long_description"  maxlength="2500">${ufo.event_long_description }</textarea></td></tr>
+                   	</table><hr>
                     <table class="table table_striped">
                     	<h3>이벤트 기본값</h3>
                     	<tr><td class="hk">축제 번호</td><td><input class="form-control" type="text" name="idfest_ufo" value="${ufo.idfest_ufo }" readonly></td></tr>
@@ -35,10 +39,6 @@
                     	<tr><td class="hk">축제 메인이미지 <c:if test="${ufo.main_image ne null}"><img src="https://www.ufo79.com/image/${ufo.main_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="main_image_file"></td></tr>
                    		<tr><td class="hk">축제 제목</td><td><input class="form-control" type="text" name="title" value="${ufo.title }" maxlength="50"></td></tr>
                    		<tr><td class="hk">축제 기간</td><td><input type="text" class="form-control" name="event_date" value="${ufo.event_date }" maxlength="125"></td></tr>
-                   	</table><hr>
-                    <table class="table table_striped">	
-                   		<tr><td class="hk">축제 소제목</td><td><textarea form="ufoForm" class="form-control" name="event_short_description"  maxlength="1000">${ufo.event_short_description }</textarea></td></tr>
-                   		<tr><td class="hk">축제 개요</td><td><textarea form="ufoForm" class="form-control" name="event_long_description"  maxlength="2500">${ufo.event_long_description }</textarea></td></tr>
                    	</table><hr>
                     <table class="table table_striped">	
                    		<tr><td class="hk">축제정보 제목1</td><td><input type="text" class="form-control" name="info_title" value="${ufo.info_title }" maxlength="45"></td></tr>

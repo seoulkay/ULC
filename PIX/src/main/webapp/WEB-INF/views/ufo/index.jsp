@@ -85,7 +85,14 @@
 				<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/ic_volume_up_white_24px.svg"style="padding-top: 0.5em">
 			</div>
 			<div class="col-sm-11 ">
-				<marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee>
+				<%-- <marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee> --%>
+				<marquee>
+				<h4 style="white-space:nowrap;">
+				<c:if test="${not empty ufo.ufo_notice1 }">${ufo.ufo_notice1}<span style="color: #ED45A4; ">||</span></c:if>
+				<c:if test="${not empty ufo.ufo_notice2 }">${ufo.ufo_notice2}<span style="color: #ED45A4; ">||</span></c:if> 
+				<c:if test="${not empty ufo.ufo_notice3 }">${ufo.ufo_notice3}<span style="color: #ED45A4; ">||</span></c:if>
+				</h4>
+				</marquee>
 			</div>
 		</div>
 		<c:if test="${not empty ufo.fb_live }">
