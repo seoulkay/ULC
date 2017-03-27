@@ -52,7 +52,7 @@
                    </table><hr>
                    <table class="table table_striped">			
                    		<tr><td class="hk">축제프로그램 제목</td><td><input type="text" class="form-control" name="program_title" value="${ufo.program_title }" maxlength="45"></td></tr>
-                   		<tr><<td class="hk">축제프로그램 사진 <c:if test="${ufo.info_program_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_program_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_program_pic_file"></td></tr>
+                   		<tr><td class="hk">축제프로그램 사진 <c:if test="${ufo.info_program_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_program_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_program_pic_file"></td></tr>
                    		<tr><td class="hk">축제프로그램 내용</td><td><textarea form="ufoForm" class="form-control" name="info_program_text" maxlength="3000">${ufo.info_program_text }</textarea></td></tr>
                    </table><hr>
                    <table class="table table_striped">		
