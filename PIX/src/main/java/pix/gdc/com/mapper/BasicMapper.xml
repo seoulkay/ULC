@@ -738,14 +738,13 @@
 		FROM fest_ufo_answer
 		WHERE para = #{param}
 	</select>
-	<select id="selectSnsPost" parameterType="FestAnswerVO" resultType="FestAnswerVO">
+	<select id="selectSnsPost" parameterType="String" resultType="FestAnswerVO">
 	SELECT 
 		* 
 	FROM 
 		fest_ufo_answer 
 	WHERE
-		first_name_a = #{first_name_a}
-		and last_name_a = #{last_name_a}
+		uid_a = #{uid_a}
 	ORDER BY 
 		id desc 
 	LIMIT
