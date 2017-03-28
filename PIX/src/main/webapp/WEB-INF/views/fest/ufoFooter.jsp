@@ -60,11 +60,10 @@
                 <li><a href="#">Terms of use</a></li>
                 <li><a href="#">Privacy and policy</a></li>
                 <li><a href="#">Contact us</a></li>
-                <li><a href="typography.html">Typography</a></li>
                 <li><a href="#">Sign In</a></li>
             </ul>
             <div class="copyright text-center">
-                Copyright &copy; 2017 UFO79
+                Copyright &copy; 2017 UFO
             </div>
         </div><!--footer-btm-->
         <!--back to top-->
@@ -115,3 +114,13 @@
         		document.getElementById("BtnShow").style.display="block"
         	}
         </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96309968-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

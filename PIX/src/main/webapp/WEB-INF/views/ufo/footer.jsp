@@ -123,7 +123,6 @@
 <input type="hidden" id="sns_gid_sns" name="sns_gid">
 </form>
 <!-- Javascript -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
@@ -473,48 +472,13 @@ function redirectIndex(tt){
 
 </script>
 
-<!-- 핵심 로직 -->
-
-
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
 <script>
-	function surveyInit(){
-		if(checkLogin()){
-			$("#remodal_q1").modal("show");
-		}else{
-			fbLogin('survey');
-		}
-	}
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-/**
- * 
- */
+  ga('create', 'UA-96309968-1', 'auto');
+  ga('send', 'pageview');
 
-function surveyPostSubmit(){
-	if(checkLogin()){
-		showPleaseWait();
-		  $( "#first_name_a").val(window.sessionStorage.getItem('first_name'));
-		  $( "#last_name_a").val(window.sessionStorage.getItem('last_name'));
-		  $( "#uid_a").val(window.sessionStorage.getItem('uid'));
-		  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
-		  $( "#sns_type_a").val('ufo_survey');		  
-		  var form = new FormData($("#surveyForm")[0]);
-	      $.ajax({
-	              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
-	              method: "POST",
-	              dataType: 'json',
-	              data: form,
-	              processData: false,
-	              contentType: false,
-	              success: function(result){
-	            	  console.log("처리되었습니다. : "+result);
-	            	  showDone("성공하였습니다.", "ve");
-	              },
-	              error: function(er){}
-	      });
-	}else{
-		fbLogin('survey');
-	}
-}</script>
-</c:if>
-   
+</script>

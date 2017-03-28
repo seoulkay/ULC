@@ -125,7 +125,6 @@ public class FestController {
 		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
 		String para = dao.SelectUfoParaByNumber(currentEvent);
 		List<UfoGoVO> goList = dao.selectUfoGoByPara(para) ;
-		List<UfoGoVO> qrList = dao.selectUfoQrByPara(para) ;
 		List<FestQuesListVO> surveyList = dao.selectUfoQuestionsNew(para);
 		List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
 		
@@ -138,7 +137,6 @@ public class FestController {
 		}
 		
 		model.addAttribute("goList", goList);
-		model.addAttribute("qrList", qrList);
 		model.addAttribute("surveyList", surveyList);
 		model.addAttribute("ufo", ufo);
 		return "fest/festQuestion";

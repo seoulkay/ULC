@@ -27,18 +27,6 @@
 	</div>
 	<div style="height:2em"></div>
 	<div class="row">
-	<h3>큐알랠리</h3>
-		<table class="table table-bordered table-hover table-condensed">
-			<tr class="success">
-				<td>go_content</td><td>go_desc</td><td>go_image</td><td>ufo_gid</td><td>go_alt</td><td>go_lat</td>
-			</tr>
-				<c:forEach items="${qrList}" var="ele">
-				<tr><td>${ele.go_content}</td><td>${ele.go_desc}</td><td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.ufo_gid}</td><td>${ele.go_alt}</td><td>${ele.go_lat}</td></tr>
-				</c:forEach>
-		</table>
-	</div>
-	<div style="height:2em"></div>
-	<div class="row">
 	<h3>서베이</h3>
 		<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">

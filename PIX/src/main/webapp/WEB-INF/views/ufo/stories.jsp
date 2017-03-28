@@ -165,7 +165,7 @@
 <!-- 서베이 이닛 -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
 
-<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+
 <form id="surveyForm" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 <div class="modal fade" id="remodal_q${statusEle.count }" role="dialog">
@@ -188,7 +188,7 @@
 		<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
 			<div class="input-group">
 		      <span class="input-group-addon">
-		      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }" answer="${var.q_option }">
+		      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }" answer="${var.q_option }" onclick="enableNextBtn(${statusEle.count})">
 		      </span>
 		      <input type="text" class="form-control" aria-label="..." value="${var.q_option }" name="noUse" readonly="readonly">
 		    </div>
@@ -196,7 +196,7 @@
 	 	<br>
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal">다음</button>
+	    <button type="button" class="btn" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal" id="btn_q${statusEle.count}" disabled>다음</button>
 	  </div>
 	</div>
 	</div>
@@ -222,7 +222,7 @@
   			<input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
   		</div>
   		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal">다음</button>
+	    <button type="button" class="btn" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal" id="btn_q6" disabled>다음</button>
 	  	</div>
 	</div>
 	</div>
@@ -248,7 +248,7 @@
 			  	<input type="file" id="q7_a" name="file" class="form-control">
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="surveyPostSubmit()">GO!</button>
+	    <button type="button" class="btn" data-dismiss="modal" onClick="surveyPostSubmit()" id="btn_q7" disabled>GO!</button>
 	  	</div>
 	</div>
 	</div>
@@ -293,11 +293,73 @@
 	</div>
 	</div>
 </div>
-</c:if>	
+
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
+
+<script>
+function enableNextBtn(para){
+	$('#btn_q'+para).prop('disabled', false);
+	$('#btn_q'+para).addClass("btn-primary");
+}
+
+$(document).ready(function() {
+    $('input[name=q6_a]').keyup(function() {
+    	if($('#q6_a').val() != '') {
+       		$('#btn_q6').prop('disabled', false);
+       		$('#btn_q6').addClass("btn-primary");
+    	}
+    });
+    
+    $('input[name=file]').change(function() {
+           $('#btn_q7').prop('disabled', false);
+           $('#btn_q7').addClass("btn-primary");
+    });
+});
+/**
+ * 
+ */
+function surveyInit(){
+	if(checkLogin()){
+		$("#remodal_q1").modal("show");
+	}else{
+		fbLogin('survey');
+	}
+}
+
+/**
+ * 
+ */
+
+function surveyPostSubmit(){
+	if(checkLogin()){
+		showPleaseWait();
+		  $( "#first_name_a").val(window.sessionStorage.getItem('first_name'));
+		  $( "#last_name_a").val(window.sessionStorage.getItem('last_name'));
+		  $( "#uid_a").val(window.sessionStorage.getItem('uid'));
+		  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
+		  $( "#sns_type_a").val('ufo_survey');		  
+		  var form = new FormData($("#surveyForm")[0]);
+	      $.ajax({
+	              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
+	              method: "POST",
+	              dataType: 'json',
+	              data: form,
+	              processData: false,
+	              contentType: false,
+	              success: function(result){
+	            	  console.log("처리되었습니다. : "+result);
+	            	  showDone("성공하였습니다.", "ve");
+	              },
+	              error: function(er){}
+	      });
+	}else{
+		fbLogin('survey');
+	}
+}
+</script>
 
 	
 </body>

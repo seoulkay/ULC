@@ -84,16 +84,16 @@
            </div><!--blog-post col-->          
         </section><!--blog wrapper-->
         
-        <footer id="footer">
-            <div class="container" >
+   <footer id="footer">
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-4 margin-btm-30">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                               픽스란?
+                               UFO79?
                             </h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text
+                            UFO는 스탬프랠리와 설문조사를 솔루션을 통해 축제 방문객의 참여를 유도하고 피드백을 받을 수 있는 통합형 축제관리 서비스를 제공합니다.
                             </p>
                         </div><!--footer-col-->
 
@@ -111,18 +111,19 @@
                     <div class="col-sm-4 margin-btm-30">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                                최신 정보
+                                웹과 모바일 지원
                             </h3>
+                            <p>UFO는 웹사이트와 모바일사이트를 통합형으로 구축하여 사이트 관리에 최적화되어 있습니다. UFO는 모바일 앱을 다운로드 하는 번거로움이 없습니다.</p>
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="footer-col">
                             <h3 class="widget-title">
-                                뉴스레터를 받아 보세요.
+                                바이럴 마케팅 솔루션
                             </h3>
                             <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                            	이벤트 내용을 자동으로 SNS에 업데이트 해주는 바이럴마케팅 지원
                             </p>
                             <form role="form" class="subscribe-form">
                                 <div class="input-group">
@@ -143,11 +144,10 @@
                 <li><a href="#">Terms of use</a></li>
                 <li><a href="#">Privacy and policy</a></li>
                 <li><a href="#">Contact us</a></li>
-                <li><a href="typography.html">Typography</a></li>
                 <li><a href="#">Sign In</a></li>
             </ul>
             <div class="copyright text-center">
-                Copyright &copy; 2016 Gangneung Digital Complex
+                Copyright &copy; 2017 UFO
             </div>
         </div><!--footer-btm-->
         <!--back to top-->
@@ -248,6 +248,16 @@ function getCookie(cookieName) {
     }
     return unescape(cookieValue);
 }
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96309968-1', 'auto');
+  ga('send', 'pageview');
+
 </script>
     </body>
 </html>

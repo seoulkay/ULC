@@ -176,7 +176,6 @@
 	</div>
 </div>
 
-
 <c:forEach var="ele" varStatus="statusEle" items="${ufoGo }">
 <div class="modal" id="stamp_${ele.ufo_gid }_modal" role="dialog">
 	<div class="modal-dialog">
@@ -215,7 +214,7 @@
 		</div>
 		<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -234,11 +233,18 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	node.appendChild(img);
         	//$('#stamp_go${ele.ufo_gid }').remove();
         	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
-			
         },
-        {maxWidth: 100, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 400, orientation: true, canvas:true, downsamplingRatio: 0.7} // Options
     );
 };
+
+$(document).ready(function() {
+    $('#stamp_go${ele.ufo_gid }').change(function() {
+    	console.log("gg");
+           $('#btn${ele.ufo_gid }').prop('disabled', false);
+           $('#btn${ele.ufo_gid }').addClass("btn-primary");
+    });
+});
 </script>
 </c:forEach>
 
@@ -265,7 +271,6 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
 <script>
-
 var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
 var icons = {
   me:{
@@ -293,7 +298,7 @@ function qrInfoShow(){
 
 /**
 *
-    */
+*/
 function CenterControl(controlDiv) {
 
       // Set CSS for the control border.
@@ -394,7 +399,6 @@ function initMap() {
 	    fullscreenControl: true
 	  });
 }
-
 /**
  * 
 */	
@@ -404,8 +408,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                           'Error: The Geolocation service failed.' :
                           'Error: Your browser doesn\'t support geolocation.');
 }
-	
-	
 /**
  * 
 */	
@@ -418,8 +420,6 @@ function drop() {
 /**
  * 
 */
-	
-
 function addMarkerWithTimeout(position, timeout) {
   window.setTimeout(function() {
   var infowindow = new google.maps.InfoWindow({
@@ -544,39 +544,37 @@ function stampRally(){
 	}
 }
 
-
 /**
  * 
 */
 function stampPostSubmit(para){
 	if(checkLogin()){
-		showPleaseWait();
-		  $( "#first_name_go"+para ).val(window.sessionStorage.getItem('first_name'));
-		  $( "#last_name_go"+para ).val(window.sessionStorage.getItem('last_name'));
-		  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
-		  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
-		  var form = new FormData($("#stampForm"+para)[0]);
-		  
-		  //var fileLoader = new FileReader();
-		  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
-		  var blob = dataURItoBlob(fileCanvas);
-		  
-		  
-		  form.append('file', blob, "fileName.png");
-	      $.ajax({
-	              url: '/PIX/ufogo/insert',
-	              method: "POST",
-	              dataType: 'json',
-	              data: form,
-	              processData: false,
-	              contentType: false,
-	              success: function(result){
-	            	  console.log("처리되었습니다. : "+result);
-	            	  showDone("성공하였습니다.", "go");
-	              },
-	              error: function(er){}
-	      });
-	}else{
+			  showPleaseWait();
+			  $( "#first_name_go"+para ).val(window.sessionStorage.getItem('first_name'));
+			  $( "#last_name_go"+para ).val(window.sessionStorage.getItem('last_name'));
+			  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
+			  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
+			  var form = new FormData($("#stampForm"+para)[0]);
+			  
+			  //var fileLoader = new FileReader();
+			  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
+			  var blob = dataURItoBlob(fileCanvas);
+			  
+			  form.append('file', blob, "fileName.png");
+		      $.ajax({
+		              url: '/PIX/ufogo/insert',
+		              method: "POST",
+		              dataType: 'json',
+		              data: form,
+		              processData: false,
+		              contentType: false,
+		              success: function(result){
+		            	  console.log("처리되었습니다. : "+result);
+		            	  showDone("성공하였습니다.", "go");
+		              },
+		              error: function(er){}
+		      });
+		}else{
 		fbLogin('qr');
 	}
 }
@@ -602,7 +600,5 @@ function dataURItoBlob(dataURI) {
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
-
-
 </body>
 </html>

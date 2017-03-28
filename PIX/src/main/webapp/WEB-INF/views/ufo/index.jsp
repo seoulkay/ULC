@@ -29,6 +29,7 @@
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
 
+
 </head>
 
 <body data-spy="scroll" data-target="#page-nav" class="blog-page">
