@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">
+<link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic'
 	rel='stylesheet' type='text/css'>
@@ -54,7 +54,7 @@
 			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">서베이</h2>
 			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 익명의 서베이 결과를 확인하세요!</div><br>
 			
-			<div class="actions">
+			<div class="actions" id="mainbtn">
            	<button class="btn btn-warning" style="margin:0 auto" onclick="surveyInit()">설문조사하기</button>
             </div><!--//actions-->
 		</div>
@@ -300,6 +300,7 @@
 	</jsp:include><!--//footer-->
 
 <script>
+
 function enableNextBtn(para){
 	$('#btn_q'+para).prop('disabled', false);
 	$('#btn_q'+para).addClass("btn-primary");
@@ -317,6 +318,24 @@ $(document).ready(function() {
            $('#btn_q7').prop('disabled', false);
            $('#btn_q7').addClass("btn-primary");
     });
+    
+    if(checkLogin()){
+    	var url = '/PIX/ufo/${sessionScope.eventPara}/checkResult/ve/'+window.sessionStorage.getItem('uid');
+    	$.ajax({
+            url: url,
+            method: "get",
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(result){
+          	  console.log("처리되었습니다. : "+result);
+          	  if(result == 1){
+          		  $("#mainbtn").append('<button class="btn btn-primary" style="margin:0 auto" onclick="location.href=\'https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/ve/'+window.sessionStorage.getItem('uid')+'\'">결과보기</button>');
+          	  }
+            },
+            error: function(er){}
+    });
+    }
 });
 /**
  * 
@@ -328,6 +347,8 @@ function surveyInit(){
 		fbLogin('survey');
 	}
 }
+
+
 
 /**
  * 
@@ -359,6 +380,7 @@ function surveyPostSubmit(){
 		fbLogin('survey');
 	}
 }
+
 </script>
 
 	

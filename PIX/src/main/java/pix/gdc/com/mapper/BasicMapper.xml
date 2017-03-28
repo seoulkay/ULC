@@ -738,13 +738,15 @@
 		FROM fest_ufo_answer
 		WHERE para = #{param}
 	</select>
-	<select id="selectSnsPost" parameterType="String" resultType="FestAnswerVO">
+	<select id="selectSnsPost" parameterType="FestAnswerVO" resultType="FestAnswerVO">
 	SELECT 
 		* 
 	FROM 
 		fest_ufo_answer 
 	WHERE
 		uid_a = #{uid_a}
+	and
+		para = #{para}
 	ORDER BY 
 		id desc 
 	LIMIT

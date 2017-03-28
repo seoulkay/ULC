@@ -242,6 +242,18 @@ public class UfoController {
 //		}
 		return ql;
 	}
+	@RequestMapping(value = "ufo/{para}/checkResult/{type}/{uid}", method = RequestMethod.GET)
+	public @ResponseBody int checkSurveyResult(Model model, @PathVariable("para")String para, HttpSession session, @PathVariable("uid")String uid, @PathVariable("type")String type){
+		FestAnswerVO answer = new FestAnswerVO();
+		answer.setUid_a(uid);
+		answer.setPara(para);
+		answer = dao.selectSnsPost(answer);
+		if(!answer.getUid_a().equals("")){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 	
 	@RequestMapping(value = "ufo/{para}/result/{type}/{uid}", method = RequestMethod.GET)
 	public String getResult(Model model, @PathVariable("para")String para, HttpSession session, @PathVariable("uid")String uid, @PathVariable("type")String type){
@@ -294,7 +306,10 @@ public class UfoController {
 			
 		}else if(type.equals("ve")){
 			
-			FestAnswerVO answer = dao.selectSnsPost(uid);
+			FestAnswerVO answer = new FestAnswerVO();
+			answer.setUid_a(uid);
+			answer.setPara(para);
+			answer = dao.selectSnsPost(answer);
 			List<FestQuesListVO> surveyList = dao.selectUfoQuestionsNew(para);
 			List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
 			
@@ -315,8 +330,6 @@ public class UfoController {
 					}
 				}
 			}
-			
-			
 			
 			String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid;
 			String homepage = "https://www.ufo79.com/PIX/ufo/"+para+"/index";
@@ -559,8 +572,10 @@ public class UfoController {
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
 		
-		
-		model.addAttribute("vo", dao.selectSnsPost(uid));
+		FestAnswerVO answer = new FestAnswerVO();
+		answer.setUid_a(uid);
+		answer.setPara(para);
+		model.addAttribute("vo", dao.selectSnsPost(answer));
 		model.addAttribute("ufo", ufo);
 		return "ufo/sns-post";
 	}

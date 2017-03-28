@@ -391,7 +391,7 @@ public class FestDAO extends SqlSessionDaoSupport{
 	}
 	
 	//개인포스트 가지고 오기
-	public FestAnswerVO selectSnsPost(String para){
+	public FestAnswerVO selectSnsPost(FestAnswerVO para){
 		return getSqlSession().selectOne("BasicMapper.selectSnsPost", para);
 	}
 	

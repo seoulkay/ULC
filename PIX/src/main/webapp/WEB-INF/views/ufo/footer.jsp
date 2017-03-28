@@ -92,7 +92,7 @@
 						<!-- <li><a href="#" class="btn btn-social btn-google btn-block"><i
 								class="fa fa-google" aria-hidden="true"></i><span
 								class="btn-text">구글로 로그인하기</span></a></li> -->
-						<li onClick="fbLogin('index'); return false;"><span class="btn btn-social btn-facebook btn-block"><i
+						<li onClick="fbLogin('logbtn'); return false;"><span class="btn btn-social btn-facebook btn-block"><i
 								class="fa fa-facebook" aria-hidden="true"></i><span
 								class="btn-text">
 								페이스북으로 로그인하기</span></span></li>
@@ -279,10 +279,12 @@ function fbLogin(para){
     	   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/catch/qr/${gid}";
        }else if(para =="survey"){
     	   surveyInit();
-       }else{
-    	 qrPopup(para);
+       }else if(para =="logbtn"){
     	 //페북으로 로그인 하기로 온다.
-      	 //$("#login-modal").modal('hide');
+      	 $("#login-modal").modal('hide');
+      	location.reload();
+       }else{
+    	   qrPopup(para);
        }
      });
     } else {
