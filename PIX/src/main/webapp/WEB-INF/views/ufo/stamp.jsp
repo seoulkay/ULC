@@ -37,20 +37,56 @@
 
 <!-- Theme CSS -->
 <link id="theme-style" rel="stylesheet"	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
+<!-- 이미지 캔바스 라이브러리 -->
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/load-image.all.min.js"></script>	
 
 <style>
       #map {
         height: 30em;
       }
-    </style>
+</style>
 </head>
 
 <body data-spy="scroll" data-target="#page-nav" class="blog-page">
+<section class="heading-section section section-on-bg">
+		<div class="hero-wrapper">
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_info_pic})"></div>
+			<div class="hero-mask-gradient"></div>
+		</div>
+		<!--//hero-wrapper-->
+		<div class="container heading-content">
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+			
+			<div class="actions">
+                 <button class="btn btn-warning" onClick="getUfo('go')">스탬프찍기</button>
+            </div><!--//actions-->
+		</div>
+		<!--//container-->
+	</section>
+	<!--//heading-section-->
+
+	<div class="page-nav-space-holder">
+		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+			<div class="container">
+				<ul id="page-nav" class="nav page-nav list-inline">
+					<li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
+				</ul>
+				<!--//page-nav-->
+			</div>
+		</div>
+		<!--//page-nav-wrapper-->
+	</div>
+	<!--//page-nav-space-holder-->
 	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-	
+
 <section id="signup-section" class="signup-section section">
 		<div class="section-inner">
 			<div class="container text-center">
@@ -70,7 +106,13 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
-							<li><button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:3px"><span class="btn-text">갤러리로 가기</span></button> <button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button> <button class="btn btn-warning" onClick="qrInfoShow()" style="margin:3px"><span class="btn-text">GPS가 잘 안잡힐 경우</span></button></li>
+							<li>
+							<button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button> 
+							</li>
+							<li>
+							<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:3px"><span class="btn-text">갤러리로 가기</span></button> 
+							</li>
+							
 <!-- 							<li> -->
 <!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
 <!-- 							</li> -->
@@ -103,11 +145,464 @@
 	</div>
 </section>
 		
+<!-- 스템프  -->
+<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stampRally" data-dismiss="modal" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
+<div class="modal" id="stampRally" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h3 style="font-family:football;">스탬프랠리</h3>
+	   </div>
+	   <div class="modal-body">
+	   		<div class="row">
+	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
+	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
+		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
+		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
+		   				</a>
+		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
+	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px;">${ele.go_content }</p>
+		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+	   			</div>
+	   			</c:forEach>
+	   		</div>
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+
+
+<c:forEach var="ele" varStatus="statusEle" items="${ufoGo }">
+<div class="modal" id="stamp_${ele.ufo_gid }_modal" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
+	   </div>
+	   <div class="modal-body">
+   			<div style="padding:10px;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
+   			</div>
+   		<%-- ${statusEle.count }번 사진 : ${ele.go_content }<br>
+	 	 	<div class="progress">
+			  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+			  	</div>
+			  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+			  	</div>
+			</div> --%>
+			<!-- 스탬프 미션 사진, 내용 -->			
+			<div>
+   				<img class="img-responsive" style="padding:10px" src="https://www.ufo79.com/image/${ele.go_image }">
+   			</div>
+   			<div style="padding:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
+   			</div>
+   			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+   			
+			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">
+				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
+				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
+				<input type="hidden" id="uid_go${ele.ufo_gid }" name="user_uid">
+				<input type="hidden" id="email_go${ele.ufo_gid }" name="email">
+				<input type="hidden" id="type_go${ele.ufo_gid }" name="ufo_go_type" value="go">
+				<input type="hidden" id="gid_go${ele.ufo_gid }" name="ufo_gid" value="${ele.ufo_gid }">
+				<input type="hidden" id="para${ele.ufo_gid }" name="para" value="${sessionScope.eventPara}">
+			</form>
+		</div>
+		<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')">제출</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+<script>
+document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
+    loadImage(
+        e.target.files[0],
+        function (img) {
+        	var node = document.getElementById('desc'+'${ele.ufo_gid }');
+        	while(node.firstChild){
+        		node.removeChild(node.firstChild);
+        	}
+        	img.toDataURL('image/jpeg');
+        	img.id = 'img'+'${ele.ufo_gid }';
+        	node.appendChild(img);
+        	//$('#stamp_go${ele.ufo_gid }').remove();
+        	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
+			
+        },
+        {maxWidth: 100, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+    );
+};
+</script>
+</c:forEach>
+
+<div class="modal" id="qr_info" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h3 style="font-family:football;">${ufo.qr_info_title }</h3>
+	   </div>
+	   <div class="modal-body">
+   			<div style="padding:10px">${ufo.qr_info }<br>
+   			</div>
+		</div>
+		<div class="modal-footer">
+	  	</div>
+	</div>
+	</div>
+</div>
+</c:if>
 
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
+<script>
+
+var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
+var icons = {
+  me:{
+	  icon: iconBase + 'icon_me_30px-01.svg'
+  },
+  ufoOn:{
+	  icon: iconBase + 'icon_pin_20px.svg'
+  },
+  ufoOff:{
+	  icon: iconBase +'icon_pin_15px_off.svg'
+  },
+  ufoDone:{
+	  icon: iconBase +'icon_pin_15px_fn_02.svg'
+  }
+};
+        
+        
+var neighborhoods = [];
+var markers = [];
+var map;
+
+function qrInfoShow(){
+	$("#qr_info").modal('show');
+}
+
+/**
+*
+    */
+function CenterControl(controlDiv) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.style.margin = '5px';
+      controlUI.title = 'Click to recenter the map';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/map_refresh.svg" style="width: 35px; height: 35px;">';
+      controlUI.appendChild(controlText);
+
+      // 센터 잡기
+      controlUI.addEventListener('click', function() {
+          $( controlUI ).fadeOut( "slow", function() {
+        	  });
+    	  makeGo();
+      });
+    }
+function CenterControl2(controlDiv) {
+
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginBottom = '22px';
+    controlUI.style.textAlign = 'center';
+    controlUI.style.margin = '5px';
+    controlUI.title = 'Click to recenter the map';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.color = 'rgb(25,25,25)';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '16px';
+    controlText.style.lineHeight = '38px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.innerHTML = '<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/map_info.svg" style="width: 35px; height: 35px;">';
+    controlUI.appendChild(controlText);
+
+    // 센터 잡기
+    controlUI.addEventListener('click', function() {
+    	qrInfoShow()
+    });
+  }
+/**
+ * 리프레쉬 버튼 
+ */
+function refreshBtn(){
+	$("#refreshBtn").remove();
+	$("#mapInfoBtn").remove();
+	var centerControlDiv = document.createElement('div');
+    centerControlDiv.setAttribute("id", "refreshBtn");
+    var centerControl = new CenterControl(centerControlDiv);
+    
+    var centerControlDiv2 = document.createElement('div');
+    centerControlDiv2.setAttribute("id", "mapInfoBtn");
+    var centerControl2 = new CenterControl2(centerControlDiv2);
+    
+    
+    centerControlDiv.index = 1;
+    centerControlDiv2.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
+    
+}
+ /**
+   * 
+ */
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 18,
+	    center: {lat: 35.097, lng: 129.008},
+	    zoomControl: true,
+	    mapTypeControl: false,
+	    scaleControl: true,
+	    streetViewControl: false,
+	    rotateControl: false,
+	    fullscreenControl: true
+	  });
+}
+
+/**
+ * 
+*/	
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+}
+	
+	
+/**
+ * 
+*/	
+function drop() {
+  for (var i = 0; i < neighborhoods.length; i++) {
+    addMarkerWithTimeout(neighborhoods[i], i * 50);
+  }
+  window.setTimeout(function() {refreshBtn();}, (neighborhoods.length+1)*50);
+}
+/**
+ * 
+*/
+	
+
+function addMarkerWithTimeout(position, timeout) {
+  window.setTimeout(function() {
+  var infowindow = new google.maps.InfoWindow({
+	    content: position.content
+	  });
+  
+  var pos = {
+          lat: position.lat,
+          lng: position.lng
+        };
+  
+ var marker = new google.maps.Marker({
+      position: pos,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      icon: icons[position.type].icon
+ });
+ marker.addListener('click', function() {
+	    infowindow.open(map, marker);
+  });
+    markers.push(marker);
+	}, timeout);
+}
+
+
+/**
+ * 
+*/	
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  };
+  markers = [];
+  neighborhoods = [];
+}
+	
+/**
+ * 
+*/	
+function makeGo(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+    	clearMarkers();
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          type: "me",
+          content:'<h1 id="firstHeading" style="font-family:football">나</h1>'
+        };
+        if(checkLogin()){
+        	var uid = window.sessionStorage.getItem('uid');
+        	var para = '${sessionScope.eventPara}';
+        	$.post( "/PIX/ufogo/get/"+para+"/"+uid)
+ 	       .done(function( data ) {
+ 	        var go = JSON.parse(JSON.stringify(data));
+ 	        for(var i = 0; i < go.length; i++){
+ 	        	if(go[i].ufo_go_type == 'qr'){
+ 	        	  	//중복을 막는 코드가 필요함 
+ 	        		$('#qr_yes_'+go[i].ufo_gid).show();
+ 	        	}else if(go[i].ufo_go_type == 'go'){
+ 	        		$('#stamp_yes_'+go[i].ufo_gid).show();
+ 	        	}
+ 	        }
+ 	       markerSet(pos);
+ 	       });
+        }else{
+        	markerSet(pos);
+        }
+        
+      }, function() {
+    	var infoWindow = new google.maps.InfoWindow({map: map});
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      handleLocationError(false, infoWindow, map.getCenter());
+	}
+}
+/**
+ * 마커 세팅
+ */
+		
+function markerSet(pos){
+	$.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
+       .done(function( data ) {
+         var go = JSON.parse(JSON.stringify(data));		         
+         for(var i = 0; i < go.length; i++){
+        	 var target = {};
+        	 target.lat = parseFloat((Number(go[i].go_lat)));
+        	 target.lng = parseFloat((Number(go[i].go_alt)));
+        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
+        	 
+        	 
+        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
+        		 target.type = "ufoOn";
+        		 $("#stamp_back_"+go[i].ufo_gid).hide();
+        		 $("#stamp_"+go[i].ufo_gid).show();
+        	 }else{
+        		 target.type = "ufoOff";
+        		 $("#stamp_back_"+go[i].ufo_gid).show();
+        		 $("#stamp_"+go[i].ufo_gid).hide();
+        	 }
+        	 
+        	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
+        		 target.type = "ufoDone";
+        	 }	 
+	         neighborhoods.push(target);
+         }
+         neighborhoods.push(pos);
+         map.setCenter(pos);
+         drop();
+    });
+}
+/**
+ * 
+*/			
+function stampRally(){
+	if(checkLogin()){
+		getUfo('go');
+	}else{
+		fbLogin('go');
+	}
+}
+
+
+/**
+ * 
+*/
+function stampPostSubmit(para){
+	if(checkLogin()){
+		showPleaseWait();
+		  $( "#first_name_go"+para ).val(window.sessionStorage.getItem('first_name'));
+		  $( "#last_name_go"+para ).val(window.sessionStorage.getItem('last_name'));
+		  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
+		  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
+		  var form = new FormData($("#stampForm"+para)[0]);
+		  
+		  //var fileLoader = new FileReader();
+		  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
+		  var blob = dataURItoBlob(fileCanvas);
+		  
+		  
+		  form.append('file', blob, "fileName.png");
+	      $.ajax({
+	              url: '/PIX/ufogo/insert',
+	              method: "POST",
+	              dataType: 'json',
+	              data: form,
+	              processData: false,
+	              contentType: false,
+	              success: function(result){
+	            	  console.log("처리되었습니다. : "+result);
+	            	  showDone("성공하였습니다.", "go");
+	              },
+	              error: function(er){}
+	      });
+	}else{
+		fbLogin('qr');
+	}
+}
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>
+
 
 </body>
 </html>

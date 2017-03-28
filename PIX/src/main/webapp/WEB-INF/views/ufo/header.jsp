@@ -31,20 +31,17 @@
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'index')}">
 					   <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
 					</c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'blog')}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/blog">공지사항</a></li>
-					</c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}">
-					 <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li>
 					</c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}">
+					 <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li>
 					</c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'qr')}">
-						<li class="nav-item"><a href="#" onclick="getUfo('qr')">큐알코드랠리</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'blog')}">
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/blog">공지사항</a></li>
 					</c:if>
 					<!--//dropdown-->
 				</ul>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -42,36 +44,33 @@
 	</jsp:include><!--//header-->
 	<!--//header-->
 
-	<section class="heading-section section section-on-bg">
+<section class="heading-section section section-on-bg">
 		<div class="hero-wrapper">
-			<div class="hero-holder"></div>
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_hist_pic}"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-			<h2 class="headline">서베이</h2>
-			<div class="intro">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 익명의 서베이 결과를 확인하세요!</div>
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">서베이</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">나눌수록 즐거운 축제, 참가한 분들의 솔직하고 재미있는 익명의 서베이 결과를 확인하세요!</div><br>
+			
 			<div class="actions">
-				<a class="scrollto" href="#story-block-1">서베이 문항 보기</a> <a
-					class="scrollto" href="#story-block-1"><img
-					src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg"
-					alt=""></a>
-			</div>
-			<!--//actions-->
+           	<button class="btn btn-warning" style="margin:0 auto" onclick="surveyInit()">설문조사하기</button>
+            </div><!--//actions-->
 		</div>
 		<!--//container-->
 	</section>
 	<!--//heading-section-->
 
-	<div class="page-nav-space-holder hidden-xs">
+	<div class="page-nav-space-holder">
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
-				<ul id="page-nav" class="page-nav nav list-inline">
-					<li><a class="scrollto" href="#story-block-1">문항 1</a></li>
-					<li><a class="scrollto" href="#story-block-2">문항 2</a></li>
-					<li><a class="scrollto" href="#story-block-3">문항 3</a></li>
-					<li><a class="scrollto" href="#story-block-4">문항 4</a></li>
-					<li><a class="scrollto" href="#story-block-5">문항 5</a></li>
+				<ul id="page-nav" class="nav page-nav list-inline">
+					<li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -79,15 +78,16 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-
 	<div class="stories container">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
-
+			
+				
 			<div class="story-item">
 				<div class="row">
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
 						<div class="inner">
+							
 <!-- 						우선 단오제용 -->
 <!-- 							<img class="img-responsive" -->
 <%-- 								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png" --%>
@@ -161,286 +161,145 @@
 		<!--//story-block-->
 </c:forEach>
 	</div>
-	
+
+<!-- 서베이 이닛 -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
+
+<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
+<form id="surveyForm" method="post" enctype="multipart/form-data">
+<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
+<div class="modal fade" id="remodal_q${statusEle.count }" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+	      <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>${ele.question}</h4>
+	  	 </div>	
+  
+	   <div class="modal-body">
+	    7문항 중 ${statusEle.count }문항<br>
+	    <div class="progress">
+		  <div class="progress-bar progress-bar-success" style="width: ${statusEle.count * 100/ 7 }%">
+		  </div>
+		  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
+		  </div>
+		</div>
+	  
+		<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
+			<div class="input-group">
+		      <span class="input-group-addon">
+		      <input type="radio" name="q${statusEle.count }_a" id="q${statusEle.count }_a" aria-label="..." value="${status.count }" answer="${var.q_option }">
+		      </span>
+		      <input type="text" class="form-control" aria-label="..." value="${var.q_option }" name="noUse" readonly="readonly">
+		    </div>
+	    </c:forEach>
+	 	<br>
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal">다음</button>
+	  </div>
+	</div>
+	</div>
+</div>
+</c:forEach>
+	  
+
+<div class="modal" id="remodal_q6" role="dialog">
+<div class="modal-dialog">
+  <div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4 id="modal1Title">${quesVO[5].question}</h4>
+	   </div>	
+	   <div class="modal-body">
+  			7문항 중 6문항<br>
+  			<div class="progress">
+	  		<div class="progress-bar progress-bar-success" style="width: ${6 * 100/ 7 }%">
+	  		</div>
+	  		<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
+	  		</div>
+			</div>
+  			<input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
+  		</div>
+  		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal">다음</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+
+
+
+<div class="modal" id="remodal_q7" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>${quesVO[6].question}</h4>
+	   </div>
+	   <div class="modal-body">
+   		7문항 중 7문항<br>
+	 	 	<div class="progress">
+		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+		  	</div>
+		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	</div>
+			</div>
+			  	<input type="file" id="q7_a" name="file" class="form-control">
+		</div>
+		<div class="modal-footer">
+	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="surveyPostSubmit()">GO!</button>
+	  	</div>
+	</div>
+	</div>
+</div>
+<input type="hidden" id="uid_a" name="uid_a">
+<input type="hidden" id="first_name_a" name="first_name_a">
+<input type="hidden" id="last_name_a" name="last_name_a">
+<input type="hidden" id="email_a" name="email_a">
+<input type="hidden" id="sns_type_a" name="sns_type_a">
+<input type="hidden" id="access_token_a" name="access_token_a">
+<input type="hidden" id="sns_msg" name="sns_msg">
+<input type="hidden" id="sns_return" name="sns_return">
+<input type="hidden" id="sns_gid" name="sns_gid">
+</form>
+
+<div class="modal" id="surveyResult" role="dialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  		<h4>서베이 결과</h4>
+	   </div>
+	   <div class="modal-body">
+	 	 	<div class="progress">
+		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
+		  	</div>
+		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	</div>
+			</div>
+			1. 답변<br>
+		  	2. 답변<br>
+		  	3. 답변<br>
+		  	4. 답변<br>
+		  	5. 답변<br>
+		  	6. 답변<br>
+		  	7. 답변<br> 
+<!-- 			  	<input type="file" id="q7_a" name="file" class="form-control"> -->
+		</div>
+		<div class="modal-footer">
+<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal">확인</button> -->
+	  	</div>
+	</div>
+	</div>
+</div>
+</c:if>	
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
 
-	<!-- Video Modal -->
-	<div class="modal modal-video" id="modal-video" tabindex="-1"
-		role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 id="videoModalLabel" class="modal-title sr-only">Video
-						Tour</h4>
-				</div>
-				<div class="modal-body">
-					<div class="video-container">
-						<iframe id="vimeo-video"
-							src="//player.vimeo.com/video/28872840?color=ffffff&amp;wmode=transparent"
-							width="720" height="405" frameborder="0" webkitallowfullscreen
-							mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<!--//video-container-->
-				</div>
-				<!--//modal-body-->
-			</div>
-			<!--//modal-content-->
-		</div>
-		<!--//modal-dialog-->
-	</div>
-	<!--//modal-->
-
-	<!-- Login Modal -->
-	<div class="modal modal-auth modal-login" id="login-modal"
-		tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 id="loginModalLabel" class="modal-title text-center">Log
-						in to your account</h4>
-				</div>
-				<div class="modal-body">
-					<div class="social-login text-center">
-						<ul class="social-buttons list-unstyled">
-							<li><a href="#" class="btn btn-social btn-google btn-block"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Log in with Google</span></a></li>
-							<li><a href="#"
-								class="btn btn-social btn-facebook btn-block"><i
-									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">Log in with Facebook</span></a></li>
-						</ul>
-					</div>
-					<div class="divider">
-						<span class="or-text">OR</span>
-					</div>
-					<div class="login-form-container">
-						<form class="login-form">
-							<div class="form-group email">
-								<i class="material-icons icon">&#xE0BE;</i> <label
-									class="sr-only" for="login-email">Email</label> <input
-									id="login-email" name="login-email" type="email"
-									class="form-control login-email" placeholder="Email">
-							</div>
-							<!--//form-group-->
-							<div class="form-group password">
-								<i class="material-icons icon">&#xE897;</i> <label
-									class="sr-only" for="login-password">Password</label> <input
-									id="login-password" name="login-password" type="password"
-									class="form-control login-password" placeholder="Password">
-								<div class="extra">
-									<div class="checkbox remember">
-										<label> <input type="checkbox"> Remember me
-										</label>
-									</div>
-									<!--//check-box-->
-									<div class="forgotten-password">
-										<a href="#" id="resetpass-link" data-toggle="modal"
-											data-target="#resetpass-modal">Forgotten password?</a>
-									</div>
-								</div>
-								<!--//extra-->
-							</div>
-							<!--//form-group-->
-							<button type="submit" class="btn btn-cta btn-block btn-primary">Log
-								in</button>
-						</form>
-					</div>
-					<!--//login-form-container-->
-
-					<div class="option-container">
-						<div class="lead-text">Don't have an account?</div>
-						<a class="signup-link btn btn-ghost-alt" id="signup-link" href="#">Sign
-							Up</a>
-					</div>
-					<!--//option-container-->
-				</div>
-				<!--//modal-body-->
-
-			</div>
-			<!--//modal-content-->
-		</div>
-		<!--//modal-dialog-->
-	</div>
-	<!--//modal-->
-
-	<!-- Signup Modal -->
-	<div class="modal modal-auth modal-signup" id="signup-modal"
-		tabindex="-1" role="dialog" aria-labelledby="signupModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 id="signupModalLabel" class="modal-title text-center">Sign
-						up to start your 30 day free trial!</h4>
-				</div>
-				<div class="modal-body">
-					<div class="social-login text-center">
-						<ul class="social-buttons list-unstyled">
-							<li><a href="#" class="btn btn-social btn-google btn-block"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li>
-							<li><a href="#"
-								class="btn btn-social btn-facebook btn-block"><i
-									class="fa fa-facebook" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Facebook</span></a></li>
-						</ul>
-					</div>
-					<div class="divider">
-						<span class="or-text">OR</span>
-					</div>
-					<div class="login-form-container">
-						<form class="login-form">
-							<div class="form-group full-name">
-								<i class="material-icons icon">&#xE7FD;</i> <label
-									class="sr-only" for="signup-fullname">Your Full Name</label> <input
-									id="signup-fullname" name="signup-fullname" type="text"
-									class="form-control signup-email" placeholder="Your Full Name">
-							</div>
-							<!--//form-group-->
-							<div class="form-group email">
-								<i class="material-icons icon">&#xE0BE;</i> <label
-									class="sr-only" for="signup-email">Your Email</label> <input
-									id="signup-email" name="signup-email" type="email"
-									class="form-control signup-email" placeholder="Your Email">
-							</div>
-							<!--//form-group-->
-							<div class="form-group password">
-								<i class="material-icons icon">&#xE897;</i> <label
-									class="sr-only" for="signup-password">Create a Password</label>
-								<input id="signup-password" name="signup-password"
-									type="password" class="form-control signup-password"
-									placeholder="Create a Password">
-							</div>
-							<!--//form-group-->
-							<div class="legal-note">By signing up, you agree to our
-								terms of services and privacy policy.</div>
-							<button type="submit" class="btn btn-block btn-primary btn-cta">Sign
-								up</button>
-
-						</form>
-					</div>
-					<!--//login-form-container-->
-					<div class="option-container">
-						<div class="lead-text">Already have an account?</div>
-						<a class="login-link btn btn-ghost-alt" id="login-link" href="#">Log
-							in</a>
-					</div>
-					<!--//option-container-->
-				</div>
-				<!--//modal-body-->
-			</div>
-			<!--//modal-content-->
-		</div>
-		<!--//modal-dialog-->
-	</div>
-	<!--//modal-->
-
-	<!-- Reset Password Modal -->
-	<div class="modal modal-auth modal-resetpass" id="resetpass-modal"
-		tabindex="-1" role="dialog" aria-labelledby="resetpassModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 id="resetpassModalLabel" class="modal-title text-center">Forgot
-						your password?</h4>
-				</div>
-				<div class="modal-body">
-					<div class="resetpass-form-container">
-						<p class="intro">We'll email you a link to a page where you
-							can easily create a new password.</p>
-						<form class="resetpass-form">
-							<div class="form-group email">
-								<label class="sr-only" for="reg-email">Your Email</label> <input
-									id="reg-email" name="reg-email" type="email"
-									class="form-control login-email" placeholder="Your Email">
-							</div>
-							<!--//form-group-->
-							<button type="submit" class="btn btn-block btn-secondary btn-cta">Reset
-								Password</button>
-						</form>
-					</div>
-					<!--//login-form-container-->
-					<div class="option-container">
-						<div class="lead-text">
-							I want to <a class="back-to-login-link" id="back-to-login-link"
-								href="#">return to login</a>
-						</div>
-					</div>
-					<!--//option-container-->
-				</div>
-				<!--//modal-body-->
-			</div>
-			<!--//modal-content-->
-		</div>
-		<!--//modal-dialog-->
-	</div>
-	<!--//modal-->
-
-	<%-- <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->
-	<div id="config-panel" class="config-panel hidden-xs hidden-sm">
-		<div class="panel-inner">
-			<a id="config-trigger" class="config-trigger config-panel-hide"
-				href="#"><i class="fa fa-cog"></i></a>
-			<h5 class="panel-title">Choose Colour</h5>
-			<ul id="color-options" class="list-unstyled list-inline">
-				<li class="theme-1 active"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css"
-					href="#"></a></li>
-				<li class="theme-2"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-2.css"
-					href="#"></a></li>
-				<li class="theme-3"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-3.css"
-					href="#"></a></li>
-				<li class="theme-4"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-4.css"
-					href="#"></a></li>
-				<li class="theme-5"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-5.css"
-					href="#"></a></li>
-				<li class="theme-6"><a
-					data-style="${pageContext.request.contextPath}/resources/ufo/assets/css/styles-6.css"
-					href="#"></a></li>
-			</ul>
-			<a id="config-close" class="close" href="#"><i
-				class="fa fa-times-circle"></i></a>
-		</div>
-		<!--//panel-inner-->
-	</div>
-	<!--//configure-panel--> --%>
-
-	<!-- Javascript -->
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap-hover-dropdown.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/back-to-top.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/ufo/assets/js/main.js"></script>
-
-	<!-- Style Switcher (REMOVE ON YOUR PRODUCTION SITE) -->
-	<script
-		src="${pageContext.request.contextPath}/resources/ufo/assets/js/demo/style-switcher.js"></script>
-
+	
 </body>
 </html>
 

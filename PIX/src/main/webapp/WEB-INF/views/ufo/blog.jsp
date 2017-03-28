@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -35,21 +37,43 @@
 	</jsp:include><!--//header-->
 	<!--//header-->      
     
-    <section class="heading-section section section-on-bg">
-        <div class="hero-wrapper">
-            <div class="hero-holder"></div>
-            <div class="hero-mask-gradient"></div>
-        </div><!--//hero-wrapper--> 
-        <div class="container heading-content">                
-            <h2 class="headline">공지사항</h2>
-            <div class="intro">2017 강릉단오제 관련 공지사항 입니다.</div>
-            <div class="actions">
-                 <a class="scrollto-no-offset" href="#posts-promo-block">공지사항 보러가기</a>
-                 <a class="scrollto-no-offset" href="#posts-promo-block"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
-            </div><!--//actions-->
-        </div><!--//container-->
-    </section><!--//heading-section-->
    
+   <section class="heading-section section section-on-bg">
+		<div class="hero-wrapper">
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_program_pic}"></div>
+			<div class="hero-mask-gradient"></div>
+		</div>
+		<!--//hero-wrapper-->
+		<div class="container heading-content">
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">공지사항</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">공지사항 입니다.</div><br>
+			
+			<div class="actions">
+           	<a class="scrollto-no-offset" href="#page-nav">공지사항 보러가기</a>
+                 <a class="scrollto-no-offset" href="#page-nav"><img src=
+"${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+            </div><!--//actions-->
+		</div>
+		<!--//container-->
+	</section>
+	<!--//heading-section-->
+
+	<div class="page-nav-space-holder">
+		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+			<div class="container">
+				<ul id="page-nav" class="nav page-nav list-inline">
+					<li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a class="scrollto" href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
+				</ul>
+				<!--//page-nav-->
+			</div>
+		</div>
+		<!--//page-nav-wrapper-->
+	</div>
+	<!--//page-nav-space-holder-->
     <div class="posts-promo-block" id="posts-promo-block">
         <div class="container">
             <div id="promo-carousel" class="carousel slide" data-ride="carousel">
