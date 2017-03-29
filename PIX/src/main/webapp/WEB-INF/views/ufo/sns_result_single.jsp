@@ -70,7 +70,7 @@ button.close {
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-12" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
 	   					<c:if test="${pick eq ele.ufo_gid}">
-		   				<div style="border: 2px solid #FFF;"><img alt="" src="https://www.ufo79.com/image/${ele.go_image}" style="width:100%" class="img-responsive"></div>
+		   				<div style="border: 2px solid #FFF;"><a href="https://www.ufo79.com/image/${ele.go_image}" download><img alt="" src="https://www.ufo79.com/image/${ele.go_image}" style="width:100%" class="img-responsive"></a></div>
 		   				</c:if>
 	   			</div>
 	   			</c:forEach>

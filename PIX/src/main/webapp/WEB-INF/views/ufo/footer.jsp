@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="reader">UFO79.com</a>
+					<div class="col-title"><a href="https://www.ufo79.com/">UFO79.com</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">쿠키정책</a>
+						<a href="reader">쿠키정책</a>
 					</div>
 				</div>
 			</div>
@@ -361,7 +361,6 @@ function getUfo(param){
 	 				var para = $("#qrNumber").val();
 	 				para = $.trim(para);
 	 				para = "#stamp_"+para+"_modal";
-	 				console.log(para);
 	 				if($(para).length > 0){
 	 					$(para).modal('show');
 	 				}else{

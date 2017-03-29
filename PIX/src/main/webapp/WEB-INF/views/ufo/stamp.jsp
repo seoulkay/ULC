@@ -240,7 +240,6 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
 
 $(document).ready(function() {
     $('#stamp_go${ele.ufo_gid }').change(function() {
-    	console.log("gg");
            $('#btn${ele.ufo_gid }').prop('disabled', false);
            $('#btn${ele.ufo_gid }').addClass("btn-primary");
     });
@@ -569,7 +568,6 @@ function stampPostSubmit(para){
 		              processData: false,
 		              contentType: false,
 		              success: function(result){
-		            	  console.log("처리되었습니다. : "+result);
 		            	  showDone("성공하였습니다.", "go");
 		              },
 		              error: function(er){}

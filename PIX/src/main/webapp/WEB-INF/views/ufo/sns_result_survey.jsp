@@ -80,7 +80,7 @@ button.close {
 	   			</ul>
 	   			
 	   			<div class="col-xs-12" id='qr_div' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
-	   					<div style="border: 2px solid #FFF;"><img alt="" src="https://www.ufo79.com/image/${answer.q7_a}" style="width:100%" class="img-responsive"></div>
+	   					<div style="border: 2px solid #FFF;"><a href="https://www.ufo79.com/image/${answer.q7_a}" download><img alt="" src="https://www.ufo79.com/image/${answer.q7_a}" style="width:100%" class="img-responsive"></a></div>
 		   		</div>
 	   			
 	   		</div>

@@ -421,6 +421,9 @@ public class UfoController {
 		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
 		//퍼센트 계산해 todo
 		int length = answer.size();
+		if(length == 0){
+			length = 1;
+		}
 		int[][] points = new int[5][4];
 		
 //		for(FestAnswerVO ele : answer){
