@@ -38,19 +38,27 @@
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
 
-	<section class="heading-section section section-on-bg">
+	<section class="heading-section section section-on-bg" style="padding-top:7em">
 		<div class="hero-wrapper">
 			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.main_image})"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
-			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-			
-			<div class="actions">
-                 <a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
-            </div><!--//actions-->
+		<c:choose>
+			<c:when test="${!empty ufo.q1_img}">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:30em; margin: 0 auto;" data-dismiss="modal">
+			</c:when>
+			<c:otherwise>
+			<div style="height:3em"></div>
+					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+							<div class="actions">
+                 			<a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+            				</div>
+			</c:otherwise>
+		</c:choose>			
+
 		</div>
 		<!--//container-->
 	</section>
@@ -91,6 +99,10 @@
 				</marquee>
 			</div>
 		</div>
+		<div class="row">
+			<div style="height:3px; background-color: #ECD0E2"></div>
+			<div style="height:3em"></div>
+		</div>
 		<c:if test="${not empty ufo.fb_live }">
 		<div class="row">
 			<div class="fb-video" data-href="${ufo.fb_live }" data-width="500" data-show-text="false"></div>
@@ -123,7 +135,9 @@
 			<div class="row">
 				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
 				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+<!-- 					<button class="btn" style="background-color: #ed45a4;cursor:pointer;" disabled="disabled"> -->
 					<h3 class="feature-title">${ufo.info_title }</h3>
+<!-- 					</button> -->
 					<div class="feature-desc">
 						<p>${ufo.info_info_text }</p>
 					</div>
@@ -132,20 +146,24 @@
 				<!--//feature-content-->
 <!-- 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12"> -->
 				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<div class="figure-holder" align="center">
+<!-- 					<div class="figure-holder" align="center"> -->
 					<c:if test="${ufo.info_info_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_info_pic}"
 							alt="">
 					</c:if>
-					</div>
+<!-- 					</div> -->
 					<!--//figure-holder-->
 				</div>
 			</div>
 			<!--//row-->
 		</div>
 		<!--//feature-block-1-->
-		<div id="feature-block-2" class="feature-block feature-block-2">
+		</div>
+</section>
+<section style="background-color: #B1B2B3">		
+		<div class="feature-blocks container" >
+		<div id="feature-block-2" class="feature-block feature-block-2" >
 			<div class="row">
 				<div class="feature-content col-md-12 col-sm-12 col-xs-12" >
 					<h3 class="feature-title">${ufo.program_title }</h3>
@@ -158,7 +176,10 @@
 			</div>
 			<!--//row-->
 		</div>
-
+		</div>
+</section>
+<section>
+	<div class="feature-blocks container" >		
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-1">
 			<div class="row">
@@ -184,43 +205,38 @@
 			<!--//row-->
 		</div>
 		<!--//feature-block-3-->
-	</div>
+		</div>
 </section>	
 <!-- 	<div class="stories container"> -->
-		<div id="story-block-1" class="story-block story-block-1">
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
+<section style="background-color: #A9D7E6">		
+<div class="feature-blocks container" >		
+		<!--//feature-block-2-->
+		<div id="feature-block-3" class="feature-block feature-block-1">
+			<div class="row">
+				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+					<h3 class="feature-title">${ufo.location_title }</h3>
+					<div class="figure-holder" align="center">
 						<c:if test="${ufo.info_location_pic ne null}">
 						<img class="img-responsive"
 							src="https://www.ufo79.com/image/${ufo.info_location_pic}"
 							alt="">
 						</c:if>
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
 					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question">${ufo.location_title }</h3>
-								<div class="answer">${ufo.info_location_text }</div>
-								<div class="answer">${ufo.info_contact_text }</div>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
+					<!--//feature-desc-->
 				</div>
-				<!--//row-->
+				<!--//feature-content-->
+				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+					<!--//figure-holder-->
+					<div class="feature-desc">
+						<p>${ufo.info_location_text }</p>
+					</div>
+				</div>
 			</div>
-			<!--//story-item-->
+			<!--//row-->
 		</div>
-		<!--//story-block-->
-<!-- 	</div> -->
-<!-- 	<section id="features-section" class="features-section section"> -->
-
+		<!--//feature-block-3-->
+		</div>
+</section>
 </c:if>
 <c:if test="${fn:contains(sessionScope.eventMenu, 'newsletter')}">
 	<section id="app-section" class="apps-section section text-center">

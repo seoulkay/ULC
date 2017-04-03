@@ -30,58 +30,5 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
-	    <script src="https://unpkg.com/react@15/dist/react.js"></script>
-		<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-		<!-- In-browser JSX transformer, remove when pre-compiling JSX. -->
-		<script src="http://fb.me/JSXTransformer-0.12.0.js"></script>
-		
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pix/css/remodal.css">
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/pix/css/remodal-default-theme.css">
-  		<style>
-		    .remodal-bg.with-red-theme.remodal-is-opening,
-		    .remodal-bg.with-red-theme.remodal-is-opened {
-		      filter: none;
-		    }
-		
-		    .remodal-overlay.with-red-theme {
-		      background-color: #f44336;
-		    }
-		
-		    .remodal.with-red-theme {
-		      background: #fff;
-		    }
-		  </style>
-		  <script src="${pageContext.request.contextPath}/resources/pix/js/remodal.js"></script>
 
-		<!-- Events -->
-		<script>
-		  $(document).on('opening', '.remodal', function () {
-		    console.log('opening');
-		  });
-		
-		  $(document).on('opened', '.remodal', function () {
-		    console.log('opened');
-		  });
-		
-		  $(document).on('closing', '.remodal', function (e) {
-		    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
-		  });
-		
-		  $(document).on('closed', '.remodal', function (e) {
-		    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
-		  });
-		
-		  $(document).on('confirmation', '.remodal', function () {
-		    console.log('confirmation');
-		  });
-		
-		  $(document).on('cancellation', '.remodal', function () {
-		    console.log('cancellation');
-		  });
-		
-		  $('[data-remodal-id=modal2]').remodal({
-		    modifier: 'with-red-theme'
-		  });
-		</script>
 </head>

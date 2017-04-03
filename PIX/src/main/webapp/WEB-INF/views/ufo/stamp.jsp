@@ -48,15 +48,26 @@
 </head>
 
 <body data-spy="scroll" data-target="#page-nav" class="blog-page">
-<section class="heading-section section section-on-bg">
+<section class="heading-section section section-on-bg" style="padding-top:7em">
 		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_info_pic})"></div>
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.q2_img})"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
-			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+		<c:choose>
+			<c:when test="${!empty ufo.q1_img}">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:25em; margin: 0 auto;" data-dismiss="modal">
+			</c:when>
+			<c:otherwise>
+			<div style="height:3em"></div>
+					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+							<div class="actions">
+                 			<a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
+            				</div>
+			</c:otherwise>
+		</c:choose>	
 			
 			<div class="actions">
                  <button class="btn btn-warning" onClick="getUfo('go')">스탬프찍기</button>
@@ -249,18 +260,11 @@ $(document).ready(function() {
 
 <div class="modal" id="qr_info" role="dialog">
 	<div class="modal-dialog">
-	<div class="modal-content">
-	   <div class="modal-header">
-	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h3 style="font-family:football;">${ufo.qr_info_title }</h3>
-	   </div>
-	   <div class="modal-body">
-   			<div style="padding:10px">${ufo.qr_info }<br>
-   			</div>
-		</div>
-		<div class="modal-footer">
-	  	</div>
-	</div>
+<!-- 	<div class="modal-content"> -->
+<!-- 	   	<div class="modal-body"> -->
+   			<img src="https://www.ufo79.com/image/${ufo.qr_pic}" class="img-responsive" alt="" style="width:100%" data-dismiss="modal">
+<!-- 		</div> -->
+<!-- 	</div> -->
 	</div>
 </div>
 </c:if>
@@ -273,7 +277,7 @@ $(document).ready(function() {
 var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
 var icons = {
   me:{
-	  icon: iconBase + 'icon_me_30px-01.svg'
+	  icon: iconBase + 'NEW_icon_UFO_me.svg'
   },
   ufoOn:{
 	  icon: iconBase + 'icon_pin_20px.svg'

@@ -435,4 +435,14 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().insert("BasicMapper.insertUfoShare", vo);
 	}
 	
+	//고 넣기
+	public int insertUfoGo(UfoGoVO vo){
+		return getSqlSession().insert("BasicMapper.insertUfoGo", vo);
+	}
+	
+	//고 업데이트
+	public int updateUfoGo(UfoGoVO vo){
+		return getSqlSession().update("BasicMapper.updateUfoGo", vo);
+	}
+
 }

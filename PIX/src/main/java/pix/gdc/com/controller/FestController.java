@@ -108,9 +108,6 @@ public class FestController {
 		if(session.getAttribute("UserName") == null){
 			return "redirect:festLoginForm";
 		}
-		
-		
-		
 		session.setAttribute("currentEvent", idx);
 		return "redirect:festInfo?idx="+idx;
 	}
@@ -141,6 +138,46 @@ public class FestController {
 		model.addAttribute("ufo", ufo);
 		return "fest/festQuestion";
 	}
+	
+	//stampNew stampUpdate
+	@RequestMapping(value = "FEV/stampUpdate", method = RequestMethod.POST)
+	public String stampUpdate(@RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+                
+        		go.setGo_image(fileInfo[0]);
+        		
+        		dao.updateUfoGo(go);
+        		
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
+                
+            } catch (Exception e) {
+            	System.out.println("You failed to upload => " + e.getMessage() + "at createNotice");
+            }
+        } else {
+        	System.out.println("You failed to upload because the file was empty. at createNotice");
+
+        	dao.updateUfoGo(go);
+        }
+		return "redirect:/FEV/festQuestion?idx="+idx;
+	}
+	
+	@RequestMapping(value = "FEV/stampNew", method = RequestMethod.POST)
+	public String stampNew(@RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+		if (!file.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file);
+        		go.setGo_image(fileInfo[0]);
+        		dao.insertUfoGo(go);
+            } catch (Exception e) {
+            }
+        } else {
+        	dao.insertUfoGo(go);
+        }
+		return "redirect:/FEV/festQuestion?idx="+idx;
+	}
+	
 	
 	@RequestMapping(value = "FEV/festInfo", method = RequestMethod.GET)
 	public String festInfo(Model model, HttpSession session){	

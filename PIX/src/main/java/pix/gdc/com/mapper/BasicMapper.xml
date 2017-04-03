@@ -823,6 +823,51 @@
 		#{ufo_gid}
 	)
 	</insert>
+	<insert id="insertUfoGo" parameterType="UfoGoVO">
+	INSERT INTO pix.ufo_go
+	(
+		go_alt,
+		go_lat,
+		go_para,
+		go_content,
+		ufo_go_date,
+		ufo_go_type,
+		ufo_gid,
+		go_desc,
+		go_image
+	)
+	VALUES
+	(
+		#{go_alt },
+		#{go_lat },
+		#{go_para },
+		#{go_content },
+		#{ufo_go_date },
+		#{ufo_go_type },
+		#{ufo_gid },
+		#{go_desc },
+		#{go_image }
+	);
+	
+	</insert>
+	
+	<update id="updateUfoGo" parameterType="UfoGoVO">
+	UPDATE pix.ufo_go
+	SET
+	go_alt = #{go_alt }
+	,go_lat = #{go_lat }
+	,go_para = #{go_para }
+	,go_content = #{go_content }
+	,ufo_go_date = #{ufo_go_date }
+	,ufo_go_type = #{ufo_go_type }
+	,ufo_gid = #{ufo_gid }
+	,go_desc = #{go_desc }
+	<if test="go_image != null and go_image != ''">
+	,go_image = #{go_image }
+	</if>
+	WHERE id_ufo_go = #{id_ufo_go};
+	</update>
+	
 	<insert id="insertUfoShare" parameterType="UfoShare">
 	INSERT INTO
 	pix.ufo_share
