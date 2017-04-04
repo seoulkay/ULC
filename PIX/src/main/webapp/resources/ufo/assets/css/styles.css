@@ -1308,7 +1308,7 @@ body.sticky-page-nav .overview-section {
   margin-bottom: 15px;
 }
 .feature-blocks .feature-desc {
-  padding-right: 30px;
+	padding-right:0;
   font-size: 14px;
 }
 .feature-blocks .figure-holder img {

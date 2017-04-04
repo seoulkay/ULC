@@ -41,9 +41,9 @@
 <script src="${pageContext.request.contextPath}/resources/ufo/assets/js/load-image.all.min.js"></script>	
 
 <style>
-      #map {
-        height: 30em;
-      }
+ #map {
+   height: 30em;
+ }
 </style>
 </head>
 
@@ -81,10 +81,10 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -97,8 +97,19 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-
+<section style="background-color: #A9D7E6">		
+<div class="feature-blocks container" >		
+		<!--//feature-block-2-->
+		<div id="feature-block-3" class="feature-block feature-block-1">
+			<div class="row">
+			</div>
+			<!--//row-->
+		</div>
+		<!--//feature-block-3-->
+		</div>
+</section>
 <section id="signup-section" class="signup-section section">
+
 		<div class="section-inner">
 			<div class="container text-center">
 				<div class="counter-container"></div>
@@ -174,7 +185,7 @@
 		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
 		   				</a>
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
-	   				<p style="margin-bottom:3px; text-align:center; font-size: 14px;">${ele.go_content }</p>
+	   				<p style="margin-bottom:3px; text-align:center; font-size: 1em;">${ele.go_content }</p>
 		   			<img id="stamp_yes_${ele.ufo_gid }"  class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
 	   			</div>
 	   			</c:forEach>
@@ -241,11 +252,12 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	}
         	img.toDataURL('image/jpeg');
         	img.id = 'img'+'${ele.ufo_gid }';
+        	img.className = "img-responsive";
         	node.appendChild(img);
         	//$('#stamp_go${ele.ufo_gid }').remove();
         	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
         },
-        {maxWidth: 400, orientation: true, canvas:true, downsamplingRatio: 0.7} // Options
+        {maxWidth: 400, orientation: true, canvas:true, downsamplingRatio: 1} // Options
     );
 };
 

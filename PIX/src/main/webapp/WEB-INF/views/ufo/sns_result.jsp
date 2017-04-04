@@ -54,8 +54,8 @@
 	   				<div style="padding-top:3px; padding-bottom:3px">
 	   				<c:choose>
 	   					<c:when test="${not ele.submit}">
-	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE; padding: 2em">미완료</p></div>
-			   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">미완료</p></div>
+		   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
 	   					</c:when>
 	   					<c:otherwise>
 	   					<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
@@ -74,7 +74,7 @@
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
 			<div class="modal-footer">
 			<br>
-		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/index'"><span class="btn-text">확인</span></span>
+		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/stamp'"><span class="btn-text">확인</span></span>
 		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br>
 		    </div>

@@ -67,11 +67,11 @@
 	<div class="page-nav-space-holder">
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
-				<ul id="page-nav" class="nav page-nav list-inline">
-					<li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+				<ul id="page-nav" class="nav page-nav list-inline" >
+					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -80,11 +80,12 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >
-					
 		<div class="row">
+			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
+		</div>		
+		<div class="row" >
 			<div class="col-sm-1" >
 				<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/ic_volume_up_white_24px.svg"style="padding-top: 0.5em">
 			</div>
@@ -105,6 +106,9 @@
 		</div>
 		<c:if test="${not empty ufo.fb_live }">
 		<div class="row">
+			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
+		</div>	
+		<div class="row">
 			<div class="fb-video" data-href="${ufo.fb_live }" data-width="500" data-show-text="false"></div>
 		</div>
 		</c:if>
@@ -116,128 +120,7 @@
 		<!--//feature-list-->
 		<!--//team-figure-->
 </section>
-	
-<section id="signup-section" class="signup-section section">
-		<div class="section-inner">
-			<div class="container text-center">
-				<div class="counter-container"></div>
-				<!--//counter-container-->
-			</div>
-			<!--//container-->
-		</div>
-		<!--//section-inner-->
-	</section>
-<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}">
-<section id="info-section">
-	<!--//signup-section-->
-	<div class="feature-blocks container">
-		<div id="feature-block-1" class="feature-block feature-block-1">
-			<div class="row">
-				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-<!-- 					<button class="btn" style="background-color: #ed45a4;cursor:pointer;" disabled="disabled"> -->
-					<h3 class="feature-title">${ufo.info_title }</h3>
-<!-- 					</button> -->
-					<div class="feature-desc">
-						<p>${ufo.info_info_text }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-<!-- 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12"> -->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-<!-- 					<div class="figure-holder" align="center"> -->
-					<c:if test="${ufo.info_info_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_info_pic}"
-							alt="">
-					</c:if>
-<!-- 					</div> -->
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-1-->
-		</div>
-</section>
-<section style="background-color: #B1B2B3">		
-		<div class="feature-blocks container" >
-		<div id="feature-block-2" class="feature-block feature-block-2" >
-			<div class="row">
-				<div class="feature-content col-md-12 col-sm-12 col-xs-12" >
-					<h3 class="feature-title">${ufo.program_title }</h3>
-					<div class="feature-desc">
-						<p>${ufo.info_program_text }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-			</div>
-			<!--//row-->
-		</div>
-		</div>
-</section>
-<section>
-	<div class="feature-blocks container" >		
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-1">
-			<div class="row">
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${ufo.history_title }</h3>
-					<div class="feature-desc">
-						<p>${ufo.info_hist_text }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<div class="figure-holder" align="center">
-						<c:if test="${ufo.info_hist_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_hist_pic}"
-							alt="">
-						</c:if>
-					</div>
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-3-->
-		</div>
-</section>	
-<!-- 	<div class="stories container"> -->
-<section style="background-color: #A9D7E6">		
-<div class="feature-blocks container" >		
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-1">
-			<div class="row">
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title">${ufo.location_title }</h3>
-					<div class="figure-holder" align="center">
-						<c:if test="${ufo.info_location_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_location_pic}"
-							alt="">
-						</c:if>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<!--//figure-holder-->
-					<div class="feature-desc">
-						<p>${ufo.info_location_text }</p>
-					</div>
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-3-->
-		</div>
-</section>
-</c:if>
+
 <c:if test="${fn:contains(sessionScope.eventMenu, 'newsletter')}">
 	<section id="app-section" class="apps-section section text-center">
 		<div class="blog-signup-block">
