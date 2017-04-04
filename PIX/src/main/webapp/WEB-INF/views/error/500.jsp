@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>UFO79</h2>
-<h4>We're sorry. 500 ERROR OCCURED</h4>
+<h4>We're sorry. 500 occurred.</h4>
 </body>
 </html>

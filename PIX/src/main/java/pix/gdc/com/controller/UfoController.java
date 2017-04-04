@@ -495,8 +495,6 @@ public class UfoController {
 		vo.setIp_log(request.getRemoteAddr());
 		vo.setPara(para);
 		
-//		System.out.println(vo.getFirst_name_a());
-		
 		if (!file.isEmpty()) {
             try {
                 String[] fileInfo = restService.writeFileToServer(file);

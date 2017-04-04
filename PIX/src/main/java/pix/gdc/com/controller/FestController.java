@@ -87,7 +87,6 @@ public class FestController {
 				
 			}
 			
-				System.out.println(vo.getFest_event_number());
 				session.setAttribute("eventNumber", vo.getFest_event_number());
 				session.setAttribute("eventNames", eventNames);
 				session.setAttribute("UserName", vo.getOfficial_name());

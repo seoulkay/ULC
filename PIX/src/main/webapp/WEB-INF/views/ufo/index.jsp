@@ -82,7 +82,7 @@
 	<!--//page-nav-space-holder-->
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >
-		<div class="row">
+		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
 		</div>		
 		<div class="row" >
@@ -105,7 +105,7 @@
 			<div style="height:3em"></div>
 		</div>
 		<c:if test="${not empty ufo.fb_live }">
-		<div class="row">
+		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
 		</div>	
 		<div class="row">

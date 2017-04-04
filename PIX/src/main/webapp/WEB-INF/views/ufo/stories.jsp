@@ -65,7 +65,7 @@
 			</c:otherwise>
 		</c:choose>		
 			<div class="actions" id="mainbtn">
-           	<button class="btn btn-warning" style="margin:0 auto" onclick="surveyInit()">설문조사하기</button>
+           	<button class="btn btn-warning" style="margin:0 auto;background-color: #ed45a4; border-color: #ed45a4" onclick="surveyInit()">설문조사하기</button>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -87,11 +87,12 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-	<div class="stories container">
+	<div class="stories container" style="padding-top: 0">
+	<div class="row" style="padding-left: 1em; padding-bottom: 1em">
+			<h3 style="float: left;"><span class="label label-default" style="background-color: #00a27c;">서베이결과</span></h3>
+	</div>
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
-			
-				
 			<div class="story-item">
 				<div class="row">
 					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
@@ -124,48 +125,6 @@
 				<!--//row-->
 			</div>
 			<!--//story-item-->
-
-			<div class="quotes">
-				<div class="row">
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">${ele.questionOptions[0].percent }%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과1위) ${ele.questionOptions[0].q_option }</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">우리나라 단오의 특성</span><br>1. 풍년을 기원하는 파종제로서의 단오<br>2. 풍년을 기원하는 파종제로서의 단오<br>3. 풍년을 기원하는 파종제로서의 단오</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-					<div class="quote-item col-sm-12 col-sm-6 text-center">
-						<div class="inner">
-							<div class="profile">
-								<div class="circle"><span class="circle-percentage">${ele.questionOptions[1].percent }%</span></div>
-							</div>
-							<!--//profile-->
-
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							<blockquote class="result">(결과2위) ${ele.questionOptions[1].q_option }</blockquote>
-							<!--//blockquote-->
-							<div class="tip"><span class="tip-title">강릉의 3대 명소</span><br>1. 빙상 베뉴가 모여있는 강릉 올림픽 파크<br>2. 경포호와 경포해변이 한눈에 보이는 경포대<br>3. 강릉의 자랑 오죽헌</div>
-							<!--//source-->
-
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//quote-item-->
-
-				</div>
-				<!--//row-->
-			</div>
-			<!--//quotes-->
 		</div>
 		<!--//story-block-->
 </c:forEach>

@@ -163,10 +163,6 @@ public class PixController {
 	
 	@RequestMapping(value = "/ufogo/insert", method = {RequestMethod.POST})
 	public @ResponseBody int insertUfogo(@ModelAttribute("vo")UfoGoRecord vo, @RequestParam("file") MultipartFile file){
-		System.out.println(file.getName());
-		System.out.println(file.getContentType());
-		System.out.println(file.getSize());
-		System.out.println(file.getOriginalFilename());
 		if (!file.isEmpty()) {
             try {
                 String[] fileInfo = restService.writeFileToServer(file);

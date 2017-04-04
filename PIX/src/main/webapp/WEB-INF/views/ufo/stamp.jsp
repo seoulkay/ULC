@@ -70,7 +70,7 @@
 		</c:choose>	
 			
 			<div class="actions">
-                 <button class="btn btn-warning" onClick="getUfo('go')">스탬프찍기</button>
+                 <button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4;">스탬프찍기</button>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -97,25 +97,13 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-<section style="background-color: #A9D7E6">		
-<div class="feature-blocks container" >		
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-1">
-			<div class="row">
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-3-->
-		</div>
-</section>
-<section id="signup-section" class="signup-section section">
-
-		<div class="section-inner">
+<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: 1em">
+		<div class="section-inner" >
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-				<h2 class="counter-desc">스탬프랠리 참여하기</h2>
+				<h2 class="counter-desc"><span class="label label-default " style="background-color: #00a27c;">스탬프랠리 참여하기</span></h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">${ufo.ufo_go_title }</div>
@@ -128,11 +116,11 @@
 							<!-- <li><a href="#" class="btn btn-social btn-google"><i
 									class="fa fa-google" aria-hidden="true"></i><span
 									class="btn-text">Sign up with Google</span></a></li> -->
+<!-- 							<li> -->
+<!-- 							<button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>  -->
+<!-- 							</li> -->
 							<li>
-							<button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button> 
-							</li>
-							<li>
-							<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:3px"><span class="btn-text">갤러리로 가기</span></button> 
+							<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
 							</li>
 							
 <!-- 							<li> -->

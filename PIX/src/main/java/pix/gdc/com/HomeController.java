@@ -37,8 +37,6 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		List<PixArticle> pixList = basicDao.getAllPixArticle();
-		System.out.println(pixList.size()+"SIZESIZE!");
-		
 		List<PixArticle> tempList = new ArrayList<PixArticle>();
 		for(int i=0 ; i < 5; i++) tempList.add(pixList.get(i));
 		
