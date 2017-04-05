@@ -508,7 +508,7 @@ textarea {
   text-decoration: none;
 }
 .header .logo img {
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 /* ====== Nav ======= */
 .main-nav .navbar-toggle {
@@ -3082,7 +3082,7 @@ body.sticky-page-nav .overview-section {
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .main-nav .navbar-header {
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
   }
   .main-nav .navbar-nav {
     padding-bottom: 15px;

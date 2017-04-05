@@ -10,7 +10,7 @@
 		<div class="logo">
 		<c:choose>
 			<c:when test="${not empty ufo.logo}">
-				<a href="index"> <img src="https://www.ufo79.com/image/${ufo.logo }" alt="" style="max-height: 3em"></a>
+				<a href="index"> <img src="https://www.ufo79.com/image/${ufo.logo }" alt="" style="height: 2.5em; max-height: 3em"></a>
 			</c:when>
 			<c:otherwise>
 				<a href="index"> <img src="https://www.ufo79.com/PIX/resources/ulc/images/logo_ufo_white.png" alt="" style="height: 2em; margin-top: 0 auto; margin-bottom: 0 auto;"></a>
