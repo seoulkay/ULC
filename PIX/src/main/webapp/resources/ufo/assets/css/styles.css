@@ -509,6 +509,7 @@ textarea {
 }
 .header .logo img {
   /* padding-top: 10px; */
+  margin-top: 5px;
 }
 /* ====== Nav ======= */
 .main-nav .navbar-toggle {
