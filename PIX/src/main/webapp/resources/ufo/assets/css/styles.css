@@ -508,7 +508,8 @@ textarea {
   text-decoration: none;
 }
 .header .logo img {
-  padding-top: 10px;
+  /* padding-top: 10px; */
+  margin-top: 5px;
 }
 /* ====== Nav ======= */
 .main-nav .navbar-toggle {
@@ -1292,12 +1293,12 @@ body.sticky-page-nav .overview-section {
 }
 
 .feature-blocks {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .feature-blocks .feature-block {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 0px;
 }
 .feature-blocks .feature-block:first-child {
   padding-top: 0;
@@ -3082,7 +3083,7 @@ body.sticky-page-nav .overview-section {
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .main-nav .navbar-header {
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
   }
   .main-nav .navbar-nav {
     padding-bottom: 15px;

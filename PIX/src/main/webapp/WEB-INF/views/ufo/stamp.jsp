@@ -168,7 +168,7 @@
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-4" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
+	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
 		   				</a>
