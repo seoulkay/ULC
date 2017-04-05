@@ -927,4 +927,10 @@
 		ORDER BY RAND()
 		LIMIT 4
 	</select>
+	<select id="selectAllPara" resultType="String">
+	SELECT
+	para
+	FROM
+	fest_ufo
+	</select>
 </mapper>

@@ -1,15 +1,19 @@
 package pix.gdc.com.controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -157,21 +161,8 @@ public class UfoController {
 		session.setAttribute("eventPara", para);
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
-		List<UfoGoVO> ufoGo = dao.selectUfoGoByPara(para);
-		List<UfoGoVO> ufoqr = dao.selectUfoQrByPara(para);
-		
-		
-		if(ufo.getMenu().contains("stories")){
-			List<FestQuesListVO> ql = getQuestionModel(para);
-			model.addAttribute("quesVO", ql);
-		}
-		
-		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
-		model.addAttribute("noticeList", noticeList);
-		
-		model.addAttribute("ufoqr", ufoqr);
+				
 		model.addAttribute("ufo", ufo);
-		model.addAttribute("ufoGo", ufoGo);
 		return "ufo/index";
 	}
 	
@@ -200,48 +191,99 @@ public class UfoController {
 	
 	public List<FestQuesListVO> getQuestionModel(String para){
 		
-		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
-		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
+		List<FestQuesListVO> ql= new ArrayList<FestQuesListVO>();
 		
-		for(FestOption ele : ol){
-			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+		int size = quesStaticModel.size();
+		
+		for(int i = 0 ; i < size ; i++){
+			boolean rightPara = false;
+			try{
+				if(quesStaticModel.get(i).get(0).getPara().equals(para)){
+					rightPara = true;
+				};
+			}catch(Exception e){
+				
+			}
+			if(rightPara){
+				ql = quesStaticModel.get(i);
+				break;
+			}
 		}
 		
-//		그래프 만들기:속도를 위해서 제거
-//		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
-//		//퍼센트 계산해 todo
-//		int length = answer.size();
-//		int[][] points = new int[5][4];
-		
-//		for(FestAnswerVO ele : answer){
-//			points[0][ele.getQ1_a()-1]++;
-//			points[1][ele.getQ2_a()-1]++;
-//			points[2][ele.getQ3_a()-1]++;
-//			points[3][ele.getQ4_a()-1]++;
-//			points[4][ele.getQ5_a()-1]++;
-//		}
-		
-
-		
-//		for(int i = 0; i < ql.size() - 2 ; i++){
-//			for(int j = 0; j < 4; j++){
-//				int point = points[i][j];
-//				ql.get(i).getQuestionOptions().get(j).setPoint(point);
-//				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
-//			}
-//		}
-		
-//		//SORTING!!
-//		for(int i = 0; i < ql.size() - 2; i++){
-//			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
-//				@Override
-//				public int compare(FestOption a, FestOption b){
-//					return Integer.compare(b.getPoint(), a.getPoint());
-//				}
-//			});
-//		}
 		return ql;
 	}
+	
+	//서베이 점수 스케줄 
+	public static List<List<FestQuesListVO>> quesStaticModel = new ArrayList<List<FestQuesListVO>>();
+	@Scheduled(fixedDelay=1800000)
+	public void doSomething() {
+	    
+		List<List<FestQuesListVO>> quesModel = new ArrayList<List<FestQuesListVO>>();
+		
+		List<String> paras = dao.selectAllPara();
+		
+		for(String para : paras){
+			List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
+			List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
+			
+			for(FestOption ele : ol){
+				ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+			}
+			
+			//그래프 만들기:속도를 위해서 제거
+			List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
+			//퍼센트 계산해 todo
+			int length = answer.size();
+			if(length != 0){
+				List<FestAnswerVO> answerSurvey = new ArrayList<FestAnswerVO>();
+				
+				for(FestAnswerVO ele : answer){
+					if(ele.getSns_type_a().contains("survey")){
+						answerSurvey.add(ele);
+					}
+				}
+				
+				length = answerSurvey.size();
+				
+				int[][] points = new int[5][4];
+				
+				for(FestAnswerVO ele : answerSurvey){
+					if(ele.getSns_type_a().contains("survey")){
+						points[0][ele.getQ1_a()-1]++;
+						points[1][ele.getQ2_a()-1]++;
+						points[2][ele.getQ3_a()-1]++;
+						points[3][ele.getQ4_a()-1]++;
+						points[4][ele.getQ5_a()-1]++;
+					}
+				}
+				
+				if(ql.size() != 0){
+					for(int i = 0; i < ql.size() - 2 ; i++){
+						for(int j = 0; j < 4; j++){
+							int point = points[i][j];
+							ql.get(i).getQuestionOptions().get(j).setPoint(point);
+							ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
+						}
+					}
+					
+					//SORTING!!
+					for(int i = 0; i < ql.size() - 2; i++){
+						Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
+							@Override
+							public int compare(FestOption a, FestOption b){
+								return Integer.compare(b.getPoint(), a.getPoint());
+							}
+						});
+					}
+				System.out.println(ql.get(0).getPara());
+				}
+			}	
+			quesModel.add(ql);
+		}
+		quesStaticModel = quesModel;
+	}
+	
+	
 	@RequestMapping(value = "ufo/{para}/checkResult/{type}/{uid}", method = RequestMethod.GET)
 	public @ResponseBody int checkSurveyResult(Model model, @PathVariable("para")String para, HttpSession session, @PathVariable("uid")String uid, @PathVariable("type")String type){
 		FestAnswerVO answer = new FestAnswerVO();
@@ -418,49 +460,11 @@ public class UfoController {
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
 		
-		List<FestAnswerVO> answer = dao.selectUfoAnserByPara(para);
-		//퍼센트 계산해 todo
-		int length = answer.size();
-		if(length == 0){
-			length = 1;
-		}
-		int[][] points = new int[5][4];
-		
-//		for(FestAnswerVO ele : answer){
-//			points[0][ele.getQ1_a()-1]++;
-//			points[1][ele.getQ2_a()-1]++;
-//			points[2][ele.getQ3_a()-1]++;
-//			points[3][ele.getQ4_a()-1]++;
-//			points[4][ele.getQ5_a()-1]++;
-//		}
-		
-		List<FestQuesListVO> ql= dao.selectUfoQuestionsNew(para);
-		List<FestOption> ol = dao.selectUfoQuestionsOptionsNew(para);
-		
-		
-		for(FestOption ele : ol){
-			ql.get(ele.getQ_number()).getQuestionOptions().add(ele);
+		if(ufo.getMenu().contains("stories")){
+			List<FestQuesListVO> ql = getQuestionModel(para);
+			model.addAttribute("quesVO", ql);
 		}
 		
-		for(int i = 0; i < ql.size() - 2 ; i++){
-			for(int j = 0; j < 4; j++){
-				int point = points[i][j];
-				ql.get(i).getQuestionOptions().get(j).setPoint(point);
-				ql.get(i).getQuestionOptions().get(j).setPercent(point*100/length);
-			}
-		}
-		
-		//SORTING!!
-		for(int i = 0; i < ql.size() - 2; i++){
-			Collections.sort(ql.get(i).getQuestionOptions(), new Comparator<FestOption>() {
-				@Override
-				public int compare(FestOption a, FestOption b){
-					return Integer.compare(b.getPoint(), a.getPoint());
-				}
-			});
-		}
-		
-		model.addAttribute("quesVO", ql);
 		model.addAttribute("ufo", ufo);
 		return "ufo/stories";
 	}

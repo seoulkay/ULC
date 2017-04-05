@@ -445,4 +445,10 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().update("BasicMapper.updateUfoGo", vo);
 	}
 
+	
+	//모든 파라 셀레트
+	public List<String> selectAllPara(){
+		return getSqlSession().selectList("BasicMapper.selectAllPara");
+	}
+
 }
