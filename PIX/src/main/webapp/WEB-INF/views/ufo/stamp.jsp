@@ -82,7 +82,7 @@
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
@@ -97,36 +97,26 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: 1em">
-		<div class="section-inner" >
+<section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
+	<div class="team-figure" >
+		<div class="row" style="padding: 0.5em">
+			<h3 class="feature-title" style="float: left"><span class="label label-default " style="background-color: #00a27c;">스탬프랠리 참여하기</span></h3>
+		</div>
+		<div id="map" style="height: 30em;"></div>
+		<div class="row">
+			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
+		</div>					
+	</div>
+</section>
+<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: em">
+		<div class="section-inner" style="padding-top: 2em">
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-				<h2 class="counter-desc"><span class="label label-default " style="background-color: #00a27c;">스탬프랠리 참여하기</span></h2>
 				<div class="form-wrapper">
 					<div class="form-box">
 						<div class="form-desc">${ufo.ufo_go_title }</div>
-						<!-- <button class="btn btn-primary" onClick="refreshGo()" style="background-color: GREEN; color: WHITE"><span class="btn-text">나의 위치 리프레쉬!</span></button><br> -->
-<%-- 							<input onclick="refreshGo()" type="image" src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/icon_F5.svg" style="width: 35px; height: 35px;"> --%>
-						<div class="team-figure">
-							<div id="map" style="height: 30em;"></div>
-						</div><br><br>
-						<ul class="social-buttons list-unstyled">
-							<!-- <li><a href="#" class="btn btn-social btn-google"><i
-									class="fa fa-google" aria-hidden="true"></i><span
-									class="btn-text">Sign up with Google</span></a></li> -->
-<!-- 							<li> -->
-<!-- 							<button class="btn btn-social btn-facebook" onClick="getUfo('go')" style="margin:3px"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>  -->
-<!-- 							</li> -->
-							<li>
-							<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
-							</li>
-							
-<!-- 							<li> -->
-<!-- 								<button class="btn btn-social btn-facebook" onClick="alert('준비중입니다.')" style="background-color: YELLOW; color: BLACK"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">카카오톡 계정으로 이벤트 참여하기</span></button><br> -->
-<!-- 							</li> -->
-						</ul>
 						<!--//social-buttons-->
 						<div class="divider">
 						</div>
@@ -157,7 +147,7 @@
 		
 <!-- 스템프  -->
 <c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#stampRally" data-dismiss="modal" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
+<button type="button" class="btn btn-info btn-lg" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#stampRally" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
 <div class="modal" id="stampRally" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -169,7 +159,7 @@
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-		   				<a href="" data-toggle="modal" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
+		   				<a href="" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#stamp_${ele.ufo_gid }_modal" data-dismiss="modal" id="stamp_${ele.ufo_gid }"  style="display: none;">
 		   					<img class="img-responsive" style="width:100%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}.svg">
 		   				</a>
 		   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
@@ -180,12 +170,11 @@
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
+	    <button type="button" class="btn btn-default" data-backdrop="static" data-keyboard="false" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">완료</button>
 	  	</div>
 	</div>
 	</div>
 </div>
-
 <c:forEach var="ele" varStatus="statusEle" items="${ufoGo }">
 <div class="modal" id="stamp_${ele.ufo_gid }_modal" role="dialog">
 	<div class="modal-dialog">

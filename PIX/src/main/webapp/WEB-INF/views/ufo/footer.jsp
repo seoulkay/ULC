@@ -138,21 +138,6 @@
 
 
 <script>
-
-/**
- * 서베이이닛
- */
-//  $.post( "/PIX/ufo/${sessionScope.eventPara}/shareRand4")
-//  .done(function( data ) {
-// 	 var rand4 = JSON.parse(JSON.stringify(data));
-// 	 for(i = 0 ; i < rand4.length ; i++){
-// 		 var msg =  '<div class="fb-post" data-href="https://www.facebook.com/'+rand4[i].uid+'/posts/'+rand4[i].share_return+'" data-width="350" data-show-text="true"></div>';
-// 		 console.log(msg);
-// 		 $("#caro"+i).children().remove();
-// 		 $("#caro"+i).append( msg );
-// 	 }
-//  });
-
 /**
  * 페이스북 관련
  */ 
@@ -341,41 +326,47 @@ function getUfo(param){
 	if(param == "ve"){
 		$.post( "/PIX/ufogo/get/survey/"+para+"/"+uid).done(function( data ) {
 			var result = JSON.parse(JSON.stringify(data));
+			$('#surveyResult').modal({backdrop: 'static',keyboard: false}); 
 			$('#surveyResult').modal('show');
 		});
 	}else{
-		$.post( "/PIX/ufogo/get/"+para+"/"+uid)
-	       .done(function( data ) {
-	        var go = JSON.parse(JSON.stringify(data));
-	        for(var i = 0; i < go.length; i++){
-	        	if(go[i].ufo_go_type == 'qr'){
+// 		$.post( "/PIX/ufogo/get/"+para+"/"+uid)
+// 	       .done(function( data ) {
+// 	        var go = JSON.parse(JSON.stringify(data));
+// 	        for(var i = 0; i < go.length; i++){
+// 	        	if(go[i].ufo_go_type == 'qr'){
 	        	  	//중복을 막는 코드가 필요함 
-	        		$('#qr_yes_'+go[i].ufo_gid).show();
-	        	}else if(go[i].ufo_go_type == 'go'){
-	        		$('#stamp_yes_'+go[i].ufo_gid).show();
-	        	}
-	        }
-	        
+// 	        	  	$('#qr_yes_'+go[i].ufo_gid).modal({backdrop: 'static',keyboard: false}); 
+// 	        		$('#qr_yes_'+go[i].ufo_gid).show();
+// 	        	}else if(go[i].ufo_go_type == 'go'){
+// 	        		$('#stamp_yes_'+go[i].ufo_gid).modal({backdrop: 'static',keyboard: false}); 
+// 	        		$('#stamp_yes_'+go[i].ufo_gid).show();
+// 	        	}
+// 	        }
+	        //안되면 여기다 넣으면 된다.
+// 	       });
+
 	        if(param == 'qr' && $("#qrNumber").val() != ''){
-	 				//보여줘 모달을 큐알 넘버로
-	 				var para = $("#qrNumber").val();
-	 				para = $.trim(para);
-	 				para = "#stamp_"+para+"_modal";
-	 				if($(para).length > 0){
-	 					$(para).modal('show');
-	 				}else{
-	 					alert("잘못된 큐알 코드 입니다.");
-	 				}
-	        }else if(param == 'go'){
-	        	$('#stampRally').modal('show');
-	        }else if(param == 'qr'){
-	        	$('#qrRallyList').modal('show');
-	        }else{
+					//보여줘 모달을 큐알 넘버로
+					var para = $("#qrNumber").val();
+					para = $.trim(para);
+					para = "#stamp_"+para+"_modal";
+					if($(para).length > 0){
+						$(para).modal({backdrop: 'static',keyboard: false}); 
+						$(para).modal('show');
+					}else{
+						alert("잘못된 큐알 코드 입니다.");
+					}
+		    }else if(param == 'go'){
+		    	$('#stampRally').modal({backdrop: 'static',keyboard: false}); 
+		    	$('#stampRally').modal('show');
+		    }else if(param == 'qr'){
+		    	$('#qrRallyList').modal({backdrop: 'static',keyboard: false}); 
+		    	$('#qrRallyList').modal('show');
+		    }else{
 				
-	        }
-	        
-	       });
-	}
+		    }
+	 	}
 	
 	}else{
 		fbLogin(param);

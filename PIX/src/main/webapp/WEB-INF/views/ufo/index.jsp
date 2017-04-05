@@ -68,7 +68,7 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline" >
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
@@ -86,10 +86,6 @@
 			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
 		</div>		
 		<div class="row" >
-			<div class="col-sm-1" >
-				<img src="${pageContext.request.contextPath}/resources/ufo/assets/images/icons/ic_volume_up_white_24px.svg"style="padding-top: 0.5em">
-			</div>
-			<div class="col-sm-11 ">
 				<%-- <marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee> --%>
 				<marquee>
 				<h4 style="white-space:nowrap;">
@@ -98,7 +94,6 @@
 				<c:if test="${not empty ufo.ufo_notice3 }">${ufo.ufo_notice3}</c:if>
 				</h4>
 				</marquee>
-			</div>
 		</div>
 		<div class="row">
 			<div style="height:3px; background-color: #ECD0E2"></div>

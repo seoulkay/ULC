@@ -78,7 +78,7 @@
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
 				</ul>
 				<!--//page-nav-->
@@ -130,9 +130,6 @@
 </c:forEach>
 	</div>
 
-<!-- 서베이 이닛 -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#remodal_q1" style="display:none;" id="modalTrigger">TRINGGER</button>
-
 
 <form id="surveyForm" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
@@ -164,7 +161,7 @@
 	 	<br>
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn" data-toggle="modal" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal" id="btn_q${statusEle.count}" disabled>다음</button>
+	    <button type="button" class="btn" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#remodal_q${statusEle.count + 1 }" data-dismiss="modal" id="btn_q${statusEle.count}" disabled>다음</button>
 	  </div>
 	</div>
 	</div>
@@ -190,7 +187,7 @@
   			<input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
   		</div>
   		<div class="modal-footer">
-	    <button type="button" class="btn" data-toggle="modal" data-target="#remodal_q7" data-dismiss="modal" id="btn_q6" disabled>다음</button>
+	    <button type="button" class="btn" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#remodal_q7" data-dismiss="modal" id="btn_q6" disabled>다음</button>
 	  	</div>
 	</div>
 	</div>
@@ -310,6 +307,7 @@ $(document).ready(function() {
  */
 function surveyInit(){
 	if(checkLogin()){
+		$('#remodal_q1').modal({backdrop: 'static',keyboard: false}); 
 		$("#remodal_q1").modal("show");
 	}else{
 		fbLogin('survey');
