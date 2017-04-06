@@ -87,10 +87,7 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-	<div class="stories container" style="padding-top: 0">
-	<div class="row" style="padding-left: 1em; padding-bottom: 1em">
-			<h3 style="float: left;"><span class="label label-default" style="background-color: #00a27c;">서베이결과</span></h3>
-	</div>
+	<div class="stories container">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
 		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
 			<div class="story-item">
