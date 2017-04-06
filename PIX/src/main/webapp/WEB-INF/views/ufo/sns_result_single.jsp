@@ -62,7 +62,7 @@ button.close {
 <body>
 <div class="modal-dialog">
 	<div class="modal-content">
-	   <div class="modal-header">
+	   <div class="modal-header" style="height:3em;">
 	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/result/${type}/${uid }';">&times;</button>
 	   </div>
 	   <div class="modal-body" style="background-color: #d7579f;">

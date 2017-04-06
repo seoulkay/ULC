@@ -1293,8 +1293,8 @@ body.sticky-page-nav .overview-section {
 }
 
 .feature-blocks {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 .feature-blocks .feature-block {
   padding-top: 60px;
@@ -1356,8 +1356,8 @@ body.sticky-page-nav .overview-section {
   padding-top: 180px;
 }
 .stories {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 .story-block {
   margin-bottom: 60px;

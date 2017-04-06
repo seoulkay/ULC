@@ -96,7 +96,7 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-<section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
+<section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
 	<div class="team-figure" >
 		<div id="map" style="height: 30em;"></div>
 		<div class="row">
