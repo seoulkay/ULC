@@ -39,7 +39,7 @@
 <!-- 	  		<button type="button" class="close" data-dismiss="modal">&times;</button> -->
 		<c:choose>
 			<c:when test="${userSize eq ufoSize }">
-				<h3 style="color : #d7579f; font-family:football;">${rallyType}를 완성하였습니다! ${userSize }/${ufoSize }</h3>
+				<h3 style="color : #d7579f; font-family:football; margin-top:10px;">${rallyType}를 완성하였습니다! ${userSize }/${ufoSize }</h3>
 			</c:when>
 			<c:otherwise>
 				<h3 style="color : #d7579f; font-family:football;">${rallyType}를 진행중입니다. ${userSize }/${ufoSize }</h3>
