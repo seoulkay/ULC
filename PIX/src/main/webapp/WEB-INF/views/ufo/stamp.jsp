@@ -154,14 +154,14 @@
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 					<div>
-		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:0; left:0;  opacity:0.5; width:96%; padding:5px; background-color: #00a27c; height:86%;margin:2%" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
+		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:15%; left:15%; display:none; opacity:1; height:5em; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:0; left:0;  opacity:0.5; width:96%; padding:5px; background-color: #00a27c; height:5.5em;margin:2%" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
 			   			<c:choose>
 			   				<c:when test="${!empty ele.go_icon_img }">
-			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_icon_img }">
+			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block; height:6em" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_icon_img }">
 			   				</c:when>
 			   				<c:otherwise>
-			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
+			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;height:6em" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
 			   				</c:otherwise>
 			   			</c:choose>
 			   		</div>
