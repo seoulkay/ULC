@@ -18,23 +18,18 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic'
-	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <!-- Global CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Plugins CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- Theme CSS -->
-<link id="theme-style" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
+<link id="theme-style" rel="stylesheet" href="${pageContext.request.contextPath}/resources/ufo/assets/css/styles.css">
+<!-- 이미지 캔바스 라이브러리 -->
+<script src="${pageContext.request.contextPath}/resources/ufo/assets/js/load-image.all.min.js"></script>	
+
 </head>
 
 <body class="stories-page" data-spy="scroll" data-target="#page-nav">
@@ -236,45 +231,14 @@ document.getElementById('q7_a').onchange = function (e) {
         		node.removeChild(node.firstChild);
         	}
         	img.toDataURL('image/jpeg');
-        	img.id = 'img'+'${ele.ufo_gid }';
+        	img.id = 'tempImg';
         	img.className = "img-responsive";
         	node.appendChild(img);
-        	//$('#stamp_go${ele.ufo_gid }').remove();
-        	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
         },
         {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 1} // Options
     );
 };
 </script>
-<div class="modal" id="surveyResult" role="dialog">
-	<div class="modal-dialog">
-	<div class="modal-content">
-	   <div class="modal-header">
-	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>서베이 결과</h4>
-	   </div>
-	   <div class="modal-body">
-	 	 	<div class="progress">
-		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
-		  	</div>
-		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
-		  	</div>
-			</div>
-			1. 답변<br>
-		  	2. 답변<br>
-		  	3. 답변<br>
-		  	4. 답변<br>
-		  	5. 답변<br>
-		  	6. 답변<br>
-		  	7. 답변<br> 
-<!-- 			  	<input type="file" id="q7_a" name="file" class="form-control"> -->
-		</div>
-		<div class="modal-footer">
-<!-- 	    <button type="button" class="btn btn-default" data-dismiss="modal">확인</button> -->
-	  	</div>
-	</div>
-	</div>
-</div>
 
 	<!-- ******FOOTER****** -->
 	<jsp:include page="footer.jsp" flush="false">
@@ -332,7 +296,6 @@ function surveyInit(){
 }
 
 
-
 /**
  * 
  */
@@ -346,6 +309,10 @@ function surveyPostSubmit(){
 		  $( "#email_a").val(window.sessionStorage.getItem('email'));		  
 		  $( "#sns_type_a").val('ufo_survey');		  
 		  var form = new FormData($("#surveyForm")[0]);
+		  var fileCanvas = document.getElementById('tempImg').toDataURL('image/jpeg');
+		  var blob = dataURItoBlob(fileCanvas);
+		  form.append('file', blob, "fileName.png");
+
 	      $.ajax({
 	              url: '/PIX/ufo/${sessionScope.eventPara}/surveySubmit',
 	              method: "POST",
