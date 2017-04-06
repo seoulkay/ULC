@@ -206,7 +206,7 @@
 		</div>
 		<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -497,14 +497,11 @@ function markerSet(pos){
         	 target.lng = parseFloat((Number(go[i].go_alt)));
         	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
         	 
-        	 
         	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
         		 target.type = "ufoOn";
-//         		 $("#stamp_back_"+go[i].ufo_gid).hide();
-        		 $("#stamp_"+go[i].ufo_gid).show();
+       		 $("#stamp_"+go[i].ufo_gid).show();
         	 }else{
         		 target.type = "ufoOff";
-//         		 $("#stamp_back_"+go[i].ufo_gid).show();
         		 $("#stamp_"+go[i].ufo_gid).hide();
         	 }
         	 

@@ -210,6 +210,7 @@
 		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
 		  	</div>
 			</div>
+			<div id="descq7"></div>
 			  	<input type="file" id="q7_a" name="file" class="form-control">
 		</div>
 		<div class="modal-footer">
@@ -228,7 +229,26 @@
 <input type="hidden" id="sns_return" name="sns_return">
 <input type="hidden" id="sns_gid" name="sns_gid">
 </form>
-
+<script>
+document.getElementById('q7_a').onchange = function (e) {
+    loadImage(
+        e.target.files[0],
+        function (img) {
+        	var node = document.getElementById('descq7');
+        	while(node.firstChild){
+        		node.removeChild(node.firstChild);
+        	}
+        	img.toDataURL('image/jpeg');
+        	img.id = 'img'+'${ele.ufo_gid }';
+        	img.className = "img-responsive";
+        	node.appendChild(img);
+        	//$('#stamp_go${ele.ufo_gid }').remove();
+        	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
+        },
+        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 1} // Options
+    );
+};
+</script>
 <div class="modal" id="surveyResult" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -347,6 +367,28 @@ function surveyPostSubmit(){
 	}
 }
 
+/**
+ * 
+ */
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
 </script>
 
 	
