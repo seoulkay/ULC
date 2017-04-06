@@ -83,7 +83,7 @@
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >
 		<div class="row" style="padding: 0.5em">
-			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
 		</div>		
 		<div class="row" >
 				<%-- <marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee> --%>
@@ -97,17 +97,17 @@
 		</div>
 		<div class="row">
 			<div style="height:3px; background-color: #ECD0E2"></div>
-			<div style="height:3em"></div>
+			<div style="height:1.5em"></div>
 		</div>
 		<c:if test="${not empty ufo.fb_live }">
 		<div class="row" style="padding: 0.5em">
-			<h3 class="feature-title" style="float: left"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
 		</div>	
 		<div class="row">
 			<div class="fb-video" data-href="${ufo.fb_live }" data-width="500" data-show-text="false"></div>
 		</div>
 		</c:if>
-		<div class="section-title">${ufo.event_short_description }</div><br>
+		<div class="section-title" style="margin-bottom: 0;">${ufo.event_short_description }</div><br>
 		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }
 		</div>
 		

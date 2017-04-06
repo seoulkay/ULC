@@ -99,9 +99,6 @@
 	</jsp:include><!--//header-->
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 	<div class="team-figure" >
-		<div class="row" style="padding: 0.5em">
-			<h3 class="feature-title" style="float: left"><span class="label label-default " style="background-color: #00a27c;">스탬프랠리 참여하기</span></h3>
-		</div>
 		<div id="map" style="height: 30em;"></div>
 		<div class="row">
 			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
