@@ -67,13 +67,9 @@ button.close {
 	   </div>
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
-	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-12" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
-	   					<c:if test="${pick eq ele.ufo_gid}">
-		   				<div style="border: 2px solid #FFF;"><a href="https://www.ufo79.com/image/${ele.go_image}" download><img alt="" src="https://www.ufo79.com/image/${ele.go_image}" style="width:100%" class="img-responsive"></a></div>
-		   				</c:if>
-	   			</div>
-	   			</c:forEach>
+	   						<div style="border: 2px solid #FFF;"><a href="https://www.ufo79.com/image/${go_image}" download><img alt="" src="https://www.ufo79.com/image/${go_image}" style="width:100%" class="img-responsive"></a></div>
+		   		</div>
 	   		</div>
 	   		<h5 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title } </h5>
 			<br>
@@ -81,7 +77,7 @@ button.close {
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
 			<div class="modal-footer">
 			<br>
-		    	<span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" onClick="window.print()"><span class="btn-text">인쇄하기</span></span>
+		    	<a href="https://www.ufo79.com/image/${go_image}" download><span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" ><span class="btn-text">사진저장</span></span></a>
 <%-- 		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a> --%>
 		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br><br>
