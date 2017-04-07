@@ -520,6 +520,7 @@ function markerSet(pos){
         	 target.lng = parseFloat((Number(go[i].go_alt)));
         	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
         	 
+        	 
         	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
         		 target.type = "ufoOn";
        		 $("#stamp_"+go[i].ufo_gid).show();
