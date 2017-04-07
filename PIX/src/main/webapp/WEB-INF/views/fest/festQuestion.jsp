@@ -18,10 +18,26 @@
 	<h3>스탬프랠리 <button class="btn sm btn-primary" onclick="stampInsert()">+</button></h3>
 		<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">
-				<td>수정</td><td>go_content</td><td>go_desc</td><td>go_image</td><td>ufo_gid</td><td>go_alt</td><td>go_lat</td>
+				<td>수정</td>
+				<td>go_content</td>
+				<td>go_desc</td>
+				<td>go_image</td>
+				<td>go_icon_img</td>
+				<td>ufo_gid</td>
+				<td>go_alt</td>
+				<td>go_lat</td>
 			</tr>
 				<c:forEach items="${goList}" var="ele">
-				<tr id="${ele.id_ufo_go }"><td><button class="btn sm btn-primary" onclick="stampUpdate('${ele.id_ufo_go }', '${ele.go_para }')">+</button></td><td>${ele.go_content}</td><td>${ele.go_desc}</td><td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.ufo_gid}</td><td>${ele.go_alt}</td><td>${ele.go_lat}</td></tr>
+				<tr id="${ele.id_ufo_go }">
+					<td><button class="btn sm btn-primary" onclick="stampUpdate('${ele.id_ufo_go }', '${ele.go_para }')">+</button></td>
+					<td>${ele.go_content}</td>
+					<td>${ele.go_desc}</td>
+					<td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td>
+					<td><c:if test="${ele.go_icon_img ne null}"><img src="https://www.ufo79.com/image/${ele.go_icon_img}" class="img-responsive" alt="" style="width:100px"></c:if></td>
+					<td>${ele.ufo_gid}</td>
+					<td>${ele.go_alt}</td>
+					<td>${ele.go_lat}</td>
+				</tr>
 				</c:forEach>
 		</table>
 	</div>
@@ -63,6 +79,7 @@
   			<input class="form-control" type="hidden" id="id_ufo_go" name="id_ufo_go" value="1"/>
   			<input class="form-control" type="hidden" id="idx" name="idx" value="${param.idx}"/>
   			<label>go_image</label><input class="form-control" type="file" id="file" name="file"/>
+  			<label>go_icon_img</label><input class="form-control" type="file" id="file2" name="file2"/>
   			</form>
   		</div>
   		<div class="modal-footer">
@@ -79,9 +96,9 @@ function stampUpdate(id){
 	$("#id_ufo_go").val(id);
 	$("#go_content").val($("#"+id+" td:nth-child(2)").text());
 	$("#go_desc").val($("#"+id+" td:nth-child(3)").text());
-	$("#ufo_gid").val($("#"+id+" td:nth-child(5)").text());
-	$("#go_alt").val($("#"+id+" td:nth-child(6)").text());
-	$("#go_lat").val($("#"+id+" td:nth-child(7)").text());
+	$("#ufo_gid").val($("#"+id+" td:nth-child(6)").text());
+	$("#go_alt").val($("#"+id+" td:nth-child(7)").text());
+	$("#go_lat").val($("#"+id+" td:nth-child(8)").text());
 	$("#stampFormModal").modal("show");
 }
 function stampInsert(){

@@ -140,15 +140,12 @@ public class FestController {
 	
 	//stampNew stampUpdate
 	@RequestMapping(value = "FEV/stampUpdate", method = RequestMethod.POST)
-	public String stampUpdate(@RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+	public String stampUpdate(@RequestParam("file2") MultipartFile file2, @RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+		try{
 		if (!file.isEmpty()) {
             try {
                 String[] fileInfo = restService.writeFileToServer(file);
-                
         		go.setGo_image(fileInfo[0]);
-        		
-        		dao.updateUfoGo(go);
-        		
                 System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
                 
             } catch (Exception e) {
@@ -156,9 +153,26 @@ public class FestController {
             }
         } else {
         	System.out.println("You failed to upload because the file was empty. at createNotice");
-
-        	dao.updateUfoGo(go);
         }
+		
+		if (!file2.isEmpty()) {
+            try {
+                String[] fileInfo = restService.writeFileToServer(file2);
+        		go.setGo_icon_img(fileInfo[0]);
+                System.out.println("You successfully uploaded " + fileInfo[0] + " into " + fileInfo[0] + "-uploaded at Create Notice!");
+                
+            } catch (Exception e) {
+            	System.out.println("You failed to upload => " + e.getMessage() + "at createNotice");
+            }
+        } else {
+        	System.out.println("You failed to upload because the file was empty. at createNotice");
+        }
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dao.updateUfoGo(go);
+		}
+		
 		return "redirect:/FEV/festQuestion?idx="+idx;
 	}
 	

@@ -865,6 +865,9 @@
 	<if test="go_image != null and go_image != ''">
 	,go_image = #{go_image }
 	</if>
+	<if test="go_icon_img != null and go_icon_img != ''">
+	,go_icon_img = #{go_icon_img }
+	</if>
 	WHERE id_ufo_go = #{id_ufo_go};
 	</update>
 	

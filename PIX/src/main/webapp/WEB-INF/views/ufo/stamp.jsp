@@ -93,7 +93,6 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
@@ -131,8 +130,6 @@
 							<!--//row-->
 						</div>
 						<!--//quotes-->			
-						
-						<!--//divider-->
 					</div>
 					<!--//form-box-->
 				</div>
@@ -157,10 +154,17 @@
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 					<div>
-		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="position:absolute; top:15%; left:15%; display:none; opacity:1; width:70%; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:0; left:0;  opacity:0.5; width:96%; padding:5px; background-color: #00a27c; height:86%;margin:2%" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
-			   			<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
-					</div>
+		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:15%; left:15%; display:none; opacity:1; height:5em; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:0; left:0;  opacity:0.5; width:96%; padding:5px; background-color: #00a27c; height:5.5em;margin:2%" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
+			   			<c:choose>
+			   				<c:when test="${!empty ele.go_icon_img }">
+			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block; height:6em" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_icon_img }">
+			   				</c:when>
+			   				<c:otherwise>
+			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;height:6em" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
+			   				</c:otherwise>
+			   			</c:choose>
+			   		</div>
 						<p style="margin-bottom:3px; text-align:center; font-size: 1em;">${ele.go_content }</p>
 	   			</div>
 	   			</c:forEach>
@@ -190,7 +194,6 @@
    			<div style="padding:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
-   			
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">
 				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
 				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
@@ -221,8 +224,6 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.id = 'img'+'${ele.ufo_gid }';
         	img.className = "img-responsive";
         	node.appendChild(img);
-        	//$('#stamp_go${ele.ufo_gid }').remove();
-        	//document.getElementById('stampForm${ele.ufo_gid }').innerHTML = '<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">';
         },
         {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 1} // Options
     );
@@ -536,12 +537,11 @@ function stampPostSubmit(para){
 			  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
 			  var form = new FormData($("#stampForm"+para)[0]);
 			  
-			  //var fileLoader = new FileReader();
 			  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
 			  var blob = dataURItoBlob(fileCanvas);
-			  
 			  form.append('file', blob, "fileName.png");
-		      $.ajax({
+
+			  $.ajax({
 		              url: '/PIX/ufogo/insert',
 		              method: "POST",
 		              dataType: 'json',
