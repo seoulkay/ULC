@@ -203,7 +203,7 @@
 		</div>
 		<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-	    <button type="button" class="btn btn-default" data-dismiss="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
 	  	</div>
 	</div>
 	</div>
@@ -497,11 +497,9 @@ function markerSet(pos){
         	 
         	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
         		 target.type = "ufoOn";
-//         		 $("#stamp_back_"+go[i].ufo_gid).hide();
-        		 $("#stamp_"+go[i].ufo_gid).show();
+       		 $("#stamp_"+go[i].ufo_gid).show();
         	 }else{
         		 target.type = "ufoOff";
-//         		 $("#stamp_back_"+go[i].ufo_gid).show();
         		 $("#stamp_"+go[i].ufo_gid).hide();
         	 }
         	 
