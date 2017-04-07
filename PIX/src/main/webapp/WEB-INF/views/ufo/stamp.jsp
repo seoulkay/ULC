@@ -408,8 +408,8 @@ function initMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
+                          'Error: 위치를 찾을수 없습니다.' :
+                          'Error: 위치정보 지원하지 않는 브라우져 입니다.');
 }
 /**
  * 
