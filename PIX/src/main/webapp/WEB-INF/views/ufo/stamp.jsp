@@ -240,7 +240,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 1} // Options
+        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 0.8} // Options
     );
 };
 
