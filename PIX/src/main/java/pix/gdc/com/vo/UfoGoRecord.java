@@ -21,6 +21,11 @@ public class UfoGoRecord {
 	private String go_content;
 	private boolean submit = false;
 	private Blob image_blob;
+	
+	//위너 테이블을 위한 필드
+	private int idUfoWinnerRecord;
+	private Date winner_time;
+	
 	public int getId() {
 		return id;
 	}
@@ -116,6 +121,18 @@ public class UfoGoRecord {
 	}
 	public void setImage_blob(Blob image_blob) {
 		this.image_blob = image_blob;
+	}
+	public int getIdUfoWinnerRecord() {
+		return idUfoWinnerRecord;
+	}
+	public void setIdUfoWinnerRecord(int idUfoWinnerRecord) {
+		this.idUfoWinnerRecord = idUfoWinnerRecord;
+	}
+	public Date getWinner_time() {
+		return winner_time;
+	}
+	public void setWinner_time(Date winner_time) {
+		this.winner_time = winner_time;
 	}
 	
 
