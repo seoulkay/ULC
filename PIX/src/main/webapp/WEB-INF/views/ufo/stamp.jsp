@@ -85,7 +85,7 @@
 		</c:choose>	
 			
 			<div class="actions">
-                 <button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4;">스탬프찍기</button>
+                 <button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4;">스탬프랠리 시작하기</button>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
