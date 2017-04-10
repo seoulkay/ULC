@@ -83,6 +83,23 @@
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >
 		<div class="row" style="padding: 0.5em">
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">승리자들</span></h3>
+		</div>
+		<div class="row">
+			<c:choose>
+				<c:when test="${not empty winner }">
+					<c:forEach items="${winner}" var="ele">
+						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100px">
+						<p>${ele.winner_time } ${ele.first_name } ${ele.last_name }</p>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<p>승리자가 없습니다.</p>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		
+		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
 		</div>		
 		<div class="row" >

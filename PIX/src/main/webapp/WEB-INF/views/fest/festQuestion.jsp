@@ -69,11 +69,11 @@
 	   </div>	
 	   <div class="modal-body">
 	 		<form id="stampForm" method="post" enctype="multipart/form-data"> 
-  			<label>go_content</label><input class="form-control" type="text" id="go_content" name="go_content" maxlength="100"/>
-  			<label>go_desc</label><input class="form-control" type="text" id="go_desc" name="go_desc" maxlength="100"/>
-  			<label>ufo_gid</label><input class="form-control" type="text" id="ufo_gid" name="ufo_gid" maxlength="100"/>
-  			<label>go_alt</label><input class="form-control" type="text" id="go_alt" name="go_alt" maxlength="100"/>
-  			<label>go_lat</label><input class="form-control" type="text" id="go_lat" name="go_lat" maxlength="100"/>
+  			<label>go_content</label><input class="form-control" type="text" id="go_content" name="go_content" maxlength="45"/>
+  			<label>go_desc</label><input class="form-control" type="text" id="go_desc" name="go_desc" maxlength="1000"/>
+  			<label>ufo_gid</label><input class="form-control" type="text" id="ufo_gid" name="ufo_gid" maxlength="45"/>
+  			<label>go_alt</label><input class="form-control" type="text" id="go_alt" name="go_alt" maxlength="45"/>
+  			<label>go_lat</label><input class="form-control" type="text" id="go_lat" name="go_lat" maxlength="45"/>
   			<input class="form-control" type="hidden" id="ufo_go_type" name="ufo_go_type" maxlength="100" value="go"/>
   			<input class="form-control" type="hidden" id="go_para" name="go_para" maxlength="100" value="${ufo.para }"/>
   			<input class="form-control" type="hidden" id="id_ufo_go" name="id_ufo_go" value="1"/>

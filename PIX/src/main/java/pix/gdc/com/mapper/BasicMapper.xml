@@ -936,4 +936,37 @@
 	FROM
 	fest_ufo
 	</select>
+	<select id="selectRandUfoRecordByPara" resultType="UfoGoRecord" parameterType="String">
+	SELECT ufo_date, first_name, last_name, ufo_image, para, user_uid, ufo_gid 
+	from ufo_go_record 
+	where ufo_date > date_sub(NOW(), interval 1 hour) and para = #{param}
+	order by rand() limit 2 
+	</select>
+	<insert id="insertWinnerRecord" parameterType="UfoGoRecord">
+	INSERT into UfoWinnerRecord
+	(
+	winner_time,
+	first_name,
+	last_name,
+	ufo_image,
+	para,
+	user_uid,
+	ufo_gid
+	)
+	VALUES
+	(
+	now(),
+	#{first_name},
+	#{last_name},
+	#{ufo_image},
+	#{para},
+	#{user_uid},
+	#{ufo_gid}
+	)
+	</insert>
+	<select id="selectUfoWinnerLastHourByPara" resultType="UfoGoRecord" parameterType="String">
+	SELECT winner_time, first_name, last_name, ufo_image, para, user_uid, ufo_gid 
+	from UfoWinnerRecord 
+	where winner_time > date_sub(NOW(), interval 1 hour) and para = #{param}
+	</select>
 </mapper>

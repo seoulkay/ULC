@@ -450,5 +450,20 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public List<String> selectAllPara(){
 		return getSqlSession().selectList("BasicMapper.selectAllPara");
 	}
+	
+	//레코드 지난 한시간 랜덤 2개 셀렉트
+	public List<UfoGoRecord> selectRandUfoRecordByPara(String vo){
+		return getSqlSession().selectList("BasicMapper.selectRandUfoRecordByPara", vo);
+	}
+	
+	//위너 인서트
+	public int insertWinnerRecord(UfoGoRecord vo){
+		return getSqlSession().insert("BasicMapper.insertWinnerRecord", vo);
+	}
+	
+	//위너 지난 한시간 셀렉트
+	public List<UfoGoRecord> selectUfoWinnerLastHourByPara(String vo){
+		return getSqlSession().selectList("BasicMapper.selectUfoWinnerLastHourByPara", vo);
+	}
 
 }

@@ -162,6 +162,9 @@ public class UfoController {
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
 				
+		List<UfoGoRecord> winner = dao.selectUfoWinnerLastHourByPara(para);
+		
+		model.addAttribute("winner", winner);
 		model.addAttribute("ufo", ufo);
 		return "ufo/index";
 	}
@@ -212,6 +215,20 @@ public class UfoController {
 		
 		return ql;
 	}
+	//승리자를 찾기
+	@Scheduled(cron="0 57 * * * *")
+	public void winnerPicker(){
+		List<String> paras = dao.selectAllPara();
+		for(String ele : paras){
+			List<UfoGoRecord> tempRecord = dao.selectRandUfoRecordByPara(ele);
+			if(!tempRecord.isEmpty()){
+				for(UfoGoRecord rec : tempRecord){
+					dao.insertWinnerRecord(rec);
+				}
+			}
+		}
+	}
+	
 	
 	//서베이 점수 스케줄 
 	public static List<List<FestQuesListVO>> quesStaticModel = new ArrayList<List<FestQuesListVO>>();
