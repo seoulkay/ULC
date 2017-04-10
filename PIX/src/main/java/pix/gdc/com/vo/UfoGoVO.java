@@ -1,6 +1,6 @@
 package pix.gdc.com.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class UfoGoVO {
 	private int id_ufo_go;

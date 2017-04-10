@@ -276,7 +276,9 @@ public class FestController {
 		
 		Collections.reverse(resultList);
 		Collections.reverse(answerVOs);
+		List<UfoGoRecord> winner = dao.selectUfoWinnerByPara(para);
 		
+		model.addAttribute("winner", winner);
 		model.addAttribute("resultList", resultList);
 		model.addAttribute("answerVOs", answerVOs);
 		model.addAttribute("ufo", ufo);

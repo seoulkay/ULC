@@ -32,8 +32,8 @@
 					<td><button class="btn sm btn-primary" onclick="stampUpdate('${ele.id_ufo_go }', '${ele.go_para }')">+</button></td>
 					<td>${ele.go_content}</td>
 					<td>${ele.go_desc}</td>
-					<td><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td>
-					<td><c:if test="${ele.go_icon_img ne null}"><img src="https://www.ufo79.com/image/${ele.go_icon_img}" class="img-responsive" alt="" style="width:100px"></c:if></td>
+					<td class="go_img"><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td>
+					<td class="icon_img"><c:if test="${ele.go_icon_img ne null}"><img src="https://www.ufo79.com/image/${ele.go_icon_img}" class="img-responsive" alt="" style="width:100px"></c:if></td>
 					<td>${ele.ufo_gid}</td>
 					<td>${ele.go_alt}</td>
 					<td>${ele.go_lat}</td>
@@ -60,6 +60,13 @@
 <jsp:include page="ufoFooter.jsp" flush="false">
 	<jsp:param name="param" value="value1"/>
 </jsp:include>
+<div class="modal" id="imgModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<img class="img-responsive" alt="" src="" style="width: 100%">
+		</div>
+	</div>
+</div>
 <div class="modal" id="stampFormModal" role="dialog">
 <div class="modal-dialog">
   <div class="modal-content">
@@ -117,6 +124,17 @@ function stampSubmit(){
 		$("#stampForm").submit();
 	}
 }
+
+
+$(".go_img").click(function(){
+	$("#imgModal").find("img").attr("src", $(this).find("img").attr("src"));
+	$("#imgModal").modal("show");
+});
+
+$(".icon_img").click(function(){
+	$("#imgModal").find("img").attr("src", $(this).find("img").attr("src"));
+	$("#imgModal").modal("show");
+});
 </script>
 </body>
 </html>

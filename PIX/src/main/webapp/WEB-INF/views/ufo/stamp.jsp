@@ -446,7 +446,7 @@ function addMarkerWithTimeout(position, timeout) {
  console.log(marker.icon);
  if(marker.icon.includes("me")){
 	 marker.setAnimation(google.maps.Animation.BOUNCE);
-	 infowindow.open(map, marker);
+	// infowindow.open(map, marker);
  }
     markers.push(marker);
 	}, timeout);

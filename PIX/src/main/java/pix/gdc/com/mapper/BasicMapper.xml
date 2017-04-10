@@ -969,4 +969,9 @@
 	from UfoWinnerRecord 
 	where winner_time > date_sub(NOW(), interval 1 hour) and para = #{param}
 	</select>
+	<select id="selectUfoWinnerByPara" resultType="UfoGoRecord" parameterType="String">
+		SELECT *
+		FROM UfoWinnerRecord 
+	 	WHERE para = #{param}
+	</select>
 </mapper>

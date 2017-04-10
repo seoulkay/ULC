@@ -1,6 +1,6 @@
 package pix.gdc.com.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.mysql.jdbc.Blob;
 
