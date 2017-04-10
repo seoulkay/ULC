@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="https://www.ufo79.com/">UFO79.com</a>
+					<div class="col-title"><a href="https://www.ufo79.com/home">UFO79.com</a>
 					</div>
 				</div>
 			</div>
@@ -18,7 +18,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">이용약관</a>
+						<a href="https://www.ufo79.com/PIX/ULC/privacy">이용약관</a>
 					</div>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">개인정보 취급방침</a>
+						<a href="https://www.ufo79.com/PIX/ULC/privacy">개인정보 취급방침</a>
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">커뮤니티정책</a>
+						<a href="https://www.ufo79.com/PIX/ULC/privacy">커뮤니티정책</a>
 					</div>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="#">저작권정책</a>
+						<a href="https://www.ufo79.com/PIX/ULC/privacy">저작권정책</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 			<div class="footer-col col-xs-6 col-sm-2">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="reader">쿠키정책</a>
+						<a href="reader">UFO BARCODE READER</a>
 					</div>
 				</div>
 			</div>

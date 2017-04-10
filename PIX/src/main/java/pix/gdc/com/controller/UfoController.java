@@ -119,40 +119,6 @@ public class UfoController {
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
 		
-		//ufo를 notice list로 바꿔 보자!
-		FestUfoNotice info = new FestUfoNotice();
-		FestUfoNotice hist = new FestUfoNotice();
-		FestUfoNotice prog = new FestUfoNotice();
-		FestUfoNotice loca = new FestUfoNotice();
-		
-		
-		info.setVoType("info");
-		info.setTitle(ufo.getInfo_title());
-		info.setContent(ufo.getInfo_info_text());
-		info.setPhoto_file(ufo.getInfo_info_pic());
-		
-		
-		hist.setVoType("hist");
-		hist.setTitle(ufo.getHistory_title());
-		hist.setContent(ufo.getInfo_hist_text());
-		hist.setPhoto_file(ufo.getInfo_hist_pic());
-		
-		
-		prog.setVoType("prog");
-		prog.setTitle(ufo.getProgram_title());
-		prog.setContent(ufo.getInfo_program_text());
-		prog.setPhoto_file(ufo.getInfo_program_pic());
-		
-		loca.setVoType("loca");
-		loca.setTitle(ufo.getLocation_title());
-		loca.setContent(ufo.getInfo_location_text());
-		loca.setPhoto_file(ufo.getInfo_location_pic());
-		
-	
-		model.addAttribute("info", info);
-		model.addAttribute("hist", hist);
-		model.addAttribute("prog", prog);
-		model.addAttribute("loca", loca);
 		model.addAttribute("ufo", ufo);
 		return "ufo/features";
 	}
@@ -224,6 +190,7 @@ public class UfoController {
 			if(!tempRecord.isEmpty()){
 				for(UfoGoRecord rec : tempRecord){
 					dao.insertWinnerRecord(rec);
+					System.out.println(rec.getFirst_name() + rec.getPara() + rec.getLast_name());
 				}
 			}
 		}
@@ -292,7 +259,7 @@ public class UfoController {
 							}
 						});
 					}
-				System.out.println(ql.get(0).getPara());
+				System.out.println(ql.get(0).getPara() + " survey inited");
 				}
 			}	
 			quesModel.add(ql);

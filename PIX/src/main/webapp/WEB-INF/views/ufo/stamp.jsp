@@ -42,7 +42,7 @@
 
 <style>
 	#map {
-	   height: 30em;
+	   height: 25em;
 	   	 }
 	#legend {
         font-family: Arial, sans-serif;
@@ -112,7 +112,7 @@
 	</jsp:include><!--//header-->
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
 	<div class="team-figure" >
-		<div id="map" style="height: 27em;"></div>
+		<div id="map" style="height: 25em;"></div>
 		<div class="row">
 			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">스탬프 찍기</button>
 			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
