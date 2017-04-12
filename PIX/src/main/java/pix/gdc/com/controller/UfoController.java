@@ -259,7 +259,7 @@ public class UfoController {
 							}
 						});
 					}
-				System.out.println(ql.get(0).getPara() + " survey inited");
+				System.out.println(ql.get(0).getPara() + " survey init");
 				}
 			}	
 			quesModel.add(ql);
@@ -454,10 +454,6 @@ public class UfoController {
 	@RequestMapping(value = "ufo/{para}/surveySubmit", method = {RequestMethod.GET, RequestMethod.POST})
 	public @ResponseBody int surveySubmit(@ModelAttribute("vo")FestAnswerVO vo, HttpServletRequest request, @RequestParam("file") MultipartFile file
 			, @PathVariable("para")String para, HttpSession session, Model model){
-//		session.setAttribute("eventPara", para);
-//		FestUfo ufo = dao.SelectUfoByPara(para);
-//		session.setAttribute("eventMenu", ufo.getMenu());
-		//FestAnswerVO vo = new FestAnswerVO();
 		
 		vo.setIp_log(request.getRemoteAddr());
 		vo.setPara(para);
@@ -490,7 +486,6 @@ public class UfoController {
 		}
 		
 
-//		model.addAttribute("ufo", ufo);
 		return dao.insertUfoAnswer(vo);
 	}
 	
@@ -578,5 +573,10 @@ public class UfoController {
 		model.addAttribute("para", para);
 		return "ufo/reader";
 	}
-
+	
+	@RequestMapping(value = "ufo/winnerLike", method = {RequestMethod.POST})
+	public @ResponseBody int winnerLike(@RequestParam("winneridx") int idx){
+		dao.updateWinnerLike(idx);
+		return dao.selectWinnerLike(idx);
+	}
 }

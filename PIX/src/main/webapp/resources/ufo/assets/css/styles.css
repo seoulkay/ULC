@@ -3382,13 +3382,13 @@ body.sticky-page-nav .overview-section {
 
 @font-face {
     font-family: football;
-    src: url("../NEXON Football Gothic L.otf") format("opentype");
+    src: url("../OPENAS_TTF.ttf") format("truetype");
 }
 
 @font-face {
     font-family: football;
     font-weight: bold;
-    src: url("../NEXON Football Gothic B.otf") format("opentype");
+    src: url("../OPENAS_TTF.ttf") format("truetype");
 }
 
 html, body {

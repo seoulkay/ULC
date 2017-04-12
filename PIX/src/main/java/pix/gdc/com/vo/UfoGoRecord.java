@@ -25,6 +25,7 @@ public class UfoGoRecord {
 	//위너 테이블을 위한 필드
 	private int idUfoWinnerRecord;
 	private Date winner_time;
+	private int winner_like;
 	
 	public int getId() {
 		return id;
@@ -133,6 +134,12 @@ public class UfoGoRecord {
 	}
 	public void setWinner_time(Date winner_time) {
 		this.winner_time = winner_time;
+	}
+	public int getWinner_like() {
+		return winner_like;
+	}
+	public void setWinner_like(int winner_like) {
+		this.winner_like = winner_like;
 	}
 	
 

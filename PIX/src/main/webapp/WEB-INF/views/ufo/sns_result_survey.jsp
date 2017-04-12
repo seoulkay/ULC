@@ -63,7 +63,7 @@ button.close {
 <div class="modal-dialog">
 	<div class="modal-content">
 	   <div class="modal-header">
-	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/stories';">&times;</button>
+	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/stories';">&times;</button><br>
 	   </div>
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">

@@ -965,7 +965,7 @@
 	)
 	</insert>
 	<select id="selectUfoWinnerLastHourByPara" resultType="UfoGoRecord" parameterType="String">
-	SELECT winner_time, first_name, last_name, ufo_image, para, user_uid, ufo_gid 
+	SELECT idUfoWinnerRecord,winner_time, first_name, last_name, ufo_image, para, user_uid, ufo_gid, winner_like 
 	from UfoWinnerRecord 
 	where winner_time > date_sub(NOW(), interval 1 hour) and para = #{param}
 	</select>
@@ -973,5 +973,11 @@
 		SELECT *
 		FROM UfoWinnerRecord 
 	 	WHERE para = #{param}
+	</select>
+	<update id="updateWinnerLike" parameterType="Integer">
+		update UfoWinnerRecord set winner_like = winner_like + 1 where idUfoWinnerRecord = #{param}
+	</update>
+	<select id="selectWinnerLike" parameterType="Integer" resultType="Integer">
+		SELECT winner_like FROM pix.UfoWinnerRecord where idUfoWinnerRecord = #{param}
 	</select>
 </mapper>

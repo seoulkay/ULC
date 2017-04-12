@@ -470,4 +470,14 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public List<UfoGoRecord> selectUfoWinnerByPara(String vo){
 		return getSqlSession().selectList("BasicMapper.selectUfoWinnerByPara", vo);
 	}
+	
+	//위너 라이크 +1
+	public int updateWinnerLike(int vo){
+		return getSqlSession().update("BasicMapper.updateWinnerLike", vo);
+	}
+	
+	//위너 라이크 셀렉 
+	public int selectWinnerLike(int vo){
+		return getSqlSession().selectOne("BasicMapper.selectWinnerLike", vo);
+	}
 }

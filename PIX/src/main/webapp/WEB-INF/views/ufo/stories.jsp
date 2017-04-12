@@ -59,8 +59,8 @@
             				</div>
 			</c:otherwise>
 		</c:choose>		
-			<div class="actions" id="mainbtn">
-           	<button class="btn btn-warning" style="margin:0 auto;background-color: #ed45a4; border-color: #ed45a4" onclick="surveyInit()">설문조사하기</button>
+			<div class="actions">
+            <a  id="mainbtn"><button class="btn" style="background-color: #ed45a4;" onclick="surveyInit()">설문조사하기</button></a>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -276,7 +276,7 @@ $(document).ready(function() {
             success: function(result){
           	  console.log("처리되었습니다. : "+result);
           	  if(result == 1){
-          		  $("#mainbtn").append('<button class="btn btn-primary" style="margin:0 auto" onclick="location.href=\'https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/ve/'+window.sessionStorage.getItem('uid')+'\'">결과보기</button>');
+          		  $("#mainbtn").append('<button class="btn" style="background-color: #00a27c" onclick="location.href=\'https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/ve/'+window.sessionStorage.getItem('uid')+'\'">결과보기</button>');
           	  }
             },
             error: function(er){}

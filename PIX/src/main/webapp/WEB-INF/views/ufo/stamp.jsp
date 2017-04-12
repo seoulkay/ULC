@@ -17,9 +17,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic'
-	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <link
 	href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic'
 	rel='stylesheet' type='text/css'>
@@ -270,24 +268,20 @@ function showSingleStamp(para){
  	$('#stamp_'+para+'_modal').modal({backdrop: 'static',keyboard: false}); 
 	$('#stamp_'+para+'_modal').modal('show');
 }
-var iconBase = '${pageContext.request.contextPath}/resources/ufo/assets/images/icons/';
+var iconBase = 'https://www.ufo79.com/image/';
 var icons = {
   me:{
-	  name: "나의위치",
 	  icon: iconBase + 'NEW_icon_UFO_me.svg'
   },
   ufoOn:{
-	  name: "미션가능",
 	  icon: iconBase + 'icon_pin_20px.svg'
   },
   ufoOff:{
-	  name: "미션불가",
 	  icon: iconBase +'icon_pin_15px_off.svg'
+  },
+  ufoDone:{
+	  icon: iconBase +'icon_done.svg'
   }
-//   ,
-//   ufoDone:{
-// 	  icon: iconBase +'icon_pin_15px_fn_02.svg'
-//   }
 };
         
         
@@ -443,7 +437,6 @@ function addMarkerWithTimeout(position, timeout) {
  marker.addListener('click', function() {
 	    infowindow.open(map, marker);
   });
- console.log(marker.icon);
  if(marker.icon.includes("me")){
 	 marker.setAnimation(google.maps.Animation.BOUNCE);
 	// infowindow.open(map, marker);
@@ -523,7 +516,7 @@ function markerSet(pos){
         	 
         	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
         		 target.type = "ufoOn";
-       		 $("#stamp_"+go[i].ufo_gid).show();
+       		 	 $("#stamp_"+go[i].ufo_gid).show();
         	 }else{
         		 target.type = "ufoOff";
         		 $("#stamp_"+go[i].ufo_gid).hide();

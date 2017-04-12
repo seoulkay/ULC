@@ -89,13 +89,17 @@
 				<c:when test="${not empty winner }">
 					<c:forEach items="${winner}" var="ele" varStatus="stat">
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name }</span></h4>
-						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%">
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name } </span></h4>
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4"><span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
+						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%"><br>
+						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(${ele.idUfoWinnerRecord})">+1</button>
 					</div>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
 					<p>승리자가 없습니다.</p>
+<!-- 						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4"><span id="winner11">2</span></span> </span></h4> -->
+<!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -127,7 +131,6 @@
 		<div class="section-title" style="margin-bottom: 0;">${ufo.event_short_description }</div><br>
 		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }
 		</div>
-		
 		</div>
 		<!--//feature-list-->
 		<!--//team-figure-->
@@ -176,6 +179,23 @@
 	<jsp:include page="footer.jsp" flush="false">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//footer-->
-
+<script type="text/javascript">
+function winnerLike(param){
+	 $.ajax({
+         url: '/PIX/ufo/winnerLike',
+         method: "POST",
+         data: {'winneridx' : param},
+         success: function(result){
+        	 $(".likeBtn").fadeOut( 'fast' , function() {
+        		 $("#winner"+param).replaceWith("<span id='winner'"+param+">"+result+"</span>");
+        	  });
+       	  	console.log(result+"성공");
+         },
+         error: function(er){
+        	console.log(er);
+         }
+ 	});
+}
+</script>
 </body>
 </html>
