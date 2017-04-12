@@ -65,14 +65,13 @@
 	<!--//heading-section-->
 
 	<div class="page-nav-space-holder">
-		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+		<div class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline" >
 					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
-					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -88,9 +87,11 @@
 		<div class="row">
 			<c:choose>
 				<c:when test="${not empty winner }">
-					<c:forEach items="${winner}" var="ele">
-						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100px">
-						<p>${ele.winner_time } ${ele.first_name } ${ele.last_name }</p>
+					<c:forEach items="${winner}" var="ele" varStatus="stat">
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name }</span></h4>
+						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%">
+					</div>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
@@ -100,10 +101,9 @@
 		</div>		
 		
 		<div class="row" style="padding: 0.5em">
-			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">공지</span></h3>
 		</div>		
 		<div class="row" >
-				<%-- <marquee><h4 style="white-space:nowrap;"> <c:forEach items="${noticeList }" var="ele">${ele.title} <span style="color: #ED45A4; ">||</span> </c:forEach> </h4></marquee> --%>
 				<marquee>
 				<h4 style="white-space:nowrap;">
 				<c:if test="${not empty ufo.ufo_notice1 }">${ufo.ufo_notice1}<span style="color: #ED45A4; ">&emsp;||&emsp;</span></c:if>
@@ -165,10 +165,6 @@
 					href="https://www.ufo79.com/image/${ufo.apk_name }"><i class="fa fa-android" aria-hidden="true"></i> <span
 						class="btn-text"><span class="intro-text">Get it on</span><span
 							class="main-text">Google Play</span></span></a></li>
-				<!-- <li><a class="btn btn-download-app btn-windows-download"
-					href="#"><i class="fa fa-windows" aria-hidden="true"></i> <span
-						class="btn-text"><span class="intro-text">Download
-								from</span><span class="main-text">Windows Phone Store</span></span></a></li> -->
 			</ul>
 			<!--//apps-list-->
 		</div>

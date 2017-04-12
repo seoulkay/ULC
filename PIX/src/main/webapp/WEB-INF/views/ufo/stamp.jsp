@@ -42,7 +42,7 @@
 
 <style>
 	#map {
-	   height: 30em;
+	   height: 25em;
 	   	 }
 	#legend {
         font-family: Arial, sans-serif;
@@ -78,14 +78,13 @@
 			<div style="height:3em"></div>
 					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
 					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-							<div class="actions">
-                 			<a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
-            				</div>
 			</c:otherwise>
 		</c:choose>	
 			
 			<div class="actions">
-                 <button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4;">스탬프랠리 시작하기</button>
+                 <div class="actions">
+         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">스탬프랠리 시작하기</button></a>
+   				</div>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -93,7 +92,7 @@
 	<!--//heading-section-->
 
 <div class="page-nav-space-holder">
-		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+		<div class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
@@ -113,8 +112,9 @@
 	</jsp:include><!--//header-->
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
 	<div class="team-figure" >
-		<div id="map" style="height: 30em;"></div>
+		<div id="map" style="height: 25em;"></div>
 		<div class="row">
+			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">스탬프 찍기</button>
 			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
 		</div>					
 	</div>
@@ -240,7 +240,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 0.8} // Options
+        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 
