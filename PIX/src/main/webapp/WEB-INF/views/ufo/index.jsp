@@ -97,7 +97,7 @@
 					<p>승리자가 없습니다.</p>
 				</c:otherwise>
 			</c:choose>
-		</div>
+		</div>		
 		
 		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
