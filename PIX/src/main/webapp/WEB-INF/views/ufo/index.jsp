@@ -102,7 +102,7 @@
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
 			</c:choose>
-		</div>
+		</div>		
 		
 		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">공지</span></h3>
