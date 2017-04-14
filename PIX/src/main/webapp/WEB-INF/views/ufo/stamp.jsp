@@ -77,8 +77,7 @@
 					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
 					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
 			</c:otherwise>
-		</c:choose>	
-			
+		</c:choose>			
 			<div class="actions">
                  <div class="actions">
          			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">스탬프랠리 시작하기</button></a>
@@ -93,7 +92,7 @@
 		<div class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
@@ -197,14 +196,14 @@
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
 	   </div>
-	   <div class="modal-body">
-   			<div style="padding:10px;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
+	   <div class="modal-body" style="padding-top:0px; padding-bottom:15px; padding-left: 15px; padding-right: 15px;">
+   			<div style="padding-bottom:10px;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
    			</div>
 			<!-- 스탬프 미션 사진, 내용 -->			
 			<div>
-   				<img class="img-responsive" style="padding:10px" src="https://www.ufo79.com/image/${ele.go_image }">
+   				<img class="img-responsive" style="padding-bottom:10px" src="https://www.ufo79.com/image/${ele.go_image }">
    			</div>
-   			<div style="padding:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
+   			<div style="padding-bottom:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">

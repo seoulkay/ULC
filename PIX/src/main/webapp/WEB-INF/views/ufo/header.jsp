@@ -31,7 +31,7 @@
 			<div id="navbar-collapse" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'index')}">
-					   <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					   <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li>

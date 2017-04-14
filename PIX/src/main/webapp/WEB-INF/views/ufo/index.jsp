@@ -47,18 +47,19 @@
 		<div class="container heading-content">
 		<c:choose>
 			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:30em; margin: 0 auto;" data-dismiss="modal">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:25em; margin: 0 auto;" data-dismiss="modal">
 			</c:when>
 			<c:otherwise>
 			<div style="height:3em"></div>
 					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
 					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-							<div class="actions">
-                 			<a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
-            				</div>
 			</c:otherwise>
-		</c:choose>			
-
+		</c:choose>
+			<div class="actions">
+	                 <div class="actions">
+	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">포토콘테스트 당첨 확인</button></a>
+	   				</div>
+            </div><!--//actions-->
 		</div>
 		<!--//container-->
 	</section>
@@ -68,7 +69,7 @@
 		<div class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline" >
-					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">홈</a></li>
+					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
@@ -80,8 +81,27 @@
 	</div>
 	<!--//page-nav-space-holder-->
 <section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
-		<div class="team-figure" >
-		<div class="row" style="padding: 0.5em">
+		<div class="team-figure" >	
+		<!-- 공지 -->
+		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
+		</div>		
+		<div class="row" >
+				<marquee>
+				<h4 style="white-space:nowrap;">
+				<c:if test="${not empty ufo.ufo_notice1 }">${ufo.ufo_notice1}<span style="color: #ED45A4; ">&emsp;||&emsp;</span></c:if>
+				<c:if test="${not empty ufo.ufo_notice2 }">${ufo.ufo_notice2}<span style="color: #ED45A4; ">&emsp;||&emsp;</span></c:if> 
+				<c:if test="${not empty ufo.ufo_notice3 }">${ufo.ufo_notice3}</c:if>
+				</h4>
+				</marquee>
+		</div>
+		<div class="row">
+			<div style="height:3px; background-color: #ECD0E2"></div>
+			<div style="height:1.5em"></div>
+		</div>
+		<!-- 공지끝 -->
+		<!-- 승리자 -->
+		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">승리자들</span></h3>
 		</div>
 		<div class="row">
@@ -102,24 +122,9 @@
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
 			</c:choose>
-		</div>		
-		
-		<div class="row" style="padding: 0.5em">
-			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">공지</span></h3>
-		</div>		
-		<div class="row" >
-				<marquee>
-				<h4 style="white-space:nowrap;">
-				<c:if test="${not empty ufo.ufo_notice1 }">${ufo.ufo_notice1}<span style="color: #ED45A4; ">&emsp;||&emsp;</span></c:if>
-				<c:if test="${not empty ufo.ufo_notice2 }">${ufo.ufo_notice2}<span style="color: #ED45A4; ">&emsp;||&emsp;</span></c:if> 
-				<c:if test="${not empty ufo.ufo_notice3 }">${ufo.ufo_notice3}</c:if>
-				</h4>
-				</marquee>
-		</div>
-		<div class="row">
-			<div style="height:3px; background-color: #ECD0E2"></div>
-			<div style="height:1.5em"></div>
-		</div>
+		</div>	
+		<!-- 승리자끝 -->
+		<!-- 페북라이브&댓글 -->
 		<c:if test="${not empty ufo.fb_live }">
 		<div class="row" style="padding: 0.5em">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
@@ -131,6 +136,7 @@
 		<div class="section-title" style="margin-bottom: 0;">${ufo.event_short_description }</div><br>
 		<div class="section-content" align="left" style="padding:10px;">${ufo.event_long_description }
 		</div>
+		<!-- 페북라이브&댓글 끝 -->
 		</div>
 		<!--//feature-list-->
 		<!--//team-figure-->

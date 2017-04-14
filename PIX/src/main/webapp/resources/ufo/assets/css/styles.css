@@ -1293,7 +1293,9 @@ body.sticky-page-nav .overview-section {
 }
 
 .feature-blocks {
-  padding-top: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
   padding-bottom: 2em;
 }
 .feature-blocks .feature-block {
