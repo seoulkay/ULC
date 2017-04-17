@@ -63,7 +63,7 @@
 		</c:choose>		
 			<div class="actions">
                  <div class="actions">
-         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">축제정보 확인하기</button></a>
+         			<a class="scrollto" href="#info-section"><button class="btn" style="background-color: #ed45a4;">축제정보 확인하기</button></a>
    				</div>
             </div><!--//actions-->
 		</div>

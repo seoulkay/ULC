@@ -21,6 +21,7 @@ public class UfoGoRecord {
 	private String go_content;
 	private boolean submit = false;
 	private Blob image_blob;
+	private String login_type;
 	
 	//위너 테이블을 위한 필드
 	private int idUfoWinnerRecord;
@@ -140,6 +141,12 @@ public class UfoGoRecord {
 	}
 	public void setWinner_like(int winner_like) {
 		this.winner_like = winner_like;
+	}
+	public String getLogin_type() {
+		return login_type;
+	}
+	public void setLogin_type(String login_type) {
+		this.login_type = login_type;
 	}
 	
 

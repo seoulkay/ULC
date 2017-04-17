@@ -214,6 +214,7 @@
 				<input type="hidden" id="type_go${ele.ufo_gid }" name="ufo_go_type" value="go">
 				<input type="hidden" id="gid_go${ele.ufo_gid }" name="ufo_gid" value="${ele.ufo_gid }">
 				<input type="hidden" id="para${ele.ufo_gid }" name="para" value="${sessionScope.eventPara}">
+				<input type="hidden" id="login_type" name="login_type" value="${type }">
 			</form>
 		</div>
 		<div class="modal-footer">

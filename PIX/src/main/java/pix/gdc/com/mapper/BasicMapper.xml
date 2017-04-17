@@ -806,7 +806,8 @@
 		ufo_go_type,
 		image_lat,
 		image_alt,
-		ufo_gid
+		ufo_gid,
+		login_type
 	)
 	VALUES
 	(
@@ -820,7 +821,8 @@
 		#{ufo_go_type},
 		#{image_lat},
 		#{image_alt},
-		#{ufo_gid}
+		#{ufo_gid},
+		#{login_type}
 	)
 	</insert>
 	<insert id="insertUfoGo" parameterType="UfoGoVO">
@@ -939,8 +941,8 @@
 	<select id="selectRandUfoRecordByPara" resultType="UfoGoRecord" parameterType="String">
 	SELECT ufo_date, first_name, last_name, ufo_image, para, user_uid, ufo_gid 
 	from ufo_go_record 
-	where ufo_date > date_sub(NOW(), interval 1 hour) and para = #{param}
-	order by rand() limit 2 
+	where ufo_date > date_sub(NOW(), interval 3 hour) and para = #{param}
+	order by rand() limit 10 
 	</select>
 	<insert id="insertWinnerRecord" parameterType="UfoGoRecord">
 	INSERT into UfoWinnerRecord
@@ -967,7 +969,7 @@
 	<select id="selectUfoWinnerLastHourByPara" resultType="UfoGoRecord" parameterType="String">
 	SELECT idUfoWinnerRecord,winner_time, first_name, last_name, ufo_image, para, user_uid, ufo_gid, winner_like 
 	from UfoWinnerRecord 
-	where winner_time > date_sub(NOW(), interval 1 hour) and para = #{param}
+	where winner_time > date_sub(NOW(), interval 3 hour) and para = #{param}
 	</select>
 	<select id="selectUfoWinnerByPara" resultType="UfoGoRecord" parameterType="String">
 		SELECT *
@@ -979,5 +981,12 @@
 	</update>
 	<select id="selectWinnerLike" parameterType="Integer" resultType="Integer">
 		SELECT winner_like FROM pix.UfoWinnerRecord where idUfoWinnerRecord = #{param}
+	</select>
+	<select id="selectPartDoneStamp" parameterType="UfoGoRecord" resultType="Integer">
+	SELECT case count(0) when (SELECT count(0) 'user' FROM pix.ufo_go 
+	where go_para = #{para} and ufo_go_type = 'go' and ufo_gid in 
+	(SELECT ufo_gid FROM pix.ufo_go_record where user_uid = #{user_uid}))
+ 	then '1' else '0' end FROM pix.ufo_go 
+ 	where go_para = #{para} and ufo_go_type = 'go'
 	</select>
 </mapper>

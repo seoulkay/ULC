@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -159,7 +161,6 @@ public class UfoController {
 	}
 	
 	public List<FestQuesListVO> getQuestionModel(String para){
-		
 		List<FestQuesListVO> ql= new ArrayList<FestQuesListVO>();
 		
 		int size = quesStaticModel.size();
@@ -182,15 +183,57 @@ public class UfoController {
 		return ql;
 	}
 	//승리자를 찾기
-	@Scheduled(cron="0 57 * * * *")
+//	@Scheduled(fixedDelay=1800000)
+//	public void winnerPickeTdd(){
+//		List<String> paras = dao.selectAllPara();
+//		for(String ele : paras){
+//			List<UfoGoRecord> tempRecord = dao.selectRandUfoRecordByPara(ele);
+//			if(!tempRecord.isEmpty()){
+//				Map<String, UfoGoRecord> finalTempRecord = new HashMap<String, UfoGoRecord>();
+//				for(UfoGoRecord rec : tempRecord){
+//					System.out.println(rec.getFirst_name() + rec.getPara() + rec.getLast_name());
+//					//중복을 제거하고
+//					if(!finalTempRecord.containsKey(rec.getUser_uid())){
+//						finalTempRecord.put(rec.getUser_uid(), rec);
+//						//완성한 사람이 아니면 뺀다.
+//						if(dao.selectPartDoneStamp(rec) != 1){
+//							System.out.println("insert");
+//							finalTempRecord.remove(rec.getUser_uid());
+//						}
+//					}
+//				}
+//				for(Map.Entry<String, UfoGoRecord> elem : finalTempRecord.entrySet()){
+//					System.out.println(elem.getValue().getUser_uid());
+//					dao.insertWinnerRecord(elem.getValue());
+//				}
+//			}
+//		}
+//	}
+		
+		
+	//승리자를 찾기
+	@Scheduled(cron="0 0 11,14,17 * * *", zone="Asia/Seoul")
 	public void winnerPicker(){
 		List<String> paras = dao.selectAllPara();
 		for(String ele : paras){
 			List<UfoGoRecord> tempRecord = dao.selectRandUfoRecordByPara(ele);
 			if(!tempRecord.isEmpty()){
+				Map<String, UfoGoRecord> finalTempRecord = new HashMap<String, UfoGoRecord>();
 				for(UfoGoRecord rec : tempRecord){
-					dao.insertWinnerRecord(rec);
 					System.out.println(rec.getFirst_name() + rec.getPara() + rec.getLast_name());
+					//중복을 제거하고
+					if(!finalTempRecord.containsKey(rec.getUser_uid())){
+						finalTempRecord.put(rec.getUser_uid(), rec);
+						//완성한 사람이 아니면 뺀다.
+						if(dao.selectPartDoneStamp(rec) != 1){
+							System.out.println("insert");
+							finalTempRecord.remove(rec.getUser_uid());
+						}
+					}
+				}
+				for(Map.Entry<String, UfoGoRecord> elem : finalTempRecord.entrySet()){
+					System.out.println(elem.getValue().getUser_uid());
+					dao.insertWinnerRecord(elem.getValue());
 				}
 			}
 		}
