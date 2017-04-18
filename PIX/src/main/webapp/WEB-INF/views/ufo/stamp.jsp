@@ -399,11 +399,10 @@ function initMap() {
 /**
  * 
 */	
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+function handleLocationError(browserHasGeolocation, infoWindow, pos, message) {
     infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Error: 위치를 찾을수 없습니다.' :
-                          'Error: 위치정보 지원하지 않는 브라우져 입니다.');
+    //infoWindow.setContent(browserHasGeolocation ? 'Error: 위치를 찾을수 없습니다.' : 'Error: 위치정보 지원하지 않는 브라우져 입니다.');
+    infoWindow.setContent(message);
 }
 /**
  * 
@@ -456,13 +455,22 @@ function clearMarkers() {
   markers = [];
   neighborhoods = [];
 }
+
+/**
+ * 지오 옵션
+ */
+var geo_options = {
+		  enableHighAccuracy: true, 
+		  maximumAge        : 0, 
+		  timeout           : 30000
+		};
 	
 /**
  * 
 */	
 function makeGo(){
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.watchPosition(function(position) {
     	clearMarkers();
         var pos = {
           lat: position.coords.latitude,
@@ -490,13 +498,25 @@ function makeGo(){
         	markerSet(pos);
         }
         
-      }, function() {
+      }, function(error) {
     	var infoWindow = new google.maps.InfoWindow({map: map});
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
+        //console.log('ERROR(' + error.code + '): ' + error.message);
+        var msg = '';
+        if(error.code == 1){
+        	msg	= '위치 정보 사용에 동의해 주세요.';
+        }else if(error.code == 2){
+        	msg = '위치 정보를 사용 할 수 없습니다.';
+        }else if(error.code == 3){
+        	msg = '위치를 찾는데 너무 오래 걸립니다.';
+        }else{
+        	msg = '위치를 정보를 찾을 수 없습니다.';
+        }
+        handleLocationError(true, infoWindow, map.getCenter(), msg);
+        
+      }, geo_options);
     } else {
       var infoWindow = new google.maps.InfoWindow({map: map});
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, infoWindow, map.getCenter(), '최신 브라우져를 사용해 주세요.');
 	}
 }
 /**
