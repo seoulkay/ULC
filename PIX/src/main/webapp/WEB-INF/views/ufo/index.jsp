@@ -109,10 +109,9 @@
 				<c:when test="${not empty winner }">
 					<c:forEach items="${winner}" var="ele" varStatus="stat">
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name } </span></h4>
-						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4"><span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
-						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%"><br>
-						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(${ele.idUfoWinnerRecord})">+1</button>
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name } <span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
+						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%" onclick="winnerLike(${ele.idUfoWinnerRecord})"><br>
+<!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" >+1</button> -->
 					</div>
 					</c:forEach>
 				</c:when>
@@ -123,6 +122,7 @@
 				</c:otherwise>
 			</c:choose>
 		</div>	
+		
 		<!-- 승리자끝 -->
 		<!-- 페북라이브&댓글 -->
 		<c:if test="${not empty ufo.fb_live }">
@@ -192,9 +192,11 @@ function winnerLike(param){
          method: "POST",
          data: {'winneridx' : param},
          success: function(result){
-        	 $(".likeBtn").fadeOut( 'fast' , function() {
-        		 $("#winner"+param).replaceWith("<span id='winner'"+param+">"+result+"</span>");
-        	  });
+//         	 $(".likeBtn").fadeOut( 'fast' , function() {
+//         		 $("#winner"+param).replaceWith("<span id='winner'"+param+">"+result+"</span>");
+//         	  });
+        	 $("#winner"+param).replaceWith("<span id='winner'"+param+">"+result+"</span>");
+        	 
        	  	console.log(result+"성공");
          },
          error: function(er){

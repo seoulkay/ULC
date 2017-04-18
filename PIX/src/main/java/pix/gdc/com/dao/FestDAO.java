@@ -480,4 +480,11 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public int selectWinnerLike(int vo){
 		return getSqlSession().selectOne("BasicMapper.selectWinnerLike", vo);
 	}
+	
+	//스탬프 완료 선택 셀렉 
+	public int selectPartDoneStamp(UfoGoRecord vo){
+		return getSqlSession().selectOne("BasicMapper.selectPartDoneStamp", vo);
+	}
+	
+	
 }
