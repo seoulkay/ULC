@@ -17,6 +17,11 @@ public class UlcController {
 		return "ulc/privacy";
 	}
 	
+	@RequestMapping(value = "ULC/terms", method = RequestMethod.GET)
+	public String ulcTerms(){
+		return "ulc/terms";
+	}
+	
 	@RequestMapping(value = "REA/", method = RequestMethod.GET)
 	public String reactMain(){
 		return "react/react";
