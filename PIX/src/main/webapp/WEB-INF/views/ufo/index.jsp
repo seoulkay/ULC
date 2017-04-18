@@ -57,7 +57,7 @@
 		</c:choose>
 			<div class="actions">
 	                 <div class="actions">
-	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">포토콘테스트 당첨 확인</button></a>
+	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">스탬프랠리 당첨 확인하기</button></a>
 	   				</div>
             </div><!--//actions-->
 		</div>
@@ -102,7 +102,7 @@
 		<!-- 공지끝 -->
 		<!-- 승리자 -->
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
-			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">스탬프랠리 완성자</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">스탬프랠리 당첨자</span></h3>
 		</div>
 		<div class="row">
 			<c:choose>
@@ -116,7 +116,7 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<p>승리자가 없습니다.</p>
+					<p>당첨자는 오전 11시, 오후 2시, 오후 5시에 발표됩니다.</p>
 <!-- 						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4"><span id="winner11">2</span></span> </span></h4> -->
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
