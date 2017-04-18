@@ -238,7 +238,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 1500, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 1000, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 
