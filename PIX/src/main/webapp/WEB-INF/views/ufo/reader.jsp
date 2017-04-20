@@ -15,11 +15,31 @@ UFO79 Reader ${para }
 	src="${pageContext.request.contextPath}/resources/ufo/assets/plugins/jquery-1.12.4.min.js"></script>
 <script>
 
+var str = "go/2323232323232/3232";
+var patt = new RegExp("(/.*){2}");
+//var match = patt.test(str);
+//var n = str.split("/");
+//console.log(n[1]);
+
+
 $(document).keypress(function(e) {
     if(e.which == 13) {
     	var link = "https://www.ufo79.com/PIX/ufo/${para}/result/";
     	link = link + $("#link").val();
-    	location.href = link;
+    	var n = str.split("/");
+    	if(patt.test(link)){
+    		//3 gid 포함
+    		$.post( "/PIX/ufo/${para}/barcodeLog/"+n[1]+"/"+n[2], function( data ) {
+    			  console.log(data);
+    			  location.href = link;
+    		});
+    	}else{
+    		//gid 안 포함
+    		$.post( "/PIX/ufo/${para}/barcodeLog/"+n[1], function( data ) {
+  			  console.log(data);
+  			location.href = link;
+  			});
+    	}
     }
 });
 </script>

@@ -50,17 +50,21 @@
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
-	   			<div class="col-xs-4" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
+	   			<div class="col-xs-6" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
 	   				<div style="padding-top:3px; padding-bottom:3px">
 	   				<c:choose>
 	   					<c:when test="${not ele.submit}">
-	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">미완료</p></div>
-		   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
+	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">스탬프를 찍어주세요.</p></div>
+		   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;">
+<%-- 		   					<img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"> --%>
+		   					</div>
 	   					</c:when>
 	   					<c:otherwise>
-	   					<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
-	   							<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"></div>
-	   					</a>
+	   						<a style="display:block" href="https://www.ufo79.com/PIX/ufo/${ufo.para }/result/${type}/${uid}/${ele.ufo_gid }">
+	   							<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;">
+	   							<img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive">
+	   							</div>
+	   						</a>
 	   					</c:otherwise>
 	   				</c:choose>
 	   				</div>

@@ -28,6 +28,7 @@ import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.Notice_VO;
+import pix.gdc.com.vo.UfoBarcodeLog;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
 import pix.gdc.com.vo.UfoShare;
@@ -35,6 +36,7 @@ import pix.gdc.com.vo.UfoShare;
 
 @Repository
 public class FestDAO extends SqlSessionDaoSupport{
+	
 	
 	public FestLogin checkLogin(FestLogin vo){
 		return getSqlSession().selectOne("BasicMapper.FestloginCheck", vo);
@@ -486,5 +488,65 @@ public class FestDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("BasicMapper.selectPartDoneStamp", vo);
 	}
 	
+	//바코드 로그
+	public int insertBarcodeLog(UfoBarcodeLog vo){
+		return getSqlSession().insert("BasicMapper.insertBarcodeLog", vo);
+	}
+	//페이스북 로그인 인원
+	public int selectFbNumPart(String para){
+		return getSqlSession().selectOne("BasicMapper.selectFbNumPart", para);
+	}
+	//페이스북 로그인 체크 횟수
+	public int selectFbLogCheckNum(String para){
+		return getSqlSession().selectOne("BasicMapper.selectFbLogCheckNum", para);
+	}
+	//미션 완료 인원수 
+	public int selectGoPartNumber(String para){
+		return getSqlSession().selectOne("BasicMapper.selectGoPartNumber", para);
+	}
+	//미션 완료 인원수 
+	public List<String> selectGoPart(String para){
+		return getSqlSession().selectList("BasicMapper.selectGoPart", para);
+	}
+	//미션 완전히 완료한 사람 인원수
+	public int selectGoCompPartNum(String para){
+		List<String> list = selectGoPart(para);
+		int count = 0;
+		for(String ele : list){
+			UfoGoRecord vo = new UfoGoRecord();
+			vo.setPara(para);
+			vo.setUser_uid(ele);
+			int comp = selectPartDoneStamp(vo);
+			if(comp == 1){
+				count++;
+			}
+		}
+		return count;
+	}
+	//유저 스탬프 히스토리 구하기 
+	public List<UfoGoRecord> selectGoPartHistoryByParaAndUid(UfoGoRecord vo){
+		return getSqlSession().selectList("BasicMapper.selectGoPartHistoryByParaAndUid", vo);
+	}
 	
+	//인쇄한 사진 수
+	public int selectBarcodeLogCountUnique(String para){
+		return getSqlSession().selectOne("BasicMapper.selectBarcodeLogCountUnique", para);
+	}
+	//selectShareParNumByPara selectShareNumByPara selectQrPartNumByPara selectQrNumByPara
+	//공유 인원
+	public int selectShareParNumByPara(String para){
+		return getSqlSession().selectOne("BasicMapper.selectShareParNumByPara", para);
+	}
+	//공유 숫자
+	public int selectShareNumByPara(String para){
+		return getSqlSession().selectOne("BasicMapper.selectShareNumByPara", para);
+	}
+	//큐알 참여 인원
+	public int selectQrPartNumByPara(String para){
+		return getSqlSession().selectOne("BasicMapper.selectQrPartNumByPara", para);
+	}
+	//큐알 참여 숫자
+	public int selectQrNumByPara(String para){
+		return getSqlSession().selectOne("BasicMapper.selectQrNumByPara", para);
+	}
 }

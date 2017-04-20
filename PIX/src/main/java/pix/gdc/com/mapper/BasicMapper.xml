@@ -989,4 +989,41 @@
  	then '1' else '0' end FROM pix.ufo_go 
  	where go_para = #{para} and ufo_go_type = 'go'
 	</select>
+	<insert id="insertBarcodeLog" parameterType="UfoBarcodeLog">
+	INSERT into ufo_barcode_log 
+	(uid, barcode_timestmp, para, gid)
+	Values
+	(#{uid}, now(), #{para}, #{gid})
+	</insert>
+	<select id="selectFbNumPart" parameterType="String" resultType="Integer">
+	SELECT count(distinct uid) from pix.fest_sns_log where sns_return = #{param}
+	</select>
+	<select id="selectFbLogCheckNum" parameterType="String" resultType="Integer">
+	SELECT count(0) from pix.fest_sns_log where sns_return = #{param}
+	</select>
+	<select id="selectGoPartNumber" parameterType="String" resultType="Integer">
+	SELECT count(distinct uid) from pix.fest_sns_log where sns_return = #{param}
+	</select>
+	<select id="selectGoPart" parameterType="String" resultType="String">
+	SELECT distinct uid from pix.fest_sns_log where sns_return = #{param}
+	</select>
+	<select id="selectGoPartHistoryByParaAndUid" parameterType="UfoGoRecord" resultType="UfoGoRecord">
+	SELECT * from pix.fest_sns_log where sns_return = #{para} and uid = #{user_uid}
+	</select>
+	<select id="selectBarcodeLogCountUnique" parameterType="String" resultType="Integer">
+	SELECT count(0) FROM pix.ufo_barcode_log where para = #{param}
+	</select>
+	<select id="selectShareParNumByPara" parameterType="String" resultType="Integer">
+	SELECT count(distinct uid) FROM pix.ufo_share where para = #{param}
+	</select>
+	<select id="selectShareNumByPara" parameterType="String" resultType="Integer">
+	SELECT count(0) FROM pix.ufo_share where para = #{param}
+	</select>
+	<select id="selectQrPartNumByPara" parameterType="String" resultType="Integer">
+	SELECT count(distinct user_uid) FROM pix.ufo_go_record where para = #{param} and login_type = 'qr'
+	</select>
+	<select id="selectQrNumByPara" parameterType="String" resultType="Integer">
+	SELECT count(0) FROM pix.ufo_go_record where para = #{param} and login_type = 'qr'
+	</select>
+	
 </mapper>

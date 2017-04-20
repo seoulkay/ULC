@@ -8,46 +8,29 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="footer-col col-xs-6 col-sm-2">
+			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title"><a href="https://www.ufo79.com/home">UFO79.com</a>
 					</div>
 				</div>
 			</div>
 			<!--//footer-col-->
-			<div class="footer-col col-xs-6 col-sm-2">
+			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="https://www.ufo79.com/PIX/ULC/privacy">이용약관</a>
+						<a href="https://www.ufo79.com/PIX/ULC/terms">이용약관</a>
 					</div>
 				</div>
 			</div>
 			<!--//footer-col-->
-			<div class="footer-col col-xs-6 col-sm-2">
+			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title">
 						<a href="https://www.ufo79.com/PIX/ULC/privacy">개인정보 취급방침</a>
 					</div>
 				</div>
 			</div>
-			<!--//footer-col-->
-			<div class="footer-col col-xs-6 col-sm-2">
-				<div class="footer-col-inner">
-					<div class="col-title">
-						<a href="https://www.ufo79.com/PIX/ULC/privacy">커뮤니티정책</a>
-					</div>
-				</div>
-			</div>
-			<!--//footer-col-->
-			<div class="footer-col col-xs-6 col-sm-2">
-				<div class="footer-col-inner">
-					<div class="col-title">
-						<a href="https://www.ufo79.com/PIX/ULC/privacy">저작권정책</a>
-					</div>
-				</div>
-			</div>
-			<!--//footer-col-->
-			<div class="footer-col col-xs-6 col-sm-2">
+			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title">
 						<a href="reader">UFO BARCODE READER</a>
@@ -97,6 +80,8 @@
 								class="btn-text">
 								페이스북으로 로그인하기</span></span></li>
 					</ul>
+					<h6 align="left">로그인 버튼을 클릭하면, 모바일 스탬프랠리의 서비스 이용약관에 동의하며 쿠키 사용을 포함한 모바일 스탬프랠리 개인정보 취급방침을 읽었음을 인정하게 됩니다.</h6><br>
+					<h6 style="margin: 0 auto"><a href="https://www.ufo79.com/PIX/ULC/terms">서비스 이용약관</a> | <a href="https://www.ufo79.com/PIX/ULC/privacy">개인정보 취급방침</a></h6>
 				</div>
 				<!--//option-container-->
 			</div>

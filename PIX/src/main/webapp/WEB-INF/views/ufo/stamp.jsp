@@ -55,6 +55,54 @@
     #legend img {
       vertical-align: middle;
     }
+.where {
+  display: block;
+  margin: 25px 15px;
+  font-size: 11px;
+  color: #000;
+  text-decoration: none;
+  font-family: verdana;
+  font-style: italic;
+} 
+.filebox {display:inline-block; margin-right: 10px;}
+
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.filebox.bs3-primary label {
+  color: #fff;
+  background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.filebox.bs3-success label {
+  color: #fff;
+  background-color: #5cb85c;
+    border-color: #4cae4c;
+}
 </style>
 
 
@@ -166,8 +214,8 @@
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
 	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 					<div>
-		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:15%; left:15%; display:none; opacity:1; height:5em; padding:5px;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:0; left:0;  opacity:0.5; width:96%; padding:5px; background-color: #00a27c; height:5.5em;margin:2%" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
+		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:10%; left:20%; display:none; opacity:1; height:5em;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
+			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:4%; left:10%;  opacity:0.5; width:80%; background-color: #00a27c; height:5.5em;" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
 			   			<c:choose>
 			   				<c:when test="${!empty ele.go_icon_img }">
 			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block; height:6em" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_icon_img }">
@@ -206,7 +254,11 @@
    			<div style="padding-bottom:10px" id="desc${ele.ufo_gid }">${ele.go_desc}<br>
    			</div>
    			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
+			  	<div class="filebox bs3-success">
+                <label for="stamp_go${ele.ufo_gid }">사진찍기</label> 
 			  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">
+			    </div>
+			  	
 				<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
 				<input type="hidden" id="last_name_go${ele.ufo_gid }" name="last_name">
 				<input type="hidden" id="uid_go${ele.ufo_gid }" name="user_uid">
@@ -238,7 +290,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 1000, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 500, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 
@@ -461,8 +513,8 @@ function clearMarkers() {
  */
 var geo_options = {
 		  enableHighAccuracy: true, 
-		  maximumAge        : 0, 
-		  timeout           : 30000
+		  maximumAge        : 0 
+		  //,timeout           : 30000
 		};
 	
 /**
@@ -470,7 +522,8 @@ var geo_options = {
 */	
 function makeGo(){
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(function(position) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+    	console.log("위치 정보 refresh.");
     	clearMarkers();
         var pos = {
           lat: position.coords.latitude,
@@ -492,9 +545,11 @@ function makeGo(){
  	        		$('#stamp_yes_'+go[i].ufo_gid).show();
  	        	}
  	        }
+ 	       clearMarkers();
  	       markerSet(pos);
  	       });
         }else{
+        	clearMarkers();
         	markerSet(pos);
         }
         
@@ -615,6 +670,8 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([ia], {type:mimeString});
 }
+
+
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN9VDOjhzw7kPKEbFw7LEVoVreCXiz87E&callback=initMap" async defer></script>

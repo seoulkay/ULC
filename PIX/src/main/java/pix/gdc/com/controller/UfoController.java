@@ -36,6 +36,7 @@ import pix.gdc.com.vo.FestQuesListVO;
 import pix.gdc.com.vo.FestSnsLog;
 import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
+import pix.gdc.com.vo.UfoBarcodeLog;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
 import pix.gdc.com.vo.UfoShare;
@@ -621,5 +622,22 @@ public class UfoController {
 	public @ResponseBody int winnerLike(@RequestParam("winneridx") int idx){
 		dao.updateWinnerLike(idx);
 		return dao.selectWinnerLike(idx);
+	}
+	
+	@RequestMapping(value = "ufo/{para}/barcodeLog/{uid}/{gid}", method = {RequestMethod.POST})
+	public @ResponseBody int barcodeLogG(@PathVariable("para") String para, @PathVariable("uid") String uid, @PathVariable("gid") String gid){
+		UfoBarcodeLog vo = new UfoBarcodeLog();
+		vo.setGid(gid);
+		vo.setPara(para);
+		vo.setUid(uid);
+		return dao.insertBarcodeLog(vo);
+	}
+	
+	@RequestMapping(value = "ufo/{para}/barcodeLog/{uid}", method = {RequestMethod.POST})
+	public @ResponseBody int barcodeLogU(@PathVariable("para") String para, @PathVariable("uid") String uid){
+		UfoBarcodeLog vo = new UfoBarcodeLog();
+		vo.setPara(para);
+		vo.setUid(uid);
+		return dao.insertBarcodeLog(vo);
 	}
 }

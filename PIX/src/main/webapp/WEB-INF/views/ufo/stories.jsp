@@ -235,7 +235,7 @@ document.getElementById('q7_a').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 1000, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 400, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 </script>

@@ -109,7 +109,7 @@
 				<c:when test="${not empty winner }">
 					<c:forEach items="${winner}" var="ele" varStatus="stat">
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.first_name } ${ele.last_name } <span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.last_name } ${ele.first_name } <span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
 						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%" onclick="winnerLike(${ele.idUfoWinnerRecord})"><br>
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" >+1</button> -->
 					</div>

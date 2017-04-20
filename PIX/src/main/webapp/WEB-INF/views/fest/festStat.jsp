@@ -15,6 +15,18 @@
 	<h3>통계</h3>
 	<div style="height:2em"></div>
 	<div class="row">
+	<table class="table table-bordered table-hover table-condensed">
+			<tr class="success">
+				<td>fbLogNum</td><td>fbCheckNum</td><td>goCompNum</td><td>goPartPercent</td><td>compList</td><td>printNum</td><td>printPercent</td><td>sharePartNum</td><td>shareNum</td><td>qrPartNum</td><td>qrNum</td>
+			</tr>
+			<tr>
+				<td>${stat.fbLogNum}</td><td>${stat.fbCheckNum}</td><td>${stat.goCompNum}</td><td>${stat.goPartPercent}</td><td>${stat.compList}</td><td>${stat.printNum}</td><td>${stat.printPercent}</td><td>${stat.sharePartNum}</td><td>${stat.shareNum}</td><td>${stat.qrPartNum}</td><td>${stat.qrNum}</td>
+			</tr>
+	</table>
+	
+	</div>
+	<div style="height:2em"></div>
+	<div class="row">
 	<h3>승리자들</h3>
 		<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">

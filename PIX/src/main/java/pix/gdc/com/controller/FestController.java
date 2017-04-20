@@ -33,6 +33,7 @@ import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoStat;
 
 @Controller
 @Scope("session")
@@ -278,6 +279,33 @@ public class FestController {
 		Collections.reverse(answerVOs);
 		List<UfoGoRecord> winner = dao.selectUfoWinnerByPara(para);
 		
+		
+		UfoStat stat = new UfoStat();
+		stat.setCompList(dao.selectGoPart(para));
+		stat.setFbCheckNum(dao.selectFbLogCheckNum(para));
+		int loginNum = dao.selectFbNumPart(para);
+		stat.setFbLogNum(loginNum);
+		int goCompNum = dao.selectGoCompPartNum(para);//고를 완성한 사람수 
+		stat.setGoCompNum(goCompNum);
+		int printNum = dao.selectBarcodeLogCountUnique(para);
+		stat.setPrintNum(printNum);
+	
+		if(goCompNum == 0){
+			stat.setGoPartPercent(0);
+			stat.setPrintPercent(0);
+		}else{
+			stat.setGoPartPercent(loginNum/goCompNum);//로그인 인원 / 미션원료 인원 
+			stat.setPrintPercent(printNum/goCompNum);//인쇄한 사진수 / 미션 완료 인원
+		}
+		
+		
+		stat.setQrNum(dao.selectQrNumByPara(para));
+		stat.setQrPartNum(dao.selectQrPartNumByPara(para));
+		stat.setShareNum(dao.selectShareNumByPara(para));
+		stat.setSharePartNum(dao.selectShareParNumByPara(para));
+		
+		
+		model.addAttribute("stat", stat);
 		model.addAttribute("winner", winner);
 		model.addAttribute("resultList", resultList);
 		model.addAttribute("answerVOs", answerVOs);
