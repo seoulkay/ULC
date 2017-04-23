@@ -118,7 +118,7 @@
 		<div class="container heading-content">
 		<c:choose>
 			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:25em; margin: 0 auto;" data-dismiss="modal">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
 			</c:when>
 			<c:otherwise>
 			<div style="height:3em"></div>
@@ -160,7 +160,7 @@
 		<div id="map" style="height: 25em;"></div>
 		<div class="row">
 			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">스탬프 찍기</button>
-			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리로 가기</span></button> 
+			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">갤러리 가기</span></button> 
 		</div>					
 	</div>
 </section>
@@ -212,6 +212,7 @@
 	   <div class="modal-body">
 	   		<div class="row">
 	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
+   				<c:if test="${ele.ufo_go_type eq 'go' }">
 	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
 					<div>
 		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:10%; left:20%; display:none; opacity:1; height:5em;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
@@ -227,6 +228,7 @@
 			   		</div>
 						<p style="margin-bottom:3px; text-align:center; font-size: 1em;">${ele.go_content }</p>
 	   			</div>
+   				</c:if>
 	   			</c:forEach>
 	   		</div>
 		</div>
@@ -290,7 +292,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 500, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 250, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 
@@ -333,6 +335,9 @@ var icons = {
   },
   ufoDone:{
 	  icon: iconBase +'icon_done.svg'
+  },
+  booth:{
+	  icon: iconBase +'booth.png'
   }
 };
         
@@ -586,20 +591,24 @@ function markerSet(pos){
         	 var target = {};
         	 target.lat = parseFloat((Number(go[i].go_lat)));
         	 target.lng = parseFloat((Number(go[i].go_alt)));
-        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
-        	 
-        	 
-        	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
-        		 target.type = "ufoOn";
-       		 	 $("#stamp_"+go[i].ufo_gid).show();
-        	 }else{
-        		 target.type = "ufoOff";
-        		 $("#stamp_"+go[i].ufo_gid).hide();
-        	 }
-        	 
-        	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
-        		 target.type = "ufoDone";
+        	 if(go[i].ufo_go_type  == 'go'){
+        		 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">스탬프 찍기</span></button>';
+            	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
+            		 target.type = "ufoOn";
+           		 	 $("#stamp_"+go[i].ufo_gid).show();
+            	 }else{
+            		 target.type = "ufoOff";
+            		 $("#stamp_"+go[i].ufo_gid).hide();
+            	 }
+            	 
+            	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
+            		 target.type = "ufoDone";
+            	 }
+        	 }else if(go[i].ufo_go_type  == 'booth'){
+        		 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p>';
+        		 target.type = "booth";
         	 }	 
+        	 
 	         neighborhoods.push(target);
          }
          neighborhoods.push(pos);

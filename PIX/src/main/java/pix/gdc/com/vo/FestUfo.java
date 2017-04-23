@@ -55,6 +55,8 @@ public class FestUfo {
 	private String ufo_notice1;
 	private String ufo_notice2;
 	private String ufo_notice3;
+	private String winner_msg;
+	private String footer_msg;
 	
 	
 	public Integer getIdfest_ufo() {
@@ -368,6 +370,18 @@ public class FestUfo {
 	}
 	public void setUfo_notice3(String ufo_notice3) {
 		this.ufo_notice3 = ufo_notice3;
+	}
+	public String getWinner_msg() {
+		return winner_msg;
+	}
+	public void setWinner_msg(String winner_msg) {
+		this.winner_msg = winner_msg;
+	}
+	public String getFooter_msg() {
+		return footer_msg;
+	}
+	public void setFooter_msg(String footer_msg) {
+		this.footer_msg = footer_msg;
 	}
 	
 }

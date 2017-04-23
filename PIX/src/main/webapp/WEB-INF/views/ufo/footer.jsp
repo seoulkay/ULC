@@ -50,8 +50,10 @@
 				<li><a href="http://plus.google.com/share?url=www.ufo79.com/PIX/ufo/${sessionScope.eventPara }/index"><i
 						class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 			</ul>
-
-			<small class="copyright"><a href="https://www.ufo79.com/" target="_blank">© UFO79 Corp.</a></small>
+			<small class="copyright">${ufo.footer_msg }</small><br>
+			<small class="copyright"> COPYRIGHT <a href="https://www.ufo79.com/" target="_blank">ⓒ UFO79.COM</a>, ALL RIGHTS RESERVED</small>
+			
+			
 		</div>
 	</div>
 	<!--//container-->

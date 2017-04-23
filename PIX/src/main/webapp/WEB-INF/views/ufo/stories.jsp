@@ -48,7 +48,7 @@
 		<div class="container heading-content">
 		<c:choose>
 			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:25em; margin: 0 auto;" data-dismiss="modal">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
 			</c:when>
 			<c:otherwise>
 			<div style="height:3em"></div>

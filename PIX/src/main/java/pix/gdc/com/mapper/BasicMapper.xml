@@ -760,7 +760,7 @@
 	WHERE
 		go_para = #{param}
 	AND
-		ufo_go_type = 'go'
+		ufo_go_type in ('go', 'booth')
 	</select>
 	<select id="selectUfoQrByPara" parameterType="String" resultType="UfoGoVO">
 	SELECT

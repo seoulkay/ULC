@@ -50,6 +50,8 @@
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
 	   			<c:forEach items="${ufoResult }" var="ele" varStatus="statusEle">
+	   			<c:choose>
+	   				<c:when test="${ele.ufo_go_type eq type}">
 	   			<div class="col-xs-6" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
 	   				<div style="padding-top:3px; padding-bottom:3px">
 	   				<c:choose>
@@ -69,6 +71,8 @@
 	   				</c:choose>
 	   				</div>
 	   			</div>
+	   			</c:when>
+	   			</c:choose>
 	   			</c:forEach>
 	   		</div>
 	   		<br>
@@ -114,18 +118,6 @@ document.getElementById('shareBtn').onclick = function() {
 		  });
 	  });
 }
-// 
-// 
-// 
-// 
-
-// /**
-//  * 쉐어 서밋
-//  */
-//  
-//  
-// 	 
-//  
 </script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

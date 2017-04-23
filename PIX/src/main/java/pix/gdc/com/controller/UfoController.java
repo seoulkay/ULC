@@ -213,7 +213,7 @@ public class UfoController {
 		
 		
 	//승리자를 찾기
-	@Scheduled(cron="0 0 11,14,17 * * *", zone="Asia/Seoul")
+	@Scheduled(cron="0 0 12,14,16 * * *", zone="Asia/Seoul")
 	public void winnerPicker(){
 		List<String> paras = dao.selectAllPara();
 		for(String ele : paras){

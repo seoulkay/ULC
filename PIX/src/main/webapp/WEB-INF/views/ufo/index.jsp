@@ -47,7 +47,7 @@
 		<div class="container heading-content">
 		<c:choose>
 			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:25em; margin: 0 auto;" data-dismiss="modal">
+		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
 			</c:when>
 			<c:otherwise>
 			<div style="height:3em"></div>
@@ -116,7 +116,8 @@
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
-					<p>당첨자는 오전 11시, 오후 2시, 오후 5시에 발표됩니다.</p>
+					${ufo.winner_msg }
+					
 <!-- 						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4"><span id="winner11">2</span></span> </span></h4> -->
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
