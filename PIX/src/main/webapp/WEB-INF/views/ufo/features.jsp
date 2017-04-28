@@ -88,6 +88,7 @@
 	</div>
 	<!--//page-nav-space-holder-->
 	<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}">
+		<c:if test="${fn:contains(sessionScope.eventMenu, 'inf-inf')}">
 <section id="info-section">
 	<!--//signup-section-->
 	<div class="feature-blocks container">
@@ -119,13 +120,14 @@
 		<!--//feature-block-1-->
 		</div>
 </section>
-<section style="background-color: #B1B2B3">		
+</c:if>
+<section>		
 		<div class="feature-blocks container" >
 		<div id="feature-block-2" class="feature-block feature-block-2" >
 			<div class="row">
 				<div class="feature-content col-md-12 col-sm-12 col-xs-12" style="vertical-align: center">
 <!-- 					<h3> -->
-					<h3 class="feature-title"><span class="label label-default " style="background-color: #00a27c;">${ufo.program_title }</span></h3>
+					<h3 class="feature-title"><span class="label label-default " style="background-color: #78BF69">${ufo.program_title }</span></h3>
 <!-- 					</h3> -->
 					<div class="feature-desc">
 						<p>${ufo.info_program_text }</p>
@@ -143,24 +145,24 @@
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-1">
 			<div class="row">
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title"><span class="label label-default" style="background-color: #e2a501">${ufo.history_title }</span></h3>
+				<div class="feature-content col-md-12 col-sm-12 col-xs-12">
+					<h3 class="feature-title"><span class="label label-default" style="background-color:#EFAE40">${ufo.history_title }</span></h3>
 					<div class="feature-desc">
 						<p>${ufo.info_hist_text }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<div class="figure-holder" align="center">
-						<c:if test="${ufo.info_hist_pic ne null}">
-						<img class="img-responsive"
-							src="https://www.ufo79.com/image/${ufo.info_hist_pic}"
-							alt="">
-						</c:if>
-					</div>
+<!-- 				<div class="feature-figure col-md-6 col-sm-6 col-xs-12"> -->
+<!-- 					<div class="figure-holder" align="center"> -->
+<%-- 						<c:if test="${ufo.info_hist_pic ne null}"> --%>
+<!-- 						<img class="img-responsive" -->
+<%-- 							src="https://www.ufo79.com/image/${ufo.info_hist_pic}" --%>
+<!-- 							alt=""> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
 					<!--//figure-holder-->
-				</div>
+<!-- 				</div> -->
 			</div>
 			<!--//row-->
 		</div>

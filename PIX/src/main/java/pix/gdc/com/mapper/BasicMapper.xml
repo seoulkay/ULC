@@ -254,7 +254,60 @@
 	</select>
 	
 	<select id="SelectUfoByPara" parameterType="String" resultType="FestUfo">
-	SELECT *
+	SELECT `fest_ufo`.`idfest_ufo`,
+    `fest_ufo`.`title`,
+    `fest_ufo`.`logo`,
+    `fest_ufo`.`main_image`,
+    `fest_ufo`.`event_date`,
+    `fest_ufo`.`event_long_description`,
+    `fest_ufo`.`event_short_description`,
+    `fest_ufo`.`info_info_pic`,
+    `fest_ufo`.`info_info_text`,
+    `fest_ufo`.`info_hist_pic`,
+    `fest_ufo`.`info_hist_text`,
+    `fest_ufo`.`q_coupon_img`,
+    `fest_ufo`.`info_program_pic`,
+    CONVERT(`fest_ufo`.info_program_text	USING utf8) info_program_text,
+    `fest_ufo`.`info_location_pic`,
+    `fest_ufo`.`info_location_text`,
+    `fest_ufo`.`info_contact_pic`,
+    `fest_ufo`.`info_contact_text`,
+    `fest_ufo`.`q1_img`,
+    `fest_ufo`.`q2_img`,
+    `fest_ufo`.`q3_img`,
+    `fest_ufo`.`q4_img`,
+    `fest_ufo`.`q5_img`,
+    `fest_ufo`.`q6_img`,
+    `fest_ufo`.`q7_img`,
+    `fest_ufo`.`q_coupon_txt`,
+    `fest_ufo`.`q_coupon_txt2`,
+    `fest_ufo`.`q_coupon_txt3`,
+    `fest_ufo`.`ufo_time_stamp`,
+    `fest_ufo`.`q_graphic`,
+    `fest_ufo`.`para`,
+    `fest_ufo`.`menu`,
+    `fest_ufo`.`location_title`,
+    `fest_ufo`.`info_title`,
+    `fest_ufo`.`program_title`,
+    `fest_ufo`.`history_title`,
+    `fest_ufo`.`apk_name`,
+    `fest_ufo`.`go_rad`,
+    `fest_ufo`.`ufo_tag`,
+    `fest_ufo`.`ufo_go_desc`,
+    `fest_ufo`.`ufo_go_title`,
+    `fest_ufo`.`ufo_qr_title`,
+    `fest_ufo`.`ufo_qr_desc`,
+    `fest_ufo`.`ufo_survey_title`,
+    `fest_ufo`.`ufo_survey_desc`,
+    `fest_ufo`.`qr_pic`,
+    `fest_ufo`.`qr_info`,
+    `fest_ufo`.`qr_info_title`,
+    `fest_ufo`.`fb_live`,
+    `fest_ufo`.`ufo_notice1`,
+    `fest_ufo`.`ufo_notice2`,
+    `fest_ufo`.`ufo_notice3`,
+    `fest_ufo`.`winner_msg`,
+    `fest_ufo`.`footer_msg`
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>
@@ -481,7 +534,8 @@
 			,ufo_notice1 = #{ufo_notice1}
 			,ufo_notice2 = #{ufo_notice2}
 			,ufo_notice3 = #{ufo_notice3}
-			
+			,winner_msg = #{winner_msg}
+			,footer_msg = #{footer_msg}
 	WHERE
 		idfest_ufo = #{idfest_ufo}
 	</update>
@@ -530,7 +584,7 @@
 	A.info_hist_pic					,
 	A.info_hist_text				,
 	A.info_program_pic				,
-	A.info_program_text				,
+	CONVERT(A.info_program_text	USING utf8)			,
 	A.info_location_pic				,
 	A.info_location_text			,
 	A.info_contact_pic				,

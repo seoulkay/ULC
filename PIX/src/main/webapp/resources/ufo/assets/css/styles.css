@@ -1267,9 +1267,9 @@ body.sticky-page-nav .overview-section {
   color: #fff;
   margin-bottom: 10px;
   display: block;
-  -webkit-opacity: 0.8;
-  -moz-opacity: 0.8;
-  opacity: 0.8;
+  -webkit-opacity: 0.9;
+  -moz-opacity: 0.9;
+  opacity: 0.9;
 }
 .features-page .actions a:hover {
   -webkit-opacity: 1;
