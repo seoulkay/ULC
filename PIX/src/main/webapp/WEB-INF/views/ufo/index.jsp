@@ -57,7 +57,7 @@
 		</c:choose>
 			<div class="actions">
 	                 <div class="actions">
-	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">스탬프랠리 당첨 확인하기</button></a>
+	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.index_mainbtn }</button></a>
 	   				</div>
             </div><!--//actions-->
 		</div>
@@ -69,10 +69,11 @@
 		<div class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline" >
-					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
+					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -84,7 +85,7 @@
 		<div class="team-figure" >	
 		<!-- 공지 -->
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
-			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">공지</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${ufo.ufoLable.index_title}</span></h3>
 		</div>		
 		<div class="row" >
 				<marquee>
@@ -102,7 +103,7 @@
 		<!-- 공지끝 -->
 		<!-- 승리자 -->
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
-			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">스탬프랠리 당첨자</span></h3>
+			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">${ufo.ufoLable.index_winner}</span></h3>
 		</div>
 		<div class="row">
 			<c:choose>

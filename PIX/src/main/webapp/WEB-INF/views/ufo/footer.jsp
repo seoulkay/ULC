@@ -18,7 +18,7 @@
 			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="https://www.ufo79.com/PIX/ULC/terms">이용약관</a>
+						<a href="https://www.ufo79.com/PIX/ULC/terms">${ufo.ufoLable.foot_terms}</a>
 					</div>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
 					<div class="col-title">
-						<a href="https://www.ufo79.com/PIX/ULC/privacy">개인정보 취급방침</a>
+						<a href="https://www.ufo79.com/PIX/ULC/privacy">${ufo.ufoLable.foot_privacy}</a>
 					</div>
 				</div>
 			</div>
@@ -431,7 +431,6 @@ function redirectGallery(tt){
 			fbLogin('go_re');
 	}else{
 		   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/"+tt+"/"+window.sessionStorage.getItem('uid');
-		
 	}
 }
 
@@ -443,6 +442,8 @@ function redirectIndex(tt){
 		top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/stamp";
 	}else if(tt === 've'){
 		top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/stories";
+	}else if(tt === 'mw'){
+		top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/minwon";
 	}else{
 		   top.location.href="https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/index";
 	}

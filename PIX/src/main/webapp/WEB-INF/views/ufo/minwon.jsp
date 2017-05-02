@@ -128,7 +128,7 @@
 		</c:choose>			
 			<div class="actions">
                  <div class="actions">
-         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.stamp_mainbtn}</button></a>
+         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">민원 처리 시작하기</button></a>
    				</div>
             </div><!--//actions-->
 		</div>
@@ -141,10 +141,10 @@
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li  style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
 					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
 				</ul>
 				<!--//page-nav-->
@@ -160,8 +160,8 @@
 	<div class="team-figure" >
 		<div id="map" style="height: 25em;"></div>
 		<div class="row">
-			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">${ufo.ufoLable.stamp_punch}</button>
-			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">${ufo.ufoLable.stamp_goGallery}</span></button> 
+			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">민원 처리하기</button>
+			<button class="btn btn-warning" onClick="redirectGallery('mw')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">${ufo.ufoLable.stamp_goGallery}</span></button> 
 		</div>					
 	</div>
 </section>
@@ -173,7 +173,7 @@
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc"><h3>${ufo.ufo_go_title }</h3></div>
+						<div class="form-desc"><h3>민원 처리 절차</h3></div>
 						<!--//social-buttons-->
 						<div class="divider">
 						</div>
@@ -182,7 +182,10 @@
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										${ufo.ufo_go_desc}
+										1 .민원처리 하기 누름<br>
+										2. 사진찍음 <br>
+										3. 아이콘 클릭 구체사항 보기 <br>
+										4. 페북 공유
 									</div>
 									<!--//inner-->
 								</div>
@@ -201,42 +204,67 @@
 </section>
 		
 <!-- 스템프  -->
-<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}">
 <button type="button" class="btn btn-info btn-lg" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#stampRally" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
 <div class="modal" id="stampRally" role="dialog">
 	<div class="modal-dialog">
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h3 style="font-family:football;">${ufo.ufoLable.navi_stamp}</h3>
+	  		<h3 style="font-family:football;">민원 처리 하기</h3>
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row">
-	   			<c:forEach items="${ufoGo }" var="ele" varStatus="statusEle">
-   				<c:if test="${ele.ufo_go_type eq 'go' }">
-	   			<div class="col-xs-6" style="padding:0px;" id='${ele.ufo_gid }' style="position : relative; max-width:150px">
-					<div>
-		   				<img id="stamp_yes_${ele.ufo_gid }" class="img-responsive"  style="z-index: 2;position:absolute; top:10%; left:20%; display:none; opacity:1; height:5em;" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp.svg">
-			   			<div id="stamp_${ele.ufo_gid }" style="display:none;border-radius: 5px;position:absolute; top:4%; left:10%;  opacity:0.5; width:80%; background-color: #00a27c; height:5.5em;" onclick="showSingleStamp('${ele.ufo_gid }')"></div>
-			   			<c:choose>
-			   				<c:when test="${!empty ele.go_icon_img }">
-			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block; height:6em" class="img-responsive" src="https://www.ufo79.com/image/${ele.go_icon_img }">
-			   				</c:when>
-			   				<c:otherwise>
-			   						<img id="stamp_back_${ele.ufo_gid }" style="opacity:1; width:100%; padding:5px; display:block;height:6em" class="img-responsive" src="${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_stamp_0${statusEle.count < 9 ? statusEle.count : statusEle.count - 8}_off.svg">
-			   				</c:otherwise>
-			   			</c:choose>
-			   		</div>
-						<p style="margin-bottom:3px; text-align:center; font-size: 1em;">${ele.go_content }</p>
-	   			</div>
-   				</c:if>
-	   			</c:forEach>
+	   			<div id="minwonDesc">민원 처리 합시다요.</div>
+	   			<form action="/PIX/ufogo/insertMinwon" method="post" enctype="multipart/form-data" id="minwonForm">
+	   				Lat <br> 
+	   				<input type="text" name="minwonLat" id="minwonLat" readonly class="form-control">
+	   				Lng <br>
+	   				<input type="text" name="minwonLng" id="minwonLng" readonly class="form-control">
+	   				Uid <br>
+	   				<input type="text" id="minwonUid" name="minwonUid" readonly class="form-control">
+	   				민원 내용 <br>
+	   				<textarea name="minwonDesc" id="minwonDesc" maxlength="2000" class="form-control"></textarea><br>
+	   				<input type="hidden" id="para" name="para" value="${sessionScope.eventPara}">
+	   				<input type="hidden" id="minwonFn" name="minwonFn">
+	   				<input type="hidden" id="minwonLn" name="minwonLn">
+	   				<input type="hidden" id="minwonEm" name="minwonEm">
+	   				<div class="filebox bs3-success">
+	                <label for="minwon_go">${ufo.ufoLable.stamp_takePic}</label> 
+				  	<input type="file" id="minwon_go" name="temp" class="form-control" accept="image/*" hidden>
+				    </div>
+	   			</form>
 	   		</div>
 		</div>
 		<div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-backdrop="static" data-keyboard="false" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="fbLogin('go_re')">${ufo.ufoLable.gen_complete}</button>
+	    <button type="button" class="btn btn-default" data-backdrop="static" data-keyboard="false" data-dismiss="modal" style=" color:#d7579f; border-color: #d7579f;" onClick="minwonSubmit()">${ufo.ufoLable.gen_complete}</button>
 	  	</div>
 	</div>
+	<script>
+	document.getElementById('minwon_go').onchange = function (e) {
+	    loadImage(
+	        e.target.files[0],
+	        function (img) {
+	        	var node = document.getElementById('minwonDesc');
+	        	while(node.firstChild){
+	        		node.removeChild(node.firstChild);
+	        	}
+	        	img.toDataURL('image/jpeg');
+	        	img.id = 'minwonImg';
+	        	img.className = "img-responsive";
+	        	node.appendChild(img);
+	        },
+	        {maxWidth: 250, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+	    );
+	};
+	
+// 	$(document).ready(function() {
+// 	    $('#stamp_go${ele.ufo_gid }').change(function() {
+// 	           $('#btn${ele.ufo_gid }').prop('disabled', false);
+// 	           $('#btn${ele.ufo_gid }').addClass("btn-primary");
+// 	    });
+// 	});
+	</script>
 	</div>
 </div>
 <c:forEach var="ele" varStatus="statusEle" items="${ufoGo }">
@@ -252,7 +280,7 @@
    			</div>
 			<!-- 스탬프 미션 사진, 내용 -->			
 			<div>
-			<c:if test="${!empty ele.go_image }">
+			<c:if test="${!empty ele.go_image}">
 					<img class="img-responsive" style="padding-bottom:10px" src="https://www.ufo79.com/image/${ele.go_image }">
 			</c:if>
    			</div>
@@ -295,7 +323,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 600, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: 250, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
     );
 };
 
@@ -458,7 +486,8 @@ function initMap() {
 }
 /**
  * 
-*/	
+*/
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos, message) {
     infoWindow.setPosition(pos);
     //infoWindow.setContent(browserHasGeolocation ? 'Error: 위치를 찾을수 없습니다.' : 'Error: 위치정보 지원하지 않는 브라우져 입니다.');
@@ -539,23 +568,16 @@ function makeGo(){
           type: "me",
           content:'<h1 id="firstHeading" style="font-family:football">${ufo.ufoLable.stamp_me}</h1>'
         };
+        $("#minwonLng").val(pos.lng);
+        $("#minwonLat").val(pos.lat);
+        
         if(checkLogin()){
         	var uid = window.sessionStorage.getItem('uid');
-        	var para = '${sessionScope.eventPara}';
-        	$.post( "/PIX/ufogo/get/"+para+"/"+uid)
- 	       .done(function( data ) {
- 	        var go = JSON.parse(JSON.stringify(data));
- 	        for(var i = 0; i < go.length; i++){
- 	        	if(go[i].ufo_go_type == 'qr'){
- 	        	  	//중복을 막는 코드가 필요함 
- 	        		$('#qr_yes_'+go[i].ufo_gid).show();
- 	        	}else if(go[i].ufo_go_type == 'go'){
- 	        		$('#stamp_yes_'+go[i].ufo_gid).show();
- 	        	}
- 	        }
+        	$("#minwonUid").val(uid);
+        	
  	       clearMarkers();
  	       markerSet(pos);
- 	       });
+ 	       
         }else{
         	clearMarkers();
         	markerSet(pos);
@@ -587,30 +609,16 @@ function makeGo(){
  */
 		
 function markerSet(pos){
-	$.post( "/PIX/get/ufogo/${sessionScope.eventPara}/")
+	$.post( "/PIX/get/ufominwon/${sessionScope.eventPara}/")
        .done(function( data ) {
          var go = JSON.parse(JSON.stringify(data));		         
          for(var i = 0; i < go.length; i++){
         	 var target = {};
-        	 target.lat = parseFloat((Number(go[i].go_lat)));
-        	 target.lng = parseFloat((Number(go[i].go_alt)));
-        	 if(go[i].ufo_go_type  == 'go'){
-        		 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="getUfo('+"'go'"+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">${ufo.ufoLable.stamp_punch}</span></button>';
-            	 if((Math.pow(target.lat - pos.lat, 2) + Math.pow(target.lng - pos.lng, 2)) < Math.pow(parseFloat('${ufo.go_rad}'), 2) ){
-            		 target.type = "ufoOn";
-           		 	 $("#stamp_"+go[i].ufo_gid).show();
-            	 }else{
-            		 target.type = "ufoOff";
-            		 $("#stamp_"+go[i].ufo_gid).hide();
-            	 }
-            	 
-            	 if($('#stamp_yes_'+go[i].ufo_gid).css('display') == "block"){
-            		 target.type = "ufoDone";
-            	 }
-        	 }else if(go[i].ufo_go_type  == 'booth'){
-        		 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+go[i].go_content+'</h3></p>';
-        		 target.type = "booth";
-        	 }	 
+        	// https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/mw/777/'+go[i].id+'"
+        	 target.lat = parseFloat((Number(go[i].minwonLat)));
+        	 target.lng = parseFloat((Number(go[i].minwonLng)));
+        	 target.content = '<p><h4 id="firstHeading" style="font-family:football;">'+'<img src=https://www.ufo79.com/image/'+go[i].minwonImg+' style="width:10em"><br><br>'+go[i].minwonDesc+'</h3></p><br><button class="btn btn-social btn-facebook" onClick="goSingleMinwon('+go[i].id+')"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></button>';
+        	 target.type = "ufoOn";
         	 
 	         neighborhoods.push(target);
          }
@@ -619,6 +627,14 @@ function markerSet(pos){
          drop();
          
     });
+}
+
+/**
+ * 갤러리 리다렉 
+ */
+ 
+function goSingleMinwon(para){
+	window.location.href = 	"https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/mw/"+window.sessionStorage.getItem('uid')+"/"+para;
 }
 /**
  * 
@@ -634,28 +650,29 @@ function stampRally(){
 /**
  * 
 */
-function stampPostSubmit(para){
+function minwonSubmit(){
 	if(checkLogin()){
 			  showPleaseWait();
-			  $( "#first_name_go"+para ).val(window.sessionStorage.getItem('first_name'));
-			  $( "#last_name_go"+para ).val(window.sessionStorage.getItem('last_name'));
-			  $( "#uid_go"+para ).val(window.sessionStorage.getItem('uid'));
-			  $( "#email_go"+para ).val(window.sessionStorage.getItem('email'));		  
-			  var form = new FormData($("#stampForm"+para)[0]);
+			  $( "#minwonFn").val(window.sessionStorage.getItem('first_name'));
+			  $( "#minwonLn").val(window.sessionStorage.getItem('last_name'));
+			  $( "#minwonUid").val(window.sessionStorage.getItem('uid'));
+			  $( "#minwonEm").val(window.sessionStorage.getItem('email'));		  
 			  
-			  var fileCanvas = document.getElementById('img'+para).toDataURL('image/jpeg');
+			  var form = new FormData($("#minwonForm")[0]);
+			  
+			  var fileCanvas = document.getElementById('minwonImg').toDataURL('image/jpeg');
 			  var blob = dataURItoBlob(fileCanvas);
 			  form.append('file', blob, "fileName.png");
 
 			  $.ajax({
-		              url: '/PIX/ufogo/insert',
+		              url: '/PIX/ufogo/insertMinwon',
 		              method: "POST",
 		              dataType: 'json',
 		              data: form,
 		              processData: false,
 		              contentType: false,
 		              success: function(result){
-		            	  showDone("성공하였습니다.", "go");
+		            	  showDone("성공하였습니다.", "mw");
 		              },
 		              error: function(er){}
 		      });

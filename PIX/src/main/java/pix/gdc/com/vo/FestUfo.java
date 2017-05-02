@@ -58,6 +58,9 @@ public class FestUfo {
 	private String winner_msg;
 	private String footer_msg;
 	
+	//라벨
+	private UfoLable ufoLable;
+	
 	
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
@@ -382,6 +385,12 @@ public class FestUfo {
 	}
 	public void setFooter_msg(String footer_msg) {
 		this.footer_msg = footer_msg;
+	}
+	public UfoLable getUfoLable() {
+		return ufoLable;
+	}
+	public void setUfoLable(UfoLable ufoLable) {
+		this.ufoLable = ufoLable;
 	}
 	
 }

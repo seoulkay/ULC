@@ -36,6 +36,8 @@
 		<typeAlias type="pix.gdc.com.vo.UfoGoRecord" alias="UfoGoRecord"/>
 		<typeAlias type="pix.gdc.com.vo.UfoShare" alias="UfoShare"/>
 		<typeAlias type="pix.gdc.com.vo.UfoBarcodeLog" alias="UfoBarcodeLog"/>
+		<typeAlias type="pix.gdc.com.vo.UfoLable" alias="UfoLable"/>
+		<typeAlias type="pix.gdc.com.vo.UfoMinwon" alias="UfoMinwon"/>
 		
 	</typeAliases>
 	

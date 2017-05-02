@@ -110,9 +110,10 @@
                     </div>
                     
                     <div class="header-btn">
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>감천 문화 마을 축제</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Gamcheon culture village</a>
-                    	<a href="https://www.ufo79.com/PIX/ufo/pyc2018/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>평창2018 베뉴 랠리</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/gc/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>감천 문화 마을 축제</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Gamcheon culture village</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/pyc2018/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>평창2018 베뉴 랠리</a>
+                    	<a href="https://www.ufo79.com/PIX/ufo/hct/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Halle(Saale) City Tour</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/dano/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>강릉 단오제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/coffee/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>강릉 커피 축제</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/tanger/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>삼척맹방유채꽃축제</a>

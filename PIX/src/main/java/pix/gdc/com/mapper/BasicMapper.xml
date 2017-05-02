@@ -1080,4 +1080,57 @@
 	SELECT count(0) FROM pix.ufo_go_record where para = #{param} and login_type = 'qr'
 	</select>
 	
+	
+	<select id="selectUfoLableByPara" parameterType="String" resultType="UfoLable">
+	SELECT * 
+	FROM pix.ufo_lable
+	WHERE para = #{param}
+	</select>
+	
+	<select id="selectUfoMinwonByPara" parameterType="String" resultType="UfoMinwon">
+	SELECT * 
+	FROM pix.ufo_minwon
+	WHERE para = #{param}
+	</select>
+	<select id="selectUfoMinwonById" parameterType="Integer" resultType="UfoMinwon">
+	SELECT * 
+	FROM pix.ufo_minwon
+	WHERE id = #{param}
+	</select>
+	<select id="selectUfoMinwonByVo" parameterType="UfoMinwon" resultType="UfoMinwon">
+	SELECT * 
+	FROM pix.ufo_minwon
+	WHERE para = #{para}
+	and minwonUid = #{minwonUid}
+	</select>
+	<insert id="insertUfoMinwon" parameterType="UfoMinwon">
+	INSERT INTO `pix`.`ufo_minwon`
+	(
+	`para`,
+	`minwonDesc`,
+	`minwonLat`,
+	`minwonLng`,
+	`minwonImg`,
+	`minwonUid`,
+	`minwonFn`,
+	`minwonLn`,
+	`minwonEm`,
+	`minwon_tsmp`
+	)
+	VALUES
+	(
+	#{para },
+	#{minwonDesc },
+	#{minwonLat },
+	#{minwonLng },
+	#{minwonImg },
+	#{minwonUid },
+	#{minwonFn },
+	#{minwonLn },
+	#{minwonEm },
+	now()
+	)
+	</insert>
+	
+	
 </mapper>

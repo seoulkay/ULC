@@ -39,6 +39,7 @@ import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.UfoBarcodeLog;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoMinwon;
 import pix.gdc.com.vo.UfoShare;
 
 @Controller
@@ -159,6 +160,29 @@ public class UfoController {
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("ufoGo", ufoGo);
 		return "ufo/stamp";
+	}
+	
+	@RequestMapping(value = "ufo/{para}/minwon", method = RequestMethod.GET)
+	public String minwon(Model model, @PathVariable("para")String para, HttpSession session){
+		session.setAttribute("eventPara", para);
+		FestUfo ufo = dao.SelectUfoByPara(para);
+		session.setAttribute("eventMenu", ufo.getMenu());
+		List<UfoGoVO> ufoGo = dao.selectUfoGoByPara(para);
+		List<UfoGoVO> ufoqr = dao.selectUfoQrByPara(para);
+		
+		
+		if(ufo.getMenu().contains("stories")){
+			List<FestQuesListVO> ql = getQuestionModel(para);
+			model.addAttribute("quesVO", ql);
+		}
+		
+		List<FestUfoNotice> noticeList = dao.SelectUfoNotice(para);
+		model.addAttribute("noticeList", noticeList);
+		
+		model.addAttribute("ufoqr", ufoqr);
+		model.addAttribute("ufo", ufo);
+		model.addAttribute("ufoGo", ufoGo);
+		return "ufo/minwon";
 	}
 	
 	public List<FestQuesListVO> getQuestionModel(String para){
@@ -341,14 +365,21 @@ public class UfoController {
 
 			userResult = dao.selectUfoGoRecordByParaAndUid(vo);
 			int userSize = 0;
+			int ufoSize  = 0;
 			String typeString = "";
 			if(type.equals("go")){
 				ufoResult = dao.selectUfoGoByPara(para);
-				typeString = "스탬프랠리";
+				typeString = "Stamp Rally";
 			}else if(type.equals("qr")){
 				ufoResult = dao.selectUfoQrByPara(para);
-				typeString = "큐알랠리";
+				typeString = "QR Rally";
 			}
+			for(UfoGoVO ele : ufoResult){
+				if(ele.getUfo_go_type().equals("go")){
+					ufoSize++;
+				}
+			}
+			
 			
 			for(UfoGoRecord ele: userResult){
 				for(UfoGoVO ele2 : ufoResult){
@@ -365,7 +396,7 @@ public class UfoController {
 			
 			model.addAttribute("ufoResult", ufoResult);
 			model.addAttribute("ufo", ufo);
-			model.addAttribute("ufoSize", ufoResult.size());
+			model.addAttribute("ufoSize", ufoSize);
 			model.addAttribute("userSize", userSize);
 			model.addAttribute("rallyType", typeString);
 			model.addAttribute("shareLink", link);
@@ -412,6 +443,27 @@ public class UfoController {
 			model.addAttribute("type", type);
 			model.addAttribute("uid", uid);
 			return "ufo/sns_result_survey";
+		}else if(type.equals("mw")){
+			//민원 결과
+			
+			UfoMinwon paraMinwon = new UfoMinwon();
+			paraMinwon.setPara(para);
+			paraMinwon.setMinwonUid(uid);
+			List<UfoMinwon> list = dao.selectUfoMinwonByVo(paraMinwon);
+			
+			String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid;
+			String homepage = "https://www.ufo79.com/PIX/ufo/"+para+"/index";
+			
+			
+			model.addAttribute("shareLink", link);
+			model.addAttribute("homepage", homepage);
+			
+			model.addAttribute("minwonList", list);	
+			model.addAttribute("ufo", ufo);	
+			model.addAttribute("type", type);
+			model.addAttribute("uid", uid);
+			
+			return "ufo/sns_result_minwon";
 		}else{
 			return "redirect:index";
 		}
@@ -422,31 +474,40 @@ public class UfoController {
 		session.setAttribute("eventPara", para);
 		FestUfo ufo = dao.SelectUfoByPara(para);
 		session.setAttribute("eventMenu", ufo.getMenu());
-		List<UfoGoRecord> userResult = new ArrayList<UfoGoRecord>();
-		
-		UfoGoRecord vo = new UfoGoRecord();
-		vo.setPara(para);
-		vo.setUfo_go_type(type);
-		vo.setUser_uid(uid);
-
-		userResult = dao.selectUfoGoRecordByParaAndUid(vo);
-		
-		
-		String go_image = "";
-		for(UfoGoRecord ele: userResult){
-				if(ele.getUfo_gid().equals(gid)){
-					go_image = ele.getUfo_image();
-				}
-		}
 		
 		String link = "https://www.ufo79.com/PIX/ufo/"+para+"/result/"+type+"/"+uid+"/"+gid;
 		String homepage = "https://www.ufo79.com/PIX/ufo/"+para+"/index";
+		String go_image = "";
+		String desc = "";
+		if(type.equals("mw")){
+			UfoMinwon minwon = new UfoMinwon();
+			minwon = dao.selectUfoMinwonById(Integer.parseInt(gid));
+			go_image = minwon.getMinwonImg();
+			desc = minwon.getMinwonDesc();
+		}else{
 		
-		
+			List<UfoGoRecord> userResult = new ArrayList<UfoGoRecord>();
+			
+			UfoGoRecord vo = new UfoGoRecord();
+			vo.setPara(para);
+			vo.setUfo_go_type(type);
+			vo.setUser_uid(uid);
+	
+			userResult = dao.selectUfoGoRecordByParaAndUid(vo);
+			
+			
+			for(UfoGoRecord ele: userResult){
+					if(ele.getUfo_gid().equals(gid)){
+						go_image = ele.getUfo_image();
+					}
+			}
+			
+		}
 		model.addAttribute("go_image", go_image);
 		model.addAttribute("ufo", ufo);
 		model.addAttribute("shareLink", link);
 		model.addAttribute("homepage", homepage);
+		model.addAttribute("desc", desc);
 		model.addAttribute("type", type);
 		model.addAttribute("uid", uid);
 		

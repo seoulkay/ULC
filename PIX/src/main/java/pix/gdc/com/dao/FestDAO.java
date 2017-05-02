@@ -31,6 +31,8 @@ import pix.gdc.com.vo.Notice_VO;
 import pix.gdc.com.vo.UfoBarcodeLog;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoLable;
+import pix.gdc.com.vo.UfoMinwon;
 import pix.gdc.com.vo.UfoShare;
 
 
@@ -227,7 +229,10 @@ public class FestDAO extends SqlSessionDaoSupport{
 	
 	// UFO 다가지고 오기
 	public FestUfo SelectUfoByPara(String param){
-		return getSqlSession().selectOne("BasicMapper.SelectUfoByPara", param);
+		UfoLable ufoLable = getSqlSession().selectOne("BasicMapper.selectUfoLableByPara", param);
+		FestUfo vo = getSqlSession().selectOne("BasicMapper.SelectUfoByPara", param);
+		vo.setUfoLable(ufoLable);
+		return vo;
 	}
 	
 	//질문 다가지고 오기
@@ -549,4 +554,28 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public int selectQrNumByPara(String para){
 		return getSqlSession().selectOne("BasicMapper.selectQrNumByPara", para);
 	}
+	
+	
+	//파라로 라벨 가지고 오자
+	public UfoLable selectUfoLableByPara(String para){
+		return getSqlSession().selectOne("BasicMapper.selectUfoLableByPara", para);
+	}
+	//민원 넣기
+	public int insertUfoMinwon(UfoMinwon vo){
+		return getSqlSession().insert("BasicMapper.insertUfoMinwon", vo);
+	}
+	
+	//민원 파라로 가지고 오기
+	public List<UfoMinwon> selectUfoMinwonByPara(String para){
+		return getSqlSession().selectList("BasicMapper.selectUfoMinwonByPara", para);
+	}
+	//민원 id 로 가지고 오기
+	public UfoMinwon selectUfoMinwonById(Integer para){
+		return getSqlSession().selectOne("BasicMapper.selectUfoMinwonById", para);
+	}
+	//민원 vo 로 가지고 오기
+	public List<UfoMinwon> selectUfoMinwonByVo(UfoMinwon para){
+		return getSqlSession().selectList("BasicMapper.selectUfoMinwonByVo", para);
+	}
+		
 }

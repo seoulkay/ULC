@@ -17,7 +17,7 @@
 	<meta property="og:type"               content="article" />
 	<meta property="og:title"              content="${ufo.title }" />
 	<meta property="og:description"        content="${ufo.event_short_description }" />
-	<meta property="og:image"         content="https://www.ufo79.com/image/${go_image}" />
+	<meta property="og:image"         content="https://www.ufo79.com/image/${ufo.logo}" />
   
   
     <link rel="shortcut icon" href="https://www.ufo79.com/image/https://www.ufo79.com/image/favicon.ico">  
@@ -62,26 +62,29 @@ button.close {
 <body>
 <div class="modal-dialog">
 	<div class="modal-content">
-	   <div class="modal-header" style="height:3em;">
-	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/result/${type}/${uid }';">&times;</button>
+	   <div class="modal-header">
+	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/minwon';">&times;</button><br>
 	   </div>
 	   <div class="modal-body" style="background-color: #d7579f;">
 	   		<div class="row" id="stampResultList">
-	   			<div class="col-xs-12" id='qr_div_${ele.ufo_gid }' style="position : relative; padding-left: 0.2em;padding-right: 0.2em">
-	   						<div style="border: 2px solid #FFF;"><a href="https://www.ufo79.com/image/${go_image}" download><img alt="" src="https://www.ufo79.com/image/${go_image}" style="width:100%" class="img-responsive"></a>
-	   						
-	   						<c:if test="${!empty desc }"><br><p style="color: WHITE; margin:1em">${desc}</p></c:if>
-	   						</div>
-		   		</div>
+	   			<ul  class="list-group">
+	   			<c:forEach items="${minwonList }" var="ele" varStatus="statusEle">
+	   				<li class="list-group-item list-group-item-info">민원 ${statusEle.count }</li>
+	   				<li class="list-group-item">
+	   				<a href="https://www.ufo79.com/PIX/ufo/${ufo.para}/result/mw/${ele.minwonUid }/${ele.id}">
+	   				<img alt="" src="https://www.ufo79.com/image/${ele.minwonImg}" style="width:100%" class="img-responsive">
+	   				</a>
+	   				<br>
+	   				${ele.minwonDesc }</li>
+	   			</c:forEach>
+	   			</ul>	
 	   		</div>
-	   		<h5 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title } </h5>
+	   		<h5 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title }</h5>
 			<br>
 		</div>
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
 			<div class="modal-footer">
 			<br>
-		    	<a href="https://www.ufo79.com/image/${go_image}" download><span class="btn" style="background-color:WHITE; color:#d7579f; border:2px solid #d7579f" ><span class="btn-text">사진저장</span></span></a>
-<%-- 		    	<a href="https://www.facebook.com/sharer.php?u=${ shareLink}"><span class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span></a> --%>
 		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br><br>
 		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block" class="img-responsive"/></div>
