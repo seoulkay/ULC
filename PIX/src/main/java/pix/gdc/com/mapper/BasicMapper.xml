@@ -307,7 +307,11 @@
     `fest_ufo`.`ufo_notice2`,
     `fest_ufo`.`ufo_notice3`,
     `fest_ufo`.`winner_msg`,
-    `fest_ufo`.`footer_msg`
+    `fest_ufo`.`footer_msg`,
+    `fest_ufo`.`photo_pix`,
+    `fest_ufo`.`photo_comp`,
+    `fest_ufo`.`pin_booth`,
+    `fest_ufo`.`pin_comp`
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>
@@ -427,9 +431,6 @@
 		</if>
 		<if test="info_program_pic != null and info_program_pic != ''">
 			,info_program_pic = #{info_program_pic}
-		</if>
-		<if test="info_program_text != null and info_program_text != ''">
-			,info_program_text = #{info_program_text}
 		</if>
 		<if test="info_location_pic != null and info_location_pic != ''">
 			,info_location_pic = #{info_location_pic}
@@ -834,6 +835,19 @@
 	WHERE
 	para = #{param}
 	</select>
+	
+	<select id="selectUfoGoRecordByVoPage" parameterType="UfoGoRecord" resultType="UfoGoRecord">
+	SELECT 
+	*
+	FROM
+	pix.ufo_go_record
+	WHERE
+	para = #{para}
+	ORDER BY id desc
+	LIMIT #{startNum}, #{pageRowNum}
+	</select>
+	
+	
 	<select id="selectUfoGoRecordByParaAndUid" parameterType="UfoGoRecord" resultType="UfoGoRecord">
 	select
 	a.ufo_gid,
@@ -1029,6 +1043,7 @@
 		SELECT *
 		FROM UfoWinnerRecord 
 	 	WHERE para = #{param}
+	 	ORDER BY idUfoWinnerRecord desc
 	</select>
 	<update id="updateWinnerLike" parameterType="Integer">
 		update UfoWinnerRecord set winner_like = winner_like + 1 where idUfoWinnerRecord = #{param}

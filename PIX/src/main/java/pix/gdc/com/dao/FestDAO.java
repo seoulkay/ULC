@@ -577,5 +577,9 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public List<UfoMinwon> selectUfoMinwonByVo(UfoMinwon para){
 		return getSqlSession().selectList("BasicMapper.selectUfoMinwonByVo", para);
 	}
-		
+	
+	//스탬프 랠리 가지고 오기 위드 페이징 하기
+	public List<UfoGoRecord> selectUfoGoRecordByVoPage(UfoGoRecord para){
+		return getSqlSession().selectList("BasicMapper.selectUfoGoRecordByVoPage", para);
+	}
 }

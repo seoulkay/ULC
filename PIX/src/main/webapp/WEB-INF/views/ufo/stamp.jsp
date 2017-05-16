@@ -128,7 +128,7 @@
 		</c:choose>			
 			<div class="actions">
                  <div class="actions">
-         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.stamp_mainbtn}</button></a>
+         			<a class="scrollto" href="#page-nav-wrapper1"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.stamp_mainbtn}</button></a>
    				</div>
             </div><!--//actions-->
 		</div>
@@ -137,7 +137,7 @@
 	<!--//heading-section-->
 
 <div class="page-nav-space-holder">
-		<div class="page-nav-wrapper text-center">
+		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
@@ -156,40 +156,36 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
-<section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
-	<div class="team-figure" >
+<section id="page-nav-wrapper1" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em;">
+	<div class="team-figure">
 		<div id="map" style="height: 25em;"></div>
-		<div class="row">
+	</div>
+	<div class="row">
 			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">${ufo.ufoLable.stamp_punch}</button>
 			<button class="btn btn-warning" onClick="redirectGallery('go')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">${ufo.ufoLable.stamp_goGallery}</span></button> 
-		</div>					
-	</div>
+		</div>			
+
 </section>
-<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: em">
-		<div class="section-inner" style="padding-top: 2em">
-			<div class="container text-center">
-				<div class="counter-container"></div>
+<section id="signup-section" class="signup-section section" style="padding:2em">
+		<div class="section-inner">
+			<div class="container text-center" style="width:100%;max-width: 750px;padding:0;">
+<!-- 				<div class="counter-container"></div> -->
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 				<div class="form-wrapper">
-					<div class="form-box">
+					<div class="form-box" style="padding-top: 0em; padding-bottom: 0em; margin-top: 0em; margin-bottom: 0em">
 						<div class="form-desc"><h3>${ufo.ufo_go_title }</h3></div>
 						<!--//social-buttons-->
-						<div class="divider">
-						</div>
-						<div class="quotes">
+<!-- 						<div class="quotes"> -->
 							<div class="row">
-								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										${ufo.ufo_go_desc}
-									</div>
+								<div class="quote-item col-sm-12 text-center" style="margin-top:0em;padding-top:0em">
+									${ufo.ufo_go_desc}
 									<!--//inner-->
 								</div>
 								<!--//quote-item2-->			
 							</div>
 							<!--//row-->
-						</div>
+<!-- 						</div> -->
 						<!--//quotes-->			
 					</div>
 					<!--//form-box-->
@@ -295,7 +291,7 @@ document.getElementById('stamp_go'+'${ele.ufo_gid }').onchange = function (e) {
         	img.className = "img-responsive";
         	node.appendChild(img);
         },
-        {maxWidth: 600, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+        {maxWidth: ${ufo.photo_pix }, orientation: true, canvas:true, downsamplingRatio: ${ufo.photo_comp }} // Options
     );
 };
 
@@ -337,10 +333,10 @@ var icons = {
 	  icon: iconBase +'icon_pin_15px_off.svg'
   },
   ufoDone:{
-	  icon: iconBase +'icon_done.svg'
+	  icon: iconBase + '${ufo.pin_comp}'
   },
   booth:{
-	  icon: iconBase +'booth.png'
+	  icon: iconBase + '${ufo.pin_booth}'
   }
 };
         
@@ -430,15 +426,15 @@ function refreshBtn(){
     centerControlDiv.setAttribute("id", "refreshBtn");
     var centerControl = new CenterControl(centerControlDiv);
     
-    var centerControlDiv2 = document.createElement('div');
-    centerControlDiv2.setAttribute("id", "mapInfoBtn");
-    var centerControl2 = new CenterControl2(centerControlDiv2);
+//     var centerControlDiv2 = document.createElement('div');
+//     centerControlDiv2.setAttribute("id", "mapInfoBtn");
+//     var centerControl2 = new CenterControl2(centerControlDiv2);
     
     
     centerControlDiv.index = 1;
-    centerControlDiv2.index = 1;
+//     centerControlDiv2.index = 1;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
+//     map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
     
 }
  /**

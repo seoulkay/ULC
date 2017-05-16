@@ -56,7 +56,13 @@
 	   				<div style="padding-top:3px; padding-bottom:3px">
 	   				<c:choose>
 	   					<c:when test="${not ele.submit}">
-	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%; background-color: BLACK; opacity: 0.5;"><p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">스탬프를 찍어주세요.</p></div>
+	   						<div style="position:absolute; top:20%; left:20%; width: 60%; height:60%;z-index: 5">
+		   						
+	<!-- 	   						<p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">스탬프를 찍어주세요.</p> -->
+								<br>
+		   						<img src="https://www.ufo79.com/image/stamp_please.svg" class="img-responsive" align="middle" style="margin: 0 auto">
+	
+	   						</div>
 		   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;">
 <%-- 		   					<img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive"> --%>
 		   					</div>

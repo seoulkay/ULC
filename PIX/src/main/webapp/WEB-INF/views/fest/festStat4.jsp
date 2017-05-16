@@ -13,30 +13,17 @@
 </jsp:include>
 <div class="container">
 	<div style="height:2em"></div>
+	<h3>통계</h3>
+	<div style="height:2em"></div>
 	<div class="row">
-	<h3>스탬, 큐알 랠리</h3>
-		<table class="table table-bordered table-hover table-condensed">
+	<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">
-				<td>ufo_date</td><td>ufo_image</td><td>first_name</td><td>last_name</td><td>ufo_go_type</td><td>ufo_gid</td>
+				<td>fbLogNum<br>로그인시도자</td><td>fbCheckNum<br>로그인회수</td><td>goCompNum<br>완성한사람</td><td>goPartPercent<br>완성퍼센트</td><td>compList<br>완성개수</td><td>printNum<br>프린트수</td><td>printPercent<br>프린트퍼센트</td><td>sharePartNum<br>공유자수</td><td>shareNum<br>공유수</td><td>qrPartNum<br>큐알참여자</td><td>qrNum<br>큐알참여수</td>
 			</tr>
-				<c:forEach items="${resultList}" var="ele" begin="0" end="10">
-				<tr><td>${ele.ufo_date}</td><td class="go_img"><c:if test="${ele.ufo_image ne null}"><img src="https://www.ufo79.com/image/${ele.ufo_image}" class="img-responsive" alt="" style="height:100px"></c:if></td><td>${ele.first_name }</td><td>${ele.last_name}</td><td>${ele.ufo_go_type}</td><td>${ele.ufo_gid}</td></tr>
-				</c:forEach>
-		</table>
-		<nav aria-label="Page navigation">
-		  <ul class="pagination">
-		    <li>
-		      <a href="festStat?idx=${sessionScope.currentEvent }&startNum=${param.startNum - param.pageRowNum}&pageRowNum=10" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li>
-		      <a href="festStat?idx=${sessionScope.currentEvent }&startNum=${param.startNum + param.pageRowNum}&pageRowNum=10" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
+			<tr>
+				<td>${stat.fbLogNum}</td><td>${stat.fbCheckNum}</td><td>${stat.goCompNum}</td><td>${stat.goPartPercent}</td><td>${fn:length(stat.compList)}</td><td>${stat.printNum}</td><td>${stat.printPercent}</td><td>${stat.sharePartNum}</td><td>${stat.shareNum}</td><td>${stat.qrPartNum}</td><td>${stat.qrNum}</td>
+			</tr>
+	</table>
 	</div>
 </div>
 <div class="modal" id="imgModal" role="dialog">

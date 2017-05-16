@@ -14,29 +14,15 @@
 <div class="container">
 	<div style="height:2em"></div>
 	<div class="row">
-	<h3>스탬, 큐알 랠리</h3>
+	<h3>승리자들</h3>
 		<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">
-				<td>ufo_date</td><td>ufo_image</td><td>first_name</td><td>last_name</td><td>ufo_go_type</td><td>ufo_gid</td>
+				<td>winner_time</td><td>ufo_image</td><td>first_name</td><td>last_name</td><td>ufo_go_type</td><td>ufo_gid</td>
 			</tr>
-				<c:forEach items="${resultList}" var="ele" begin="0" end="10">
-				<tr><td>${ele.ufo_date}</td><td class="go_img"><c:if test="${ele.ufo_image ne null}"><img src="https://www.ufo79.com/image/${ele.ufo_image}" class="img-responsive" alt="" style="height:100px"></c:if></td><td>${ele.first_name }</td><td>${ele.last_name}</td><td>${ele.ufo_go_type}</td><td>${ele.ufo_gid}</td></tr>
+				<c:forEach items="${winner}" var="ele" begin="0" end="10">
+				<tr><td><fmt:formatDate type="both" value="${ele.winner_time}" /></td><td class="go_img"><c:if test="${ele.ufo_image ne null}"><img src="https://www.ufo79.com/image/${ele.ufo_image}" class="img-responsive" alt="" style="height:100px"></c:if></td><td>${ele.first_name }</td><td>${ele.last_name}</td><td>${ele.ufo_go_type}</td><td>${ele.ufo_gid}</td></tr>
 				</c:forEach>
 		</table>
-		<nav aria-label="Page navigation">
-		  <ul class="pagination">
-		    <li>
-		      <a href="festStat?idx=${sessionScope.currentEvent }&startNum=${param.startNum - param.pageRowNum}&pageRowNum=10" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		    <li>
-		      <a href="festStat?idx=${sessionScope.currentEvent }&startNum=${param.startNum + param.pageRowNum}&pageRowNum=10" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		  </ul>
-		</nav>
 	</div>
 </div>
 <div class="modal" id="imgModal" role="dialog">

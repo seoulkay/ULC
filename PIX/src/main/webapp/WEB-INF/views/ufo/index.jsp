@@ -57,7 +57,7 @@
 		</c:choose>
 			<div class="actions">
 	                 <div class="actions">
-	         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.index_mainbtn }</button></a>
+	         			<a class="scrollto" href="#page-nav-wrapper1"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.index_mainbtn }</button></a>
 	   				</div>
             </div><!--//actions-->
 		</div>
@@ -66,7 +66,7 @@
 	<!--//heading-section-->
 
 	<div class="page-nav-space-holder">
-		<div class="page-nav-wrapper text-center">
+		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline" >
 					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
@@ -81,7 +81,7 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-<section id="page-nav-wrapper" class="support-section section text-center" style="padding:1em;">
+<section id="page-nav-wrapper1" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >	
 		<!-- 공지 -->
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">

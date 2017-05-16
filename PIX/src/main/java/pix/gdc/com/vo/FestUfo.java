@@ -57,6 +57,10 @@ public class FestUfo {
 	private String ufo_notice3;
 	private String winner_msg;
 	private String footer_msg;
+	private String photo_pix;
+	private String photo_comp;
+	private String pin_booth;
+	private String pin_comp;
 	
 	//라벨
 	private UfoLable ufoLable;
@@ -391,6 +395,30 @@ public class FestUfo {
 	}
 	public void setUfoLable(UfoLable ufoLable) {
 		this.ufoLable = ufoLable;
+	}
+	public String getPhoto_pix() {
+		return photo_pix;
+	}
+	public void setPhoto_pix(String photo_pix) {
+		this.photo_pix = photo_pix;
+	}
+	public String getPhoto_comp() {
+		return photo_comp;
+	}
+	public void setPhoto_comp(String photo_comp) {
+		this.photo_comp = photo_comp;
+	}
+	public String getPin_booth() {
+		return pin_booth;
+	}
+	public void setPin_booth(String pin_booth) {
+		this.pin_booth = pin_booth;
+	}
+	public String getPin_comp() {
+		return pin_comp;
+	}
+	public void setPin_comp(String pin_comp) {
+		this.pin_comp = pin_comp;
 	}
 	
 }

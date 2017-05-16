@@ -254,7 +254,7 @@
 	        	img.className = "img-responsive";
 	        	node.appendChild(img);
 	        },
-	        {maxWidth: 250, orientation: true, canvas:true, downsamplingRatio: 0.5} // Options
+	        {maxWidth: ${ufo.photo_pix }, orientation: true, canvas:true, downsamplingRatio: ${ufo.photo_comp }} // Options
 	    );
 	};
 	

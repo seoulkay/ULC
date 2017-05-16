@@ -33,37 +33,22 @@ JsBarcode("#barcode", "go/1214903321890044/2222");
 //or with jQuery
 //$("#barcode").JsBarcode("https://www.facebook.com/${vo.sns_return }");
 </script>
-	<div style="height:2em"></div>
-	<h3>축제모듈</h3>
+	
 	<div style="height:2em"></div>
 	<div class="row">
-	<h3>스탬프랠리 <button class="btn sm btn-primary" onclick="stampInsert()">+</button></h3>
+	<h3>서베이</h3>
 		<table class="table table-bordered table-hover table-condensed">
 			<tr class="success">
-				<td>수정</td>
-				<td>go_content</td>
-				<td>go_desc</td>
-				<td>go_image</td>
-				<td>go_icon_img</td>
-				<td>ufo_gid</td>
-				<td>go_alt</td>
-				<td>go_lat</td>
+				<td>orderq</td><td>question</td><td>ques_time</td><td>ques_img</td>
 			</tr>
-				<c:forEach items="${goList}" var="ele">
-				<tr id="${ele.id_ufo_go }">
-					<td><button class="btn sm btn-primary" onclick="stampUpdate('${ele.id_ufo_go }', '${ele.go_para }')">+</button></td>
-					<td>${ele.go_content}</td>
-					<td>${ele.go_desc}</td>
-					<td class="go_img"><c:if test="${ele.go_image ne null}"><img src="https://www.ufo79.com/image/${ele.go_image}" class="img-responsive" alt="" style="width:100px"></c:if></td>
-					<td class="icon_img"><c:if test="${ele.go_icon_img ne null}"><img src="https://www.ufo79.com/image/${ele.go_icon_img}" class="img-responsive" alt="" style="width:100px"></c:if></td>
-					<td>${ele.ufo_gid}</td>
-					<td>${ele.go_alt}</td>
-					<td>${ele.go_lat}</td>
-				</tr>
+				<c:forEach items="${surveyList}" var="ele">
+				<tr class="info"><td>${ele.orderq}</td><td>${ele.question}</td><td>${ele.ques_time}</td><td><c:if test="${ele.ques_img ne null}"><img src="https://www.ufo79.com/image/${ele.ques_img}" class="img-responsive" alt="" style="width:100px"></c:if></td></tr>
+					<c:forEach items="${ele.questionOptions}" var="el">
+					<tr><td></td><td>${el.q_option }</td><td></td><td></td></tr>
+					</c:forEach>
 				</c:forEach>
 		</table>
 	</div>
-	
 </div>
 <jsp:include page="ufoFooter.jsp" flush="false">
 	<jsp:param name="param" value="value1"/>
@@ -98,7 +83,7 @@ JsBarcode("#barcode", "go/1214903321890044/2222");
   			</form>
   		</div>
   		<div class="modal-footer">
-	    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="stampSubmit();" disabled="disabled">제출</button>
+	    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="stampSubmit();">제출</button>
 	  	</div>
 	</div>
 	</div>

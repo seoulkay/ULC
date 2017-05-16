@@ -122,6 +122,21 @@ public class FestController {
 		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
 		String para = dao.SelectUfoParaByNumber(currentEvent);
 		List<UfoGoVO> goList = dao.selectUfoGoByPara(para) ;
+		
+		model.addAttribute("goList", goList);
+		model.addAttribute("ufo", ufo);
+		return "fest/festQuestion";
+	}
+	
+	@RequestMapping(value = "FEV/festQuestion2", method = RequestMethod.GET)
+	public String festQuestion2(@RequestParam("idx")int idx, Model model, HttpSession session){	
+		if(session.getAttribute("UserName") == null){
+			return "redirect:festLoginForm";
+		}
+		
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
 		List<FestQuesListVO> surveyList = dao.selectUfoQuestionsNew(para);
 		List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
 		
@@ -133,12 +148,24 @@ public class FestController {
 			}
 		}
 		
-		model.addAttribute("goList", goList);
 		model.addAttribute("surveyList", surveyList);
 		model.addAttribute("ufo", ufo);
-		return "fest/festQuestion";
+		return "fest/festQuestion2";
 	}
 	
+	@RequestMapping(value = "FEV/festQuestion3", method = RequestMethod.GET)
+	public String festQuestion3(@RequestParam("idx")int idx, Model model, HttpSession session){	
+		if(session.getAttribute("UserName") == null){
+			return "redirect:festLoginForm";
+		}
+		
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
+
+		model.addAttribute("ufo", ufo);
+		return "fest/festQuestion3";
+	}
 	//stampNew stampUpdate
 	@RequestMapping(value = "FEV/stampUpdate", method = RequestMethod.POST)
 	public String stampUpdate(@RequestParam("file2") MultipartFile file2, @RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
@@ -264,7 +291,7 @@ public class FestController {
 	}
 	
 	@RequestMapping(value = "FEV/festStat", method = RequestMethod.GET)
-	public String festLoginForm(@RequestParam("idx") int idx, Model model,HttpSession session){	
+	public String festLoginForm(@RequestParam("idx") int idx, Model model,HttpSession session, @RequestParam(value = "startNum", defaultValue = "0") int startNum, @RequestParam(value = "pageRowNum", defaultValue = "10") int pageRowNum){	
 		if(session.getAttribute("UserName") == null){
 			return "redirect:festLoginForm";
 		}
@@ -272,13 +299,72 @@ public class FestController {
 		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
 		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
 		String para = dao.SelectUfoParaByNumber(currentEvent);
-		List<UfoGoRecord> resultList = dao.selectUfoGoRecordByPara(para);
-		List<FestAnswerVO> answerVOs = dao.selectUfoAnserByPara(para);
 		
-		Collections.reverse(resultList);
-		Collections.reverse(answerVOs);
+		if(startNum < 0){
+			return "redirect:festStat?idx="+idx+"&startNum=0&pageRowNum=10";
+		}
+		
+		//페이징을 위한 파라메터 세팅
+		UfoGoRecord paraVo = new UfoGoRecord();
+		paraVo.setPara(para);
+		paraVo.setStartNum(startNum);
+		paraVo.setPageRowNum(pageRowNum);
+		
+		
+		List<UfoGoRecord> resultList = dao.selectUfoGoRecordByVoPage(paraVo);
+		
+		model.addAttribute("resultList", resultList);
+		model.addAttribute("ufo", ufo);
+
+		return "fest/festStat";
+	}
+	
+	@RequestMapping(value = "FEV/festStat2", method = RequestMethod.GET)
+	public String festLoginForm2(@RequestParam("idx") int idx, Model model,HttpSession session, @RequestParam(value = "startNum", defaultValue = "0") int startNum, @RequestParam(value = "pageRowNum", defaultValue = "10") int pageRowNum){	
+		if(session.getAttribute("UserName") == null){
+			return "redirect:festLoginForm";
+		}
+		
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
+		
 		List<UfoGoRecord> winner = dao.selectUfoWinnerByPara(para);
 		
+		model.addAttribute("winner", winner);
+		model.addAttribute("ufo", ufo);
+		return "fest/festStat2";
+	}
+	
+	@RequestMapping(value = "FEV/festStat3", method = RequestMethod.GET)
+	public String festLoginForm3(@RequestParam("idx") int idx, Model model,HttpSession session, @RequestParam(value = "startNum", defaultValue = "0") int startNum, @RequestParam(value = "pageRowNum", defaultValue = "10") int pageRowNum){	
+		if(session.getAttribute("UserName") == null){
+			return "redirect:festLoginForm";
+		}
+		
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
+		
+		List<FestAnswerVO> answerVOs = dao.selectUfoAnserByPara(para);
+		Collections.reverse(answerVOs);
+		
+		
+		model.addAttribute("answerVOs", answerVOs);
+		model.addAttribute("ufo", ufo);
+		
+		return "fest/festStat3";
+	}
+	
+	@RequestMapping(value = "FEV/festStat4", method = RequestMethod.GET)
+	public String festLoginForm4(@RequestParam("idx") int idx, Model model,HttpSession session, @RequestParam(value = "startNum", defaultValue = "0") int startNum, @RequestParam(value = "pageRowNum", defaultValue = "10") int pageRowNum){	
+		if(session.getAttribute("UserName") == null){
+			return "redirect:festLoginForm";
+		}
+		
+		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
+		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
+		String para = dao.SelectUfoParaByNumber(currentEvent);
 		
 		UfoStat stat = new UfoStat();
 		stat.setCompList(dao.selectGoPart(para));
@@ -306,12 +392,9 @@ public class FestController {
 		
 		
 		model.addAttribute("stat", stat);
-		model.addAttribute("winner", winner);
-		model.addAttribute("resultList", resultList);
-		model.addAttribute("answerVOs", answerVOs);
 		model.addAttribute("ufo", ufo);
 
-		return "fest/festStat";
+		return "fest/festStat4";
 	}
 	
 	@RequestMapping(value = "FEV/festPassFinder", method = RequestMethod.GET)
