@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="ie ie6" lang="en"><![endif]-->
 <!--[if IE 7]><html class="ie ie7" lang="en"><![endif]-->
@@ -101,9 +102,9 @@
                     </div>
                     
                     <div class="header-btn">
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>당신의 학교에 불만은?</a><br>
-                    	<a href="https://www.ufo79.com/PIX/ufo/gc_eng/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>어떤 선생님이 좋은가요?</a><br>
-                    	<a href="https://www.ufo79.com/PIX/ufo/pyc2018/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>너의 제일 좋아하는 배구선수는?</a><br>
+                    <c:forEach items="${que }" var="ele">
+                    	<a href="${pageContext.request.contextPath}/que/questions/${ele.id}" class="btn-custom btn-white btn-border btn-rounded btn-icon"><i class="ion ion-happy-outline"></i>${ele.question }</a><br>
+                    </c:forEach>
                     </div>
                     <div style="height: 15em"></div>
                 </div>
