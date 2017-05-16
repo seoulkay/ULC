@@ -173,7 +173,7 @@
 				<!--//counter-container-->
 			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 				<div class="form-wrapper">
-					<div class="form-box" style="padding-top: 0em; padding-bottom: 0em; margin-top: 0em; margin-bottom: 0em">
+					<div class="form-box">
 						<div class="form-desc"><h3>${ufo.ufo_go_title }</h3></div>
 						<!--//social-buttons-->
 <!-- 						<div class="quotes"> -->

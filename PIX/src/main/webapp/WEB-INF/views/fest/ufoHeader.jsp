@@ -15,17 +15,17 @@
              </div>
              <div class="navbar-collapse collapse">	
                  <ul class="nav navbar-nav navbar-right scrollto">
-                 	 <li><a href="festInfo?idx=${sessionScope.currentEvent }">축제정보</a></li>                          
+                 	 <li><a href="festInfo?idx=${sessionScope.currentEvent }">Looks & Feels</a></li>                          
                      <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">축제모듈<span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modules<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
-						    <li><a href="festQuestion?idx=${sessionScope.currentEvent }">스탬프랠리</a></li>
-						    <li><a href="festQuestion2?idx=${sessionScope.currentEvent }">서베이</a></li>
+						    <li><a href="festQuestion?idx=${sessionScope.currentEvent }">Stamp Ralley</a></li>
+						    <li><a href="festQuestion2?idx=${sessionScope.currentEvent }">Survey</a></li>
 						    <li><a href="festQuestion3?idx=${sessionScope.currentEvent }">민원처리</a></li>
 					     </ul>
 				     </li>
                      <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사용정보<span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">History<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
 						    <li><a href="festStat?idx=${sessionScope.currentEvent }&startNum=0&pageRowNum=10">스탬큐알랠리</a></li>
 						    <li><a href="festStat2?idx=${sessionScope.currentEvent }">승리자들</a></li>

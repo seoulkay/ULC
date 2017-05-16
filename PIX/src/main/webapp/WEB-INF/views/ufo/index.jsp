@@ -123,12 +123,11 @@
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" onclick="winnerLike(11)">+1</button> -->
 				</c:otherwise>
 			</c:choose>
-		</div>	
-		
+		</div>		
 		<!-- 승리자끝 -->
 		<!-- 페북라이브&댓글 -->
 		<c:if test="${not empty ufo.fb_live }">
-		<div class="row" style="padding: 0.5em">
+		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #00a27c">L!VE</span></h3>
 		</div>	
 		<div class="row">
