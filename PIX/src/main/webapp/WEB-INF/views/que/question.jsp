@@ -137,20 +137,21 @@
                 <div class="container">
                     
                     <div class="header-txt">
-                        <p>질문에 어떠한 대답이라도 해주세요.</p>
+                        <h3 style="color: WHITE">${que.question }</h3>
                     </div>
-                    <form>
+                    <form id="queForm" method="post" enctype="multipart/form-data">
                     <div class="filebox bs3-primary">
 		               	<label for="imgFile">사진찍기</label> <label onclick="removeImg();">사진지우기</label>
-				  		<input type="file" id="imgFile" name="temp" class="form-control" accept="image/*">
+				  		<input type="file" id="imgFile" name="file" class="form-control" accept="image/*">
 				    </div>
 				    <div id="imgTemp">
    					</div>
    					<div style="padding-top:0.2em; padding-bottom:0.4em;">
-                     <textarea id="que_content" name="que_content"></textarea>
+                     <textarea id="que_content" name="que_content" maxlength="5000"></textarea>
+                     <input type="hidden" name="questions" id="questions" value="${que.id}">
                     </div> 
                      <div class="filebox bs3-success">
-                     	<label class="">제출</label>
+                     	<label onclick="submitQueForm();">제출</label>
                      </div>
                      </form>
                     <div style="height: 15em"></div>
@@ -209,6 +210,12 @@
     
     <script>
     CKEDITOR.replace( 'que_content' );
+    
+    function submitQueForm(){
+    	$( "#queForm" ).attr("action", "queFormSub/");
+    	$( "#queForm" ).submit();
+    }
+    
     
     function dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
