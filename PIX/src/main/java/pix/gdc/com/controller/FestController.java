@@ -33,6 +33,7 @@ import pix.gdc.com.vo.FestUfo;
 import pix.gdc.com.vo.FestUfoNotice;
 import pix.gdc.com.vo.UfoGoRecord;
 import pix.gdc.com.vo.UfoGoVO;
+import pix.gdc.com.vo.UfoMinwon;
 import pix.gdc.com.vo.UfoStat;
 
 @Controller
@@ -162,7 +163,10 @@ public class FestController {
 		Integer currentEvent =  (Integer)session.getAttribute("currentEvent");
 		FestUfo ufo = dao.SelectUfoByNumber(currentEvent);
 		String para = dao.SelectUfoParaByNumber(currentEvent);
-
+		
+		List<UfoMinwon> minwon = dao.selectUfoMinwonByPara(para);
+		
+		model.addAttribute("minwon", minwon);
 		model.addAttribute("ufo", ufo);
 		return "fest/festQuestion3";
 	}
@@ -541,9 +545,9 @@ public class FestController {
 			,@RequestParam("info_info_pic_file") MultipartFile info_info_pic_file
 			,@RequestParam("info_hist_pic_file") MultipartFile info_hist_pic_file
 			,@RequestParam("q_coupon_img_file") MultipartFile q_coupon_img_file
-			,@RequestParam("info_program_pic_file") MultipartFile info_program_pic_file
 			,@RequestParam("info_location_pic_file") MultipartFile info_location_pic_file
 			,@RequestParam("info_contact_pic_file") MultipartFile info_contact_pic_file
+			,@RequestParam("info_program_pic_file") MultipartFile info_program_pic_file	
 			,@RequestParam("q1_img_file") MultipartFile q1_img_file
 			,@RequestParam("q2_img_file") MultipartFile q2_img_file
 			,@RequestParam("q3_img_file") MultipartFile q3_img_file
@@ -554,6 +558,7 @@ public class FestController {
 			,@RequestParam("q_graphic_file") MultipartFile q_graphic_file
 			,@RequestParam("qr_pic_file") MultipartFile qr_pic_file
 			){
+
 		
 		if(!logo_file.isEmpty()){
 			vo = updateFileFestUfo(logo_file, "logo_file", vo);
@@ -640,8 +645,10 @@ public class FestController {
                 	vo.setQ3_img(fileInfo[0]);
                 }else if(param.equals("q4_img_file")){
                 	vo.setQ4_img(fileInfo[0]);
+                	vo.setPin_booth(fileInfo[0]);
                 }else if(param.equals("q5_img_file")){
                 	vo.setQ5_img(fileInfo[0]);
+                	vo.setPin_comp(fileInfo[0]);
                 }else if(param.equals("q6_img_file")){
                 	vo.setQ6_img(fileInfo[0]);
                 }else if(param.equals("q7_img_file")){

@@ -41,7 +41,7 @@
 
 <section class="heading-section section section-on-bg" style="padding-top:7em">
 		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_hist_pic}"></div>
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_program_pic}"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
@@ -60,7 +60,7 @@
 			</c:otherwise>
 		</c:choose>		
 			<div class="actions">
-            <a  id="mainbtn"><button class="btn" style="background-color: #ed45a4;" onclick="surveyInit()">설문조사하기</button></a>
+            <a  id="mainbtn"><button class="btn" style="background-color: #ed45a4;" onclick="surveyInit()">${ufo.ufoLable.stories_survey}</button></a>
             </div><!--//actions-->
 		</div>
 		<!--//container-->
@@ -71,11 +71,11 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
+					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -277,7 +277,7 @@ $(document).ready(function() {
             success: function(result){
           	  console.log("처리되었습니다. : "+result);
           	  if(result == 1){
-          		  $("#mainbtn").append('<button class="btn" style="background-color: #00a27c" onclick="location.href=\'https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/ve/'+window.sessionStorage.getItem('uid')+'\'">결과보기</button>');
+          		  $("#mainbtn").append('<button class="btn" style="background-color: #00a27c" onclick="location.href=\'https://www.ufo79.com/PIX/ufo/${sessionScope.eventPara}/result/ve/'+window.sessionStorage.getItem('uid')+'\'">${ufo.ufoLable.stories_result}</button>');
           	  }
             },
             error: function(er){}

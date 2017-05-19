@@ -25,6 +25,15 @@ public class UfoLable {
 	private String stamp_takePic;
 	private String gen_back;
 	private String gen_submit;
+	private String stories;
+	private String stories_survey;
+	private String stories_result;
+	private String blog;
+	private String minwon;
+	private String minwon_minwon;
+	private String minwon_btn;
+	private String features_btn;
+	
 	
 	public int getId() {
 		return id;
@@ -147,7 +156,53 @@ public class UfoLable {
 	public void setStamp_takePicDesc(String stamp_takePicDesc) {
 		this.stamp_takePicDesc = stamp_takePicDesc;
 	}
-
-	
+	public String getStories() {
+		return stories;
+	}
+	public void setStories(String stories) {
+		this.stories = stories;
+	}
+	public String getStories_survey() {
+		return stories_survey;
+	}
+	public void setStories_survey(String stories_survey) {
+		this.stories_survey = stories_survey;
+	}
+	public String getStories_result() {
+		return stories_result;
+	}
+	public void setStories_result(String stories_result) {
+		this.stories_result = stories_result;
+	}
+	public String getBlog() {
+		return blog;
+	}
+	public void setBlog(String blog) {
+		this.blog = blog;
+	}
+	public String getMinwon() {
+		return minwon;
+	}
+	public void setMinwon(String minwon) {
+		this.minwon = minwon;
+	}
+	public String getMinwon_minwon() {
+		return minwon_minwon;
+	}
+	public void setMinwon_minwon(String minwon_minwon) {
+		this.minwon_minwon = minwon_minwon;
+	}
+	public String getMinwon_btn() {
+		return minwon_btn;
+	}
+	public void setMinwon_btn(String minwon_btn) {
+		this.minwon_btn = minwon_btn;
+	}
+	public String getFeatures_btn() {
+		return features_btn;
+	}
+	public void setFeatures_btn(String features_btn) {
+		this.features_btn = features_btn;
+	}
 	
 }

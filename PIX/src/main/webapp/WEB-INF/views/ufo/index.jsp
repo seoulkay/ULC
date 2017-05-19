@@ -71,10 +71,10 @@
 				<ul id="page-nav" class="nav page-nav list-inline" >
 					<li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
-				</ul>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
+					</ul>
 				<!--//page-nav-->
 			</div>
 		</div>
@@ -84,6 +84,7 @@
 <section id="page-nav-wrapper1" class="support-section section text-center" style="padding:1em;">
 		<div class="team-figure" >	
 		<!-- 공지 -->
+		<c:if test="${not empty ufo.ufo_notice1 && not empty ufo.ufo_notice2 && not empty ufo.ufo_notice3}">
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${ufo.ufoLable.index_title}</span></h3>
 		</div>		
@@ -96,12 +97,15 @@
 				</h4>
 				</marquee>
 		</div>
+		
 		<div class="row">
 			<div style="height:3px; background-color: #ECD0E2"></div>
 			<div style="height:1.5em"></div>
 		</div>
+		</c:if>
 		<!-- 공지끝 -->
 		<!-- 승리자 -->
+		<c:if test="${fn:contains(sessionScope.eventMenu, 'index_winner')}">
 		<div class="row" style="margin-left:0px; margin-right:0px; margin-bottom:15px; padding:0;">
 			<h3 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #16adde">${ufo.ufoLable.index_winner}</span></h3>
 		</div>
@@ -110,7 +114,7 @@
 				<c:when test="${not empty winner }">
 					<c:forEach items="${winner}" var="ele" varStatus="stat">
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.last_name } ${ele.first_name } <span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span> </span></h4>
+						<h4 class="feature-title" style="float: left; margin-top: 0px;"><span class="label label-default" style="background-color: #ed45a4">${stat.count}. ${ele.last_name } ${ele.first_name } <span id="winner${ele.idUfoWinnerRecord}">${ele.winner_like }</span></span></h4>
 						<img alt="" src="https://www.ufo79.com/image/${ele.ufo_image }" class="img-responsive" style="width: 100%" onclick="winnerLike(${ele.idUfoWinnerRecord})"><br>
 <!-- 						<button class="btn likeBtn" style="background-color: #ed45a4; color: white" >+1</button> -->
 					</div>
@@ -124,6 +128,7 @@
 				</c:otherwise>
 			</c:choose>
 		</div>		
+		</c:if>
 		<!-- 승리자끝 -->
 		<!-- 페북라이브&댓글 -->
 		<c:if test="${not empty ufo.fb_live }">

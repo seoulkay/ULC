@@ -142,10 +142,9 @@
 				<ul id="page-nav" class="nav page-nav list-inline">
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
-					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -156,6 +155,7 @@
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
 	</jsp:include><!--//header-->
+<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 <section id="page-nav-wrapper1" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em;">
 	<div class="team-figure">
 		<div id="map" style="height: 25em;"></div>
@@ -166,17 +166,21 @@
 		</div>			
 
 </section>
+<c:if test="${not empty ufo.ufo_go_title && not empty ufo.ufo_go_desc}">
 <section id="signup-section" class="signup-section section" style="padding:2em">
 		<div class="section-inner">
 			<div class="container text-center" style="width:100%;max-width: 750px;padding:0;">
 <!-- 				<div class="counter-container"></div> -->
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+			
 				<div class="form-wrapper">
 					<div class="form-box">
+					<c:if test="${not empty ufo.ufo_go_title}">
 						<div class="form-desc"><h3>${ufo.ufo_go_title }</h3></div>
+					</c:if>
 						<!--//social-buttons-->
 <!-- 						<div class="quotes"> -->
+							<c:if test="${not empty ufo.ufo_go_desc}">
 							<div class="row">
 								<div class="quote-item col-sm-12 text-center" style="margin-top:0em;padding-top:0em">
 									${ufo.ufo_go_desc}
@@ -184,6 +188,7 @@
 								</div>
 								<!--//quote-item2-->			
 							</div>
+							</c:if>
 							<!--//row-->
 <!-- 						</div> -->
 						<!--//quotes-->			
@@ -191,13 +196,11 @@
 					<!--//form-box-->
 				</div>
 				<!--//form-wrapper-->
-			</c:if>
 		</div>
 	</div>
 </section>
-		
+</c:if>
 <!-- 스템프  -->
-<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
 <button type="button" class="btn btn-info btn-lg" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#stampRally" style="display:none;" id="rallyTrigger">RALLYTRINGGER</button>
 <div class="modal" id="stampRally" role="dialog">
 	<div class="modal-dialog">

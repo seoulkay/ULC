@@ -66,7 +66,7 @@
 		                    <span style="color:#FD7A02; font-size: 60px; " >Login</span><br><br>
 		                    <span style="color:#FD7A02; font-size: 60px; " class="glyphicon glyphicon-user" aria-hidden="true"></span><br><br>
 							</div>
-							<input type="text" name="id" class="form-control" placeholder="E-mail"><br>
+							<input type="text" name="id" class="form-control" placeholder="ID"><br>
 							<input type="password" name="password" class="form-control"  placeholder="Password"><br>
 							<input type="checkbox" id="idSaveCheck"> 아이디 기억하기
 							<span style="float: right;"><a href="festPassFinder">비밀번호 찾기</a></span>

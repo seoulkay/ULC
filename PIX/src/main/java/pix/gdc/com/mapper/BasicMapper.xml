@@ -311,7 +311,9 @@
     `fest_ufo`.`photo_pix`,
     `fest_ufo`.`photo_comp`,
     `fest_ufo`.`pin_booth`,
-    `fest_ufo`.`pin_comp`
+    `fest_ufo`.`pin_comp`,
+    `fest_ufo`.`minwon_map`,
+    `fest_ufo`.`minwon_how_to`
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>
@@ -537,6 +539,16 @@
 			,ufo_notice3 = #{ufo_notice3}
 			,winner_msg = #{winner_msg}
 			,footer_msg = #{footer_msg}
+			,photo_pix = #{photo_pix}
+			,photo_comp = #{photo_comp}
+			<if test="pin_booth != null and pin_booth != ''">
+			,pin_booth = #{pin_booth}
+			</if>
+			<if test="pin_comp != null and pin_comp != ''">
+			,pin_comp = #{pin_comp}
+			</if>
+			,minwon_map = #{minwon_map}
+			,minwon_how_to = #{minwon_how_to}
 	WHERE
 		idfest_ufo = #{idfest_ufo}
 	</update>

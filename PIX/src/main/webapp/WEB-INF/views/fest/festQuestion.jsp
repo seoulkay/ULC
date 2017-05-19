@@ -21,7 +21,7 @@
 		<div><img id="barcode" style="width:350px"/></div>
 		</div> -->	
 			<table class="table table-bordered table-hover table-condensed">
-			<h3>Stamp Ralley  <button class="btn" style="background-color: #FD7A02; color: white" onclick="stampInsert()">Add new</button></h3>
+			<h3>Stamp Rally  <button class="btn" style="background-color: #FD7A02; color: white" onclick="stampInsert()">Add new</button></h3>
 				<tr class="table table_striped">					
 					<td class="hk">Stamp Id.</td>
 					<td class="hk">Stamp board Image</td>	

@@ -61,6 +61,8 @@ public class FestUfo {
 	private String photo_comp;
 	private String pin_booth;
 	private String pin_comp;
+	private String minwon_how_to;
+	private String minwon_map;
 	
 	//라벨
 	private UfoLable ufoLable;
@@ -420,5 +422,16 @@ public class FestUfo {
 	public void setPin_comp(String pin_comp) {
 		this.pin_comp = pin_comp;
 	}
-	
+	public String getMinwon_how_to() {
+		return minwon_how_to;
+	}
+	public void setMinwon_how_to(String minwon_how_to) {
+		this.minwon_how_to = minwon_how_to;
+	}
+	public String getMinwon_map() {
+		return minwon_map;
+	}
+	public void setMinwon_map(String minwon_map) {
+		this.minwon_map = minwon_map;
+	}
 }

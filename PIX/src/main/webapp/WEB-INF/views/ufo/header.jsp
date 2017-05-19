@@ -37,16 +37,16 @@
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li>
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}">
 					 <li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'blog')}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/blog">공지사항</a></li>
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/blog">${ufo.ufoLable.stamp_goGallery}</a></li>
 					</c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}">
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li>
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li>
 					</c:if>
 					<!--//dropdown-->
 				</ul>

@@ -128,7 +128,7 @@
 		</c:choose>			
 			<div class="actions">
                  <div class="actions">
-         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">민원 처리 시작하기</button></a>
+         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.minwon_btn}</button></a>
    				</div>
             </div><!--//actions-->
 		</div>
@@ -137,16 +137,15 @@
 	<!--//heading-section-->
 
 <div class="page-nav-space-holder">
-		<div class="page-nav-wrapper text-center">
+		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
-				<ul id="page-nav" class="nav page-nav list-inline">
+				<ul id="page-nav" class="nav page-nav list-inline" >
 					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li  style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
 					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
-					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
-				</ul>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li  class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
+					</ul>
 				<!--//page-nav-->
 			</div>
 		</div>
@@ -160,7 +159,7 @@
 	<div class="team-figure" >
 		<div id="map" style="height: 25em;"></div>
 		<div class="row">
-			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">민원 처리하기</button>
+			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">${ufo.ufoLable.minwon_minwon}</button>
 			<button class="btn btn-warning" onClick="redirectGallery('mw')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">${ufo.ufoLable.stamp_goGallery}</span></button> 
 		</div>					
 	</div>
@@ -170,22 +169,16 @@
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+			<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}">
 				<div class="form-wrapper">
 					<div class="form-box">
-						<div class="form-desc"><h3>민원 처리 절차</h3></div>
-						<!--//social-buttons-->
-						<div class="divider">
-						</div>
 						<div class="quotes">
 							<div class="row">
 								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
 									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
 										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										1 .민원처리 하기 누름<br>
-										2. 사진찍음 <br>
-										3. 아이콘 클릭 구체사항 보기 <br>
-										4. 페북 공유
+										${ufo.minwon_map }<br>
+										${ufo.minwon_how_to }
 									</div>
 									<!--//inner-->
 								</div>

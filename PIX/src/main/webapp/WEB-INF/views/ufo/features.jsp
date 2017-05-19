@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -63,7 +62,7 @@
 		</c:choose>		
 			<div class="actions">
                  <div class="actions">
-         			<a class="scrollto" href="#info-section"><button class="btn" style="background-color: #ed45a4;">축제정보 확인하기</button></a>
+         			<a class="scrollto" href="#info-section"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.features_btn}</button></a>
    				</div>
             </div><!--//actions-->
 		</div>
@@ -75,12 +74,11 @@
 		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
 			<div class="container">
 				<ul id="page-nav" class="nav page-nav list-inline">
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">공지</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">스탬프랠리</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">서베이</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">축제정보</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">민원</a></li></c:if>
-					<!-- <li><a class="scrollto" href="#survey-section">서베이 결과보기</a></li> -->
+					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
+					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
 				</ul>
 				<!--//page-nav-->
 			</div>
@@ -88,8 +86,8 @@
 		<!--//page-nav-wrapper-->
 	</div>
 	<!--//page-nav-space-holder-->
-	<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}">
-		<c:if test="${fn:contains(sessionScope.eventMenu, 'inf-inf')}">
+
+<c:if test="${not empty ufo.info_info_text}">
 <section id="info-section">
 	<!--//signup-section-->
 	<div class="feature-blocks container">
@@ -97,22 +95,17 @@
 			<div class="row">
 				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
 				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-<!-- 					<button class="btn" style="background-color: #ed45a4;cursor:pointer;" disabled="disabled"> -->
 					<h3 class="feature-title"><span class="label label-default" style="background-color: #ed45a4">${ufo.info_title }</span></h3>
-<!-- 					</button> -->
 					<div class="feature-desc">
 						<p>${ufo.info_info_text }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-<!-- 				<div class="feature-figure col-md-8 col-sm-6 col-xs-12"> -->
 				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-<!-- 					<div class="figure-holder" align="center"> -->
 					<c:if test="${ufo.info_info_pic ne null}">
 						<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_info_pic}" alt="">
 					</c:if>
-<!-- 					</div> -->
 					<!--//figure-holder-->
 				</div>
 			</div>
@@ -122,6 +115,7 @@
 		</div>
 </section>
 </c:if>
+<c:if test="${not empty ufo.info_program_text}">
 <section>		
 		<div class="feature-blocks container" >
 		<div id="feature-block-2" class="feature-block feature-block-2" >
@@ -141,36 +135,37 @@
 		</div>
 		</div>
 </section>
+</c:if>
+<c:if test="${not empty ufo.info_hist_text}">
 <section>
 	<div class="feature-blocks container" >		
 		<!--//feature-block-2-->
 		<div id="feature-block-3" class="feature-block feature-block-1">
 			<div class="row">
-				<div class="feature-content col-md-12 col-sm-12 col-xs-12">
-					<h3 class="feature-title"><span class="label label-default" style="background-color:#EFAE40">${ufo.history_title }</span></h3>
+				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
+				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+					<h3 class="feature-title"><span class="label label-default" style="background-color: #00a27c">${ufo.history_title }</span></h3>
 					<div class="feature-desc">
 						<p>${ufo.info_hist_text }</p>
 					</div>
 					<!--//feature-desc-->
 				</div>
 				<!--//feature-content-->
-<!-- 				<div class="feature-figure col-md-6 col-sm-6 col-xs-12"> -->
-<!-- 					<div class="figure-holder" align="center"> -->
-<%-- 						<c:if test="${ufo.info_hist_pic ne null}"> --%>
-<!-- 						<img class="img-responsive" -->
-<%-- 							src="https://www.ufo79.com/image/${ufo.info_hist_pic}" --%>
-<!-- 							alt=""> -->
-<%-- 						</c:if> --%>
-<!-- 					</div> -->
+				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+					<c:if test="${ufo.info_hist_pic ne null}">
+						<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_hist_pic}" alt="">
+					</c:if>
 					<!--//figure-holder-->
-<!-- 				</div> -->
+				</div>
 			</div>
 			<!--//row-->
 		</div>
 		<!--//feature-block-3-->
 		</div>
 </section>	
+</c:if>
 <!-- 	<div class="stories container"> -->
+<c:if test="${not empty ufo.info_location_text}">
 <section style="background-color: #A9D7E6">		
 <div class="feature-blocks container" >		
 		<!--//feature-block-2-->
@@ -203,6 +198,7 @@
 		</div>
 </section>
 </c:if>
+
 		<%-- <div id="feature-block-4" class="feature-block feature-block-4">
 			<div class="row">
 				<div

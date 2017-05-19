@@ -19,24 +19,24 @@
                      <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modules<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
-						    <li><a href="festQuestion?idx=${sessionScope.currentEvent }">Stamp Ralley</a></li>
+						    <li><a href="festQuestion?idx=${sessionScope.currentEvent }">Stamp Rally</a></li>
 						    <li><a href="festQuestion2?idx=${sessionScope.currentEvent }">Survey</a></li>
-						    <li><a href="festQuestion3?idx=${sessionScope.currentEvent }">민원처리</a></li>
+						    <li><a href="festQuestion3?idx=${sessionScope.currentEvent }">Report</a></li>
 					     </ul>
 				     </li>
                      <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">History<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
-						    <li><a href="festStat?idx=${sessionScope.currentEvent }&startNum=0&pageRowNum=10">스탬큐알랠리</a></li>
-						    <li><a href="festStat2?idx=${sessionScope.currentEvent }">승리자들</a></li>
-						    <li><a href="festStat3?idx=${sessionScope.currentEvent }">SNS포스트</a></li>
-						    <li><a href="festStat4?idx=${sessionScope.currentEvent }">통계</a></li>
+						    <li><a href="festStat?idx=${sessionScope.currentEvent }&startNum=0&pageRowNum=10">Stamp Rally</a></li>
+						    <li><a href="festStat2?idx=${sessionScope.currentEvent }">Winners</a></li>
+						    <li><a href="festStat3?idx=${sessionScope.currentEvent }">SNS posts</a></li>
+						    <li><a href="festStat4?idx=${sessionScope.currentEvent }">Statistics</a></li>
 					     </ul>
 				     </li>
-                 	 <li><a href="festNotice?idx=${sessionScope.currentEvent }">공지사항</a></li>                          
-                     
+<!-- 				     공지사항 모듈 일단 코멘트 -->
+<%--                  	 <li><a href="festNotice?idx=${sessionScope.currentEvent }">공지사항</a></li>                           --%>
 					  <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">행사선택 <span class="caret"></span></a>
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
 				          <ul class="dropdown-menu">
 				          	<c:forEach var="var" items="${sessionScope.eventNames}" varStatus="status">
 						    <li><a href="festChange?idx=${var.key}"> ${var.value}</a></li>
