@@ -23,8 +23,7 @@
                     	<tr><td class="hk2" rowspan="4">Header</td><td class="hk">로고 <c:if test="${ufo.logo ne null}"><img src="https://www.ufo79.com/image/${ufo.logo}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="logo_file"></td></tr>
                     	<tr><td class="hk">메인이미지 <c:if test="${ufo.main_image ne null}"><img src="https://www.ufo79.com/image/${ufo.main_image}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="main_image_file"></td></tr>
                    		<tr><td class="hk">제목</td><td><input class="form-control" type="text" name="title" value="${ufo.title }" maxlength="50"></td></tr>
-                   		<tr><td class="hk">기간</td><td><input type="text" class="form-control" name="event_date" value="${ufo.event_date }" maxlength="125"></td></tr>
-                   		<tr><td class="hk2">Menu</td><td class="hk">메뉴 (index, modal, info, minwon)</td><td><input type="text" class="form-control" name="menu" value="${ufo.menu }" maxlength="100"></td></tr>
+                   		<tr><td class="hk">기간</td><td><input type="text" class="form-control" name="event_date" value="${ufo.event_date }" maxlength="125"></td></tr>                   		
                    		<tr><td class="hk2">Footer</td><td class="hk">사업자 정보</td><td><textarea form="ufoForm" class="form-control" name="footer_msg"  maxlength="150">${ufo.footer_msg }</textarea></td></tr>
                    	</table><hr>
                     <table class="table table_striped">
@@ -65,13 +64,14 @@
                    		<tr><td class="hk">축제위치 사진 <c:if test="${ufo.info_location_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_location_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_location_pic_file"></td></tr>
                    		<tr><td class="hk">축제위치 내용</td><td><textarea form="ufoForm" class="form-control" name="info_location_text" maxlength="1000">${ufo.info_location_text }</textarea></td></tr>
                    		
-                   		<tr><td class="hk2" rowspan="2">Block 5</td><td class="hk">축제연락처 사진 <c:if test="${ufo.info_contact_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_contact_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_contact_pic_file"></td></tr>
-                   		<tr><td class="hk">축제연락처 내용</td><td><textarea form="ufoForm" class="form-control" name="info_contact_text" maxlength="1000">${ufo.info_contact_text }</textarea></td></tr>
+                   		<tr style="display: none;"><td class="hk2" rowspan="2">Block 5</td><td class="hk">축제연락처 사진 <c:if test="${ufo.info_contact_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_contact_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_contact_pic_file"></td></tr>
+                   		<tr style="display: none;"><td class="hk">축제연락처 내용</td><td><textarea form="ufoForm" class="form-control" name="info_contact_text" maxlength="1000">${ufo.info_contact_text }</textarea></td></tr>
                    	</table><hr>  	                 	
                     <table class="table table_striped">
                     	<h3>Parameters</h3>
                     	<tr><td class="hk2" rowspan="2">Value</td><td class="hk">이벤트 번호</td><td><input class="form-control" type="text" name="idfest_ufo" value="${ufo.idfest_ufo }" readonly></td></tr>
                     	<tr><td class="hk">이벤트 코드</td><td><input type="text" class="form-control" name="para" value="${ufo.para }" maxlength="10" readonly></td></tr>
+                    	<tr><td class="hk2">Menu</td><td class="hk">메뉴 (index, modal, info, minwon)</td><td><input type="text" class="form-control" name="menu" value="${ufo.menu }" maxlength="100"></td></tr>
                     	<!--Grace: 파일 업로드  - display: none -->
                     	<tr style="display: none;"><td class="hk">q_coupon_img <c:if test="${ufo.logo ne null}"><img src="https://www.ufo79.com/image/${ufo.logo}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q_coupon_img_file"></td></tr>
                     	<tr style="display: none;"><td class="hk">q2_img <c:if test="${ufo.q1_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>
