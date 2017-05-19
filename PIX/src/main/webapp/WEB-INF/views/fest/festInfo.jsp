@@ -60,9 +60,9 @@
                    		<tr><td class="hk">사진3 <c:if test="${ufo.info_hist_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_hist_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_hist_pic_file"></td></tr>
                    		<tr><td class="hk">내용3</td><td><textarea form="ufoForm" class="form-control" name="info_hist_text" maxlength="1500">${ufo.info_hist_text }</textarea></td></tr>
                    	
-                   		<tr><td class="hk2" rowspan="3">Block 4</td><td class="hk">축제위치 제목</td><td><input type="text" class="form-control" name="location_title" value="${ufo.location_title }" maxlength="45"></td></tr>
-                   		<tr><td class="hk">축제위치 사진 <c:if test="${ufo.info_location_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_location_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_location_pic_file"></td></tr>
-                   		<tr><td class="hk">축제위치 내용</td><td><textarea form="ufoForm" class="form-control" name="info_location_text" maxlength="1000">${ufo.info_location_text }</textarea></td></tr>
+                   		<tr><td class="hk2" rowspan="3">Block 4</td><td class="hk">제목4</td><td><input type="text" class="form-control" name="location_title" value="${ufo.location_title }" maxlength="45"></td></tr>
+                   		<tr><td class="hk">사진4<c:if test="${ufo.info_location_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_location_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_location_pic_file"></td></tr>
+                   		<tr><td class="hk">내용4</td><td><textarea form="ufoForm" class="form-control" name="info_location_text" maxlength="1000">${ufo.info_location_text }</textarea></td></tr>
                    		
                    		<tr style="display: none;"><td class="hk2" rowspan="2">Block 5</td><td class="hk">축제연락처 사진 <c:if test="${ufo.info_contact_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_contact_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_contact_pic_file"></td></tr>
                    		<tr style="display: none;"><td class="hk">축제연락처 내용</td><td><textarea form="ufoForm" class="form-control" name="info_contact_text" maxlength="1000">${ufo.info_contact_text }</textarea></td></tr>

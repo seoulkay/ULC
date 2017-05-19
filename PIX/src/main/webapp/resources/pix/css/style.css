@@ -208,23 +208,12 @@ h2.slide-btm-text{
 }
 /***************buttons*****************************/
 .btn {
-    font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    font-size: 13px;
-    text-shadow: none !important;
-    -webkit-text-shadow:none !important;
-    -webkit-transition: all 200ms ease-in;
-    -o-transition: all 200ms ease-in;
-    -moz-transition: all 200ms ease-in;
-    transition: all 200ms ease-in;
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    display: inline-block;
-    letter-spacing: 1px;
+    -webkit-transition: all 0.4s ease-in-out;
+  	-moz-transition: all 0.4s ease-in-out;
+  	-ms-transition: all 0.4s ease-in-out;
+  	-o-transition: all 0.4s ease-in-out;
+  	font-weight: 700;
+  	padding: 6px 20px;
 }
 .btn:hover,.btn:focus{
     outline: none;
