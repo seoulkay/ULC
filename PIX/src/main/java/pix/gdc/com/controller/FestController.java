@@ -233,6 +233,7 @@ public class FestController {
 		//session.setAttribute("currentEvent", idx);
 		int idx = (Integer) session.getAttribute("currentEvent");
 		FestUfo ufo = dao.SelectUfoByNumber(idx);
+		session.setAttribute("eventMenu", ufo.getMenu());
 		
 		model.addAttribute("ufo", ufo);
 		return "fest/festInfo";

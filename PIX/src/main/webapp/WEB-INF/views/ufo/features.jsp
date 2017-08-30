@@ -40,165 +40,88 @@
 	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
-	</jsp:include><!--//header-->
-	<!--//header-->
-
-<section class="heading-section section section-on-bg" style="padding-top:7em">
-		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.q3_img}"></div>
-			<div class="hero-mask-gradient"></div>
-		</div>
-		<!--//hero-wrapper-->
-		<div class="container heading-content">
-			<c:choose>
-			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
-			</c:when>
-			<c:otherwise>
-			<div style="height:3em"></div>
-					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
-					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-			</c:otherwise>
-		</c:choose>		
-			<div class="actions">
-                 <div class="actions">
-         			<a class="scrollto" href="#info-section"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.features_btn}</button></a>
-   				</div>
-            </div><!--//actions-->
-		</div>
-		<!--//container-->
-	</section>
-	<!--//heading-section-->
-
-<div class="page-nav-space-holder">
-		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
-			<div class="container">
-				<ul id="page-nav" class="nav page-nav list-inline">
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
-				</ul>
-				<!--//page-nav-->
-			</div>
-		</div>
-		<!--//page-nav-wrapper-->
-	</div>
-	<!--//page-nav-space-holder-->
-
-<c:if test="${not empty ufo.info_info_text}">
-<section id="info-section">
-	<!--//signup-section-->
-	<div class="feature-blocks container">
-		<div id="feature-block-1" class="feature-block feature-block-1">
-			<div class="row">
-				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title"><span class="label label-default" style="background-color: #ed45a4">${ufo.info_title }</span></h3>
-					<div class="feature-desc">
-						<p>${ufo.info_info_text }</p>
+	</jsp:include>
+	
+	<div style="height: 6em;"></div>
+	
+	<c:if test="${fn:contains(sessionScope.eventMenu, 'info')}">
+	<!-- Section 01 -->
+	<section id="info-section">
+		<div class="feature-blocks container">
+			<div id="feature-block-1" class="feature-block feature-block-1">
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+						<h3 class="feature-title"><span class="label label-default" style="background-color: #0081C8">${ufo.info_title }</span></h3>
 					</div>
-					<!--//feature-desc-->
 				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<c:if test="${ufo.info_info_pic ne null}">
-						<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_info_pic}" alt="">
-					</c:if>
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-1-->
-		</div>
-</section>
-</c:if>
-<c:if test="${not empty ufo.info_program_text}">
-<section>		
-		<div class="feature-blocks container" >
-		<div id="feature-block-2" class="feature-block feature-block-2" >
-			<div class="row">
-				<div class="feature-content col-md-12 col-sm-12 col-xs-12" style="vertical-align: center">
-<!-- 					<h3> -->
-					<h3 class="feature-title"><span class="label label-default " style="background-color: #78BF69">${ufo.program_title }</span></h3>
-<!-- 					</h3> -->
-					<div class="feature-desc">
-						<p>${ufo.info_program_text }</p>
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+						<div class="feature-desc">
+							<p>${ufo.info_info_text }</p>
+						</div>
 					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-			</div>
-			<!--//row-->
-		</div>
-		</div>
-</section>
-</c:if>
-<c:if test="${not empty ufo.info_hist_text}">
-<section>
-	<div class="feature-blocks container" >		
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-1">
-			<div class="row">
-				<!-- <div class="feature-content col-md-4 col-sm-6 col-xs-12"> -->
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<h3 class="feature-title"><span class="label label-default" style="background-color: #00a27c">${ufo.history_title }</span></h3>
-					<div class="feature-desc">
-						<p>${ufo.info_hist_text }</p>
-					</div>
-					<!--//feature-desc-->
-				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<c:if test="${ufo.info_hist_pic ne null}">
-						<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_hist_pic}" alt="">
-					</c:if>
-					<!--//figure-holder-->
-				</div>
-			</div>
-			<!--//row-->
-		</div>
-		<!--//feature-block-3-->
-		</div>
-</section>	
-</c:if>
-<!-- 	<div class="stories container"> -->
-<c:if test="${not empty ufo.info_location_text}">
-<section style="background-color: #A9D7E6">		
-<div class="feature-blocks container" >		
-		<!--//feature-block-2-->
-		<div id="feature-block-3" class="feature-block feature-block-1">
-			<div class="row">
-			<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-				<h3 class="feature-title"><span class="label label-default" style="background-color: #16adde;">${ufo.location_title }</span></h3>
-			</div>
-			</div>		
-			<div class="row">
-				<div class="feature-content col-md-6 col-sm-6 col-xs-12">
-					<div class="figure-holder" align="center" style="box-shadow: -10px 10px 10px 1px #666666;">
-						<c:if test="${ufo.info_location_pic ne null}">
-						<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_location_pic}" alt="">
+					<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+						<c:if test="${ufo.info_info_pic ne null}">
+							<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_info_pic}" alt="">
 						</c:if>
 					</div>
-					<!--//feature-desc-->
 				</div>
-				<!--//feature-content-->
-				<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
-					<!--//figure-holder-->
-					<div class="feature-desc">
-						<div class="alert alert-success" role="alert" style="background-color: #16adde; color: WHITE; border-color: #16adde;box-shadow: -10px 10px 10px 1px #666666;">${ufo.info_location_text }</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section 02 -->
+	<section>
+	<div class="feature-blocks container" >
+			<div id="feature-block-3" class="feature-block feature-block-1">
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+						<h3 class="feature-title"><span class="label label-default" style="background-color: #FCB131">${ufo.history_title }</span></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">						
+						<div class="feature-desc">
+							<p>${ufo.info_hist_text }</p>
+						</div>
+					</div>
+					<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+						<div class="figure-holder" align="center">
+							<c:if test="${ufo.info_hist_pic ne null}">
+							<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_hist_pic}" alt="">
+							</c:if>
+						</div>
 					</div>
 				</div>
 			</div>
-			<!--//row-->
 		</div>
-		<!--//feature-block-3-->
+	</section>	
+	<!-- Section 03 -->
+	<section style="background-color: #A9D7E6">		
+		<div class="feature-blocks container" >		
+			<div id="feature-block-3" class="feature-block feature-block-1">
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+						<h3 class="feature-title"><span class="label label-default" style="background-color: #00A651;">${ufo.location_title }</span></h3>
+					</div>
+				</div>		
+				<div class="row">
+					<div class="feature-content col-md-6 col-sm-6 col-xs-12">
+						<div class="figure-holder" align="center" style="box-shadow: -10px 10px 10px 1px #666666;">
+							<c:if test="${ufo.info_location_pic ne null}">
+							<img class="img-responsive" src="https://www.ufo79.com/image/${ufo.info_location_pic}" alt="">
+							</c:if>
+						</div>
+					</div>
+					<div class="feature-figure col-md-6 col-sm-6 col-xs-12">
+						<div class="feature-desc">
+							<div class="alert alert-success" role="alert" style="background-color: #16adde; color: WHITE; border-color: #16adde;box-shadow: -10px 10px 10px 1px #666666;">${ufo.info_location_text }</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-</section>
+	</section>
 </c:if>
-
 		<%-- <div id="feature-block-4" class="feature-block feature-block-4">
 			<div class="row">
 				<div
