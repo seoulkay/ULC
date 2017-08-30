@@ -36,12 +36,17 @@
                     	<tr><td class="hk">한줄 공지3</td><td><textarea form="ufoForm" class="form-control" name="ufo_notice3"  maxlength="150">${ufo.ufo_notice3} </textarea></td></tr>  
                     	<tr><td class="hk2" rowspan="3">Winners</td><td class="hk">당첨자 메세지</td><td><textarea form="ufoForm" class="form-control" name="winner_msg"  maxlength="400">${ufo.winner_msg} </textarea></td></tr>                    	
                     	<!-- 당첨자수 & 당첨자 발표시간 -->
-                    	<tr><td class="hk">당첨자수</td><td></td></tr>
-                    	<tr><td class="hk">당첨자 발표시간</td><td></td></tr>                    	
+                    	<tr><td class="hk">당첨자수</td><td><input form="ufoForm" class="form-control" name=""  maxlength="150" value="${ufo.winnerNumber}" readonly></td></tr>
+	                   	<tr><td class="hk">당첨자 발표시간</td><td><input form="ufoForm" class="form-control" name=""  maxlength="150" id="crontime" readonly></td></tr>                	
                     	<tr><td class="hk2" rowspan="2">L!VE</td><td class="hk">페이스북 라이브 피드 주소</td><td><input class="form-control" type="text" name="fb_live" value="${ufo.fb_live }"></td></tr>                   		
                    		<tr><td class="hk">페이스북 문의댓글창</td><td><textarea form="ufoForm" class="form-control" name="event_long_description"  maxlength="2500">${ufo.event_long_description }</textarea></td></tr>                 		                   		
                    	</table>
-                  
+                  	<script>
+                  	 	var crontime = "${ufo.crontime}";
+                    	var res = crontime.split(" ");
+                  	 	crontime = res[2] + " 시";
+                  	 	document.getElementById('crontime').value = crontime;
+ 	                 </script>
                    	<table class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'modal')}">style="display:none"</c:if>>
                    		<tr><td colspan="2" style="border:none;"><h3>Stamp Rally</h3></td></tr>
                    		<tr><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q2_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>

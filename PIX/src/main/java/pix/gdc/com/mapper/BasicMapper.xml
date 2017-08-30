@@ -828,6 +828,8 @@
 		go_para = #{param}
 	AND
 		ufo_go_type in ('go', 'booth')
+	AND 
+		is_use = 1
 	</select>
 	<select id="selectUfoQrByPara" parameterType="String" resultType="UfoGoVO">
 	SELECT
@@ -838,6 +840,8 @@
 		go_para = #{param}
 	AND
 		ufo_go_type = 'qr'
+	AND 
+		is_use = 1
 	</select>
 	<select id="selectUfoGoRecordByPara" parameterType="String" resultType="UfoGoRecord">
 	SELECT 
@@ -916,7 +920,8 @@
 		ufo_go_type,
 		ufo_gid,
 		go_desc,
-		go_image
+		go_image,
+		is_use
 	)
 	VALUES
 	(
@@ -928,7 +933,8 @@
 		#{ufo_go_type },
 		#{ufo_gid },
 		#{go_desc },
-		#{go_image }
+		#{go_image },
+		1
 	);
 	
 	</insert>
@@ -950,6 +956,7 @@
 	<if test="go_icon_img != null and go_icon_img != ''">
 	,go_icon_img = #{go_icon_img }
 	</if>
+	,is_use = #{is_use }
 	WHERE id_ufo_go = #{id_ufo_go};
 	</update>
 	
@@ -1065,10 +1072,10 @@
 	</select>
 	<select id="selectPartDoneStamp" parameterType="UfoGoRecord" resultType="Integer">
 	SELECT case count(0) when (SELECT count(0) 'user' FROM pix.ufo_go 
-	where go_para = #{para} and ufo_go_type = 'go' and ufo_gid in 
+	where go_para = #{para} and ufo_go_type = 'go' and is_use = 1 and ufo_gid in 
 	(SELECT ufo_gid FROM pix.ufo_go_record where user_uid = #{user_uid}))
  	then '1' else '0' end FROM pix.ufo_go 
- 	where go_para = #{para} and ufo_go_type = 'go'
+ 	where go_para = #{para} and ufo_go_type = 'go' and is_use = 1
 	</select>
 	<insert id="insertBarcodeLog" parameterType="UfoBarcodeLog">
 	INSERT into ufo_barcode_log 

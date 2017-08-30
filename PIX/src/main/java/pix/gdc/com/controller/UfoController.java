@@ -29,6 +29,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import pix.gdc.com.dao.FestDAO;
 import pix.gdc.com.service.RestService;
+import pix.gdc.com.util.InitValue;
 import pix.gdc.com.vo.FestAnswerVO;
 import pix.gdc.com.vo.FestNewsLetterEmail;
 import pix.gdc.com.vo.FestOption;
@@ -237,7 +238,7 @@ public class UfoController {
 		
 		
 	//승리자를 찾기
-	@Scheduled(cron="0 0 12,14,17 * * *", zone="Asia/Seoul")
+	@Scheduled(cron=InitValue.crontime, zone="Asia/Seoul")
 	public void winnerPicker(){
 		List<String> paras = dao.selectAllPara();
 		for(String ele : paras){
@@ -250,14 +251,18 @@ public class UfoController {
 					if(!finalTempRecord.containsKey(rec.getUser_uid())){
 						finalTempRecord.put(rec.getUser_uid(), rec);
 						//완성한 사람이 아니면 뺀다.
-						if(dao.selectPartDoneStamp(rec) != 1){
-							System.out.println("insert");
-							finalTempRecord.remove(rec.getUser_uid());
-						}
+//						if(dao.selectPartDoneStamp(rec) != 1){
+//							System.out.println("insert");
+//							finalTempRecord.remove(rec.getUser_uid());
+//						}
+					}
+					//4명이면 완성.
+					if(finalTempRecord.size() == InitValue.winnerNumber){
+						break;
 					}
 				}
 				for(Map.Entry<String, UfoGoRecord> elem : finalTempRecord.entrySet()){
-					System.out.println(elem.getValue().getUser_uid());
+					System.out.println("Winner is "+elem.getValue().getUser_uid());
 					dao.insertWinnerRecord(elem.getValue());
 				}
 			}

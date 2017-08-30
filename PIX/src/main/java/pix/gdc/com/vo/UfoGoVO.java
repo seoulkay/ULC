@@ -14,6 +14,7 @@ public class UfoGoVO {
 	private String go_desc;
 	private String go_image;
 	private String go_icon_img;
+	private int is_use;
 	
 	private boolean submit = false;
 	
@@ -88,6 +89,12 @@ public class UfoGoVO {
 	}
 	public void setGo_icon_img(String go_icon_img) {
 		this.go_icon_img = go_icon_img;
+	}
+	public int getIs_use() {
+		return is_use;
+	}
+	public void setIs_use(int is_use) {
+		this.is_use = is_use;
 	}
 	
 	

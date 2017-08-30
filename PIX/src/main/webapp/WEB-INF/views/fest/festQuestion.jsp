@@ -70,9 +70,11 @@
 			  			<input class="form-control" type="hidden" id="go_para" name="go_para" maxlength="100" value="${ufo.para }"/>
 			  			<input class="form-control" type="hidden" id="id_ufo_go" name="id_ufo_go" value="1"/>
 			  			<input class="form-control" type="hidden" id="idx" name="idx" value="${param.idx}"/>
+			  			<input class="form-control" type="hidden" id="is_use" name="is_use" value="1"/>
 			  			</form>
 			  		</div>
 			  		<div class="modal-footer">
+			  		 <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="stampDelete();">삭제</button>
 				    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="stampSubmit();">제출</button>
 				  	</div>
 				</div>
@@ -99,6 +101,12 @@
 		function stampInsert(){
 			stampNew = true;
 			$("#stampFormModal").modal("show");
+		}
+		
+		function stampDelete(){
+			$("#is_use").val('0');
+			$("#stampForm").attr("action", "stampUpdate/");
+			$("#stampForm").submit();
 		}
 		
 		function stampSubmit(){
