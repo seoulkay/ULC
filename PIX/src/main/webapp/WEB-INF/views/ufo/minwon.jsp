@@ -108,93 +108,61 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#page-nav" class="blog-page">
-<section class="heading-section section section-on-bg" style="padding-top:7em">
-		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.q2_img})"></div>
-			<div class="hero-mask-gradient"></div>
-		</div>
-		<!--//hero-wrapper-->
-		<div class="container heading-content">
-		<c:choose>
-			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
-			</c:when>
-			<c:otherwise>
-			<div style="height:3em"></div>
-					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
-					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-			</c:otherwise>
-		</c:choose>			
-			<div class="actions">
-                 <div class="actions">
-         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #ed45a4;">${ufo.ufoLable.minwon_btn}</button></a>
-   				</div>
-            </div><!--//actions-->
-		</div>
-		<!--//container-->
-	</section>
-	<!--//heading-section-->
-
-<div class="page-nav-space-holder">
-		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
-			<div class="container">
-				<ul id="page-nav" class="nav page-nav list-inline" >
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li  class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
-					</ul>
-				<!--//page-nav-->
-			</div>
-		</div>
-		<!--//page-nav-wrapper-->
-	</div>
-	<!--//page-nav-space-holder-->
+<body class="blog-page" data-spy="scroll" data-target="#page-nav">
+	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
-	</jsp:include><!--//header-->
-<section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
-	<div class="team-figure" >
-		<div id="map" style="height: 25em;"></div>
-		<div class="row">
-			<button class="btn" onClick="getUfo('go')" style="background-color: #ed45a4; color: white">${ufo.ufoLable.minwon_minwon}</button>
-			<button class="btn btn-warning" onClick="redirectGallery('mw')" style="margin:1em; background-color: #00a27c; border-color: #00a27c;"><span class="btn-text">${ufo.ufoLable.stamp_goGallery}</span></button> 
-		</div>					
-	</div>
-</section>
-<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: em">
+	</jsp:include>
+	
+	<!-- 상단 이미지 & 버튼 -->
+	<section class="heading-section section section-on-bg" style="padding-top:7em">
+		<div class="hero-wrapper">
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.main_image})"></div>
+			<div class="hero-mask-gradient"></div>
+		</div>
+		<div class="container heading-content">
+			<div style="height:1em"></div>
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+			<div style="height:1em"></div>			
+			<div class="actions">
+                 <div class="actions">
+         			<a class="scrollto" href="#page-nav-wrapper"><button class="btn" style="background-color: #EE334E;">Go!</button></a>
+   				</div>
+            </div>
+		</div>
+	</section>	
+	
+	<!-- 스탬프 섹션 -->
+	<section id="page-nav-wrapper" class="support-section section text-center" style="padding-top:2em; padding-bottom:2em; padding-left:15px; padding-right:15px;">
+		<div class="team-figure" >
+			<!-- 스탬프 지도 -->
+			<div id="map" style="height: 25em;"></div>
+			<!-- 스탬프 찍기 & 갤러리 보기 -->
+			<div class="row" style="color:#ffffff;">
+				<button class="btn" onClick="getUfo('go')" style="margin-top:1em; margin-right: 1em; background-color: #EE334E;"><img src="https://www.ufo79.com/image/icon_stamp.png" style="max-height: 1.3em;">&nbsp;&nbsp;${ufo.ufoLable.minwon_minwon}</button>
+				<button class="btn" onClick="redirectGallery('mw')" style="margin-top:1em; margin-left: 1em; background-color: #0081C8;"><img src="https://www.ufo79.com/image/icon_gallery.png" style="max-height: 1.3em;">&nbsp;&nbsp;${ufo.ufoLable.stamp_goGallery}</span></button> 
+			</div>					
+		</div>
+	</section>
+	
+	<!-- 참여 방법 -->
+	<section id="signup-section" class="signup-section section" style="padding-top: 1em;padding-bottom: em">
 		<div class="section-inner" style="padding-top: 2em">
 			<div class="container text-center">
 				<div class="counter-container"></div>
 				<!--//counter-container-->
-			<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}">
-				<div class="form-wrapper">
-					<div class="form-box">
-						<div class="quotes">
-							<div class="row">
-								<div class="quote-item col-sm-12 text-center" style="padding-top:30px">
-									<div class="inner" style="padding-top:45px; padding-left:15px; padding-right:15px; padding-bottom: 20px;">			
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										${ufo.minwon_map }<br>
-										${ufo.minwon_how_to }
-									</div>
-									<!--//inner-->
-								</div>
-								<!--//quote-item2-->			
-							</div>
-							<!--//row-->
+				<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}">
+					<div class="form-wrapper">
+						<div class="form-box">
+							<div class="form-desc"><p style="color: #EE334E; font-family: football; font-size: 1.8em;">${ufo.minwon_map }</p></div>
+							<div class="form-desc2" style="text-align: left; padding-left: 1em;"><p style="font-family: football; font-size: 1.25em;">${ufo.minwon_how_to }</p></div>		
 						</div>
-						<!--//quotes-->			
 					</div>
-					<!--//form-box-->
-				</div>
-				<!--//form-wrapper-->
-			</c:if>
+				</c:if>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 		
 <!-- 스템프  -->
 <c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}">

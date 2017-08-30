@@ -13,7 +13,7 @@
                             </p>
                         </div><!--footer-col-->
 
-                        <div class="footer-col">
+                        <!-- <div class="footer-col">
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -21,7 +21,7 @@
                                 <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                                 <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                             </ul>
-                        </div><!--footer-col-->
+                        </div> --><!--footer-col-->
                     </div>
 
                     <div class="col-sm-4 margin-btm-30">
@@ -39,17 +39,17 @@
                                 바이럴 마케팅 솔루션
                             </h3>
                             <p>
-                            	이벤트 내용을 자동으로 SNS에 업데이트 해주는 바이럴마케팅 지원
+                            	이벤트 내용을 자동으로 SNS에 업데이트 해주는 바이럴마케팅 지원합니다.
                             </p>
-                            <form role="form" class="subscribe-form">
+                            <!-- <form role="form" class="subscribe-form">
                                 <div class="input-group">
                                     <input type="email" class="form-control" placeholder="Enter email to subscribe">
                                     <span class="input-group-btn">
                                         <a class="btn  btn-theme btn-lg" href="#">Ok</a>
-                                        <!--<button class="btn  btn-theme btn-lg">Ok</button>-->
+                                        <button class="btn  btn-theme btn-lg">Ok</button>
                                     </span>
                                 </div>
-                            </form>
+                            </form> -->
                         </div><!--footer-col-->
                     </div>
                 </div>

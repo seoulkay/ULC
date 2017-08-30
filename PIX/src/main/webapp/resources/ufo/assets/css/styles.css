@@ -1144,7 +1144,7 @@ body.sticky-page-nav .overview-section {
   margin-bottom: 30px;
 }
 .signup-section {
-  background-color: #159bc0;
+  background-color: #0081C8;
 }
 .signup-section .section-inner {
   background: url('../images/map.svg') no-repeat left top;
@@ -3416,3 +3416,29 @@ html, body {
 #map {
         height: 30em;
       }
+      
+
+.hk{
+	width: 25%;
+	background-color:#4FCDB9; 
+	color: #ffffff;
+	vertical-align: middle !important; 
+	font-weight: bold;
+}
+.hk2{
+	width: 10%; 
+	color: #999;
+	font-weight: bold;
+}
+.hk3{
+	background-color:#4FCDB9;
+	font-size: 0.9em; 
+	color: #ffffff;
+	vertical-align: middle;
+	text-align: center; 
+	font-weight: bold;
+}
+.hk4{
+	width: 10%; 
+	color: #999;
+}

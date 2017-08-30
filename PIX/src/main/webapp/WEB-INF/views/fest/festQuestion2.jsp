@@ -34,17 +34,23 @@ JsBarcode("#barcode", "go/1214903321890044/2222");
 //$("#barcode").JsBarcode("https://www.facebook.com/${vo.sns_return }");
 </script>
 	
-	<div style="height:2em"></div>
 	<div class="row">
-	<h3>서베이</h3>
+	<h3>설문조사</h3>
 		<table class="table table-bordered table-hover table-condensed">
-			<tr class="success">
-				<td>orderq</td><td>question</td><td>ques_time</td><td>ques_img</td>
+			<tr class="table table_striped">
+				<td class="hk3">번호</td>
+				<td class="hk3">질문</td>
 			</tr>
 				<c:forEach items="${surveyList}" var="ele">
-				<tr class="info"><td>${ele.orderq}</td><td>${ele.question}</td><td>${ele.ques_time}</td><td><c:if test="${ele.ques_img ne null}"><img src="https://www.ufo79.com/image/${ele.ques_img}" class="img-responsive" alt="" style="width:100px"></c:if></td></tr>
+				<tr class="table table_striped" style="background: #ddd;">
+					<td>${ele.orderq}</td>
+					<td>${ele.question}</td>					
+				</tr>
 					<c:forEach items="${ele.questionOptions}" var="el">
-					<tr><td></td><td>${el.q_option }</td><td></td><td></td></tr>
+						<tr>
+							<td></td>
+							<td style="color:#999">&nbsp;${el.q_option }</td>
+						</tr>
 					</c:forEach>
 				</c:forEach>
 		</table>

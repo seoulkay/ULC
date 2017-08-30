@@ -33,12 +33,18 @@ JsBarcode("#barcode", "go/1214903321890044/2222");
 //or with jQuery
 //$("#barcode").JsBarcode("https://www.facebook.com/${vo.sns_return }");
 </script>
-	<div style="height:2em"></div>
 	<div class="row">
 	<h3>민원처리</h3>
 		<table class="table table-bordered table-hover table-condensed">
-			<tr class="success">
-				<td>id</td><td>minwonImg</td><td>minwonDesc</td><td>minwonLat</td><td>minwonLng</td><td>minwonFn</td><td>minwonLn</td><td>minwon_tsmp</td>
+			<tr class="table table_striped">
+				<td class="hk3">번호</td>
+				<td class="hk3">사진</td>
+				<td class="hk3">내용</td>
+				<td class="hk3">Latitude</td>
+				<td class="hk3">Longitude</td>
+				<td class="hk3">이름</td>
+				<td class="hk3">성</td>
+				<td class="hk3">접수 시간</td>
 			</tr>
 				<c:forEach items="${minwon}" var="ele">
 				<tr><td>${ele.id}</td><td class="go_img"><c:if test="${ele.minwonImg ne null}"><img src="https://www.ufo79.com/image/${ele.minwonImg}" class="img-responsive" alt="" style="width:100px"></c:if></td><td>${ele.minwonDesc}</td><td>${ele.minwonLat}</td>

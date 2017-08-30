@@ -36,93 +36,27 @@
 	<!-- ******HEADER****** -->
 	<jsp:include page="header.jsp" flush="true">
 		<jsp:param name="param" value="value1" />
-	</jsp:include><!--//header-->
-	<!--//header-->
-
-<section class="heading-section section section-on-bg" style="padding-top:7em">
+	</jsp:include>
+	
+	<!-- 상단 이미지 & 버튼 -->
+	<section class="heading-section section section-on-bg" style="padding-top:7em">
 		<div class="hero-wrapper">
-			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.info_program_pic}"></div>
+			<div class="hero-holder" style="background-image: url(https://www.ufo79.com/image/${ufo.main_image}"></div>
 			<div class="hero-mask-gradient"></div>
 		</div>
 		<!--//hero-wrapper-->
 		<div class="container heading-content">
-		<c:choose>
-			<c:when test="${!empty ufo.q1_img}">
-		   			<img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="height:17em; margin: 0 auto;" data-dismiss="modal">
-			</c:when>
-			<c:otherwise>
-			<div style="height:3em"></div>
-					<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
-					<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
-							<div class="actions">
-                 			<a class="scrollto" href="#page-nav-wrapper"><img src="${pageContext.request.contextPath}/resources/ufo/assets/images/arrow-icon.svg" alt=""></a>
-            				</div>
-			</c:otherwise>
-		</c:choose>		
+			<div style="height:1em"></div>
+			<h2 class="headline" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.title }</h2>
+			<div class="intro" style="font-size: 25px;font-weight: 600;text-shadow: 2px 2px 30px #000000;">${ufo.event_date }</div><br>
+			<div style="height:1em"></div>		
 			<div class="actions">
-            <a  id="mainbtn"><button class="btn" style="background-color: #ed45a4;" onclick="surveyInit()">${ufo.ufoLable.stories_survey}</button></a>
-            </div><!--//actions-->
+            	<button class="btn" style="background-color: #EE334E;" onclick="surveyInit()">${ufo.ufoLable.stories_survey }</button>
+            </div>
 		</div>
-		<!--//container-->
 	</section>
-	<!--//heading-section-->
-
-	<div class="page-nav-space-holder">
-		<div id="page-nav-wrapper" class="page-nav-wrapper text-center">
-			<div class="container">
-				<ul id="page-nav" class="nav page-nav list-inline">
-					<li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/index">${ufo.ufoLable.navi_index}</a></li>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'modal')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stamp">${ufo.ufoLable.navi_stamp}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'stories')}"><li class="active" style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/stories">${ufo.ufoLable.stories}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'features')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/features">${ufo.ufoLable.navi_features}</a></li></c:if>
-					<c:if test="${fn:contains(sessionScope.eventMenu, 'minwon')}"><li style="margin: 0%"><a href="${pageContext.request.contextPath}/ufo/${sessionScope.eventPara }/minwon">${ufo.ufoLable.minwon}</a></li></c:if>
-				</ul>
-				<!--//page-nav-->
-			</div>
-		</div>
-		<!--//page-nav-wrapper-->
-	</div>
-	<!--//page-nav-space-holder-->
-	<div class="stories container">
-<c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
-		<div id="story-block-${statusEle.count }" class="story-block story-block-${ele.question }">
-			<div class="story-item">
-				<div class="row">
-					<div class="figure-holder col-sm-12 col-sm-6 col-md-7">
-						<div class="inner">
-							
-<!-- 						우선 단오제용 -->
-<!-- 							<img class="img-responsive" -->
-<%-- 								src="${pageContext.request.contextPath}/resources/pix/img/${ele.ques_img }.png" --%>
-<!-- 								alt=""> -->
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath}/resources/ufo/assets/images/stories/dano_survey_thumb0${statusEle.count }.jpg"
-								alt="">
-							<div class="figure-mask"></div>
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//figure-holder-->
-					<div class="content col-sm-12 col-sm-6 col-md-5">
-						<div class="inner">
-							<h3 class="question"><span class="question-number">문항 ${statusEle.count }.</span>${ele.question }</h3>
-							<c:forEach items="${ele.questionOptions }" var="var" varStatus="status">
-								<div class="answer">${status.count}. ${var.q_option }<span class="percentage">${var.percent }%</span></div>
-							</c:forEach>
-							<!--//desc-->
-						</div>
-						<!--//inner-->
-					</div>
-					<!--//content-->
-				</div>
-				<!--//row-->
-			</div>
-			<!--//story-item-->
-		</div>
-		<!--//story-block-->
-</c:forEach>
-	</div>
-
+	
+	<div style="height: 6em;"></div>
 
 <form id="surveyForm" method="post" enctype="multipart/form-data">
 <c:forEach items="${quesVO}" var="ele" varStatus="statusEle" begin="0" end="4">
@@ -131,15 +65,15 @@
 		<div class="modal-content">
 	      <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>${ele.question}</h4>
+	  		<h4><strong>${ele.question}</strong></h4>
 	  	 </div>	
   
 	   <div class="modal-body">
-	    7문항 중 ${statusEle.count }문항<br>
+	    7문항 중 ${statusEle.count }문항<br><br>
 	    <div class="progress">
 		  <div class="progress-bar progress-bar-success" style="width: ${statusEle.count * 100/ 7 }%">
 		  </div>
-		  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
+		  <div class="progress-bar-striped" style="width: ${100-(statusEle.count * 100 / 7)}%">
 		  </div>
 		</div>
 	  
@@ -167,14 +101,14 @@
   <div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 id="modal1Title">${quesVO[5].question}</h4>
+	  		<h4 id="modal1Title"><strong>${quesVO[5].question}</strong></h4>
 	   </div>	
 	   <div class="modal-body">
-  			7문항 중 6문항<br>
+  			7문항 중 6문항<br><br>
   			<div class="progress">
 	  		<div class="progress-bar progress-bar-success" style="width: ${6 * 100/ 7 }%">
 	  		</div>
-	  		<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
+	  		<div class="progress-bar-striped" style="width: ${100-(6 * 100 / 7)}%">
 	  		</div>
 			</div>
   			<input class="form-control" type="text" id="q6_a" name="q6_a" maxlength="900"/>
@@ -193,14 +127,14 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4>${quesVO[6].question}</h4>
+	  		<h4><strong>${quesVO[6].question}</strong></h4>
 	   </div>
 	   <div class="modal-body">
-   		7문항 중 7문항<br>
+   		7문항 중 7문항<br><br>
 	 	 	<div class="progress">
 		  	<div class="progress-bar progress-bar-success" style="width: ${7 * 100/ 7 }%">
 		  	</div>
-		  	<div class="progress-bar progress-bar-warning progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
+		  	<div class="progress-bar-striped" style="width: ${100-(7 * 100 / 7)}%">
 		  	</div>
 			</div>
 			<div id="descq7"></div>
