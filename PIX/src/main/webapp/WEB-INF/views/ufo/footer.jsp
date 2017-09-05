@@ -266,7 +266,6 @@ function fbLogin(para){
 	}, {scope: 'email', return_scope: true});
 }
   
-  
 /**
  * UFO 로그인 체크
 */
