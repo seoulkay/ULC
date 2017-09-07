@@ -80,10 +80,8 @@ button.close {
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_03_500px.svg')">
 			<div class="modal-footer">
 			<br>
-<!-- ***KAY 영문패치 -->
-		    	<a href="https://www.ufo79.com/image/${go_image}" download><span class="btn" style="background-color:WHITE; color:#0081C8; border:2px solid #0081C8" ><span class="btn-text">사진저장</span></span></a>
-<!-- ***KAY 영문패치 -->
-		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
+		    	<a href="https://www.ufo79.com/image/${go_image}" download><span class="btn" style="background-color:WHITE; color:#0081C8; border:2px solid #0081C8" ><span class="btn-text">${ufo.ufoLable.gen_save_photo }</span></span></a>
+		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">${ufo.ufoLable.gen_share}</span></span>
 		    <br><br>
 		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block" class="img-responsive"/></div>
 		    </div>

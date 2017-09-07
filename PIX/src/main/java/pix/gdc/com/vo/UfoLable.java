@@ -34,7 +34,53 @@ public class UfoLable {
 	private String minwon_btn;
 	private String features_btn;
 	
+	private String footer_wait;
+	private String gen_confirm;
+	private String gen_gallery;
+	private String gen_share;
+	private String gen_save_photo;
 	
+	private String result_complete;
+	private String result_progress;
+	private String gen_success;
+	
+	
+	public String getGen_success() {
+		return gen_success;
+	}
+	public void setGen_success(String gen_success) {
+		this.gen_success = gen_success;
+	}
+	public String getResult_complete() {
+		return result_complete;
+	}
+	public void setResult_complete(String result_complete) {
+		this.result_complete = result_complete;
+	}
+	public String getResult_progress() {
+		return result_progress;
+	}
+	public void setResult_progress(String result_progress) {
+		this.result_progress = result_progress;
+	}
+	public String getGen_save_photo() {
+		return gen_save_photo;
+	}
+	public void setGen_save_photo(String gen_save_photo) {
+		this.gen_save_photo = gen_save_photo;
+	}
+	public String getGen_confirm() {
+		return gen_confirm;
+	}
+	public void setGen_confirm(String gen_confirm) {
+		this.gen_confirm = gen_confirm;
+	}
+	public String getGen_gallery() {
+		return gen_gallery;
+	}
+	public void setGen_gallery(String gen_gallery) {
+		this.gen_gallery = gen_gallery;
+	}
 	public int getId() {
 		return id;
 	}
@@ -203,6 +249,18 @@ public class UfoLable {
 	}
 	public void setFeatures_btn(String features_btn) {
 		this.features_btn = features_btn;
+	}
+	public String getFooter_wait() {
+		return footer_wait;
+	}
+	public void setFooter_wait(String footer_wait) {
+		this.footer_wait = footer_wait;
+	}
+	public String getGen_share() {
+		return gen_share;
+	}
+	public void setGen_share(String gen_share) {
+		this.gen_share = gen_share;
 	}
 	
 }

@@ -360,7 +360,6 @@ function getUfo(param){
 }
 
 
-/* KAY 영문패치: 잠시만 기다려주세요. */
 
 /**
  * 플리즈 웨이트 하이드
@@ -370,7 +369,7 @@ function showPleaseWait() {
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h3 class="modal-title" style="font-family:football;" align="center">잠시만 기다려 주세요.</h3>\
+                <h3 class="modal-title" style="font-family:football;" align="center">${ufo.ufoLable.footer_wait}</h3>\
             </div>\
             <div class="modal-body">\
                 <div class="progress">\
@@ -393,7 +392,6 @@ function hidePleaseWait() {
     $("#pleaseWaitDialog").modal("hide");
 }
 
-/* KAY 영문패치: 갤러리/확인 */
 
 /**
  * 완료 모달
@@ -415,8 +413,8 @@ function showDone(para, type) {
                 </div>\
             </div>\
             <div class="modal-footer">\
-    		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="redirectGallery(\''+tt+'\')">갤러리</button>\
-    		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="redirectIndex(\''+tt+'\')">확인</button>\
+    		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="redirectGallery(\''+tt+'\')">${ufo.ufoLable.gen_gallery}</button>\
+    		<button type="button" class="btn btn-default" data-dismiss="modal" onClick="redirectIndex(\''+tt+'\')">${ufo.ufoLable.gen_confirm}</button>\
     	  	</div>\
         </div>\
     </div>\

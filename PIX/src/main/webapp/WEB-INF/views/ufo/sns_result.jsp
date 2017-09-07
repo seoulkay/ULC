@@ -39,12 +39,10 @@
 <!-- 	  		<button type="button" class="close" data-dismiss="modal">&times;</button> -->
 		<c:choose>
 			<c:when test="${userSize eq ufoSize }">
-<!-- ***KAY 영문패치 -->
-				<h3 style="color : #0081C8; font-family:football; margin-top:10px;">${rallyType}를 완성하였습니다! ${userSize }/${ufoSize }</h3>
+				<h3 style="color : #0081C8; font-family:football; margin-top:10px;">${rallyType}${ufo.ufoLable.result_complete} ${userSize }/${ufoSize }</h3>
 			</c:when>
 			<c:otherwise>
-<!-- ***KAY 영문패치 -->
-				<h3 style="color : #0081C8; font-family:football;">${rallyType}를 진행중입니다. ${userSize }/${ufoSize }</h3>
+				<h3 style="color : #0081C8; font-family:football;">${rallyType}${ufo.ufoLable.result_progress} ${userSize }/${ufoSize }</h3>
 			</c:otherwise>
 		</c:choose>
 		
@@ -90,10 +88,8 @@
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_03_500px.svg')">
 			<div class="modal-footer">
 			<br>
-<!-- ***KAY 영문패치 -->
-		    	<span class="btn" style="background-color:WHITE; color:#0081C8; border:2px solid #0081C8" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/stamp'"><span class="btn-text">확인</span></span>
-<!-- ***KAY 영문패치 -->
-		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
+		    	<span class="btn" style="background-color:WHITE; color:#0081C8; border:2px solid #0081C8" onClick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/stamp'"><span class="btn-text">${ufo.ufoLable.gen_confirm}</span></span>
+		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">${ufo.ufoLable.gen_share}</span></span>
 		    <br>
 		    </div>
   		</div>

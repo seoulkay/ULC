@@ -69,8 +69,7 @@ button.close {
 	   		<div class="row" id="stampResultList">
 	   			<ul  class="list-group">
 	   			<c:forEach items="${minwonList }" var="ele" varStatus="statusEle">
-<!-- ***KAY 영문패치 -->
-	   				<li class="list-group-item list-group-item-info">민원 ${statusEle.count }</li>
+	   				<li class="list-group-item list-group-item-info">${ufo.ufoLable.minwon} ${statusEle.count }</li>
 	   				<li class="list-group-item">
 	   				<a href="https://www.ufo79.com/PIX/ufo/${ufo.para}/result/mw/${ele.minwonUid }/${ele.id}">
 	   				<img alt="" src="https://www.ufo79.com/image/${ele.minwonImg}" style="width:100%" class="img-responsive">
@@ -86,8 +85,7 @@ button.close {
 	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_03_500px.svg')">
 			<div class="modal-footer">
 			<br>
-<!-- ***KAY 영문패치 -->
-		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
+		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">${ufo.ufoLable.gen_share}</span></span>
 		    <br><br>
 		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block" class="img-responsive"/></div>
 		    </div>

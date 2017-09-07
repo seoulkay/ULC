@@ -88,7 +88,7 @@
   		</form>
   		
   		<div class="modal-footer">
-	    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="questionSubmit();">제출</button>
+<!-- 	    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="questionSubmit();">제출</button> -->
 	  	</div>
 	</div>
 	</div>

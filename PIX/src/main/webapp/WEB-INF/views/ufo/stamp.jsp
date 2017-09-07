@@ -215,12 +215,10 @@
 					<div class="modal-content">
 					   <div class="modal-header">
 					  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<!-- ***KAY 영문패치 -->
-					  		<h3 style="font-family:football;">스탬프 미션 ${statusEle.count }번</h3>
+					  		<h3 style="font-family:football;">${ufo.ufoLable.stamp_mission} ${statusEle.count }</h3>
 					   </div>
 					   <div class="modal-body" style="padding-top:0px; padding-bottom:15px; padding-left: 15px; padding-right: 15px;">
-			<!-- ***KAY 영문패치 -->
-				   			<div style="padding-bottom:10px;">다음 장소에서 사진을 찍어주세요 : ${ele.go_content }<br>
+				   			<div style="padding-bottom:10px;">${ufo.ufoLable.stamp_takePicDesc} : ${ele.go_content }<br>
 				   			</div>
 							
 							<!-- 스탬프 미션 사진, 내용 -->			
@@ -234,8 +232,7 @@
 				   			<form id="stampForm${ele.ufo_gid }" action="/PIX/ufogo/insert" method="post" enctype="multipart/form-data">
 							  	<!-- 사진찍기 & 파일첨부 -->
 							  	<div class="filebox bs3-success">
-		  	<!-- ***KAY 영문패치 -->
-					                <label for="stamp_go${ele.ufo_gid }">사진찍기</label> 
+					                <label for="stamp_go${ele.ufo_gid }">${ufo.ufoLable.stamp_takePic}</label> 
 								  	<input type="file" id="stamp_go${ele.ufo_gid }" name="temp" class="form-control" accept="image/*">
 							    </div>							  	
 								<input type="hidden" id="first_name_go${ele.ufo_gid }" name="first_name">
@@ -249,10 +246,8 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-			<!-- ***KAY 영문패치 -->
-							<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">뒤로</button>
-		    <!-- ***KAY 영문패치 -->
-						    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>제출</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal" onClick="getUfo('go')">${ufo.ufoLable.gen_back}</button>
+						    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" onClick="stampPostSubmit('${ele.ufo_gid }')" id="btn${ele.ufo_gid }" disabled>${ufo.ufoLable.gen_submit}</button>
 					  	</div>
 					</div>
 				</div>
@@ -629,8 +624,7 @@ function stampPostSubmit(para){
 		              processData: false,
 		              contentType: false,
 		              success: function(result){
-		            	  /* ***KAY 영문패치 */
-		            	  showDone("성공하였습니다.", "go");
+		            	  showDone("${ufo.ufoLable.gen_success}", "go");
 		              },
 		              error: function(er){}
 		      });
