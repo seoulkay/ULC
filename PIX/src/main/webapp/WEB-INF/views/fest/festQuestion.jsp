@@ -60,10 +60,10 @@
 				   <div class="modal-body">
 				 		<form id="stampForm" method="post" enctype="multipart/form-data"> 
 			  			<label>Stamp Id.</label><input class="form-control" type="text" id="ufo_gid" name="ufo_gid" maxlength="45"/>
-			  			<label>Stamp board Image</label><input class="form-control" type="file" id="file2" name="file2"/>
+			  			<label>Stamp board Image</label><input class="form-control" type="file" id="file2" name="file2" />
 			  			<label>Stamp Title</label><input class="form-control" type="text" id="go_content" name="go_content" maxlength="45"/>
 			  			<label>Stamp Description</label><input class="form-control" type="text" id="go_desc" name="go_desc" maxlength="1000"/>
-			  			<label>Stamp Image</label><input class="form-control" type="file" id="file" name="file"/>
+			  			<label>Stamp Image</label><input class="form-control" type="file" id="file" name="file" />
 			  			<label>Latitude</label><input class="form-control" type="text" id="go_lat" name="go_lat" maxlength="45"/>
 			  			<label>Longitude</label><input class="form-control" type="text" id="go_alt" name="go_alt" maxlength="45"/>			  		
 			  			<input class="form-control" type="hidden" id="ufo_go_type" name="ufo_go_type" maxlength="100" value="go"/>
@@ -130,6 +130,8 @@
 			$("#imgModal").find("img").attr("src", $(this).find("img").attr("src"));
 			$("#imgModal").modal("show");
 		});
+		
+		
 		</script>
 	</body>
 </html>
