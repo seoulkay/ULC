@@ -360,6 +360,7 @@ function getUfo(param){
 }
 
 
+/* KAY 영문패치: 잠시만 기다려주세요. */
 
 /**
  * 플리즈 웨이트 하이드
@@ -391,6 +392,8 @@ $("#pleaseWaitDialog").modal("show");
 function hidePleaseWait() {
     $("#pleaseWaitDialog").modal("hide");
 }
+
+/* KAY 영문패치: 갤러리/확인 */
 
 /**
  * 완료 모달

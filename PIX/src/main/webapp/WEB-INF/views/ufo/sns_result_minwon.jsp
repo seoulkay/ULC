@@ -65,10 +65,11 @@ button.close {
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal" onclick="location.href='https://www.ufo79.com/PIX/ufo/${ufo.para}/minwon';">&times;</button><br>
 	   </div>
-	   <div class="modal-body" style="background-color: #d7579f;">
+	   <div class="modal-body" style="background-color: #0081C8;">
 	   		<div class="row" id="stampResultList">
 	   			<ul  class="list-group">
 	   			<c:forEach items="${minwonList }" var="ele" varStatus="statusEle">
+<!-- ***KAY 영문패치 -->
 	   				<li class="list-group-item list-group-item-info">민원 ${statusEle.count }</li>
 	   				<li class="list-group-item">
 	   				<a href="https://www.ufo79.com/PIX/ufo/${ufo.para}/result/mw/${ele.minwonUid }/${ele.id}">
@@ -82,9 +83,10 @@ button.close {
 	   		<h5 style="font-family:football; color:WHITE; float:right;"><fmt:formatDate pattern="yyyy.MM.dd" value="${now}" /> ${ufo.title }</h5>
 			<br>
 		</div>
-	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_02_500px.svg')">
+	 	<div style="background: url('${pageContext.request.contextPath}/resources/ufo/assets/images/stamp/bg_collage_03_500px.svg')">
 			<div class="modal-footer">
 			<br>
+<!-- ***KAY 영문패치 -->
 		    	<span id="shareBtn" class="btn btn-social btn-facebook" style="margin: auto;"><i class="fa fa-facebook" aria-hidden="true"></i><span class="btn-text">공유하기</span></span>
 		    <br><br>
 		    <div><img id="barcode" style="width:350px; margin: 0 auto; display:block" class="img-responsive"/></div>
