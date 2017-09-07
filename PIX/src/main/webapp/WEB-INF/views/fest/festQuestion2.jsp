@@ -13,25 +13,21 @@
 </jsp:include>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.5.8/barcodes/JsBarcode.code128.min.js"></script>
 
-<div class="container">
-<div style="margin:10px">
-<div id="qrcode"></div>
-<div><img id="barcode" style="width:350px"/></div>
-</div>
-
-	<div class="row">
-	<h3>설문조사</h3>
+	<div class="container">
+	<div style="height:2em"></div>
+	<div class="row">	
 		<table class="table table-bordered table-hover table-condensed">
-			<tr class="table table_striped">
-				<td class="hk3">번호</td>
-				<td class="hk3">질문</td>
-				<td class="hk3">세부질문</td>
-			</tr>
+			<h3>설문조사</h3>
+				<tr class="table table_striped">
+					<td class="hk3" style="width:10%;">번호</td>
+					<td class="hk3" style="width:80%;">질문</td>
+					<td class="hk3" style="width:10%;">세부질문</td>
+				</tr>
 				<c:forEach items="${surveyList}" var="ele">
-				<tr id="question_${ele.idfest_ufo_questions}" class="table table_striped" style="background: #ddd;">
-					<td onclick="showUpdateQuestion('${ele.idfest_ufo_questions}')">${ele.orderq}</td>
-					<td onclick="showUpdateQuestion('${ele.idfest_ufo_questions}')">${ele.question}</td>					
-					<td><button class="btn" onclick="showUpdateDet(${ele.orderq})">세부질문</button></td>
+				<tr style="background-color: #fff;" id="question_${ele.idfest_ufo_questions}" class="table table_striped" style="background: #ddd;">
+					<td class="hk4" style="text-align: center;" onclick="showUpdateQuestion('${ele.idfest_ufo_questions}')">${ele.orderq}</td>
+					<td class="hk4" onclick="showUpdateQuestion('${ele.idfest_ufo_questions}')">${ele.question}</td>					
+					<td class="hk4"><button class="btn" style="background-color:#fd7a02; color:#fff;" onclick="showUpdateDet(${ele.orderq})">세부질문</button></td>
 				</tr>
 <%-- 					<c:forEach items="${ele.questionOptions}" var="el"> --%>
 <!-- 						<tr> -->
@@ -56,15 +52,15 @@
 <div class="modal" id="stampFormModal" role="dialog">
 <div class="modal-dialog">
   <div class="modal-content">
-	   <div class="modal-header">
+	   <div class="modal-header" style="background-color: #4fcdb9; color: #ffffff;">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 id="modal1Title">설문조사</h4>
+	  		<h4 id="modal1Title" style="font-weight: 600;">설문조사</h4>
 	   </div>	
 	   <div class="modal-body">
 	 		<form id="updateQuestion" method="post"> 
-  			<label>연번</label><input class="form-control" type="text" id="idfest_ufo_questions" name="idfest_ufo_questions" readonly/>
-  			<label>번호</label><input class="form-control" type="text" id="orderq" name="orderq" readonly/>
-  			<label>이벤트코드</label><input class="form-control" value="${ufo.para}" type="text" name="para" readonly/>
+  			<label style="display:none;">연번</label><input style="display:none;" class="form-control" type="text" id="idfest_ufo_questions" name="idfest_ufo_questions" readonly/>
+  			<label style="display:none;">번호</label><input style="display:none;" class="form-control" type="text" id="orderq" name="orderq" readonly/>
+  			<label style="display:none;">이벤트코드</label><input style="display:none;" class="form-control" value="${ufo.para}" type="text" name="para" readonly/>
   			<label>질문</label><input class="form-control" type="text" id="question" name="question" maxlength="100"/>
   			</form>
   		</div>
@@ -77,9 +73,9 @@
 <div class="modal" id="questionDetFormModal" role="dialog">
 <div class="modal-dialog">
   <div class="modal-content">
-	   <div class="modal-header">
+	   <div class="modal-header" style="background-color: #4fcdb9; color: #ffffff;">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h4 id="modal1Title">설문조사 문항</h4>
+	  		<h4 id="modal1Title" style="font-weight: 600;">설문조사 문항</h4>
 	   </div>	
 	   <form id="updateQuestion" method="post"> 
 	   <div class="modal-body" id="updateQuestionWrap">
