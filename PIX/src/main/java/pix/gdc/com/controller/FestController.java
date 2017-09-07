@@ -51,6 +51,8 @@ public class FestController {
 	BasicDAO basicDao;
 	
 	
+	
+	
 	@RequestMapping(value = "FEV/", method = RequestMethod.GET)
 	public String festMainRedirect(){
 		return "redirect:festLoginForm";
@@ -141,6 +143,7 @@ public class FestController {
 		String para = dao.SelectUfoParaByNumber(currentEvent);
 		List<FestQuesListVO> surveyList = dao.selectUfoQuestionsNew(para);
 		List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
+	
 		
 		for(FestQuesListVO ele : surveyList){
 			for(FestOption el : optionList){
@@ -154,6 +157,17 @@ public class FestController {
 		model.addAttribute("ufo", ufo);
 		return "fest/festQuestion2";
 	}
+	
+	@RequestMapping(value ="FEV/updateQuestion", method = RequestMethod.POST)
+	public String updateQuestion(@ModelAttribute("vo") FestQuesListVO vo){
+		
+	
+		dao.updateQuestion(vo);
+		
+		int idx = dao.SelectUfoByPara(vo.getPara()).getIdfest_ufo();
+		return "redirect:/FEV/festQuestion2?idx="+idx;
+	}
+	
 	
 	@RequestMapping(value = "FEV/festQuestion3", method = RequestMethod.GET)
 	public String festQuestion3(@RequestParam("idx")int idx, Model model, HttpSession session){	
@@ -672,6 +686,20 @@ public class FestController {
         	System.out.println("You failed to upload because the file was empty. at update ufo");
         }
 		return vo;
+	}
+	
+	
+	
+	//	List<FestOption> optionList = dao.selectUfoQuestionsOptionsNew(para);
+	// 
+	@RequestMapping(value = "/FEV/getQuestionOptions", method = RequestMethod.POST)
+	public @ResponseBody List<FestOption> getQuestionOptions(@ModelAttribute("vo")FestOption vo) {
+		System.out.println(vo.getOrderq());
+		return dao.selectOptionsByQnumber(vo);
+	}
+	@RequestMapping(value = "/FEV/updateQuestionOptions", method = RequestMethod.POST)
+	public @ResponseBody int updateQuestionOptions(@ModelAttribute("vo")FestOption vo) {
+		return dao.updateOptionById(vo);
 	}
 	
 }

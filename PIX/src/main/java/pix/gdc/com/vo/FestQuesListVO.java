@@ -5,10 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 public class FestQuesListVO {
+
 	private String question;
 	private String para;
 	private String ques_img;
-	private int idfest_ufo_quesitons;
+	private int idfest_ufo_questions;
 	private int orderq;
 	private Date ques_time;
 	private List<FestOption> questionOptions = new ArrayList<FestOption>();
@@ -82,11 +83,12 @@ public class FestQuesListVO {
 	public void setQues_img(String ques_img) {
 		this.ques_img = ques_img;
 	}
-	public int getIdfest_ufo_quesitons() {
-		return idfest_ufo_quesitons;
+	
+	public int getIdfest_ufo_questions() {
+		return idfest_ufo_questions;
 	}
-	public void setIdfest_ufo_quesitons(int idfest_ufo_quesitons) {
-		this.idfest_ufo_quesitons = idfest_ufo_quesitons;
+	public void setIdfest_ufo_questions(int idfest_ufo_questions) {
+		this.idfest_ufo_questions = idfest_ufo_questions;
 	}
 	public int getOrderq() {
 		return orderq;
@@ -100,5 +102,6 @@ public class FestQuesListVO {
 	public void setQues_time(Date ques_time) {
 		this.ques_time = ques_time;
 	}
+
 	
 }
