@@ -60,7 +60,7 @@
 		   						
 	<!-- 	   						<p style="color: WHITE;  padding: 0.5em; padding-top: 2em;">스탬프를 찍어주세요.</p> -->
 								<br>
-		   						<img src="https://www.ufo79.com/image/stamp_please.svg" class="img-responsive" align="middle" style="margin: 0 auto">
+		   						<img src="https://www.ufo79.com/image/${ufo.stamp_please }" class="img-responsive" align="middle" style="margin: 0 auto">
 	
 	   						</div>
 		   					<div style="border: 2px solid #FFF; height:10em; overflow:hidden; background-color: WHITE;">
