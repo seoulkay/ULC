@@ -49,16 +49,16 @@
  	                 </script>
                    	<table class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'modal')}">style="display:none"</c:if>>
                    		<tr><td colspan="2" style="border:none;"><h3>Stamp Rally</h3></td></tr>
-                   		<tr><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q2_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>
+                   		<tr style="display: none;"><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q2_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>
                    		<tr><td class="hk2">Map</td><td class="hk">스탬프 활성화 반경</td><td><input type="text" class="form-control" name="go_rad" value="${ufo.go_rad }" maxlength="20"></td></tr>                   		
                    		<tr><td class="hk2" rowspan="2">How to</td><td class="hk">제목</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_title" maxlength="1000">${ufo.ufo_go_title }</textarea></td></tr>
                    		<tr><td class="hk">설명</td><td><textarea form="ufoForm" class="form-control" name="ufo_go_desc" maxlength="1000">${ufo.ufo_go_desc }</textarea></td></tr>                   		
-    	                <tr><td class="hk2" rowspan="2">Icons</td><td class="hk">완성핀<c:if test="${ufo.pin_comp ne null}"><img src="https://www.ufo79.com/image/${ufo.pin_comp}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q4_img_file"></td></tr>
+    	                <tr style="display: none;"><td class="hk2" rowspan="2">Icons</td><td class="hk">완성핀<c:if test="${ufo.pin_comp ne null}"><img src="https://www.ufo79.com/image/${ufo.pin_comp}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q4_img_file"></td></tr>
     	                <tr style="display: none;"><td class="hk">부스핀<c:if test="${ufo.pin_booth ne null}"><img src="https://www.ufo79.com/image/${ufo.pin_booth}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q5_img_file"></td></tr>
     	                
                    	</table>                   	                   	
                                   	
-                   	<table class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'stories')}">style="display:none"</c:if>>
+                   	<table style="display: none;" class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'stories')}">style="display:none"</c:if>>
                    		<tr><td colspan="2" style="border:none;"><h3>Survey</h3></td></tr>
                    		<tr><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.info_program_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_program_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_program_pic_file"></td></tr>
                    		
@@ -67,7 +67,7 @@
                    	<table class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'features')}">style="display:none"</c:if>>
                    		<tr><td colspan="2" style="border:none;"><h3>Information</h3></td></tr>
                    		
-                   		<tr><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q3_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q3_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q3_img_file"></td></tr>	
+                   		<tr style="display: none;"><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q3_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q3_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q3_img_file"></td></tr>	
                    		
                    		<tr><td class="hk2" rowspan="3">Block 1</td><td class="hk">제목1</td><td><input type="text" class="form-control" name="info_title" value="${ufo.info_title }" maxlength="45"></td></tr>
                    		<tr><td class="hk">사진1 <c:if test="${ufo.info_info_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.info_info_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="info_info_pic_file"></td></tr>
@@ -87,8 +87,7 @@
                    
                    	<table class="table table_striped" <c:if test="${!fn:contains(sessionScope.eventMenu, 'minwon')}">style="display:none"</c:if>>	
                    		<tr><td colspan="2" style="border:none;"><h3>Report</h3></td></tr>
-                   		<!-- Grace: 메인이미지가 q2_img로 설정되어 있어요. 변경 부탁 -->
-                   		<tr><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q2_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>
+                   		<tr style="display: none;"><td class="hk2">Header</td><td class="hk">메인이미지 <c:if test="${ufo.q2_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q2_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q2_img_file"></td></tr>
                    		<tr><td class="hk2" rowspan="2">How to</td><td class="hk">제목</td><td><textarea form="ufoForm" class="form-control" name="minwon_map" maxlength="1000">${ufo.minwon_map }</textarea></td></tr>
                    		<tr><td class="hk">설명</td><td><textarea form="ufoForm" class="form-control" name="minwon_how_to" maxlength="1000">${ufo.minwon_how_to }</textarea></td></tr>                   		                   		
                    	</table>          	
