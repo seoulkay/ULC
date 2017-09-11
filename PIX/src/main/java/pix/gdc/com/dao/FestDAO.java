@@ -594,4 +594,8 @@ public class FestDAO extends SqlSessionDaoSupport{
 	public int updateOptionById(FestOption vo){
 		return getSqlSession().update("BasicMapper.updateOptionById", vo);
 	}
+	//gid 존재 확인
+	public int countGidNumberByGid(int vo){
+		return getSqlSession().selectOne("BasicMapper.countGidNumberByGid", vo);
+	}
 }

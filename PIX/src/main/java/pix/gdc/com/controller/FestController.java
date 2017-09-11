@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -220,11 +221,21 @@ public class FestController {
 			dao.updateUfoGo(go);
 		}
 		
+		
 		return "redirect:/FEV/festQuestion?idx="+idx;
 	}
 	
 	@RequestMapping(value = "FEV/stampNew", method = RequestMethod.POST)
 	public String stampNew(@RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+		
+		//gid 정해주기
+		Random randomGenerator = new Random();
+		int randomInt = randomGenerator.nextInt(9999);
+		while(dao.countGidNumberByGid(randomInt) == 1){
+			randomInt = randomGenerator.nextInt(9999);
+		}
+		go.setUfo_gid(String.valueOf(randomInt));
+		
 		if (!file.isEmpty()) {
             try {
                 String[] fileInfo = restService.writeFileToServer(file);
@@ -235,6 +246,8 @@ public class FestController {
         } else {
         	dao.insertUfoGo(go);
         }
+		
+		
 		return "redirect:/FEV/festQuestion?idx="+idx;
 	}
 	

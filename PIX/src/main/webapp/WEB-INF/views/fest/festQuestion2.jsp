@@ -85,6 +85,12 @@
   		
   		<div class="modal-footer">
 <!-- 	    <button type="button" class="btn" data-dismiss="modal" id="stampSubmit" onclick="questionSubmit();">제출</button> -->
+	  	<div class="alert alert-success" role="alert" id="success_msg" style="text-align: left;display: none;">
+		  저장되었습니다.
+		</div>
+		<div class="alert alert-danger" role="alert" id="error_msg" style="text-align: left;display: none;">
+		  에러가 발생했습니다.
+		</div>
 	  	</div>
 	</div>
 	</div>
@@ -125,7 +131,13 @@ function updateOption(id){
 	$.post( "updateQuestionOptions", {idfest_ufo_q : id, q_option : $("#option_"+id).val()})
 	 .done(function( data ) {
 	  var vo = JSON.parse(JSON.stringify(data));
-	  	console.log(vo);
+	  	if(vo == 1){
+	  		$("#success_msg").fadeIn("slow");
+	  		$("#success_msg").delay(3000).fadeOut("slow");
+	  	}else{
+	  		$("#error_msg").fadeIn("slow");
+	  		$("#error_msg").delay(3000).fadeOut("slow");
+	  	}
 	 });
 }
 
