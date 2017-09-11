@@ -63,6 +63,9 @@ public class FestUfo {
 	private String pin_comp;
 	private String minwon_how_to;
 	private String minwon_map;
+	private String stamp_please;
+    private String def_lat;
+    private String def_lng;
 	
 	//라벨
 	private UfoLable ufoLable;
@@ -448,6 +451,24 @@ public class FestUfo {
 	}
 	public void setWinnerNumber(int winnerNumber) {
 		this.winnerNumber = winnerNumber;
+	}
+	public String getStamp_please() {
+		return stamp_please;
+	}
+	public void setStamp_please(String stamp_please) {
+		this.stamp_please = stamp_please;
+	}
+	public String getDef_lat() {
+		return def_lat;
+	}
+	public void setDef_lat(String def_lat) {
+		this.def_lat = def_lat;
+	}
+	public String getDef_lng() {
+		return def_lng;
+	}
+	public void setDef_lng(String def_lng) {
+		this.def_lng = def_lng;
 	}
 	
 	

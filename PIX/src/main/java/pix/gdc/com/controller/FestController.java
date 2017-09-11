@@ -226,7 +226,7 @@ public class FestController {
 	}
 	
 	@RequestMapping(value = "FEV/stampNew", method = RequestMethod.POST)
-	public String stampNew(@RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
+	public String stampNew(@RequestParam("file2") MultipartFile file2, @RequestParam("file") MultipartFile file, @RequestParam("idx") int idx, @ModelAttribute("vo") UfoGoVO go){
 		
 		//gid 정해주기
 		Random randomGenerator = new Random();
@@ -236,18 +236,26 @@ public class FestController {
 		}
 		go.setUfo_gid(String.valueOf(randomInt));
 		
-		if (!file.isEmpty()) {
-            try {
-                String[] fileInfo = restService.writeFileToServer(file);
-        		go.setGo_image(fileInfo[0]);
-        		dao.insertUfoGo(go);
-            } catch (Exception e) {
-            }
-        } else {
-        	dao.insertUfoGo(go);
-        }
-		
-		
+		try{
+			if (!file.isEmpty()) {
+	            try {
+	                String[] fileInfo = restService.writeFileToServer(file);
+	        		go.setGo_image(fileInfo[0]);
+	            } catch (Exception e) {
+	            }
+			}
+	        if(!file2.isEmpty()){
+	        	try {
+	                String[] fileInfo = restService.writeFileToServer(file2);
+	        		go.setGo_icon_img(fileInfo[0]);
+	            } catch (Exception e) {
+	            }
+	        }
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dao.insertUfoGo(go);
+		}
 		return "redirect:/FEV/festQuestion?idx="+idx;
 	}
 	

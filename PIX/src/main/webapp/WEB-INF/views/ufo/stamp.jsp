@@ -416,7 +416,7 @@ function refreshBtn(){
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 18,
-	    center: {lat: 35.097, lng: 129.008},
+	    center: {lat: ${ufo.def_lat}, lng: ${ufo.def_lng}},
 	    zoomControl: true,
 	    mapTypeControl: false,
 	    scaleControl: true,

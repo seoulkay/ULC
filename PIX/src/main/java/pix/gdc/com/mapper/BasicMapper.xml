@@ -313,7 +313,10 @@
     `fest_ufo`.`pin_booth`,
     `fest_ufo`.`pin_comp`,
     `fest_ufo`.`minwon_map`,
-    `fest_ufo`.`minwon_how_to`
+    `fest_ufo`.`minwon_how_to`,
+    `fest_ufo`.`stamp_please`,
+    `fest_ufo`.`def_lng`,
+    `fest_ufo`.`def_lat`
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>

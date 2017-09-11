@@ -45,7 +45,10 @@ public class Event_VO {
     private String q_coupon_txt3 = "";
 
     private String q_graphic = "";
-
+    private String stamp_please;
+    private String def_lat;
+    private String def_lng;
+    
     public String getTitle() {
         return title;
     }
@@ -329,5 +332,29 @@ public class Event_VO {
     public void setQ_coupon_txt3(String q_coupon_txt3) {
         this.q_coupon_txt3 = q_coupon_txt3;
     }
+
+	public String getStamp_please() {
+		return stamp_please;
+	}
+
+	public void setStamp_please(String stamp_please) {
+		this.stamp_please = stamp_please;
+	}
+
+	public String getDef_lat() {
+		return def_lat;
+	}
+
+	public void setDef_lat(String def_lat) {
+		this.def_lat = def_lat;
+	}
+
+	public String getDef_lng() {
+		return def_lng;
+	}
+
+	public void setDef_lng(String def_lng) {
+		this.def_lng = def_lng;
+	}
 
 }
