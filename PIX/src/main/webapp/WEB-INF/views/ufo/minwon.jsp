@@ -172,11 +172,11 @@
 	<div class="modal-content">
 	   <div class="modal-header">
 	  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  		<h3 style="font-family:football;">민원 처리 하기</h3>
+	  		<h3 style="font-family:football;">${ufo.minwon1 }</h3>
 	   </div>
 	   <div class="modal-body">
 	   		<div class="row">
-	   			<div id="minwonDesc">민원 처리 합시다요.</div>
+	   			<div id="minwonDesc">${ufo.minwon2 }</div>
 	   			<form action="/PIX/ufogo/insertMinwon" method="post" enctype="multipart/form-data" id="minwonForm">
 	   				Lat <br> 
 	   				<input type="text" name="minwonLat" id="minwonLat" readonly class="form-control">
@@ -184,7 +184,7 @@
 	   				<input type="text" name="minwonLng" id="minwonLng" readonly class="form-control">
 	   				Uid <br>
 	   				<input type="text" id="minwonUid" name="minwonUid" readonly class="form-control">
-	   				민원 내용 <br>
+	   				${ufo.minwon3 } <br>
 	   				<textarea name="minwonDesc" id="minwonDesc" maxlength="2000" class="form-control"></textarea><br>
 	   				<input type="hidden" id="para" name="para" value="${sessionScope.eventPara}">
 	   				<input type="hidden" id="minwonFn" name="minwonFn">
@@ -414,20 +414,26 @@ function CenterControl2(controlDiv) {
  */
 function refreshBtn(){
 	$("#refreshBtn").remove();
-	$("#mapInfoBtn").remove();
+	//맵 인포 삭제 2018 시월
+	//$("#mapInfoBtn").remove();
+	
 	var centerControlDiv = document.createElement('div');
     centerControlDiv.setAttribute("id", "refreshBtn");
     var centerControl = new CenterControl(centerControlDiv);
     
-    var centerControlDiv2 = document.createElement('div');
-    centerControlDiv2.setAttribute("id", "mapInfoBtn");
-    var centerControl2 = new CenterControl2(centerControlDiv2);
+  	//맵 인포 삭제 2018 시월
+    //var centerControlDiv2 = document.createElement('div');
+    //centerControlDiv2.setAttribute("id", "mapInfoBtn");
+    //var centerControl2 = new CenterControl2(centerControlDiv2);
     
     
     centerControlDiv.index = 1;
-    centerControlDiv2.index = 1;
+    //맵 인포 삭제 2018 시월
+    //centerControlDiv2.index = 1;
+    
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
+  	//맵 인포 삭제 2018 시월
+    //map.controls[google.maps.ControlPosition.LEFT_TOP].push(centerControlDiv2);
     
 }
  /**

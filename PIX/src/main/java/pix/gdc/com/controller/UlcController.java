@@ -12,6 +12,11 @@ public class UlcController {
 		return "ulc/main";
 	}
 	
+	@RequestMapping(value = "ULC/eng", method = RequestMethod.GET)
+	public String ulcMainEng(){
+		return "ulc/mainEng";
+	}
+	
 	@RequestMapping(value = "ULC/privacy", method = RequestMethod.GET)
 	public String ulcPrivacy(){
 		return "ulc/privacy";

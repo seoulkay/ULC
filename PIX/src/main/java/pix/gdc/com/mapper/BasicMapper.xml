@@ -316,7 +316,10 @@
     `fest_ufo`.`minwon_how_to`,
     `fest_ufo`.`stamp_please`,
     `fest_ufo`.`def_lng`,
-    `fest_ufo`.`def_lat`
+    `fest_ufo`.`def_lat`,
+    `fest_ufo`.`minwon1`,
+    `fest_ufo`.`minwon2`,
+    `fest_ufo`.`minwon3`
 	FROM `pix`.`fest_ufo`
 	WHERE `fest_ufo`.`para` = #{param}
 	</select>
@@ -549,6 +552,15 @@
 			</if>
 			<if test="pin_comp != null and pin_comp != ''">
 			,pin_comp = #{pin_comp}
+			</if>
+			<if test="minwon1 != null and minwon1 != ''">
+			,minwon1 = #{minwon1}
+			</if>
+			<if test="minwon2 != null and minwon2 != ''">
+			,minwon2 = #{minwon2}
+			</if>
+			<if test="minwon3 != null and minwon3 != ''">
+			,minwon3 = #{minwon3}
 			</if>
 			,minwon_map = #{minwon_map}
 			,minwon_how_to = #{minwon_how_to}

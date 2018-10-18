@@ -107,6 +107,11 @@
                    		<tr style="display: none;"><td class="hk">q_graphic <c:if test="${ufo.q_graphic ne null}"><img src="https://www.ufo79.com/image/${ufo.q_graphic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q_graphic_file"></td></tr>
                    		<tr style="display: none;"><td class="hk">qr_pic <c:if test="${ufo.qr_pic ne null}"><img src="https://www.ufo79.com/image/${ufo.qr_pic}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="qr_pic_file"></td></tr>
 
+						<tr><td class="hk2" rowspan="1">minwon1</td><td class="hk">minwon1</td><td><input type="text" class="form-control" name="minwon1" value="${ufo.minwon1 }" maxlength="100"></td></tr>
+						<tr><td class="hk2" rowspan="1">minwon2</td><td class="hk">minwon2</td><td><input type="text" class="form-control" name="minwon2" value="${ufo.minwon2 }" maxlength="100"></td></tr>
+						<tr><td class="hk2" rowspan="1">minwon3</td><td class="hk">minwon3</td><td><input type="text" class="form-control" name="minwon3" value="${ufo.minwon3 }" maxlength="100"></td></tr>
+                   		                   		
+
                    		<tr style="display: none;"><td class="hk2" rowspan="7">Questions</td><td class="hk">질문 1 <c:if test="${ufo.q1_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q1_img_file"></td></tr>
                    		
                    	</table>

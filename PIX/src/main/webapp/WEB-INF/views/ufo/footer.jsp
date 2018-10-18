@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="footer-col col-xs-6 col-sm-3">
 				<div class="footer-col-inner">
-					<div class="col-title"><a href="https://www.ufo79.com/home">UFO79.com</a>
+					<div class="col-title"><a href="https://www.ufo79.com/">UFO79.com</a>
 					</div>
 				</div>
 			</div>

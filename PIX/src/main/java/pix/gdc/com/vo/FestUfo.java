@@ -66,6 +66,11 @@ public class FestUfo {
 	private String stamp_please;
     private String def_lat;
     private String def_lng;
+    
+    private String minwon1;
+    private String minwon2;
+    private String minwon3;
+    
 	
 	//라벨
 	private UfoLable ufoLable;
@@ -74,6 +79,24 @@ public class FestUfo {
 	 private String crontime;
 	 private int winnerNumber;
 	
+	public String getMinwon1() {
+		return minwon1;
+	}
+	public void setMinwon1(String minwon1) {
+		this.minwon1 = minwon1;
+	}
+	public String getMinwon2() {
+		return minwon2;
+	}
+	public void setMinwon2(String minwon2) {
+		this.minwon2 = minwon2;
+	}
+	public String getMinwon3() {
+		return minwon3;
+	}
+	public void setMinwon3(String minwon3) {
+		this.minwon3 = minwon3;
+	}
 	public Integer getIdfest_ufo() {
 		return idfest_ufo;
 	}
