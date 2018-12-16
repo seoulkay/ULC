@@ -554,7 +554,8 @@ public class FestController {
         		vo.put("content", content);
         		vo.put("title", title);
         		vo.put("para", para);
-        		
+
+        		//
         		//dao.UpdateNoticeContentByKey(vo);
         		
         		dao.UpdateInfoByVo(vo);
