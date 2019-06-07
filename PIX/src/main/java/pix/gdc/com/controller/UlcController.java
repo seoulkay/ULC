@@ -31,4 +31,8 @@ public class UlcController {
 	public String reactMain(){
 		return "react/react";
 	}
+	@RequestMapping(value = "KAYLEE/", method = RequestMethod.GET)
+	public String kayleeMain(){
+		return "ulc/kaylee";
+	}
 }
