@@ -115,26 +115,7 @@
                    		<tr style="display: none;"><td class="hk2" rowspan="7">Questions</td><td class="hk">질문 1 <c:if test="${ufo.q1_img ne null}"><img src="https://www.ufo79.com/image/${ufo.q1_img}" class="img-responsive" alt="" style="width:100px"></c:if></td><td><input class="form-control" type="file" name="q1_img_file"></td></tr>
                    		
                    	</table>
-                   	
-                   	
-                   	<!-- Grace: 아래부분은 필요없으면 제외해주세요. Survey 부분 이미지랑 글넣는 것은 축제모듈에서 관리할 수 있게 해주세요. -->
-                   	<%-- <table class="table table_striped">	
-                   		<h3>Survey</h3>                   		
-                   		<tr><td class="hk2" rowspan="5">Coupons</td><td class="hk">상품명</td><td><input type="text" class="form-control" name="q_coupon_txt" value="${ufo.q_coupon_txt }" maxlength="200"></td></tr>
-                   		<tr><td class="hk">상품 수령 장소</td><td><input type="text" class="form-control" name="q_coupon_txt2" value="${ufo.q_coupon_txt2 }" maxlength="200"></td></tr>
-                   		<tr><td class="hk">상품 수령 기간</td><td><input type="text" class="form-control" name="q_coupon_txt3" value="${ufo.q_coupon_txt3 }" maxlength="50"></td></tr>                   		
-                    </table><hr>  
-                   	<table class="table table_striped">	
-                   		<h3>기타</h3>
-                   		
-                   		<tr><td class="hk">ufo_qr_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_qr_desc" maxlength="1000">${ufo.ufo_qr_desc }</textarea></td></tr>
-                   		<tr><td class="hk">qr_info_title</td><td><input type="text" form="ufoForm" class="form-control" name="qr_info_title" maxlength="45">${ufo.qr_info_title }</td></tr>
-                   		<tr><td class="hk">qr_info</td><td><textarea form="ufoForm" class="form-control" name="qr_info" maxlength="1000">${ufo.qr_info }</textarea></td></tr>                   		
-                    	<tr><td class="hk">ufo_survey_title</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_title" maxlength="500">${ufo.ufo_survey_title }</textarea></td></tr>
-                   		<tr><td class="hk">ufo_survey_desc</td><td><textarea form="ufoForm" class="form-control" name="ufo_survey_desc" maxlength="500">${ufo.ufo_survey_desc }</textarea></td></tr>
-                   		<tr><td class="hk">ufo_tag</td><td><input type="text" class="form-control" name="ufo_tag" value="${ufo.ufo_tag }" maxlength="200"></td></tr>
-                   		<tr><td class="hk">APK</td><td><input type="text" class="form-control" name="apk_name" value="${ufo.apk_name }" maxlength="200"></td></tr>                   	
-                    </table><hr>                 --%>   	
+                 	
                 <input type="submit" class="form-control btn btn-warning" style="background-color: #FD7A02; color: #ffffff; font-weight: bold;" value="업데이트!">
                 </form>                
             </div>
