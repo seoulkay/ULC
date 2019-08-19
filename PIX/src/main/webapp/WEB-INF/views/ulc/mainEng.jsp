@@ -110,11 +110,16 @@
                     </div>
                     
                     <div class="header-btn">
+                        <a href="https://www.ufo79.com/PIX/ufo/gc/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Gamcheon culture village</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/hct/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Halle(Saale) City Tour</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/bct/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Bernburg City Rally</a>
-                        <a href="https://www.ufo79.com/PIX/ufo/gc/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Gamcheon culture village</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/pyc2018/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Pyeongchang venue rally</a>
                     	<a href="https://www.ufo79.com/PIX/ufo/seoul_sub/index" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Seoul subway tour</a>
+                    </div>
+                    <div class="header-btn">
+                        <a href="http://34.80.60.239:8000" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Splunk</a>
+                    	<a href="http://34.80.60.239:8080" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Jenkins</a>
+                    	<a href="http://34.80.60.239/" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Apache</a>
                     </div>
                     
                     <div class="header-img">
