@@ -120,6 +120,7 @@
                         <a href="http://34.80.60.239:8000" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Splunk</a>
                     	<a href="http://34.80.60.239:8080" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Jenkins</a>
                     	<a href="http://34.80.60.239/" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Apache</a>
+                    	<a href="https://github.com/seoulkay" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Github</a>
                     </div>
                     
                     <div class="header-img">
