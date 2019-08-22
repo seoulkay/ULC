@@ -24,4 +24,6 @@ public class FestApiController {
 		return dao.SelectUfoForMobileByPara(para);
 	}
 	
+	//Jenkins integration
+	
 }
