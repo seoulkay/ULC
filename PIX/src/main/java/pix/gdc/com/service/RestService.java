@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.drew.imaging.ImageProcessingException;
@@ -23,7 +23,7 @@ public class RestService {
 	//private static final String filePath = "/Users/Kay/Documents/base/"; //client
 	
 	
-	@Resource(name="fileUtil")
+	//@Resource(name="fileUtil")
 	FileUtil fileUtil;
 	
 	public String[] writeFileToServer(MultipartFile image){
