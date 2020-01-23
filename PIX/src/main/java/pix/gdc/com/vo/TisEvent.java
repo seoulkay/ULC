@@ -4,6 +4,7 @@ public class TisEvent {
 	private int id;
 	private String event_name;
 	private String event_desc;
+	private String active;
 	public int getId() {
 		return id;
 	}
@@ -22,5 +23,10 @@ public class TisEvent {
 	public void setEvent_desc(String event_desc) {
 		this.event_desc = event_desc;
 	}
-	
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
 }

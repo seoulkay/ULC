@@ -5,10 +5,14 @@ public class TisVenue {
 	private int event_id;
 	private String venue_pic;
 	private String venue_name;
+	private String venue_name_loc;
+	private String venue_address;
+	private String venue_address_loc;
 	private String venue_type;
 	private String venue_desc;
 	private String lat;
 	private String lng;
+	private String cluster_id;
 	public int getId() {
 		return id;
 	}
@@ -56,6 +60,30 @@ public class TisVenue {
 	}
 	public void setLng(String lng) {
 		this.lng = lng;
+	}
+	public String getVenue_name_loc() {
+		return venue_name_loc;
+	}
+	public void setVenue_name_loc(String venue_name_loc) {
+		this.venue_name_loc = venue_name_loc;
+	}
+	public String getVenue_address() {
+		return venue_address;
+	}
+	public void setVenue_address(String venue_address) {
+		this.venue_address = venue_address;
+	}
+	public String getVenue_address_loc() {
+		return venue_address_loc;
+	}
+	public void setVenue_address_loc(String venue_address_loc) {
+		this.venue_address_loc = venue_address_loc;
+	}
+	public String getCluster_id() {
+		return cluster_id;
+	}
+	public void setCluster_id(String cluster_id) {
+		this.cluster_id = cluster_id;
 	}
 	
 }

@@ -40,11 +40,28 @@
 		<typeAlias type="pix.gdc.com.vo.UfoMinwon" alias="UfoMinwon"/>
 		<typeAlias type="pix.gdc.com.vo.QueQuestions" alias="QueQuestions"/>
 		<typeAlias type="pix.gdc.com.vo.QueAnswers" alias="QueAnswers"/>
-		
+		<typeAlias type="pix.gdc.com.vo.TisAccom" alias="TisAccom"/>
+		<typeAlias type="pix.gdc.com.vo.TisEmployee" alias="TisEmployee"/>
+		<typeAlias type="pix.gdc.com.vo.TisEvent" alias="TisEvent"/>
+		<typeAlias type="pix.gdc.com.vo.TisFlight" alias="TisFlight"/>
+		<typeAlias type="pix.gdc.com.vo.TisVenue" alias="TisVenue"/>
+		<typeAlias type="pix.gdc.com.vo.TisAdmin" alias="TisAdmin"/>
+		<typeAlias type="pix.gdc.com.vo.TisFacilities" alias="TisFacilities"/>
+		<typeAlias type="pix.gdc.com.vo.TisPolicies" alias="TisPolicies"/>
+		<typeAlias type="pix.gdc.com.vo.TisTransportations" alias="TisTransportations"/>
+		<typeAlias type="pix.gdc.com.vo.TisSupports" alias="TisSupports"/>
+		<typeAlias type="pix.gdc.com.vo.TisShift" alias="TisShift"/>
+		<typeAlias type="pix.gdc.com.vo.TisTrip" alias="TisTrip"/>
+		<typeAlias type="pix.gdc.com.vo.TisIti" alias="TisIti"/>
+		<typeAlias type="pix.gdc.com.vo.TisItiDetail" alias="TisItiDetail"/>
+		<typeAlias type="pix.gdc.com.vo.TisOther" alias="TisOther"/>
+		<typeAlias type="pix.gdc.com.vo.TisTeam" alias="TisTeam"/>
+		<typeAlias type="pix.gdc.com.vo.TisRequest" alias="TisRequest"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="pix/gdc/com/mapper/BasicMapper.xml" />
 		<mapper resource="pix/gdc/com/mapper/QueMapper.xml" />
+		<mapper resource="pix/gdc/com/mapper/TisMapper.xml" />
 	</mappers>
 </configuration>

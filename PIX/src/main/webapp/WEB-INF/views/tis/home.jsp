@@ -7,6 +7,7 @@
 <!--[if IE 8]><html class="ie ie8" lang="en"><![endif]-->
 <!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<fmt:bundle basename="application">
 
 <head>
     
@@ -19,20 +20,21 @@
     
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>   
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,700" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/tis/css/style.css">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/ionicons.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/slick.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/slick-theme.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/jquery.fancybox.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/animate.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/style.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/colors/orange/color.css">
     <!--<link rel="stylesheet" href="css/colors/pink/color.css">-->
     <!--<link rel="stylesheet" href="css/colors/yellow/color.css">-->
     
@@ -48,7 +50,7 @@
     <noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ulc/css/no-js.css"></noscript>
     
     <!-- Favicons -->
-	<link rel="shortcut icon" href="https://www.ufo79.com/image/favicon.ico">
+	<link rel="shortcut icon" href="<fmt:message key="baseurl"></fmt:message>/image/favicon.ico">
 </head>
 <body>
     
@@ -56,25 +58,29 @@
     <header id="header">
         
         <!-- .header-content -->
-        <div class="header-content" >
+        <div class="header-content">
             
             <!-- .header-overlay -->
-            <div class="header-overlay">
+            <div class="header-overlay"  style="background-color: #008FD4">
                 
                 <!-- .container -->
-                <div class="container">
+                <div class="container on-the-fly-behavior" >
                     
                     <div class="header-txt">
-                    	<img style="max-height: 10em; margin: 0 auto" src="${pageContext.request.contextPath}/resources/tis/Atos_Pyeongchang2018_H_W_ALL.png" alt="Logo" class="img-responsive">
+                    	<img style=" margin: 0 auto" src="${pageContext.request.contextPath}/resources/tis/image/Atos.svg" alt="Logo" class="img-responsive">
 <!--                         <h1>Atos</h1> -->
-                        <p>Trip information system</p>
+                        <p>Travel information system</p>
                     </div>
-                    <div class="well" style="background-color: #e74c3c">
+                    <div class="well">
                     <form action="info" method="post">
-                    	<input type="text" class="form-control" placeholder="DAS ID"><br>
-                    	<input type="password" class="form-control" placeholder="TIS password"><br>
+                    	<input type="text" class="form-control" placeholder="firstname.lastname" name="id"><br>
+                    	<input type="password" class="form-control" placeholder="TIS password" name="pass"><br>
                     	<input type="submit" value="Login" style="background-color: #3498db; border-color: #2980b9">
                     </form>
+                    <br>
+                    <c:if test="${not empty err }">
+                    	<div class="alert alert-danger" role="alert">${err }</div>
+                    </c:if>
                     </div>
                     <div class="header-btn">
                     </div>
@@ -92,59 +98,10 @@
     <!-- #header end -->
     <!-- #features2 -->
     
-    <!-- #footer -->
-    <footer id="footer">
-        
-        <!-- .container -->
-        <div class="container">
-            
-            <div class="footer-links">
-<!--             	<a href="https://www.facebook.com/UFO79-727262880784383/" class="link-icon" title="Facebook"><i class="ion ion-social-facebook"></i></a> -->
-<!--                 <a href="http://www.twitter.com/share?=url=www.ufo79.com/PIX/que/" class="link-icon" title="Twitter"><i class="ion ion-social-twitter"></i></a> -->
-<!--                 <a href="http://plus.google.com/share?url=www.ufo79.com/PIX/que/" class="link-icon" title="Google Plus"><i class="ion ion-social-googleplus"></i></a> -->
-<!--                 <a href="#" class="link-icon" title="Dribbble"><i class="ion ion-social-dribbble"></i></a> -->
-<!--                 <a href="#" class="link-icon" title="Instagram"><i class="ion ion-social-instagram"></i></a> -->
-                <a href="#" class="scrollup"><i class="ion ion-ios-arrow-up"></i></a>
-            </div>
-            
-            <div class="footer-copyright">
-            	<p>&copy; <a href="http://affapress.com" target="_blank">Atos Pyeongchang team</a> All Rights Reserved.</p>
-            </div>
-            
-		</div>
-        <!-- .container end -->
-        
-    </footer>
-    <!-- #footer end -->
-    
-    <!--[if lt IE 8]>
-    	<div class="browser-notice">
-            <div class="container">
-            	<div class="text">
-                    <h1>Internet Explorer Out To Date</h1>
-                    <p>Please update your Internet Explorer browser with a newer version (Internet Explorer 8 above) now!</p>
-                    <span>You can download it <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">here....</a></span>
-                </div>
-            </div>
-        </div>
-	<![endif]-->
-    
-    <!-- JavaScripts -->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/smoothscroll.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/response.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.placeholder.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.fitvids.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/waypoints.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/slick.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.fancybox.pack.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.fancybox-media.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/jquery.counterup.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ulc/js/script.js"></script>
-   <div id="fb-root"></div> 
+            <!-- ******FOOTER****** -->
+	<jsp:include page="common/footer.jsp" flush="false">
+		<jsp:param name="param" value="value1" />
+	</jsp:include><!--//footer-->
 </body>
 
 <script>(function(d, s, id) {
@@ -164,4 +121,5 @@
   ga('send', 'pageview');
 
 </script>
+</fmt:bundle>
 </html>
