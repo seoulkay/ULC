@@ -57,11 +57,27 @@
 		<typeAlias type="pix.gdc.com.vo.TisOther" alias="TisOther"/>
 		<typeAlias type="pix.gdc.com.vo.TisTeam" alias="TisTeam"/>
 		<typeAlias type="pix.gdc.com.vo.TisRequest" alias="TisRequest"/>
+		<typeAlias type="pix.gdc.com.vo.KimgPersonVO" alias="KimgPerson"/>
+		<typeAlias type="pix.gdc.com.vo.KimgPhotoVO" alias="KimgPhoto"/>
+		<typeAlias type="pix.gdc.com.vo.KimgCompanyVO" alias="KimgCompany"/>
+		<typeAlias type="pix.gdc.com.vo.KimgProductVO" alias="KimgProduct"/>
+		<typeAlias type="pix.gdc.com.vo.KimgItemVO" alias="KimgItem"/>
+		<typeAlias type="pix.gdc.com.vo.KimgEventVO" alias="KimgEvent"/>
+		<typeAlias type="pix.gdc.com.vo.KimgCategoryVO" alias="KimgCategory"/>
+		<typeAlias type="pix.gdc.com.vo.KimgDepartmentVO" alias="KimgDepartment"/>
+		<typeAlias type="pix.gdc.com.vo.KimgSportVO" alias="KimgSport"/>
+		<typeAlias type="pix.gdc.com.vo.KimgVenueVO" alias="KimgVenue"/>
+		<typeAlias type="pix.gdc.com.vo.KimgTaskStatusVO" alias="KimgTaskStatus"/>
+		<typeAlias type="pix.gdc.com.vo.KimgTaskTypeVO" alias="KimgTaskType"/>
+		<typeAlias type="pix.gdc.com.vo.KimgTaskVO" alias="KimgTask"/>
+		<typeAlias type="pix.gdc.com.vo.KimgDashVO" alias="KimgDash"/>
+		<typeAlias type="pix.gdc.com.vo.KimgProgressVO" alias="KimgProgress"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="pix/gdc/com/mapper/BasicMapper.xml" />
 		<mapper resource="pix/gdc/com/mapper/QueMapper.xml" />
 		<mapper resource="pix/gdc/com/mapper/TisMapper.xml" />
+		<mapper resource="pix/gdc/com/mapper/KimgMapper.xml" />
 	</mappers>
 </configuration>

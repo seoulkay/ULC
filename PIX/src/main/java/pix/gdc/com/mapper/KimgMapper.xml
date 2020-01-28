@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper">
+<!-- 스케줄에 집어넣을 대시보드 리포트것 -->
+<insert id="insertDash">
+<![CDATA[
+INSERT INTO `KIMG`.`kimgDash`
+(
+`nDasProduct`,
+`nDasItem`,
+`nDasTask`,
+`nDasIssue`,
+`nDasIssueReq`,
+`nDasPerson`,
+`nDasItemLook`,
+`nDasItemSign`,
+`nDasItemSpec`,
+`nDasItemSport`,
+`nDasTaskMan`,
+`nDasTaskIns`,
+`nDasTaskDel`,
+`nDasTaskDes`,
+`dDasCrtDate`)
+VALUES
+(
+(select count(0) from KIMG.kimgProduct),
+(select count(0) from KIMG.kimgItem),
+(select count(0) from KIMG.kimgTask where cTskType <> 'INC'),
+(select count(0) from KIMG.kimgTask where cTskType = 'INC'),
+(select count(0) FROM KIMG.kimgTask where nTskDel = 0 and cTskType = 'INC' and cTskStatus = 'TRQ'),
+(select count(0) from KIMG.kimgPerson),
+(select count(0) from KIMG.kimgItem where nItmDel = 0 and cItmCate = 'lok'),
+(select count(0) from KIMG.kimgItem where nItmDel = 0 and cItmCate = 'sin'),
+(select count(0) from KIMG.kimgItem where nItmDel = 0 and cItmCate = 'spc'),
+(select count(0) from KIMG.kimgItem where nItmDel = 0 and cItmCate = 'eqi'),
+(select count(0) FROM KIMG.kimgTask where nTskDel = 0 and cTskType = 'MAN'),
+(select count(0) FROM KIMG.kimgTask where nTskDel = 0 and cTskType = 'INS'),
+(select count(0) FROM KIMG.kimgTask where nTskDel = 0 and cTskType = 'DEL'),
+(select count(0) FROM KIMG.kimgTask where nTskDel = 0 and cTskType = 'DES'),
+now());
+]]>
+</insert>
+<select id="selectProgress" resultType="KimgProgress">
+select 
+v.cVenName as Venue,
+b.ven as vCode, 
+ifnull(b.percent,0) as Progress,
+ifnull(b.manper,0) as manProgress,
+ifnull(b.delper,0) as delProgress,
+ifnull(b.insper,0) as insProgress,
+ifnull(b.desper,0) as desProgress
+from
+(select  a.cItmVenue ven, 
+(sum(pro)/4)/count(0)*100 as percent,
+sum(MAN)/count(0)*100 as manper,
+sum(DEL)/count(0)*100 as delper,
+sum(INS)/count(0)*100 as insper,
+sum(DES)/count(0)*100 as desper 
+from
+(Select
+it.nItmCnt,
+it.cItmVenue,
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'MAN' order by nTskCnt desc limit 1),0) as MAN,
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'DEL' order by nTskCnt desc limit 1),0) as DEL,
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'INS' order by nTskCnt desc limit 1),0) as INS,
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'DES' order by nTskCnt desc limit 1),0) as DES, 
+
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'MAN' order by nTskCnt desc limit 1),0) +
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'DEL' order by nTskCnt desc limit 1),0) +
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'INS' order by nTskCnt desc limit 1),0) +
+ifnull((select Case cTskStatus when 'ERQ' then 1 when 'CNF' then 1 ELSE 0 END from KIMG.kimgTask where nRefItm = it.nItmCnt and cTskType = 'DES' order by nTskCnt desc limit 1),0)  as pro
+from KIMG.kimgItem it) a
+group by a.cItmVenue) b left join KIMG.kimgVenue v on b.ven = v.cVenCode
+
+</select>
+
+	<select id="selectAllCompany" resultType="KimgCompany">
+	SELECT * FROM KIMG.kimgCompany
+	</select>
+	<select id="selectPasswordPerson"  resultType="KimgPerson" parameterType="KimgPerson">
+  		SELECT * FROM KIMG.kimgPerson per 
+		left join KIMG.kimgPhoto pho 
+		on per.nPerCnt = pho.nRefCode 
+		and pho.cPhoType = 'per' 
+		and pho.nPhoDel = 0
+		left join `KIMG`.`kimgCompany` c on per.cPerCom = c.cComCode 
+		WHERE per.nPerDel = 0 and cPerId = #{cPerId} and cPerPwd = #{cPerPwd}
+  	</select>
+  	<select id="selectAllPerson"  resultType="KimgPerson">
+		SELECT * FROM KIMG.kimgPerson per 
+		left join KIMG.kimgPhoto pho 
+		on per.nPerCnt = pho.nRefCode 
+		and pho.cPhoType = 'per' 
+		and pho.nPhoDel = 0
+		left join `KIMG`.`kimgCompany` c on per.cPerCom = c.cComCode 
+		WHERE per.nPerDel = 0
+  	</select>
+  	<select id="selectAllPersonSrc"  resultType="KimgPerson" parameterType="String">
+  		
+		SELECT * FROM KIMG.kimgPerson per 
+		left join KIMG.kimgPhoto pho 
+		on per.nPerCnt = pho.nRefCode 
+		and pho.cPhoType = 'per' 
+		and pho.nPhoDel = 0
+		left join `KIMG`.`kimgCompany` c on per.cPerCom = c.cComCode 
+		WHERE per.nPerDel = 0 and (per.cPerName like CONCAT('%',#{vo},'%') or per.cPerId like CONCAT('%',#{vo},'%') or c.cComName like CONCAT('%',#{vo},'%'))
+  	</select>
+  	<select id="selectOnePerson"  resultType="KimgPerson" parameterType="Integer">
+  		select * from `KIMG`.`kimgPerson` itm
+  		left join KIMG.kimgPhoto pho on itm.nPerCnt = pho.nRefCode and pho.cPhoType = 'per' and pho.nPhoDel = 0
+  		where nPerDel = 0 and nPerCnt = #{nPerCnt}
+  	</select>
+  	<insert id="insertPerson" parameterType="KimgPerson" useGeneratedKeys="true" keyProperty="nPerCnt">
+  		INSERT INTO `KIMG`.`kimgPerson`
+		(
+		`cPerId`,
+		`cPerPwd`,
+		`cPerName`,
+		`cPerCom`,
+		`cPerPos`,
+		`cPerCon`,
+		`cPerEmail`,
+		`dPerCrt`,
+		`cPerCrtUsr`,
+		`dPerMod`,
+		`cPerModUsr`,
+		`nPerDel`)
+		VALUES
+		(
+		#{cPerId},
+		#{cPerPwd},
+		#{cPerName},
+		#{cPerCom},
+		#{cPerPos},
+		#{cPerCon},
+		#{cPerEmail},
+		now(),
+		#{cPerCrtUsr},
+		now(),
+		#{cPerModUsr},
+		0);
+
+  	</insert>
+  	<update id="updatePerson" parameterType="KimgPerson">
+	  	UPDATE `KIMG`.`kimgPerson`
+		SET
+		<if test="cPerId != null and cPerId != ''">
+		`cPerId` = #{cPerId},
+		</if>
+		<if test="cPerPwd != null and cPerPwd != ''">
+		`cPerPwd` = #{cPerPwd},
+		</if>
+		<if test="cPerName != null and cPerName != ''">
+		`cPerName` = #{cPerName},
+		</if>
+		<if test="cPerCom != null and cPerCom != ''">
+		`cPerCom` = #{cPerCom},
+		</if>
+		<if test="cPerPos != null and cPerPos != ''">
+		`cPerPos` = #{cPerPos},
+		</if>
+		<if test="cPerCon != null and cPerCon != ''">
+		`cPerCon` = #{cPerCon},
+		</if>
+		<if test="cPerEmail != null and cPerEmail != ''">
+		`cPerEmail` = #{cPerEmail},
+		</if>
+		<if test="nPerDel != null and nPerDel != ''">
+		`nPerDel` = #{nPerDel}
+		</if>
+		`dPerMod` = now(),
+		`cPerModUsr` = #{cPerModUsr}
+		WHERE `nPerCnt` = #{nPerCnt};
+  	</update>
+  	<insert id="insertPhoto" parameterType="KimgPhoto">
+	  	INSERT INTO `KIMG`.`kimgPhoto`
+		(
+		`cPhoType`,
+		`nRefCode`,
+		`cPhoName`,
+		`dPhoCrt`,
+		`cPhoCrtUsr`,
+		`dPhoMod`,
+		`cPhoModUsr`,
+		`nPhoDel`)
+		VALUES
+		(
+		#{cPhoType},
+		#{nRefCode},
+		#{cPhoName},
+		now(),
+		#{cPhoCrtUsr},
+		now(),
+		#{cPhoModUsr},
+		0);
+  	</insert>
+  	<select id="selectPhotoByParam" parameterType="KimgPhoto" resultType="KimgPhoto">
+  	select * from `KIMG`.`kimgPhoto`
+  	WHERE
+  	`cPhoType` = #{cPhoType}
+  	and
+  	`nRefCode` = #{nRefCode}
+  	and
+  	`nPhoDel` = 0
+  	</select>
+  	<update id="updatePhotoByRefCodeToZero" parameterType="KimgPhoto">
+  	Update
+  	`KIMG`.`kimgPhoto`
+  	SET nPhoDel = 1
+  	WHERE nRefCode = #{nRefCode}
+  	and cPhoType = #{cPhoType}
+  	</update>
+  	<select id="selectAllProduct" resultType="KimgProduct">
+  	SELECT * FROM KIMG.kimgProduct where nPrdDel = 0;
+  	</select>
+  	<select id="selectAllProductSrcPar" resultType="KimgProduct" parameterType="KimgProduct">
+  	SELECT * FROM KIMG.kimgProduct 
+  	where nPrdDel = 0 and
+  	(
+  	1=1
+  	<if test="cPrdLocalName != null and cPrdLocalName != ''">
+	and cPrdLocalName like CONCAT('%',#{cPrdLocalName},'%') 
+	</if>
+	<if test="cPrdName != null and cPrdName != ''">
+	and cPrdName like CONCAT('%',#{cPrdName},'%') 
+	</if>
+	<if test="cPrdCode != null and cPrdCode != ''">
+	and cPrdCode like CONCAT('%',#{cPrdCode},'%') 
+	</if>
+	<if test="cPrdCat != null and cPrdCat != ''">
+	and cPrdCat like CONCAT('%',#{cPrdCat},'%') 
+	</if>
+  	)
+  	</select>
+  	<select id="selectAllItem" resultType="KimgItem">
+  	SELECT * FROM KIMG.kimgItem item
+	left join KIMG.kimgProduct prod on item.cItmProd = prod.cPrdCode
+	where nItmDel = 0 limit 100;
+  	</select>
+  	
+  	
+  	<select id="selectAllItemSrcParCnt" resultType="Integer" parameterType="KimgItem">
+  	SELECT
+	count(0)
+ 	
+  	FROM KIMG.kimgItem item
+	
+	where nItmDel = 0 and 
+	(
+	1=1
+	<if test="cItmCode != null and cItmCode != ''">
+	and item.cItmCode like CONCAT('%',#{cItmCode},'%') 
+	</if>
+	<if test="cItmProd != null and cItmProd != ''">
+    and item.cItmProd like CONCAT('%',#{cItmProd},'%') 
+    </if>
+    <if test="cItmMate != null and cItmMate != ''"> 
+    and item.cItmMate like CONCAT('%',#{cItmMate},'%') 
+    </if>
+    <if test="cItmCom != null and cItmCom != ''">
+    and item.cItmCom like CONCAT('%',#{cItmCom},'%') 
+    </if>
+    <if test="cItmVenue != null and cItmVenue != ''">
+    and item.cItmVenue like CONCAT('%',#{cItmVenue},'%') 
+    </if>
+    <if test="cItmSport != null and cItmSport != ''">
+    and item.cItmSport like CONCAT('%',#{cItmSport},'%') 
+    </if>
+    <if test="cItmDept != null and cItmDept != ''">
+    and item.cItmDept like CONCAT('%',#{cItmDept},'%') 
+    </if>
+    <if test="cItmEvent != null and cItmEvent != ''">
+    and item.cItmEvent like CONCAT('%',#{cItmEvent},'%') 
+    </if>
+    )
+    
+  	</select>
+  	
+  	
+  	<select id="selectAllItemSrcPar" resultType="KimgItem" parameterType="KimgItem">
+  	SELECT
+  	item.`nItmCnt`,
+    item.`cItmCode`,
+    item.`cItmCom`,
+    item.`cItmVenue`,
+    item.`cItmEvent`,
+    item.`cItmCate`,
+  	(SELECT cTstPercent from KIMG.kimgTask kt left join KIMG.kimgTaskStatus ks on kt.cTskStatus = ks.cTstType where kt.cTskType = 'MAN' and nTskDel = 0 and nRefItm = nItmCnt order by kt.nTskCnt desc limit 1) as 'nManStatus', 
+  	(SELECT cTstPercent from KIMG.kimgTask kt left join KIMG.kimgTaskStatus ks on kt.cTskStatus = ks.cTstType where kt.cTskType = 'INS' and nTskDel = 0 and nRefItm = nItmCnt order by kt.nTskCnt desc limit 1) as 'nInsStatus', 
+  	(SELECT cTstPercent from KIMG.kimgTask kt left join KIMG.kimgTaskStatus ks on kt.cTskStatus = ks.cTstType where kt.cTskType = 'DES' and nTskDel = 0 and nRefItm = nItmCnt order by kt.nTskCnt desc limit 1) as 'nDesStatus', 
+  	(SELECT cTstPercent from KIMG.kimgTask kt left join KIMG.kimgTaskStatus ks on kt.cTskStatus = ks.cTstType where kt.cTskType = 'DEL' and nTskDel = 0 and nRefItm = nItmCnt order by kt.nTskCnt desc limit 1) as 'nDelStatus', 
+	(SELECT count(0) FROM KIMG.kimgTask where nRefItm = nItmCnt and nTskDel = 0 and cTskType = 'INC' and cTskStatus in ('TRQ', 'ERQ')) as 'nIncStatus',
+ 	item.cItmPrePho,
+ 	item.cItmDesPho,
+ 	item.cItmPosPho
+ 	
+  	FROM KIMG.kimgItem item
+	
+	where nItmDel = 0 and 
+	(
+	1=1
+	<if test="cItmCode != null and cItmCode != ''">
+	and item.cItmCode like CONCAT('%',#{cItmCode},'%') 
+	</if>
+	<if test="cItmProd != null and cItmProd != ''">
+    and item.cItmProd like CONCAT('%',#{cItmProd},'%') 
+    </if>
+    <if test="cItmMate != null and cItmMate != ''"> 
+    and item.cItmMate like CONCAT('%',#{cItmMate},'%') 
+    </if>
+    <if test="cItmCom != null and cItmCom != ''">
+    and item.cItmCom like CONCAT('%',#{cItmCom},'%') 
+    </if>
+    <if test="cItmVenue != null and cItmVenue != ''">
+    and item.cItmVenue like CONCAT('%',#{cItmVenue},'%') 
+    </if>
+    <if test="cItmSport != null and cItmSport != ''">
+    and item.cItmSport like CONCAT('%',#{cItmSport},'%') 
+    </if>
+    <if test="cItmDept != null and cItmDept != ''">
+    and item.cItmDept like CONCAT('%',#{cItmDept},'%') 
+    </if>
+    <if test="cItmEvent != null and cItmEvent != ''">
+    and item.cItmEvent like CONCAT('%',#{cItmEvent},'%') 
+    </if>
+    )
+    order by nItmCnt desc limit #{nItmPageTemp} , 30
+  	</select>
+  	<select id="selectAllItemDetail" resultType="KimgItem" parameterType="Integer">
+  	SELECT * FROM KIMG.kimgItem item
+	left join KIMG.kimgProduct prod on item.cItmProd = prod.cPrdCode
+    left join KIMG.kimgCategory cat on item.cItmCate = cat.cCatType
+    left join KIMG.kimgEvent eve on item.cItmEvent = eve.cEvnCode
+    left join KIMG.kimgVenue ven on item.cItmVenue = ven.cVenCode
+    left join KIMG.kimgSport spor on item.cItmSport = spor.cSptCode
+    left join KIMG.kimgDepartment dep on item.cItmDept = dep.cDptCode
+	where nItmDel = 0 and item.nItmCnt = #{param}
+	</select>
+  	<select id="selectAllcItmMate" resultType="String">
+  	SELECT distinct cItmMate FROM KIMG.kimgItem
+  	</select>
+  	<select id="selectAllCategory" resultType="KimgCategory">
+  	SELECT * FROM KIMG.kimgCategory
+  	</select>
+  	<select id="selectAllEvent" resultType="KimgEvent">
+  	SELECT * FROM KIMG.kimgEvent
+  	</select>
+  	<select id="selectAllSport" resultType="KimgSport">
+  	SELECT * FROM KIMG.kimgSport
+  	</select>
+  	<select id="selectAllDepartment" resultType="KimgDepartment">
+  	SELECT * FROM KIMG.kimgDepartment
+  	</select>
+  	<select id="selectAllVenue" resultType="KimgVenue">
+  	SELECT * FROM KIMG.kimgVenue
+  	</select>
+  	<insert id="insertProduct" parameterType="KimgProduct" useGeneratedKeys="true" keyProperty="nPrdCnt">
+  	INSERT INTO `KIMG`.`kimgProduct`
+	(
+	`cPrdCode`,
+	`cPrdName`,
+	`cPrdLocalName`,
+	`cPrdCat`,
+	`cPrdDesc`,
+	`dPrdCrt`,
+	`cPrdCrtUsr`,
+	`dPrdMod`,
+	`cPrdModUsr`,
+	`nPrdDel`,
+	`nPrdPriceOcog`,
+	`nPrdPriceCont`,
+	`nPrdLaborOcog`,
+	`nPrdLaborCont`,
+	`cPrdScale`
+	)
+	VALUES
+	(
+	#{cPrdCode},
+	#{cPrdName},
+	#{cPrdLocalName},
+	#{cPrdCat},
+	#{cPrdDesc},
+	now(),
+	#{cPrdCrtUsr},
+	now(),
+	#{cPrdModUsr},
+	0,
+	#{nPrdPriceOcog},
+	#{nPrdPriceCont},
+	#{nPrdLaborOcog},
+	#{nPrdLaborCont},
+	#{cPrdScale});
+  	</insert>
+  	<select id="selectProductOne" parameterType="Integer" resultType="KimgProduct">
+  	SELECT * FROM KIMG.kimgProduct pro
+	left join KIMG.kimgPhoto pho on pro.nPrdCnt = pho.nRefCode and pho.cPhoType = 'prd' and pho.nPhoDel = 0
+	WHERE nPrdCnt = #{param}
+  	</select>
+  	<select id="selectItemOne" parameterType="Integer" resultType="KimgItem">
+  	SELECT * FROM KIMG.kimgItem itm
+	left join KIMG.kimgPhoto pho on itm.nItmCnt = pho.nRefCode and pho.cPhoType = 'itm' and pho.nPhoDel = 0
+	left join KIMG.kimgProduct pro on itm.cItmProd = pro.cPrdCode
+	WHERE nItmCnt = #{param}
+  	</select>
+  	<select id="selectTaskOne" parameterType="Integer" resultType="KimgTask">
+  	SELECT * FROM KIMG.kimgTask itm
+	left join KIMG.kimgPhoto pho on itm.nTskCnt = pho.nRefCode and pho.cPhoType = 'tsk' and pho.nPhoDel = 0
+	WHERE nTskCnt = #{param}
+  	</select>
+  	<update id="updateProduct" parameterType="KimgProduct">
+  	UPDATE `KIMG`.`kimgProduct`
+	SET
+	<if test="cPrdCode != null and cPrdCode != ''">
+	`cPrdCode` = #{cPrdCode},
+	</if>
+	<if test="cPrdName != null and cPrdName != ''">
+	`cPrdName` = #{cPrdName},
+	</if>
+	<if test="cPrdLocalName != null and cPrdLocalName != ''">
+	`cPrdLocalName` = #{cPrdLocalName},
+	</if>
+	<if test="cPrdCat != null and cPrdCat != ''">
+	`cPrdCat` = #{cPrdCat},
+	</if>
+	<if test="cPrdDesc != null and cPrdDesc != ''">
+	`cPrdDesc` = #{cPrdDesc},
+	</if>
+	<if test="nPrdDel != null and nPrdDel != ''">
+	`nPrdDel` = #{nPrdDel},
+	</if>
+	<if test="nPrdPriceOcog != null and nPrdPriceOcog != ''">
+	`nPrdPriceOcog` = #{nPrdPriceOcog},
+	</if>
+	<if test="nPrdPriceCont != null and nPrdPriceCont != ''">
+	`nPrdPriceCont` = #{nPrdPriceCont},
+	</if>	
+	<if test="nPrdLaborOcog != null and nPrdLaborOcog != ''">
+	`nPrdLaborOcog` = #{nPrdLaborOcog},
+	</if>
+	<if test="nPrdLaborCont != null and nPrdLaborCont != ''">
+	`nPrdLaborCont` = #{nPrdLaborCont},
+	</if>	
+	<if test="cPrdScale != null and cPrdScale != ''">
+	`cPrdScale` = #{cPrdScale},
+	</if>	
+	`dPrdMod` = now(),
+	`cPrdModUsr` = #{cPrdModUsr}
+	WHERE `nPrdCnt` = #{nPrdCnt};
+  	</update>
+  	<update id="deletePhoto" parameterType="Integer">
+  	Update
+  	`KIMG`.`kimgPhoto`
+  	SET nPhoDel = 1
+  	WHERE nPhoCnt = #{nPhoCnt}
+  	</update>
+  	<insert id="insertItem" parameterType="KimgItem" useGeneratedKeys="true" keyProperty="nItmCnt">
+  	INSERT INTO `KIMG`.`kimgItem`
+	(
+	`cItmCode`,
+	`cItmCom`,
+	`cItmVenue`,
+	`cItmSport`,
+	`cItmDept`,
+	`cItmEvent`,
+	`cItmCate`,
+	`cItmProd`,
+	`cItmMate`,
+	`cItmFloor`,
+	`cItmLocation`,
+	`cItmWidth`,
+	`cItmHeight`,
+	`cItmDimen`,
+	`cItmQty1`,
+	`cItemUnit1`,
+	`cItmQty2`,
+	`cItmUnit2`,
+	`cItmDesc`,
+	`cItmUnitPrice1`,
+	`cItmPrice1`,
+	`cItmMateUnitPrice1`,
+	`cItmMatePrice1`,
+	`cImtLaborUnitPrice1`,
+	`cItmLaborPrice1`,
+	`cItmUnitPrice2`,
+	`cItmPrice2`,
+	`cItmMateUnitPrice2`,
+	`cItmMatePrice2`,
+	`cImtLaborUnitPrice2`,
+	`cItmLaborPrice2`,
+	`dItmCrt`,
+	`cItmCrtUsr`,
+	`dItmMod`,
+	`cItmModUsr`,
+	`nItmDel`)
+	VALUES
+	(
+	#{cItmCode},
+	#{cItmCom},
+	#{cItmVenue},
+	#{cItmSport},
+	#{cItmDept},
+	#{cItmEvent},
+	#{cItmCate},
+	#{cItmProd},
+	#{cItmMate},
+	#{cItmFloor},
+	#{cItmLocation},
+	#{cItmWidth},
+	#{cItmHeight},
+	#{cItmDimen},
+	#{cItmQty1},
+	#{cItemUnit1},
+	#{cItmQty2},
+	#{cItmUnit2},
+	#{cItmDesc},
+	#{cItmUnitPrice1},
+	#{cItmPrice1},
+	#{cItmMateUnitPrice1},
+	#{cItmMatePrice1},
+	#{cImtLaborUnitPrice1},
+	#{cItmLaborPrice1},
+	#{cItmUnitPrice2},
+	#{cItmPrice2},
+	#{cItmMateUnitPrice2},
+	#{cItmMatePrice2},
+	#{cImtLaborUnitPrice2},
+	#{cItmLaborPrice2},
+	now(),
+	#{cItmCrtUsr},
+	now(),
+	#{cItmModUsr},
+	0
+	);
+  	</insert>
+  	<update id="updateItem" parameterType="KimgItem">
+  	UPDATE `KIMG`.`kimgItem`
+	SET
+	<if test="cItmCode != null and cItmCode != ''">
+	`cItmCode` = #{cItmCode},
+	</if>
+	<if test="cItmCom != null and cItmCom != ''">
+	`cItmCom` = #{cItmCom},
+	</if>
+	<if test="cItmVenue != null and cItmVenue != ''">
+	`cItmVenue` = #{cItmVenue},
+	</if>
+	<if test="cItmSport != null and cItmSport != ''">
+	`cItmSport` = #{cItmSport},
+	</if>
+	<if test="cItmDept != null and cItmDept != ''">
+	`cItmDept` = #{cItmDept},
+	</if>
+	<if test="cItmEvent != null and cItmEvent != ''">
+	`cItmEvent` = #{cItmEvent},
+	</if>
+	<if test="cItmCate != null and cItmCate != ''">
+	`cItmCate` = #{cItmCate},
+	</if>
+	<if test="cItmProd != null and cItmProd != ''">
+	`cItmProd` = #{cItmProd},
+	</if>
+	<if test="cItmMate != null and cItmMate != ''">
+	`cItmMate` = #{cItmMate},
+	</if>
+	<if test="cItmFloor != null and cItmFloor != ''">
+	`cItmFloor` = #{cItmFloor},
+	</if>
+	<if test="cItmLocation != null and cItmLocation != ''">
+	`cItmLocation` = #{cItmLocation},
+	</if>
+	<if test="cItmWidth != null and cItmWidth != ''">
+	`cItmWidth` = #{cItmWidth},
+	</if>
+	<if test="cItmHeight != null and cItmHeight != ''">
+	`cItmHeight` = #{cItmHeight},
+	</if>
+	<if test="cItmDimen != null and cItmDimen != ''">
+	`cItmDimen` = #{cItmDimen},
+	</if>
+	<if test="cItmQty1 != null and cItmQty1 != ''">
+	`cItmQty1` = #{cItmQty1},
+	</if>
+	<if test="cItemUnit1 != null and cItemUnit1 != ''">
+	`cItemUnit1` = #{cItemUnit1},
+	</if>
+	<if test="cItmQty2 != null and cItmQty2 != ''">
+	`cItmQty2` = #{cItmQty2},
+	</if>
+	<if test="cItmUnit2 != null and cItmUnit2 != ''">
+	`cItmUnit2` = #{cItmUnit2},
+	</if>
+	<if test="cItmDesc != null and cItmDesc != ''">
+	`cItmDesc` = #{cItmDesc},
+	</if>
+	<if test="cItmUnitPrice1 != null and cItmUnitPrice1 != ''">
+	`cItmUnitPrice1` = #{cItmUnitPrice1},
+	</if>
+	<if test="cItmPrice1 != null and cItmPrice1 != ''">
+	`cItmPrice1` = #{cItmPrice1},
+	</if>
+	<if test="cItmMateUnitPrice1 != null and cItmMateUnitPrice1 != ''">
+	`cItmMateUnitPrice1` = #{cItmMateUnitPrice1},
+	</if>
+	<if test="cItmMatePrice1 != null and cItmMatePrice1 != ''">
+	`cItmMatePrice1` = #{cItmMatePrice1},
+	</if>
+	<if test="cImtLaborUnitPrice1 != null and cImtLaborUnitPrice1 != ''">
+	`cImtLaborUnitPrice1` = #{cImtLaborUnitPrice1},
+	</if>
+	<if test="cItmLaborPrice1 != null and cItmLaborPrice1 != ''">
+	`cItmLaborPrice1` = #{cItmLaborPrice1},
+	</if>
+	<if test="cItmUnitPrice2 != null and cItmUnitPrice2 != ''">
+	`cItmUnitPrice2` = #{cItmUnitPrice2},
+	</if>
+	<if test="cItmPrice2 != null and cItmPrice2 != ''">
+	`cItmPrice2` = #{cItmPrice2},
+	</if>
+	<if test="cItmMateUnitPrice2 != null and cItmMateUnitPrice2 != ''">
+	`cItmMateUnitPrice2` = #{cItmMateUnitPrice2},
+	</if>
+	<if test="cItmMatePrice2 != null and cItmMatePrice2 != ''">
+	`cItmMatePrice2` = #{cItmMatePrice2},
+	</if>
+	<if test="cImtLaborUnitPrice2 != null and cImtLaborUnitPrice2 != ''">
+	`cImtLaborUnitPrice2` = #{cImtLaborUnitPrice2},
+	</if>
+	<if test="cItmLaborPrice2 != null and cItmLaborPrice2 != ''">
+	`cItmLaborPrice2` = #{cItmLaborPrice2},
+	</if>
+	<if test="cItmPrePho != null and cItmPrePho != ''">
+	`cItmPrePho` = #{cItmPrePho},
+	</if>
+	<if test="cItmPosPho != null and cItmPosPho != ''">
+	`cItmPosPho` = #{cItmPosPho},
+	</if>
+	<if test="cItmDesPho != null and cItmDesPho != ''">
+	`cItmDesPho` = #{cItmDesPho},
+	</if>
+	<if test="nItmDel != null and nItmDel != ''">
+	`nItmDel` = #{nItmDel},
+	</if>
+	`dItmMod` = now(),
+	`cItmModUsr` = #{cItmModUsr}
+
+	WHERE `nItmCnt` = #{nItmCnt};
+	  	
+  	</update>
+  	<select id="selectTaskStatus" resultType="KimgTaskStatus">
+  	SELECT * FROM KIMG.kimgTaskStatus;
+  	</select>
+  	
+  	<select id="selectTaskType" resultType="KimgTaskType">
+  	SELECT * FROM KIMG.kimgTaskType;
+  	</select>
+  	
+  	<insert id="insertTask" parameterType="KimgTask" useGeneratedKeys="true" keyProperty="nTskCnt">
+  	INSERT INTO `KIMG`.`kimgTask`
+	(
+	`nRefItm`,
+	`cTskType`,
+	`cTskComp`,
+	`cTskNote`,
+	`cTskStatus`,
+	`cTskCheck`,
+	`dTskCrt`,
+	`cTskCrtUsr`,
+	`dTskMod`,
+	`cTskModUsr`,
+	`nTskDel`)
+	VALUES
+	(
+	#{nRefItm},
+	#{cTskType},
+	#{cTskComp},
+	#{cTskNote},
+	#{cTskStatus},
+	#{cTskCheck},
+	now(),
+	#{cTskCrtUsr},
+	now(),
+	#{cTskModUsr},
+	#{nTskDel});
+  	</insert>
+  	
+  	<update id="updateTask" parameterType="KimgTask">
+  	UPDATE `KIMG`.`kimgTask`
+	SET
+	<if test="nRefItm != null and nRefItm != ''">
+	`nRefItm` = #{nRefItm},
+	</if>
+	<if test="cTskType != null and cTskType != ''">
+	`cTskType` = #{cTskType},
+	</if>
+	<if test="cTskComp != null and cTskComp != ''">
+	`cTskComp` = #{cTskComp},
+	</if>
+	<if test="cTskNote != null and cTskNote != ''">
+	`cTskNote` = #{cTskNote},
+	</if>
+	<if test="cTskStatus != null and cTskStatus != ''">
+	`cTskStatus` = #{cTskStatus},
+	</if>
+	<if test="cTskCheck != null and cTskCheck != ''">
+	`cTskCheck` = #{cTskCheck},
+	</if>
+	<if test="dTskCrt != null and dTskCrt != ''">
+	`dTskCrt` = #{dTskCrt},
+	</if>
+	<if test="cTskCrtUsr != null and cTskCrtUsr != ''">
+	`cTskCrtUsr` = #{cTskCrtUsr},
+	</if>
+	<if test="nTskDel != null and nTskDel != ''">
+	`nTskDel` = #{nTskDel},
+	</if>
+	`dTskMod` = now(),
+	`cTskModUsr` = #{cTskModUsr}
+	WHERE `nTskCnt` = #{nTskCnt};
+  	</update>
+  	
+  	<select id="selectTask" parameterType="Integer" resultType="KimgTask">
+  	SELECT * FROM KIMG.kimgTask t
+	LEFT JOIN KIMG.kimgTaskStatus ts on t.cTskStatus = ts.cTstType
+	LEFT JOIN KIMG.kimgTaskType tt on t.cTskType = tt.cTtpType
+	where nRefItm = #{param} and nTskDel = 0
+	ORDER BY t.nTskCnt desc;
+  	</select>
+  	
+  	<select id="selectAllTask" resultType="KimgTask">
+  	SELECT * FROM KIMG.kimgTask t
+	LEFT JOIN KIMG.kimgTaskStatus ts on t.cTskStatus = ts.cTstType
+	LEFT JOIN KIMG.kimgTaskType tt on t.cTskType = tt.cTtpType
+    left Join KIMG.kimgItem it on t.nRefItm = it.nItmCnt
+    left join KIMG.kimgEvent ev on it.cItmEvent = ev.cEvnCode
+    left join KIMG.kimgCategory cat on it.cItmCate = cat.cCatType
+    left join KIMG.kimgProduct pro on it.cItmProd = pro.cPrdCode
+	where nTskDel = 0 and it.nItmDel = 0
+	ORDER BY t.nTskCnt desc;
+  	</select>
+  	
+  	<select id="selectLateDash" resultType="kimgDash">
+  	select * from KIMG.kimgDash order by nDasCnt desc limit 1
+  	</select>
+  	
+  	<select id="selectIssue" resultType="kimgTask">
+  	select * from KIMG.kimgTask t
+	LEFT JOIN KIMG.kimgTaskStatus s on t.cTskType = s.cTstType
+	left Join KIMG.kimgItem it on t.nRefItm = it.nItmCnt
+	where cTskType = 'INC' and nTskDel = 0
+	order by t.nTskCnt desc
+  	</select>
+<!--   	<if test="cItmCode != null and cItmCode != ''"> -->
+<!-- 	and item.cItmCode like CONCAT('%',#{cItmCode},'%')  -->
+<!-- 	</if> -->
+	<select id="selectIssueSrcPar" resultType="kimgTask" parameterType="kimgTask">
+  	select * from KIMG.kimgTask t
+	LEFT JOIN KIMG.kimgTaskStatus s on t.cTskType = s.cTstType
+	left Join KIMG.kimgItem it on t.nRefItm = it.nItmCnt
+	where
+    1=1
+    <if test="nTskCnt != null and nTskCnt != ''"> 
+    and t.nTskCnt like CONCAT('%',#{nTskCnt},'%')
+    </if>
+	<if test="cItmCode != null and cItmCode != ''"> 
+    and it.cItmCode like CONCAT('%',#{cItmCode},'%')
+    </if>
+	<if test="cTskStatus != null and cTskStatus != ''"> 
+    and t.cTskStatus like CONCAT('%',#{cTskStatus},'%')
+    </if>
+	<if test="cItmVenue != null and cItmVenue != ''"> 
+    and it.cItmVenue like CONCAT('%',#{cItmVenue},'%')
+    </if>
+	<if test="cTskCrtUsr != null and cTskCrtUsr != ''"> 
+    and t.cTskCrtUsr like CONCAT('%',#{cTskCrtUsr},'%')
+    </if>
+    <if test="cTskNote != null and cTskNote != ''"> 
+    and t.cTskNote like CONCAT('%',#{cTskNote},'%')
+    </if>
+	and cTskType = 'INC' 
+    and nTskDel = 0
+	order by t.nTskCnt desc
+  	</select>
+  	
+  	<select id="selectVenueDist" resultType="String" parameterType="String">
+  	SELECT distinct cItmVenue FROM KIMG.kimgItem where cItmCom = #{param}
+  	</select>
+  	
+</mapper>

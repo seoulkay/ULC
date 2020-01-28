@@ -587,7 +587,7 @@ public class TisController {
 	@RequestMapping(value = "signout", method = RequestMethod.GET)
 	public String signout(HttpSession session){
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:tisHome";
 	}
 	
 	@RequestMapping(value = "info", method = RequestMethod.POST)

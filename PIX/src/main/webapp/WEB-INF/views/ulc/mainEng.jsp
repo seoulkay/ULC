@@ -117,9 +117,9 @@
                     	<a href="https://www.ufo79.com/PIX/ufo/seoul_sub/stamp" class="btn-custom btn-white btn-border btn-rounded btn-icon" title="Download on Play Store"><i class="ion ion-happy-outline"></i>Seoul subway tour</a>
                     </div>
                     <div class="header-btn">
-                        <a href="http://34.80.60.239:8000" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Splunk</a>
-                    	<a href="http://34.80.60.239:8080" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Jenkins</a>
-                    	<a href="http://34.80.60.239/" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Apache</a>
+                        <a href="../tisHome" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">TIS</a>
+                    	<a href="../admin" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">TIS_ADMIN</a>
+                    	<a href="../kimg/login" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">LogisticManager</a>
                     	<a href="https://github.com/seoulkay" class="btn-custom btn-white btn-border btn-rounded" title="Download on Play Store">Github</a>
                     </div>
                     
